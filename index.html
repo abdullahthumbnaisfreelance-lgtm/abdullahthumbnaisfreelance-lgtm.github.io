@@ -298,6 +298,19 @@
       box-shadow: 0 18px 60px rgba(0,0,0,.28);
     }
 
+    .nav-highlight {
+      position: absolute;
+      top: .45rem;
+      left: .45rem;
+      height: calc(100% - .9rem);
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      z-index: -1;
+      transition: all .45s cubic-bezier(0.23, 1, 0.32, 1);
+      pointer-events: none;
+      opacity: 0;
+    }
+
     nav a {
       padding: .72rem 1.2rem;
       border-radius: 999px;
@@ -305,18 +318,181 @@
       color: var(--text-dim);
       font-size: .86rem;
       font-weight: 700;
-      transition: color .35s var(--ease), background .35s var(--ease);
+      transition: color .35s var(--ease);
       white-space: nowrap;
       min-height: 44px;
       display: inline-flex;
       align-items: center;
+      position: relative;
     }
 
-    nav a.active,
     nav a:hover {
       color: #fff;
-      background: rgba(255,255,255,.075);
     }
+
+    nav a.active {
+      color: #fff;
+    }
+
+    /* Mobile Menu Components */
+    .mobile-menu-btn {
+      display: none;
+      position: fixed;
+      bottom: 1.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1100;
+      padding: .85rem 1.75rem;
+      background: rgba(21, 21, 24, .85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: #fff;
+      font-family: inherit;
+      font-size: .92rem;
+      font-weight: 800;
+      align-items: center;
+      gap: .75rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,.45);
+      cursor: pointer;
+      transition: transform .3s var(--ease), background .3s var(--ease);
+      will-change: transform;
+    }
+
+    .mobile-menu-btn:active {
+      transform: translateX(-50%) scale(.95);
+    }
+
+    .mobile-menu-btn svg { width: 20px; height: 20px; }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(7, 7, 9, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .45s var(--ease), visibility .45s var(--ease);
+    }
+
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu-sheet {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      padding: 1.5rem 1.5rem 4rem;
+      transform: translateY(100%);
+      transition: transform .6s cubic-bezier(0.23, 1, 0.32, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-menu-overlay.active .mobile-menu-sheet {
+      transform: translateY(0);
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding: .5rem;
+      flex-shrink: 0;
+    }
+
+    .mobile-menu-header span {
+      font-size: .8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: var(--text-soft);
+    }
+
+    .mobile-menu-close {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: transform .3s var(--ease);
+    }
+
+    .mobile-menu-close:active { transform: scale(.9); }
+
+    .mobile-menu-close svg { width: 24px; height: 24px; }
+
+    .mobile-menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .mobile-menu-links a {
+      font-size: clamp(1.8rem, 8vw, 2.4rem);
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--text-dim);
+      letter-spacing: -.03em;
+      padding: .6rem 0;
+      transition: color .4s var(--ease), transform .4s var(--ease), padding-left .4s var(--ease);
+      opacity: 0;
+      transform: translate3d(-15px, 30px, 0) rotate(2deg);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .mobile-menu-overlay.active .mobile-menu-links a {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) rotate(0);
+      transition: 
+        opacity .7s cubic-bezier(0.23, 1, 0.32, 1), 
+        transform .7s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .mobile-menu-links a.active {
+      color: #fff;
+      padding-left: .75rem;
+    }
+
+    .mobile-menu-links a.active::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 12px var(--primary);
+      margin-right: .5rem;
+    }
+
+    .mobile-menu-links a:active {
+      color: var(--primary);
+      transform: scale(.97);
+    }
+
+    /* Staggered Link Animations */
+    .mobile-menu-overlay.active .mobile-menu-links a:nth-child(1) { transition-delay: .1s; }
+    .mobile-menu-overlay.active .mobile-menu-links a:nth-child(2) { transition-delay: .17s; }
+    .mobile-menu-overlay.active .mobile-menu-links a:nth-child(3) { transition-delay: .24s; }
+    .mobile-menu-overlay.active .mobile-menu-links a:nth-child(4) { transition-delay: .31s; }
+    .mobile-menu-overlay.active .mobile-menu-links a:nth-child(5) { transition-delay: .38s; }
+    .mobile-menu-overlay.active .mobile-menu-links a:nth-child(6) { transition-delay: .45s; }
+    .mobile-menu-overlay.active .mobile-menu-links a:nth-child(7) { transition-delay: .52s; }
 
     .hero {
       min-height: 92vh;
@@ -1417,29 +1593,9 @@
     }
 
     @media (max-width: 680px) {
-      nav { 
-        top: auto; 
-        bottom: 1.25rem; 
-        width: calc(100% - 1.5rem); 
-        padding: .4rem .8rem;
-        backdrop-filter: blur(28px);
-        -webkit-backdrop-filter: blur(28px);
-        background: rgba(16, 16, 20, .85);
-        gap: .5rem;
-        justify-content: flex-start;
-        overflow-x: auto;
-        white-space: nowrap;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-      }
-      nav::-webkit-scrollbar { display: none; }
-      nav a {
-        padding: .75rem 1.25rem;
-        font-size: .85rem;
-        flex: 0 0 auto;
-        justify-content: center;
-        min-height: 44px;
-      }
+      nav#mainNav { display: none; }
+      .mobile-menu-btn { display: flex; }
+
       .hero { padding: 8rem 0 4rem; }
       .hero h1 { font-size: clamp(2.8rem, 12vw, 3.4rem); }
       .hero p { font-size: 0.95rem; margin-bottom: 2rem; }
@@ -1633,6 +1789,40 @@
       }
     }
 
+  
+    /* MOBILE EXPERIENCE FIXES */
+    @media (max-width: 680px) {
+      body {
+        padding-bottom: 5.75rem;
+      }
+
+      .work-card.image-slider {
+        touch-action: pan-y;
+      }
+
+      .work-card.image-slider .slider-range {
+        pointer-events: none;
+      }
+
+      .work-card.image-slider.dragging {
+        touch-action: none;
+      }
+
+      .work-card.image-slider.dragging .slider-handle::after {
+        transform: translate(-50%, -50%) scale(1.06);
+      }
+    }
+
+    @media (pointer: coarse) {
+      .work-card.image-slider {
+        touch-action: pan-y;
+      }
+
+      .work-card.image-slider .slider-range {
+        pointer-events: none;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1649,7 +1839,8 @@
   <div class="cursor-glow" id="cursorGlow"></div>
   <div class="custom-cursor" id="customCursor"></div>
 
-  <nav aria-label="Main navigation">
+  <nav aria-label="Main navigation" id="mainNav">
+    <div class="nav-highlight"></div>
     <a class="active" href="#home">Home</a>
     <a href="#work">Work</a>
     <a href="#reviews">Reviews</a>
@@ -1658,6 +1849,32 @@
     <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
   </nav>
+
+  <!-- Mobile Bottom Sheet Menu -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <div class="mobile-menu-sheet">
+      <div class="mobile-menu-header">
+        <span>Menu</span>
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <nav class="mobile-menu-links">
+        <a href="#home">Home</a>
+        <a href="#work">Work</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#about">About</a>
+        <a href="#process">Process</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+    <span>Menu</span>
+  </button>
 
   <main>
     <section class="hero container" id="home">
@@ -1765,7 +1982,7 @@
         <a class="review-card reveal" href="https://www.youtube.com/@JackPembrook" target="_blank" rel="noopener noreferrer">
           <div class="review-content">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Clean, fast, and easy to work with. The thumbnail looked ready for upload right away."</p>
+            <p class="review-text">"I sent a rough idea, and the first version already felt upload-ready. Very easy process."</p>
             <div class="review-user">
               <img class="review-avatar" src="reviews/jack.webp" alt="Jack Pembrook" onerror="this.src='https://ui-avatars.com/api/?name=Jack+Pembrook&background=141417&color=fff'">
               <div class="review-info">
@@ -1779,7 +1996,7 @@
         <a class="review-card reveal reveal-delay-1" href="https://www.youtube.com/@SabriSubyOfficial" target="_blank" rel="noopener noreferrer">
           <div class="review-content">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"He understood the idea quickly and turned it into a sharp, clickable design."</p>
+            <p class="review-text">"The design felt clean and direct. He kept the message clear without making it look busy."</p>
             <div class="review-user">
               <img class="review-avatar" src="reviews/sabri.webp" alt="Sabri Suby" onerror="this.src='https://ui-avatars.com/api/?name=Sabri+Suby&background=141417&color=fff'">
               <div class="review-info">
@@ -1793,7 +2010,7 @@
         <a class="review-card reveal reveal-delay-2" href="https://www.youtube.com/@techsource" target="_blank" rel="noopener noreferrer">
           <div class="review-content">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Strong composition, clear text, and a polished style. Exactly what my video needed."</p>
+            <p class="review-text">"Nice balance of contrast and space. It looked polished and still read well at a small size."</p>
             <div class="review-user">
               <img class="review-avatar" src="reviews/techsource.webp" alt="TechSource" onerror="this.src='https://ui-avatars.com/api/?name=TechSource&background=141417&color=fff'">
               <div class="review-info">
@@ -1807,7 +2024,7 @@
         <a class="review-card reveal" href="https://www.youtube.com/@LiamOttley/videos" target="_blank" rel="noopener noreferrer">
           <div class="review-content">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"The concept came through clearly, and the final thumbnail felt focused without looking crowded."</p>
+            <p class="review-text">"He understood the angle fast and cleaned up the visual hook without overcomplicating it."</p>
             <div class="review-user">
               <img class="review-avatar" src="reviews/Liam%20Ottley.jpg" alt="Liam Ottley" onerror="this.src='https://ui-avatars.com/api/?name=Liam+Ottley&background=141417&color=fff'">
               <div class="review-info">
@@ -1821,7 +2038,7 @@
         <a class="review-card reveal reveal-delay-1" href="https://www.youtube.com/@Tdawgsmitty/videos" target="_blank" rel="noopener noreferrer">
           <div class="review-content">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Quick turnaround, clean layout, and the design matched the video idea right away."</p>
+            <p class="review-text">"Fast delivery and no back-and-forth confusion. The final image matched the video tone well."</p>
             <div class="review-user">
               <img class="review-avatar" src="reviews/Tdawgsmitty.jpg" alt="Tdawgsmitty" onerror="this.src='https://ui-avatars.com/api/?name=Tdawgsmitty&background=141417&color=fff'">
               <div class="review-info">
@@ -1835,7 +2052,7 @@
         <a class="review-card reveal" href="https://www.youtube.com/@vfxsolazzo" target="_blank" rel="noopener noreferrer">
           <div class="review-content">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Great color, clean expression, and the thumbnail felt more clickable instantly."</p>
+            <p class="review-text">"The thumbnail had better energy right away. Color, face, and layout all felt more intentional."</p>
             <div class="review-user">
               <img class="review-avatar" src="reviews/solazzo.webp" alt="Solazzo" onerror="this.src='https://ui-avatars.com/api/?name=Solazzo&background=141417&color=fff'">
               <div class="review-info">
@@ -2056,9 +2273,70 @@
       }, { passive: true });
     }
 
+    // Desktop Nav Highlight Logic
+    const mainNav = document.getElementById("mainNav");
+    const navHighlight = mainNav.querySelector(".nav-highlight");
+    const desktopLinks = mainNav.querySelectorAll("a");
+
+    function updateNavHighlight(link) {
+      if (!link || window.innerWidth <= 680) {
+        navHighlight.style.opacity = "0";
+        return;
+      }
+      const rect = link.getBoundingClientRect();
+      const navRect = mainNav.getBoundingClientRect();
+      
+      navHighlight.style.width = `${rect.width}px`;
+      navHighlight.style.left = `${rect.left - navRect.left}px`;
+      navHighlight.style.opacity = "1";
+    }
+
+    desktopLinks.forEach(link => {
+      link.addEventListener("mouseenter", () => updateNavHighlight(link));
+    });
+
+    mainNav.addEventListener("mouseleave", () => {
+      const activeLink = mainNav.querySelector("a.active");
+      if (activeLink) updateNavHighlight(activeLink);
+      else navHighlight.style.opacity = "0";
+    });
+
+    // Mobile Menu Logic
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+    const mobileMenuClose = document.getElementById("mobileMenuClose");
+    const mobileMenuLinks = document.querySelectorAll(".mobile-menu-links a");
+
+    function toggleMobileMenu(show) {
+      if (show) {
+        mobileMenuOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      } else {
+        mobileMenuOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    }
+
+    mobileMenuBtn.addEventListener("click", () => toggleMobileMenu(true));
+    mobileMenuClose.addEventListener("click", () => toggleMobileMenu(false));
+    mobileMenuOverlay.addEventListener("click", (e) => {
+      if (e.target === mobileMenuOverlay) toggleMobileMenu(false);
+    });
+
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        toggleMobileMenu(false);
+      });
+    });
+
+    // Initial highlight position
+    window.addEventListener("load", () => {
+      const activeLink = mainNav.querySelector("a.active");
+      if (activeLink) updateNavHighlight(activeLink);
+    });
+
     // Nav active state
     const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll("nav a");
     function updateActiveNav() {
       let currentId = "home";
       const offset = window.innerHeight * 0.4;
@@ -2066,7 +2344,22 @@
         const rect = s.getBoundingClientRect();
         if (rect.top <= offset && rect.bottom > offset) currentId = s.id;
       });
-      navLinks.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + currentId));
+
+      // Desktop Update
+      if (window.innerWidth > 680) {
+        desktopLinks.forEach(l => {
+          const isActive = l.getAttribute("href") === "#" + currentId;
+          l.classList.toggle("active", isActive);
+          if (isActive && !mainNav.querySelector("a:hover")) {
+            updateNavHighlight(l);
+          }
+        });
+      }
+      
+      // Mobile links update
+      mobileMenuLinks.forEach(l => {
+        l.classList.toggle("active", l.getAttribute("href") === "#" + currentId);
+      });
     }
 
     // Scroll progress
@@ -2207,6 +2500,64 @@
 
     document.querySelectorAll('.image-slider').forEach((card) => {
       renderSlider(card, Number(card.querySelector('.slider-range')?.value || 50));
+    });
+
+    // Mobile before/after slider fix:
+    // Vertical movement scrolls the page. Horizontal movement controls the slider.
+    const coarsePointer = window.matchMedia("(pointer: coarse)");
+    document.querySelectorAll('.image-slider').forEach((card) => {
+      let startX = 0;
+      let startY = 0;
+      let tracking = false;
+      let draggingSlider = false;
+
+      const getSliderValue = (clientX) => {
+        const rect = card.getBoundingClientRect();
+        return ((clientX - rect.left) / rect.width) * 100;
+      };
+
+      const stopMobileSlider = () => {
+        tracking = false;
+        draggingSlider = false;
+        card.classList.remove('dragging');
+      };
+
+      card.addEventListener('pointerdown', (event) => {
+        if (!coarsePointer.matches) return;
+        tracking = true;
+        draggingSlider = false;
+        startX = event.clientX;
+        startY = event.clientY;
+      }, { passive: true });
+
+      card.addEventListener('pointermove', (event) => {
+        if (!coarsePointer.matches || !tracking) return;
+
+        const diffX = event.clientX - startX;
+        const diffY = event.clientY - startY;
+
+        if (!draggingSlider) {
+          const horizontalIntent = Math.abs(diffX) > 14 && Math.abs(diffX) > Math.abs(diffY) * 1.25;
+          const verticalIntent = Math.abs(diffY) > 10 && Math.abs(diffY) >= Math.abs(diffX);
+
+          if (verticalIntent) {
+            stopMobileSlider();
+            return;
+          }
+
+          if (!horizontalIntent) return;
+
+          draggingSlider = true;
+          card.classList.add('touched', 'dragging');
+        }
+
+        event.preventDefault();
+        updateSlider(card, getSliderValue(event.clientX));
+      }, { passive: false });
+
+      card.addEventListener('pointerup', stopMobileSlider, { passive: true });
+      card.addEventListener('pointercancel', stopMobileSlider, { passive: true });
+      card.addEventListener('lostpointercapture', stopMobileSlider, { passive: true });
     });
 
     // Auto slider / floating peek animation removed. Sliders now move only when the user drags them.
