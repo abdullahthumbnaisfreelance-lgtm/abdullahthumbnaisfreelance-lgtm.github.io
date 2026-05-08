@@ -17,7 +17,7 @@
 
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://abdullahdesigns.com/" name="twitter:url"/>
-<meta content="Abdullah Designs | Premium YouTube Thumbnail Portfolio" name="twitter:title"/>
+<meta content="Abdullah Designs | Premium YouTube Thumbnail Portfolio" property="og:title"/>
 <meta content="Premium YouTube thumbnail design portfolio by Abdullah Designs. Scroll-stopping thumbnail visuals built for creators, brands, and channels." name="twitter:description"/>
 <meta content="favicon/Logo.png" name="twitter:image"/>
 <meta content="@Abdullahgfx99" name="twitter:site"/>
@@ -58,7 +58,8 @@
       --radius-xl: 34px;
       --radius-lg: 26px;
       --radius-md: 18px;
-      --ease: cubic-bezier(0.25, 1, 0.5, 1); /* Smoother, non-bouncy ease */
+      --ease: cubic-bezier(0.25, 1, 0.5, 1);
+      --ease-premium: cubic-bezier(0.16, 1, 0.3, 1); /* Liquid Quint ease out */
     }
 
     * {
@@ -69,7 +70,6 @@
     }
 
     html {
-      /* Native, bug-free smooth scrolling */
       scroll-behavior: smooth;
     }
 
@@ -91,11 +91,113 @@
       pointer-events: none;
       z-index: -2;
       background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 72px 72px;
-      mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
-      opacity: .22;
+        linear-gradient(rgba(255,255,255,.01) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.01) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+      opacity: .035;
+    }
+
+    .site-ambient {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .site-grid,
+    .site-orb,
+    .site-beam {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .site-grid {
+      inset: -10%;
+      opacity: .11;
+      background-image:
+        linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+      background-size: 96px 96px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 74%);
+      animation: siteGridFlow 26s linear infinite;
+    }
+
+    .site-orb {
+      border-radius: 50%;
+      filter: blur(22px);
+      opacity: .32;
+      mix-blend-mode: screen;
+      animation: siteFloat 18s var(--ease) infinite;
+    }
+
+    .site-orb.orb-a {
+      width: 30rem;
+      height: 30rem;
+      top: 8%;
+      left: -8rem;
+      background: radial-gradient(circle, rgba(99,102,241,.22) 0%, rgba(99,102,241,.08) 38%, transparent 72%);
+      animation-delay: -3s;
+    }
+
+    .site-orb.orb-b {
+      width: 26rem;
+      height: 26rem;
+      top: 28%;
+      right: -7rem;
+      background: radial-gradient(circle, rgba(139,92,246,.18) 0%, rgba(139,92,246,.06) 40%, transparent 72%);
+      animation-duration: 21s;
+      animation-delay: -8s;
+    }
+
+    .site-orb.orb-c {
+      width: 22rem;
+      height: 22rem;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(255,255,255,.08) 0%, rgba(255,255,255,.025) 45%, transparent 75%);
+      animation-duration: 16s;
+      animation-delay: -2s;
+    }
+
+    .site-beam {
+      width: 34rem;
+      height: 7rem;
+      filter: blur(38px);
+      opacity: .11;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), rgba(99,102,241,.12), transparent);
+      animation: siteBeamDrift 18s ease-in-out infinite;
+    }
+
+    .site-beam.beam-a {
+      left: -10rem;
+      top: 22%;
+      transform: rotate(-18deg);
+    }
+
+    .site-beam.beam-b {
+      right: -12rem;
+      bottom: 18%;
+      transform: rotate(16deg);
+      animation-duration: 22s;
+      animation-direction: reverse;
+    }
+
+    @keyframes siteFloat {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(0, -26px, 0) scale(1.045); }
+    }
+
+    @keyframes siteBeamDrift {
+      0%, 100% { transform: translate3d(0, 0, 0) rotate(-18deg); opacity: .08; }
+      50% { transform: translate3d(40px, -24px, 0) rotate(-14deg); opacity: .14; }
+    }
+
+    @keyframes siteGridFlow {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(0, 28px, 0); }
     }
 
     .noise {
@@ -106,8 +208,6 @@
       opacity: 0.03;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
     }
-
-
 
     .cursor-glow {
       position: fixed;
@@ -159,9 +259,17 @@
         0 0 34px rgba(255,255,255,.24);
     }
 
-    @media (hover: hover) and (pointer: fine) {
+    @media (min-width: 681px) and (hover: hover) and (pointer: fine) {
       body { cursor: none; }
       a, button, .btn-main, .btn-secondary, .slider-range { cursor: none; }
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      .cursor-glow, .custom-cursor {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+      }
     }
 
     a {
@@ -173,18 +281,13 @@
       margin-inline: auto;
     }
 
-    .narrow {
-      width: min(960px, calc(100% - 2rem));
-      margin-inline: auto;
-    }
-
     nav {
       position: fixed;
       top: 1.25rem;
       left: 50%;
       transform: translateX(-50%);
       padding: .45rem;
-      background: rgba(16, 16, 20, .64);
+      background: rgba(16, 16, 20, .75);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border: 1px solid var(--border);
@@ -204,6 +307,9 @@
       font-weight: 700;
       transition: color .35s var(--ease), background .35s var(--ease);
       white-space: nowrap;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
     }
 
     nav a.active,
@@ -214,38 +320,16 @@
 
     .hero {
       min-height: 92vh;
-      display: grid;
-      place-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 11rem 0 6rem;
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .55rem;
-      padding: .55rem 1rem;
-      background: var(--glass);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: .76rem;
-      font-weight: 800;
-      color: #c7d2fe;
-      margin-bottom: 1.8rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .badge::before {
-      content: "";
-      width: .48rem;
-      height: .48rem;
-      border-radius: 50%;
-      background: #22c55e;
-    }
-
     .hero h1 {
-      font-size: clamp(3.4rem, 8vw, 7.8rem);
+      font-size: clamp(3rem, 7.2vw, 6.4rem);
       font-weight: 900;
       line-height: .92;
       letter-spacing: -.06em;
@@ -257,7 +341,7 @@
     }
 
     .hero p {
-      font-size: clamp(1rem, 1.7vw, 1.32rem);
+      font-size: clamp(.98rem, 1.35vw, 1.12rem);
       color: var(--text-dim);
       max-width: 680px;
       margin: 0 auto 2.6rem;
@@ -271,6 +355,205 @@
       flex-wrap: wrap;
     }
 
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 100vh;
+      padding: 10.5rem 0 6rem;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 8% 0;
+      height: 10rem;
+      background: radial-gradient(circle at center, rgba(99, 102, 241, .12), transparent 70%);
+      filter: blur(32px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(900px, 100%);
+      margin-inline: auto;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem;
+      padding: .8rem 1.15rem;
+      margin-bottom: 1.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+      color: #d8dcff;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 32px rgba(0,0,0,.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: .55rem;
+      height: .55rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 0 16px rgba(139, 92, 246, .9);
+    }
+
+    .hero-ambient {
+      position: absolute;
+      inset: -8% -6% 0;
+      z-index: 0;
+      pointer-events: none;
+      transform: translate3d(0,0,0);
+      will-change: transform;
+    }
+
+    .hero-grid-glow {
+      position: absolute;
+      inset: 0;
+      opacity: .15;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 88px 88px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
+      animation: heroGridDrift 18s linear infinite;
+    }
+
+    .hero-orb,
+    .hero-ring,
+    .hero-beam {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .hero-orb {
+      border-radius: 50%;
+      filter: blur(16px);
+      opacity: .6;
+      mix-blend-mode: screen;
+      animation: heroFloat 16s var(--ease) infinite;
+    }
+
+    .hero-orb.orb-1 {
+      width: 26rem;
+      height: 26rem;
+      left: -3rem;
+      top: 8rem;
+      background: radial-gradient(circle, rgba(99,102,241,.34) 0%, rgba(99,102,241,.12) 36%, transparent 72%);
+      animation-delay: -3s;
+    }
+
+    .hero-orb.orb-2 {
+      width: 22rem;
+      height: 22rem;
+      right: 5%;
+      top: 7rem;
+      background: radial-gradient(circle, rgba(139,92,246,.26) 0%, rgba(139,92,246,.1) 38%, transparent 72%);
+      animation-duration: 18s;
+      animation-delay: -7s;
+    }
+
+    .hero-orb.orb-3 {
+      width: 18rem;
+      height: 18rem;
+      left: 50%;
+      bottom: 7rem;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(255,255,255,.12) 0%, rgba(255,255,255,.03) 44%, transparent 76%);
+      animation-duration: 14s;
+      animation-delay: -1.5s;
+    }
+
+    .hero-ring {
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: inset 0 0 40px rgba(255,255,255,.03), 0 0 60px rgba(99,102,241,.08);
+      opacity: .4;
+    }
+
+    .hero-ring.ring-1 {
+      width: 30rem;
+      height: 30rem;
+      right: -3rem;
+      top: 5.5rem;
+      animation: heroSpin 22s linear infinite;
+    }
+
+    .hero-ring.ring-2 {
+      width: 18rem;
+      height: 18rem;
+      left: 5%;
+      bottom: 3rem;
+      animation: heroSpinReverse 16s linear infinite;
+    }
+
+    .hero-ring::before {
+      content: "";
+      position: absolute;
+      inset: 1.1rem;
+      border-radius: inherit;
+      border: 1px dashed rgba(255,255,255,.06);
+    }
+
+    .hero-beam {
+      width: 34rem;
+      height: 7rem;
+      filter: blur(30px);
+      opacity: .22;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), rgba(99,102,241,.28), transparent);
+    }
+
+    .hero-beam.beam-1 {
+      left: -10rem;
+      top: 18%;
+      transform: rotate(-18deg);
+      animation: heroBeamDrift 14s ease-in-out infinite;
+    }
+
+    .hero-beam.beam-2 {
+      right: -12rem;
+      bottom: 16%;
+      transform: rotate(18deg);
+      animation: heroBeamDrift 18s ease-in-out infinite reverse;
+    }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(0, -24px, 0) scale(1.05); }
+    }
+
+    @keyframes heroSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes heroSpinReverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    @keyframes heroBeamDrift {
+      0%, 100% { transform: translate3d(0, 0, 0) rotate(-18deg); opacity: .16; }
+      50% { transform: translate3d(36px, -24px, 0) rotate(-14deg); opacity: .28; }
+    }
+
+    @keyframes heroGridDrift {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(0, 22px, 0); }
+    }
+
     .btn-main,
     .btn-secondary {
       display: inline-flex;
@@ -281,7 +564,7 @@
       border-radius: 999px;
       text-decoration: none;
       font-weight: 800;
-      transition: background .35s var(--ease), border-color .35s var(--ease);
+      transition: background .35s var(--ease), border-color .35s var(--ease), transform .35s var(--ease);
     }
 
     .btn-main {
@@ -309,55 +592,40 @@
     }
 
     .section-pad {
-      padding: 4.5rem 0;
+      padding: 6rem 0;
     }
 
     .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2.6rem;
       text-align: center;
-    }
-
-    .section-kicker {
-      color: var(--primary);
-      font-size: .78rem;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      margin-bottom: .9rem;
+      margin-bottom: 4rem;
     }
 
     .section-header h2 {
-      font-size: clamp(2.4rem, 6vw, 5.4rem);
+      font-size: clamp(2.1rem, 5.1vw, 4.4rem);
       font-weight: 900;
-      line-height: .95;
+      line-height: 1;
       letter-spacing: -.05em;
+      margin-bottom: 1.5rem;
     }
 
     .section-header p {
-      max-width: 420px;
+      max-width: 640px;
+      margin: 0 auto;
       color: var(--text-dim);
       line-height: 1.7;
     }
 
     .work-section {
-      padding: 1.25rem 0 5rem;
+      padding: 2rem 0 6rem;
     }
 
     .work-top {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       text-align: center;
-      padding-bottom: 2.4rem;
-      padding-top: 2.3rem;
+      margin-bottom: 3rem;
     }
 
     .work-title h2 {
-      font-size: clamp(3.6rem, 10.5vw, 8.6rem);
+      font-size: clamp(3rem, 8.7vw, 6.9rem);
       font-weight: 900;
       letter-spacing: -.055em;
       line-height: .88;
@@ -372,13 +640,15 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: clamp(.85rem, 1.7vw, 1.4rem);
-      align-items: start;
-      margin-top: 1.4rem;
+      align-items: stretch; /* Ensure all cards have same height */
     }
 
-    .work-column {
-      display: grid;
-      gap: clamp(.85rem, 1.7vw, 1.4rem);
+    @media (max-width: 980px) {
+      .work-wall { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 680px) {
+      .work-wall { grid-template-columns: 1fr; }
     }
 
     .work-card {
@@ -389,12 +659,15 @@
       border: 1px solid var(--border);
       background: var(--surface);
       aspect-ratio: 16 / 9;
-      transition: border-color .4s var(--ease), box-shadow .4s var(--ease);
+      transition: transform .5s var(--ease), border-color .5s var(--ease), box-shadow .5s var(--ease);
+      will-change: transform, border-color, box-shadow;
     }
 
-    .work-card:hover {
+    /* Work thumbnail hover stays clean: no popup lift. */
+    .work-card.reveal.active:hover {
       border-color: var(--border-strong);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.36);
+      transform: translate3d(0, 0, 0);
     }
 
     .work-card img {
@@ -406,7 +679,6 @@
       display: block;
     }
 
-    /* Slider Specific Styles */
     .work-card.image-slider {
       cursor: default;
     }
@@ -427,6 +699,7 @@
       cursor: ew-resize;
       z-index: 10;
       margin: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .work-card.image-slider .slider-handle {
@@ -460,13 +733,11 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
-    /* Floating column animation removed for a steadier work wall. */
-
     .proof-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
-      margin: 4.25rem 0 0;
+      margin: 4rem 0 0;
     }
 
     .proof-card {
@@ -479,6 +750,7 @@
       flex-direction: column;
       justify-content: space-between;
       transition: background .4s var(--ease), border-color .4s var(--ease);
+      text-align: center;
     }
 
     .proof-card:hover {
@@ -487,7 +759,7 @@
     }
 
     .proof-card strong {
-      display: inline-flex;
+      display: block;
       font-size: clamp(2.5rem, 5vw, 4.2rem);
       font-weight: 900;
       letter-spacing: -.05em;
@@ -505,78 +777,129 @@
       letter-spacing: .09em;
     }
 
+    .reviews-section {
+      padding: 6rem 0;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .review-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 12px;
+      padding: 1.35rem;
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.35s var(--ease), border-color 0.35s var(--ease), transform 0.35s var(--ease);
+    }
+
+    .review-card:hover {
+      background: rgba(255,255,255,0.035);
+      border-color: rgba(255,255,255,0.24);
+      transform: translateY(-5px);
+    }
+
+    .review-content {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      flex: 1;
+    }
+
+    .review-stars {
+      color: #fff;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .review-text {
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: #9f9fa8;
+      margin: 0;
+    }
+
+    .review-user {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-top: auto;
+    }
+
+    .review-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,.14);
+    }
+
+    .review-info h4 {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 0 0.18rem 0;
+      line-height: 1.15;
+    }
+
+    .review-info span {
+      display: block;
+      font-size: 0.76rem;
+      color: #8f8f99;
+      font-weight: 500;
+    }
+
+    .verified-badge {
+      width: 14px;
+      height: 14px;
+    }
+
     .about-section {
-      padding: 5.5rem 0 6rem;
+      padding: 8rem 0;
     }
 
     .about-grid {
       display: grid;
-      grid-template-columns: minmax(0, 760px) minmax(240px, 1fr);
-      gap: clamp(2rem, 7vw, 5rem);
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 8vw, 6rem);
       align-items: center;
     }
 
-    .about-card {
-      background: transparent;
-      border: 0;
-      border-radius: 0;
-      padding: 0;
+    .about-content {
       text-align: left;
     }
 
-    .about-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .55rem .9rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-strong);
-      color: #d7d7dc;
-      font-weight: 800;
-      font-size: .88rem;
-      margin-bottom: 1.6rem;
-      background: rgba(255,255,255,.02);
-    }
-
-    .about-badge::before {
-      content: "";
-      width: .38rem;
-      height: .38rem;
-      border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 18px var(--primary);
-    }
-
     .about-content h2 {
-      font-size: clamp(2.5rem, 5.2vw, 4.6rem);
+      font-size: clamp(2.2rem, 4.8vw, 3.9rem);
       font-weight: 900;
       letter-spacing: -.06em;
-      line-height: .94;
+      line-height: 1;
       margin-bottom: 1.6rem;
-      max-width: 740px;
-    }
-
-    .about-content h2 span {
-      color: inherit;
-      display: inline;
-      margin: 0;
     }
 
     .about-text {
       color: var(--text-dim);
       font-size: clamp(1rem, 1.15vw, 1.12rem);
       line-height: 1.75;
-      max-width: 700px;
-      margin: 0;
+      margin-bottom: 2rem;
     }
-
-    .about-text p { margin-bottom: 1.6rem; }
 
     .about-points {
       display: grid;
       gap: 1rem;
-      margin: 2rem 0 2.4rem;
-      padding: 0;
+      margin-bottom: 2.4rem;
       list-style: none;
       color: #d7d7dc;
       font-weight: 800;
@@ -586,16 +909,10 @@
       display: flex;
       align-items: center;
       gap: .85rem;
-      line-height: 1.4;
     }
 
     .about-points li::before {
       content: "✹";
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 1.15rem;
-      height: 1.15rem;
       color: var(--primary);
       flex-shrink: 0;
     }
@@ -638,24 +955,15 @@
     .about-rating strong {
       color: #fff;
       letter-spacing: 2px;
-      font-size: 1.25rem;
-      line-height: 1;
+      font-size: 1.15rem;
     }
 
     .about-visual {
-      min-height: 360px;
       border-radius: var(--radius-xl);
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.015);
       box-shadow: 0 24px 80px rgba(0,0,0,.28);
-    }
-
-    .about-image-wrapper {
-      width: 100%;
-      height: 100%;
-      min-height: 360px;
-      display: block;
     }
 
     .about-image-wrapper img {
@@ -665,196 +973,241 @@
       display: block;
     }
 
-    /* REVIEWS SECTION RE-DESIGN (Reference-style cards) */
-    .reviews-section {
-      padding-top: 3.4rem;
-      padding-bottom: 4.8rem;
+    .process-section {
+      padding: 8rem 0;
     }
 
-    .reviews-section .section-header {
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin-bottom: 2.6rem !important;
-    }
-
-    .reviews-section .section-header h2 {
-      max-width: 640px;
-      margin: 0 auto;
-      line-height: .92;
-    }
-
-    .reviews-grid {
+    .process-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 0;
-      align-items: stretch;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
 
-    .review-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 12px;
-      padding: 1.2rem;
-      min-height: 230px;
+    .process-card {
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      transition: border-color .4s var(--ease), background .4s var(--ease), transform .4s var(--ease);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      text-decoration: none;
-      color: inherit;
-      overflow: visible;
-      transition: background 0.35s var(--ease), border-color 0.35s var(--ease), transform 0.35s var(--ease);
-    }
-
-    .review-card:hover {
-      background: rgba(255,255,255,0.035);
-      border-color: rgba(255,255,255,0.24);
-      transform: translateY(-3px);
-    }
-
-    .review-media {
-      display: none;
-    }
-
-    .review-content {
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      flex: 1;
-      align-items: stretch;
-    }
-
-    .review-stars {
-      color: #fff;
-      font-size: 1rem;
-      letter-spacing: 2px;
-      line-height: 1;
-      text-align: left;
-    }
-
-    .review-text {
-      font-size: 0.95rem;
-      line-height: 1.18;
-      color: #9f9fa8;
-      font-style: normal;
-      text-align: left;
-      margin: 0;
-      max-width: none;
-    }
-
-    .review-user {
-      display: flex;
       align-items: center;
-      gap: 0.9rem;
-      margin-top: auto;
-      flex-direction: row;
-      justify-content: flex-start;
-      text-align: left;
     }
 
-    .review-avatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
+    .process-card:hover {
+      border-color: var(--border-strong);
+      background: rgba(255,255,255,.04);
+      transform: translateY(-5px);
+    }
+
+    .process-media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .process-media img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      border: 1px solid rgba(255,255,255,.14);
-      flex-shrink: 0;
+      display: block;
     }
 
-    .review-info {
-      text-align: left;
+    .process-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      color: var(--primary);
+      margin-bottom: 1.2rem;
     }
 
-    .review-info h4 {
-      font-size: 0.98rem;
+    .process-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .process-card h3 {
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
       font-weight: 800;
+    }
+
+    .process-card p {
+      color: var(--text-dim);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .faq-section {
+      padding: 6rem 0;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color .4s var(--ease);
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-strong);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      padding: 1.5rem;
+      background: none;
+      border: none;
       color: #fff;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: flex-start;
-      gap: 6px;
-      margin: 0 0 0.18rem 0;
+      gap: 1rem;
+      cursor: pointer;
       text-align: left;
-      line-height: 1.15;
+      font-size: 1rem;
+      font-weight: 800;
+      min-height: 44px;
     }
 
-    .review-info span {
-      display: block;
-      font-size: 0.76rem;
-      color: #8f8f99;
-      font-weight: 500;
-      line-height: 1.3;
+    .faq-trigger span {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      transition: transform .4s var(--ease);
     }
 
-    .verified-badge {
-      width: 14px;
-      height: 14px;
-      flex-shrink: 0;
+    .faq-item.active .faq-trigger span { transform: rotate(45deg); }
+
+    .faq-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      padding: 0 1.5rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      transition: grid-template-rows .4s var(--ease), padding-bottom .4s var(--ease);
     }
-    /* Center text alignment across content sections */
-    .section-header,
-    .section-header > div,
-    .work-top,
-    .work-title,
-    .proof-card,
-    .about-card,
-    .about-content,
-    .about-text,
-    .process-section,
-    .process-card,
-    .faq-item,
-    .faq-trigger,
-    .faq-content,
-    .cta-card,
-    footer {
+
+    .faq-content > div { min-height: 0; }
+    .faq-item.active .faq-content {
+      grid-template-rows: 1fr;
+      padding-bottom: 1.5rem;
+    }
+
+    .cta-section {
+      padding: 8rem 0 6rem;
+    }
+
+    .cta-card {
+      padding: clamp(3rem, 8vw, 6rem) 2rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.025);
       text-align: center;
     }
 
-    .section-header {
-      align-items: center;
+    .cta-card h2 {
+      font-size: clamp(2.2rem, 6vw, 4.7rem);
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      letter-spacing: -.05em;
     }
 
-    .section-header p,
-    .about-text,
-    .about-text p,
-    .review-text,
-    .process-card p,
-    .faq-content,
     .cta-card p {
-      margin-left: auto;
-      margin-right: auto;
+      color: var(--text-dim);
+      max-width: 560px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+      font-size: 1rem;
     }
 
-    .process-icon,
-    .proof-card strong {
-      justify-content: center;
-      margin-left: auto;
-      margin-right: auto;
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.2rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-
-    .about-section,
-    .about-section .about-card,
-    .about-section .about-content,
-    .about-section .about-text,
-    .about-section .about-text p,
-    .about-section .section-kicker,
-    .about-section h2,
-    .about-section p,
-    .about-section li {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
+    .social-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 2rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-dim);
+      transition: all .4s var(--ease);
+      min-height: 44px;
     }
 
-    .about-points li,
-    .about-actions {
-      justify-content: center;
+    .social-card svg {
+      width: 32px;
+      height: 32px;
     }
 
-    /* PREMIUM FADE IN ANIMATIONS (copied from uploaded index2 style) */
+    .social-card span {
+      font-size: .85rem;
+      font-weight: 800;
+    }
+
+    .social-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--border-strong);
+      color: #fff;
+      transform: translateY(-5px);
+    }
+
+    footer {
+      padding: 4rem 0;
+      color: var(--text-soft);
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: .85rem;
+      font-weight: 700;
+      border-top: 1px solid var(--border);
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      z-index: 1200;
+      transform-origin: left;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, #fff, var(--primary));
+      will-change: transform;
+    }
+
+    /* PREMIUM REVEAL ANIMATION — taken from index2 only */
     .reveal-delay-1 { transition-delay: .08s; }
     .reveal-delay-2 { transition-delay: .16s; }
     .reveal-delay-3 { transition-delay: .24s; }
@@ -870,6 +1223,7 @@
         filter 1.25s var(--ease),
         transform 1.25s var(--ease);
       will-change: transform, opacity, filter;
+      backface-visibility: hidden;
     }
 
     .reveal.active {
@@ -905,6 +1259,13 @@
       transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
     }
 
+    /* Keep your no-popup thumbnail behavior after reveal */
+    .work-card.reveal.active:hover {
+      border-color: var(--border-strong);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.36);
+      transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
+    }
+
     .proof-row.reveal,
     .faq-list.reveal {
       transform: translate3d(0, 70px, 0) scale(.975);
@@ -935,634 +1296,354 @@
       }
     }
 
-    .process-section .section-header {
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 0;
-      margin-bottom: 2.5rem;
-    }
-
-    .process-section .section-header p,
-    .process-section .section-kicker {
-      display: none;
-    }
-
-    .process-section .section-header h2 {
-      max-width: 780px;
-      margin: 0 auto;
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-
-    .process-card,
-    .faq-item {
-      background: rgba(255,255,255,.025);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.35rem;
-      transition: border-color .4s var(--ease), background .4s var(--ease), transform .4s var(--ease);
-    }
-
-    .process-card:hover,
-    .faq-item:hover {
-      border-color: var(--border-strong);
-      background: rgba(255,255,255,.04);
-      transform: translateY(-3px);
-    }
-
-    .process-media {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      border-radius: 16px;
-      margin-bottom: 1.25rem;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.02);
-    }
-
-    .process-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .process-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,122,26,.12);
-      border: 1px solid rgba(255,122,26,.18);
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    .process-icon svg {
-      width: 16px;
-      height: 16px;
-      display: block;
-    }
-
-    .process-card h3 {
-      margin: 0 0 .8rem;
-      font-size: 1.1rem;
-      letter-spacing: -.035em;
-    }
-
-    .process-card p {
-      color: var(--text-dim);
-      line-height: 1.75;
-      font-size: 1rem;
-      margin: 0;
-    }
-
-
-    .process-section,
-    .reviews-section {
-      padding-top: 3.8rem;
-      padding-bottom: 4.8rem;
-    }
-
-    .process-section .section-header,
-    .reviews-section .section-header {
-      margin-bottom: 3rem !important;
-    }
-
-    .process-section .section-header h2,
-    .reviews-section .section-header h2 {
-      line-height: .95;
-    }
-
-    .faq-list {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .faq-item { padding: 0; overflow: hidden; }
-
-    .faq-trigger {
-      width: 100%;
-      padding: 1.55rem 1.65rem;
-      background: none;
-      border: none;
-      color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      cursor: pointer;
-      text-align: left;
-      font-size: 1.05rem;
-      font-weight: 800;
-    }
-
-    .faq-trigger span {
-      width: 32px;
-      height: 32px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(255,255,255,.06);
-      transition: transform .4s var(--ease);
-    }
-
-    .faq-item.active .faq-trigger span { transform: rotate(45deg); }
-
-    .faq-content {
-      display: grid;
-      grid-template-rows: 0fr;
-      padding: 0 1.65rem;
-      color: var(--text-dim);
-      line-height: 1.7;
-      transition: grid-template-rows .5s var(--ease), padding-bottom .5s var(--ease);
-    }
-
-    .faq-content > div { min-height: 0; }
-    .faq-item.active .faq-content {
-      grid-template-rows: 1fr;
-      padding-bottom: 1.65rem;
-    }
-
-    .cta-section {
-      text-align: center;
-      padding: 8rem 0 5rem;
-    }
-
-    .cta-card {
-      padding: clamp(3rem, 8vw, 7rem) 1.5rem;
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.025);
-    }
-
-    .cta-card h2 {
-      font-size: clamp(2.5rem, 7vw, 6.5rem);
-      line-height: .92;
-      letter-spacing: -.05em;
-      font-weight: 900;
-      margin-bottom: 1.5rem;
-    }
-
-    .cta-card p {
-      color: var(--text-dim);
-      max-width: 560px;
-      margin: 0 auto 2.4rem;
-      line-height: 1.7;
-      font-size: 1.1rem;
-    }
-
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1rem;
-      margin-top: 3rem;
-      max-width: 800px;
-      margin-inline: auto;
-    }
-
-    .social-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      padding: 2rem 1rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      color: var(--text-dim);
-      transition: background .4s ease, border-color .4s ease;
-    }
-
-    .social-card svg {
-      width: 32px;
-      height: 32px;
-    }
-
-    .social-card span {
-      font-size: .85rem;
-      font-weight: 800;
-    }
-
-    .social-card:hover {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: var(--border-strong);
-      color: #fff;
-    }
-
-    footer {
-      padding: 2rem 0 4rem;
-      color: var(--text-soft);
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      font-size: .85rem;
-      font-weight: 700;
-    }
-
-    /* Scroll Progress Bar */
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      width: 100%;
-      z-index: 1200;
-      transform-origin: left;
-      transform: scaleX(0);
-      background: linear-gradient(90deg, #fff, var(--primary));
-      will-change: transform;
-    }
-
-
-    .process-card *,
-    .review-card *,
-    .proof-card *,
-    .about-card *,
-    .cta-card * {
-      text-align: center;
-    }
-
-    .review-info h4,
-    .review-user,
-    .process-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Final alignment + spacing polish */
-    .hero,
-    .work-section,
-    .reviews-section,
-    .about-section,
-    .process-section,
-    .cta-section,
-    .proof-card,
-    .review-card,
-    .review-content,
-    .review-info,
-    .process-card,
-    .about-content,
-    .about-text,
-    .cta-card {
-      text-align: center;
-    }
-
-    .section-header,
-    .work-top {
-      max-width: 1120px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .review-user,
-    .review-info h4,
-    .process-icon,
-    .about-actions,
-    .about-points li {
-      justify-content: center;
-    }
-
-    .review-user {
-      align-items: center;
-    }
-
-    .review-text,
-    .process-card p,
-    .about-text p,
-    .cta-card p,
-    .section-header p {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
     @media (max-width: 980px) {
-      .section-header, .work-top { flex-direction: column; align-items: center; text-align: center; }
-      .work-wall { grid-template-columns: repeat(2, 1fr); }
-      .proof-row, .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .proof-row { grid-template-columns: repeat(2, 1fr); }
       .reviews-grid { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-section, .about-section .about-card, .about-section .about-content, .about-section .about-text, .about-section p, .about-section li { text-align: center; }
-      .about-points li { justify-content: center; }
-      .about-actions { justify-content: center; }
-      .about-visual { order: -1; max-width: 440px; }
-      .premium-reviews .review-card:nth-child(2),
-      .premium-reviews .review-card:nth-child(4) { margin-top: 0; }
+      .about-grid { grid-template-columns: 1fr; text-align: center; }
+      .about-content { text-align: center; }
+      .about-points li, .about-actions { justify-content: center; }
+      .about-visual { max-width: 500px; max-height: 400px; margin: 0 auto; order: -1; }
+      .process-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 980px) {
-      .section-header,
-      .work-top {
-        align-items: center !important;
-        text-align: center !important;
+      .hero {
+        min-height: 92vh;
       }
-
-      .about-visual {
-        display: block !important;
-        order: -1;
-        width: min(100%, 420px);
-        margin: 0 auto 1.5rem;
+      .hero-ring.ring-1 {
+        width: 24rem;
+        height: 24rem;
+        right: -5rem;
+      }
+      .hero-orb.orb-1 {
+        width: 20rem;
+        height: 20rem;
+      }
+      .hero-orb.orb-2 {
+        width: 18rem;
+        height: 18rem;
       }
     }
 
     @media (max-width: 680px) {
-      section,
-      section *,
-      .work-title,
-      .proof-card,
-      .review-content,
-      .review-info,
-      .process-card,
-      .about-card,
-      .about-content,
-      .about-text,
-      .about-text p,
-      .about-points,
-      .about-points li,
-      .cta-card,
-      footer {
-        text-align: center !important;
+      .hero {
+        min-height: auto;
+        padding-top: 8.8rem;
+        padding-bottom: 4.5rem;
       }
-
-      .hero-actions,
-      .about-actions,
-      .about-points li,
-      .review-user,
-      .review-info h4,
-      .process-icon,
-      .proof-card strong {
-        justify-content: center !important;
-        margin-left: auto;
-        margin-right: auto;
+      .hero-kicker {
+        font-size: .7rem;
+        letter-spacing: .11em;
+        padding: .72rem 1rem;
+        margin-bottom: 1rem;
       }
-
-      .about-grid {
-        grid-template-columns: 1fr !important;
+      .hero-ambient {
+        inset: -5% -10% 0;
       }
-
-      .about-visual {
-        display: block !important;
-        min-height: 320px;
+      .hero-grid-glow {
+        opacity: .16;
+        background-size: 68px 68px;
       }
-
-      .about-image-wrapper {
-        min-height: 320px;
+      .hero-ring.ring-2,
+      .hero-beam.beam-2 {
+        display: none;
+      }
+      .hero-orb.orb-1 {
+        width: 16rem;
+        height: 16rem;
+        left: -3rem;
+        top: 6rem;
+      }
+      .hero-orb.orb-2 {
+        width: 14rem;
+        height: 14rem;
+        right: -2rem;
+        top: 8rem;
+      }
+      .hero-orb.orb-3 {
+        width: 12rem;
+        height: 12rem;
+        bottom: 2rem;
+      }
+      .hero-ring.ring-1 {
+        width: 16rem;
+        height: 16rem;
+        top: 5rem;
+        right: -4rem;
+      }
+      .hero-beam.beam-1 {
+        width: 18rem;
+        top: 18%;
       }
     }
 
-    @media (max-width: 680px), (pointer: coarse) {
-      body { cursor: auto; }
-      .cursor-glow, .custom-cursor { display: none !important; }
+    @media (max-width: 980px) {
+      .site-orb.orb-a {
+        width: 24rem;
+        height: 24rem;
+        left: -7rem;
+      }
+      .site-orb.orb-b {
+        width: 20rem;
+        height: 20rem;
+      }
     }
 
     @media (max-width: 680px) {
-      nav { top: auto; bottom: 1.25rem; width: calc(100% - 1.5rem); }
-      .hero { min-height: 80vh; padding: 6rem 0 4rem; }
-      .work-section { padding-top: 1rem; padding-bottom: 4rem; }
-      .work-top { padding-top: 1rem; padding-bottom: 1.6rem; }
-      .work-title h2 { font-size: clamp(3.4rem, 18vw, 5.8rem); line-height: .9; }
-      .work-wall, .work-column, .proof-row, .process-grid, .reviews-grid { grid-template-columns: 1fr; }
+      .site-grid {
+        opacity: .08;
+        background-size: 72px 72px;
+      }
+      .site-orb.orb-a {
+        width: 16rem;
+        height: 16rem;
+        left: -4rem;
+        top: 10%;
+      }
+      .site-orb.orb-b {
+        width: 14rem;
+        height: 14rem;
+        right: -4rem;
+      }
+      .site-orb.orb-c {
+        width: 12rem;
+        height: 12rem;
+        bottom: 8%;
+      }
+      .site-beam {
+        width: 18rem;
+        opacity: .08;
+      }
+    }
+
+    @media (max-width: 680px) {
+      nav { 
+        top: auto; 
+        bottom: 1.25rem; 
+        width: calc(100% - 1.5rem); 
+        padding: .4rem .8rem;
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+        background: rgba(16, 16, 20, .85);
+        gap: .5rem;
+        justify-content: flex-start;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      nav::-webkit-scrollbar { display: none; }
+      nav a {
+        padding: .75rem 1.25rem;
+        font-size: .85rem;
+        flex: 0 0 auto;
+        justify-content: center;
+        min-height: 44px;
+      }
+      .hero { padding: 8rem 0 4rem; }
+      .hero h1 { font-size: clamp(2.8rem, 12vw, 3.4rem); }
+      .hero p { font-size: 0.95rem; margin-bottom: 2rem; }
+      
+      .proof-row { grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+      .proof-card { padding: 1.2rem; min-height: 120px; }
+      .proof-card strong { font-size: 2.2rem; }
+      
+      .review-card { padding: 1.35rem; min-height: 180px; }
+      
+      .social-grid { grid-template-columns: repeat(2, 1fr); }
+      
+      .reveal, .work-card.reveal {
+        transform: translate3d(0, 20px, 0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 3.2rem; }
+      .hero { padding-top: 8rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .reveal { opacity: 1; filter: none; transform: none; transition: none; }
+      .reveal, .work-card.reveal { opacity: 1; filter: none; transform: none; transition: none; }
+      .hero-orb, .hero-ring, .hero-beam, .hero-grid-glow, .site-grid, .site-orb, .site-beam { animation: none !important; }
     }
 
 
-    /* Final process spacing fix: keep heading away from cards */
-    .process-section {
-      padding-top: 5.2rem !important;
-      padding-bottom: 5.2rem !important;
+    /* FINAL FIX: more breathing room below the fixed nav + reliable reveal everywhere */
+    section[id] {
+      scroll-margin-top: 12rem;
+    }
+
+    .work-section {
+      padding-top: 7.25rem !important;
+      padding-bottom: 7rem !important;
+    }
+
+    .work-top {
+      margin-bottom: 5rem !important;
+    }
+
+    .reviews-section,
+    .about-section,
+    .process-section,
+    .faq-section,
+    .cta-section {
+      padding-top: 8.5rem !important;
+    }
+
+    .section-header {
+      margin-bottom: 4.8rem !important;
     }
 
     .process-section .section-header {
       margin-bottom: 5.2rem !important;
     }
 
-    .process-section .section-header h2 {
-      line-height: 1.02 !important;
-      max-width: 900px;
+    /* index2-style reveal, applied safely without changing layout or text */
+    .reveal {
+      opacity: 0;
+      filter: blur(18px);
+      transform: translate3d(0, 78px, 0) scale(.975);
+      transition:
+        opacity 1.25s var(--ease),
+        filter 1.25s var(--ease),
+        transform 1.25s var(--ease);
+      will-change: transform, opacity, filter;
+      backface-visibility: hidden;
     }
 
-    .process-grid {
-      margin-top: 0 !important;
+    .reveal.active {
+      opacity: 1;
+      filter: blur(0);
+      transform: translate3d(0, 0, 0) scale(1);
     }
 
-    @media (max-width: 980px) {
-      .process-section .section-header {
-        margin-bottom: 3.8rem !important;
+    .section-header.reveal {
+      transform: translate3d(0, 64px, 0) scale(.985);
+    }
+
+    .section-header.reveal.active {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .work-top.reveal {
+      transform: translate3d(0, 88px, 0) scale(.97);
+    }
+
+    .work-top.reveal.active {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .work-card.reveal {
+      opacity: 0;
+      filter: blur(16px);
+      transform: translate3d(0, 90px, 0) scale(.94) rotateX(7deg);
+      transform-origin: center bottom;
+      transition:
+        opacity 1.15s var(--ease),
+        filter 1.15s var(--ease),
+        transform 1.15s var(--ease),
+        border-color .55s var(--ease),
+        box-shadow .55s var(--ease);
+    }
+
+    .work-card.reveal.active {
+      opacity: 1;
+      filter: blur(0);
+      transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
+    }
+
+    .work-card.reveal.active:hover {
+      border-color: var(--border-strong);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.36);
+      transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
+    }
+
+    .proof-row.reveal,
+    .faq-list.reveal {
+      transform: translate3d(0, 70px, 0) scale(.975);
+    }
+
+    .proof-row.reveal.active,
+    .faq-list.reveal.active {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .process-card.reveal {
+      transform: translate3d(0, 72px, 0) scale(.96);
+    }
+
+    .process-card.reveal.active {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .hero .reveal.active {
+      animation: heroSoftIn 1.35s var(--ease) both;
+    }
+
+    @keyframes heroSoftIn {
+      from {
+        opacity: 0;
+        filter: blur(24px);
+        transform: translate3d(0, 50px, 0) scale(.975);
+      }
+      to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0) scale(1);
       }
     }
 
     @media (max-width: 680px) {
-      .process-section {
-        padding-top: 3.8rem !important;
+      section[id] { scroll-margin-top: 7rem; }
+      .work-section,
+      .reviews-section,
+      .about-section,
+      .process-section,
+      .faq-section,
+      .cta-section {
+        padding-top: 5.8rem !important;
       }
-      .process-section .section-header {
-        margin-bottom: 3rem !important;
+      .work-top { margin-bottom: 3rem !important; }
+      .section-header { margin-bottom: 3.2rem !important; }
+      .reveal,
+      .work-card.reveal,
+      .section-header.reveal,
+      .work-top.reveal,
+      .proof-row.reveal,
+      .faq-list.reveal,
+      .process-card.reveal {
+        transform: translate3d(0, 34px, 0) scale(.985);
       }
-      .process-section .section-header h2 {
-        font-size: clamp(2.8rem, 14vw, 4.6rem) !important;
-        line-height: 1.04 !important;
-      }
-    }
-
-
-    /* FINAL REVIEW FIX — match reference layout exactly */
-    .reviews-section {
-      padding-top: 3.6rem !important;
-      padding-bottom: 4.6rem !important;
-    }
-
-    .reviews-section .section-header {
-      text-align: center !important;
-      align-items: center !important;
-      justify-content: center !important;
-      margin-bottom: 2.3rem !important;
-    }
-
-    .reviews-section .section-header h2 {
-      max-width: 640px;
-      margin: 0 auto;
-      line-height: .92 !important;
-    }
-
-    .reviews-section .reviews-grid {
-      display: grid !important;
-      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-      gap: 1rem !important;
-      margin-top: 0 !important;
-      align-items: stretch !important;
-    }
-
-    .reviews-section .review-card {
-      background: rgba(255,255,255,0.02) !important;
-      border: 1px solid rgba(255,255,255,0.14) !important;
-      border-radius: 12px !important;
-      padding: 1.25rem !important;
-      min-height: 232px !important;
-      display: flex !important;
-      flex-direction: column !important;
-      justify-content: space-between !important;
-      text-align: left !important;
-      overflow: visible !important;
-    }
-
-    .reviews-section .review-card:hover {
-      background: rgba(255,255,255,0.035) !important;
-      border-color: rgba(255,255,255,0.24) !important;
-      transform: translateY(-3px);
-    }
-
-    .reviews-section .review-media { display: none !important; }
-
-    .reviews-section .review-content {
-      padding: 0 !important;
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 1rem !important;
-      flex: 1 !important;
-      text-align: left !important;
-      align-items: stretch !important;
-    }
-
-    .reviews-section .review-content *,
-    .reviews-section .review-card * {
-      text-align: left !important;
-    }
-
-    .reviews-section .review-stars {
-      color: #ffffff !important;
-      font-size: 1rem !important;
-      letter-spacing: 2px !important;
-      line-height: 1 !important;
-      text-align: left !important;
-      margin: 0 !important;
-    }
-
-    .reviews-section .review-text {
-      font-size: .95rem !important;
-      line-height: 1.18 !important;
-      color: #9f9fa8 !important;
-      font-style: normal !important;
-      text-align: left !important;
-      margin: 0 !important;
-      max-width: none !important;
-    }
-
-    .reviews-section .review-user {
-      display: flex !important;
-      flex-direction: row !important;
-      align-items: center !important;
-      justify-content: flex-start !important;
-      gap: .9rem !important;
-      text-align: left !important;
-      margin-top: auto !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
-
-    .reviews-section .review-avatar {
-      width: 38px !important;
-      height: 38px !important;
-      border-radius: 50% !important;
-      object-fit: cover !important;
-      border: 1px solid rgba(255,255,255,.14) !important;
-      flex-shrink: 0 !important;
-    }
-
-    .reviews-section .review-info {
-      text-align: left !important;
-    }
-
-    .reviews-section .review-info h4 {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: flex-start !important;
-      gap: 6px !important;
-      margin: 0 0 .16rem 0 !important;
-      font-size: .98rem !important;
-      line-height: 1.15 !important;
-      text-align: left !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
-
-    .reviews-section .review-info span {
-      display: block !important;
-      font-size: .76rem !important;
-      color: #8f8f99 !important;
-      font-weight: 500 !important;
-      line-height: 1.3 !important;
-      text-align: left !important;
-    }
-
-    .reviews-section .verified-badge {
-      width: 14px !important;
-      height: 14px !important;
-      flex-shrink: 0 !important;
-    }
-
-    @media (max-width: 980px) {
-      .reviews-section .reviews-grid {
-        grid-template-columns: 1fr !important;
+      .reveal.active,
+      .work-card.reveal.active,
+      .section-header.reveal.active,
+      .work-top.reveal.active,
+      .proof-row.reveal.active,
+      .faq-list.reveal.active,
+      .process-card.reveal.active {
+        transform: translate3d(0, 0, 0) scale(1);
       }
     }
 
-
-    /* FINAL TRUSTED HEADING + REVIEW LINK POLISH */
-    .reviews-section .section-header {
-      margin-bottom: 4.4rem !important;
-      padding-top: 0 !important;
-    }
-
-    .reviews-section .section-header h2 {
-      line-height: 1.08 !important;
-      letter-spacing: -0.055em !important;
-      margin: 0 auto !important;
-    }
-
-    .reviews-section .review-info span {
-      white-space: nowrap !important;
-    }
-
-    .reviews-section .review-card {
-      cursor: pointer !important;
-    }
-
-    @media (max-width: 980px) {
-      .reviews-section .section-header {
-        margin-bottom: 3.2rem !important;
-      }
-    }
-
-    @media (max-width: 680px) {
-      .reviews-section .section-header {
-        margin-bottom: 2.8rem !important;
-      }
-      .reviews-section .section-header h2 {
-        line-height: 1.04 !important;
-      }
-      .reviews-section .review-info span {
-        white-space: normal !important;
+    /* Added review cards polish */
+    @media (min-width: 681px) and (max-width: 1100px) {
+      .reviews-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
   </style>
 </head>
 <body>
+  <div class="site-ambient" aria-hidden="true">
+    <div class="site-grid"></div>
+    <div class="site-orb orb-a"></div>
+    <div class="site-orb orb-b"></div>
+    <div class="site-orb orb-c"></div>
+    <div class="site-beam beam-a"></div>
+    <div class="site-beam beam-b"></div>
+  </div>
   <div class="noise"></div>
   <div class="scroll-progress" id="scrollProgress"></div>
   <div class="cursor-glow" id="cursorGlow"></div>
@@ -1574,16 +1655,27 @@
     <a href="#reviews">Reviews</a>
     <a href="#about">About</a>
     <a href="#process">Process</a>
+    <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <main>
     <section class="hero container" id="home">
-      <div class="reveal">
-        <span class="badge">Premium Thumbnail Design</span>
-        <h1>Make Them<br/><span>Stop Scrolling.</span></h1>
-        <p>I create high-impact YouTube thumbnails with strong hooks, bold composition, and a premium visual system built for serious creators.</p>
-        <div class="hero-actions">
+      <div class="hero-ambient" aria-hidden="true">
+        <div class="hero-grid-glow"></div>
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
+        <div class="hero-orb orb-3"></div>
+        <div class="hero-ring ring-1"></div>
+        <div class="hero-ring ring-2"></div>
+        <div class="hero-beam beam-1"></div>
+        <div class="hero-beam beam-2"></div>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-kicker reveal">Premium Thumbnail Design</div>
+        <h1 class="reveal">Make Them<br/><span>Stop Scrolling.</span></h1>
+        <p class="reveal">I create high-impact YouTube thumbnails with strong hooks, bold composition, and a premium visual system built for serious creators.</p>
+        <div class="hero-actions reveal">
           <a class="btn-main" href="#work">View Work</a>
           <a class="btn-secondary" href="#contact">Book a Project</a>
         </div>
@@ -1599,68 +1691,60 @@
         </div>
 
         <div class="work-wall">
-          <div class="work-column">
-            <article class="work-card reveal image-slider">
-              <img src="after/1.webp" alt="Gaming YouTube Thumbnail">
-              <img src="before/1.webp" alt="Before Redesign" class="image-before">
-              <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider">
-              <div class="slider-handle"></div>
-            </article>
-            <article class="work-card reveal">
-              <img src="thumbnails/1.avif" alt="Business YouTube Thumbnail">
-            </article>
-            <article class="work-card reveal image-slider">
-              <img src="after/2.webp" alt="Podcast Thumbnail">
-              <img src="before/2.webp" alt="Before Redesign" class="image-before">
-              <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider">
-              <div class="slider-handle"></div>
-            </article>
-            <article class="work-card reveal">
-              <img src="thumbnails/2.avif" alt="Tech YouTube Thumbnail">
-            </article>
-          </div>
-
-          <div class="work-column" style="padding-top: clamp(2rem, 5vw, 6rem);">
-            <article class="work-card reveal image-slider">
-              <img src="after/3.webp" alt="Gaming Thumbnail Portfolio">
-              <img src="before/3.webp" alt="Before Redesign" class="image-before">
-              <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider">
-              <div class="slider-handle"></div>
-            </article>
-            <article class="work-card reveal">
-              <img src="thumbnails/3.avif" alt="Financial Business Thumbnail">
-            </article>
-            <article class="work-card reveal image-slider">
-              <img src="after/4.webp" alt="Tech Review Thumbnail">
-              <img src="before/4.webp" alt="Before Redesign" class="image-before">
-              <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider">
-              <div class="slider-handle"></div>
-            </article>
-            <article class="work-card reveal">
-              <img src="thumbnails/4.avif" alt="Expert Podcast Thumbnail">
-            </article>
-          </div>
-
-          <div class="work-column">
-            <article class="work-card reveal image-slider">
-              <img src="after/5.webp" alt="Business Thumbnail">
-              <img src="before/5.webp" alt="Before Redesign" class="image-before">
-              <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider">
-              <div class="slider-handle"></div>
-            </article>
-            <article class="work-card reveal">
-              <img src="thumbnails/5.avif" alt="Gaming Thumbnail Illustration">
-            </article>
-            <article class="work-card reveal image-slider">
-              <img src="after/6.webp" alt="Tech Thumbnail Design">
-              <img src="before/6.webp" alt="Before Redesign" class="image-before">
-              <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider">
-              <div class="slider-handle"></div>
-            </article>
-            <article class="work-card reveal">
-              <img src="thumbnails/6.avif" alt="Podcast Thumbnail Design">
-            </article>
-          </div>
+          <article class="work-card reveal image-slider">
+            <img src="after/1.webp" alt="Gaming YouTube Thumbnail - Redesign After">
+            <img src="before/1.webp" alt="Before Redesign" class="image-before">
+            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider">
+            <div class="slider-handle"></div>
+          </article>
+          <article class="work-card reveal">
+            <img src="thumbnails/1.avif" alt="Business YouTube Thumbnail">
+          </article>
+          <article class="work-card reveal image-slider">
+            <img src="after/2.webp" alt="Podcast Thumbnail - Redesign After">
+            <img src="before/2.webp" alt="Before Redesign" class="image-before">
+            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider">
+            <div class="slider-handle"></div>
+          </article>
+          <article class="work-card reveal">
+            <img src="thumbnails/2.avif" alt="Tech YouTube Thumbnail">
+          </article>
+          <article class="work-card reveal image-slider">
+            <img src="after/3.webp" alt="Gaming Thumbnail Portfolio - Redesign After">
+            <img src="before/3.webp" alt="Before Redesign" class="image-before">
+            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider">
+            <div class="slider-handle"></div>
+          </article>
+          <article class="work-card reveal">
+            <img src="thumbnails/3.avif" alt="Financial Business Thumbnail">
+          </article>
+          <article class="work-card reveal image-slider">
+            <img src="after/4.webp" alt="Tech Review Thumbnail - Redesign After">
+            <img src="before/4.webp" alt="Before Redesign" class="image-before">
+            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider">
+            <div class="slider-handle"></div>
+          </article>
+          <article class="work-card reveal">
+            <img src="thumbnails/4.avif" alt="Expert Podcast Thumbnail">
+          </article>
+          <article class="work-card reveal image-slider">
+            <img src="after/5.webp" alt="Business Thumbnail - Redesign After">
+            <img src="before/5.webp" alt="Before Redesign" class="image-before">
+            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider">
+            <div class="slider-handle"></div>
+          </article>
+          <article class="work-card reveal">
+            <img src="thumbnails/5.avif" alt="Gaming Thumbnail Illustration">
+          </article>
+          <article class="work-card reveal image-slider">
+            <img src="after/6.webp" alt="Tech Thumbnail Design - Redesign After">
+            <img src="before/6.webp" alt="Before Redesign" class="image-before">
+            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider">
+            <div class="slider-handle"></div>
+          </article>
+          <article class="work-card reveal">
+            <img src="thumbnails/6.avif" alt="Podcast Thumbnail Design">
+          </article>
         </div>
 
         <div class="proof-row reveal">
@@ -1674,16 +1758,14 @@
 
     <section class="section-pad container reviews-section" id="reviews">
       <div class="section-header reveal">
-        <div>
-          <h2>Trusted by<br/>Creators</h2>
-        </div>
+        <h2>Trusted by Creators</h2>
       </div>
 
-      <div class="reviews-grid premium-reviews">
+      <div class="reviews-grid">
         <a class="review-card reveal" href="https://www.youtube.com/@JackPembrook" target="_blank" rel="noopener noreferrer">
           <div class="review-content">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Abdullah Designs is a creative powerhouse who consistently delivers premium work on tight deadlines. He took our vision and made it better than we imagined. Highly recommend!"</p>
+            <p class="review-text">"Clean, fast, and easy to work with. The thumbnail looked ready for upload right away."</p>
             <div class="review-user">
               <img class="review-avatar" src="reviews/jack.webp" alt="Jack Pembrook" onerror="this.src='https://ui-avatars.com/api/?name=Jack+Pembrook&background=141417&color=fff'">
               <div class="review-info">
@@ -1697,7 +1779,7 @@
         <a class="review-card reveal reveal-delay-1" href="https://www.youtube.com/@SabriSubyOfficial" target="_blank" rel="noopener noreferrer">
           <div class="review-content">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Working with Abdullah Designs was a seamless experience that truly elevated the visual identity of my channel. He captured my style and turned it into professional, high-quality designs that exceeded my expectations!"</p>
+            <p class="review-text">"He understood the idea quickly and turned it into a sharp, clickable design."</p>
             <div class="review-user">
               <img class="review-avatar" src="reviews/sabri.webp" alt="Sabri Suby" onerror="this.src='https://ui-avatars.com/api/?name=Sabri+Suby&background=141417&color=fff'">
               <div class="review-info">
@@ -1711,7 +1793,7 @@
         <a class="review-card reveal reveal-delay-2" href="https://www.youtube.com/@techsource" target="_blank" rel="noopener noreferrer">
           <div class="review-content">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Abdullah is an incredible designer who truly understood the vision. The final result is sleek, professional, and exactly what my channel needed!"</p>
+            <p class="review-text">"Strong composition, clear text, and a polished style. Exactly what my video needed."</p>
             <div class="review-user">
               <img class="review-avatar" src="reviews/techsource.webp" alt="TechSource" onerror="this.src='https://ui-avatars.com/api/?name=TechSource&background=141417&color=fff'">
               <div class="review-info">
@@ -1721,33 +1803,75 @@
             </div>
           </div>
         </a>
+
+        <a class="review-card reveal" href="https://www.youtube.com/@LiamOttley/videos" target="_blank" rel="noopener noreferrer">
+          <div class="review-content">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"The concept came through clearly, and the final thumbnail felt focused without looking crowded."</p>
+            <div class="review-user">
+              <img class="review-avatar" src="reviews/Liam%20Ottley.jpg" alt="Liam Ottley" onerror="this.src='https://ui-avatars.com/api/?name=Liam+Ottley&background=141417&color=fff'">
+              <div class="review-info">
+                <h4>Liam Ottley<img src="reviews/verified-badge.png" class="verified-badge" alt="Verified"></h4>
+                <span>YouTuber · 780K Subscribers</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="review-card reveal reveal-delay-1" href="https://www.youtube.com/@Tdawgsmitty/videos" target="_blank" rel="noopener noreferrer">
+          <div class="review-content">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Quick turnaround, clean layout, and the design matched the video idea right away."</p>
+            <div class="review-user">
+              <img class="review-avatar" src="reviews/Tdawgsmitty.jpg" alt="Tdawgsmitty" onerror="this.src='https://ui-avatars.com/api/?name=Tdawgsmitty&background=141417&color=fff'">
+              <div class="review-info">
+                <h4>Tdawgsmitty<img src="reviews/verified-badge.png" class="verified-badge" alt="Verified"></h4>
+                <span>YouTuber · 597K Subscribers</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="review-card reveal" href="https://www.youtube.com/@vfxsolazzo" target="_blank" rel="noopener noreferrer">
+          <div class="review-content">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Great color, clean expression, and the thumbnail felt more clickable instantly."</p>
+            <div class="review-user">
+              <img class="review-avatar" src="reviews/solazzo.webp" alt="Solazzo" onerror="this.src='https://ui-avatars.com/api/?name=Solazzo&background=141417&color=fff'">
+              <div class="review-info">
+                <h4>Solazzo</h4>
+                <span>YouTuber · 12.2K Subscribers</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
       </div>
     </section>
 
     <section class="about-section container" id="about">
       <div class="about-grid reveal">
-        <div class="about-card about-content">
-          <div class="about-badge">Currently Accepting New Clients</div>
-          <h2>Get The Complete<br/>Services &amp; Pricing Guide</h2>
+        <div class="about-content">
+          <h2>Elevate Your Channel's Visual Identity</h2>
           <div class="about-text">
-            <p>I've put together a complete guide that breaks down exactly how I work, what you'll get, and how much it costs. No sales calls required — just clear information so you can decide if my approach matches your needs.</p>
+            <p>I've developed a premium design system that focuses on clarity, emotion, and CTR. I don't just design thumbnails; I craft the first point of contact between you and your audience.</p>
           </div>
           <ul class="about-points">
-            <li>Generated more than 250+ million impressions for clients in the last year</li>
-            <li>75% increase in click through rate CTR across client channels</li>
-            <li>Designed thumbnails for over 150+ channels</li>
+            <li>Generated 250M+ impressions for clients</li>
+            <li>Proven CTR increases across diverse niches</li>
+            <li>150+ satisfied creators worldwide</li>
           </ul>
           <div class="about-actions">
-            <a class="guide-btn" href="Abdullah-Designs-Guide.pdf" download>Download Free Guide</a>
+            <a class="guide-btn" href="#contact">Contact Me for Details</a>
             <div class="about-rating">
               <strong>★★★★★</strong>
               <span>Trusted by 150+ Creators</span>
             </div>
           </div>
         </div>
-        <div class="about-visual" aria-hidden="true">
+        <div class="about-visual">
           <div class="about-image-wrapper">
-            <img src="profile/1.avif" alt="Abdullah Designs profile" onerror="this.onerror=null;this.src='profile/1.jpg'">
+            <img src="profile/1.avif" alt="Abdullah Al Mamun - Professional Thumbnail Designer" onerror="this.onerror=null;this.src='profile/1.jpg'">
           </div>
         </div>
       </div>
@@ -1755,50 +1879,73 @@
 
     <section class="section-pad container process-section" id="process">
       <div class="section-header reveal">
-        <div>
-          <h2>My Services And Process</h2>
-        </div>
+        <h2>A Strategic Design Process</h2>
+        <p>From initial concept to final delivery, every step is optimized for quality and speed.</p>
       </div>
       <div class="process-grid">
         <article class="process-card reveal">
           <div class="process-media">
-            <img src="Process/1.avif" alt="Consulting process preview" onerror="this.onerror=null;this.src='Process/1.jpg'">
+            <img src="Process/1.avif" alt="Strategy Consultation" onerror="this.onerror=null;this.src='Process/1.jpg'">
           </div>
-          <div class="process-icon" aria-hidden="true">
+          <div class="process-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
           </div>
           <h3>Consulting</h3>
-          <p>I consult on video ideas, packaging, intro retention, content and audience strategy and help answer any questions that block your channel's growth.</p>
+          <p>We discuss your video goals, audience strategy, and packaging to ensure the thumbnail aligns with your content.</p>
         </article>
 
         <article class="process-card reveal reveal-delay-1">
           <div class="process-media">
-            <img src="Process/2.avif" alt="Strategic ideation process preview" onerror="this.onerror=null;this.src='Process/2.jpg'">
+            <img src="Process/2.avif" alt="Conceptualization" onerror="this.onerror=null;this.src='Process/2.jpg'">
           </div>
-          <div class="process-icon" aria-hidden="true">
+          <div class="process-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
           </div>
           <h3>Strategic Ideation</h3>
-          <p>I create detailed thumbnail concept briefings with sketches, visual examples and clear notes, so you know exactly how the final thumbnail looks and why it works.</p>
+          <p>I develop conceptual briefings and sketches, focusing on the visual hook that will stop the scroll.</p>
         </article>
 
         <article class="process-card reveal reveal-delay-2">
           <div class="process-media">
-            <img src="Process/3.avif" alt="Creative design process preview" onerror="this.onerror=null;this.src='Process/3.jpg'">
+            <img src="Process/3.avif" alt="Final Design Production" onerror="this.onerror=null;this.src='Process/3.jpg'">
           </div>
-          <div class="process-icon" aria-hidden="true">
+          <div class="process-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
           </div>
           <h3>Creative Design</h3>
-          <p>I design all graphics myself, no agency, no outsourcing. Just me behind 4B views, crafting scroll-stopping thumbnail designs that actually get clicks.</p>
+          <p>The final thumbnail is crafted with precision, ensuring high contrast, readability, and a premium look.</p>
         </article>
+      </div>
+    </section>
+
+    <section class="section-pad container faq-section" id="faq">
+      <div class="section-header reveal">
+        <h2>Common Questions</h2>
+        <p>Everything you need to know about working with me.</p>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-trigger">How long does one thumbnail take?<span>+</span></button>
+          <div class="faq-content"><div>Most thumbnail projects are delivered within 24–48 hours depending on detail, queue, and revision needs.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">Can you match my channel style?<span>+</span></button>
+          <div class="faq-content"><div>Yes. I can match your current branding or help create a cleaner, more premium thumbnail direction.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">Do you offer revisions?<span>+</span></button>
+          <div class="faq-content"><div>Yes. Revisions are available so the final thumbnail feels sharp, readable, and ready for upload.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">What do you need from me?<span>+</span></button>
+          <div class="faq-content"><div>Send the video title, short idea, channel link, reference style, and any images you want included.</div></div>
+        </div>
       </div>
     </section>
 
     <section class="cta-section container" id="contact">
       <div class="cta-card reveal">
-        <div class="section-kicker">Available for selected projects</div>
-        <h2>Ready For Better<br/>Thumbnails?</h2>
+        <h2>Ready for Better Thumbnails?</h2>
         <p>Message me with your channel link and video idea. I’ll help you turn it into a thumbnail that looks premium and gets attention fast.</p>
         <div class="social-grid">
           <a href="mailto:shahalamd293@gmail.com" class="social-card">
@@ -1813,7 +1960,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.672 1.433 5.661 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
             <span>WhatsApp</span>
           </a>
-          <a href="https://discord.com/users/1485473437676998729" target="_blank" class="social-card">
+          <a href="https://discord.gg/uneREXGHSx" target="_blank" class="social-card">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 004.1 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.419-2.157 2.419z"></path></svg>
             <span>Discord</span>
           </a>
@@ -1828,9 +1975,7 @@
   </footer>
 
   <script>
-    // Remove buggy JS smooth scroll overrides and use native CSS scroll-behavior
-    const isDesktop = window.matchMedia("(min-width: 681px)").matches;
-
+    // Desktop cursor animation copied from index2.html
     const cursorGlow = document.getElementById("cursorGlow");
     const customCursor = document.getElementById("customCursor");
     const canUseCustomCursor = window.matchMedia("(min-width: 681px) and (hover: hover) and (pointer: fine)").matches;
@@ -1872,82 +2017,135 @@
       });
     }
 
-    // Active Navigation Highlighting
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll("nav a");
+    // Hero ambient parallax
+    const hero = document.getElementById("home");
+    const heroAmbient = document.querySelector(".hero-ambient");
+    if (hero && heroAmbient && canUseCustomCursor) {
+      let heroTargetX = 0;
+      let heroTargetY = 0;
+      let heroCurrentX = 0;
+      let heroCurrentY = 0;
+      let heroRAF = null;
 
-    function updateActiveNav() {
-      let currentId = "home";
-      const offset = window.innerHeight * 0.35;
+      const runHeroAmbient = () => {
+        heroCurrentX += (heroTargetX - heroCurrentX) * 0.08;
+        heroCurrentY += (heroTargetY - heroCurrentY) * 0.08;
+        heroAmbient.style.transform = `translate3d(${heroCurrentX}px, ${heroCurrentY}px, 0)`;
 
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= offset && rect.bottom > offset) {
-          currentId = section.id;
+        if (Math.abs(heroTargetX - heroCurrentX) > 0.05 || Math.abs(heroTargetY - heroCurrentY) > 0.05) {
+          heroRAF = requestAnimationFrame(runHeroAmbient);
+        } else {
+          heroAmbient.style.transform = `translate3d(${heroTargetX}px, ${heroTargetY}px, 0)`;
+          heroRAF = null;
         }
-      });
+      };
 
-      navLinks.forEach((link) => {
-        link.classList.toggle("active", link.getAttribute("href") === "#" + currentId);
-      });
+      hero.addEventListener("pointermove", (event) => {
+        const rect = hero.getBoundingClientRect();
+        const offsetX = event.clientX - (rect.left + rect.width / 2);
+        const offsetY = event.clientY - (rect.top + rect.height / 2);
+        heroTargetX = offsetX * 0.015;
+        heroTargetY = offsetY * 0.015;
+        if (!heroRAF) heroRAF = requestAnimationFrame(runHeroAmbient);
+      }, { passive: true });
+
+      hero.addEventListener("pointerleave", () => {
+        heroTargetX = 0;
+        heroTargetY = 0;
+        if (!heroRAF) heroRAF = requestAnimationFrame(runHeroAmbient);
+      }, { passive: true });
     }
 
-    // Scroll Progress Bar Update
+    // Nav active state
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("nav a");
+    function updateActiveNav() {
+      let currentId = "home";
+      const offset = window.innerHeight * 0.4;
+      sections.forEach(s => {
+        const rect = s.getBoundingClientRect();
+        if (rect.top <= offset && rect.bottom > offset) currentId = s.id;
+      });
+      navLinks.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + currentId));
+    }
+
+    // Scroll progress
     const scrollProgress = document.getElementById("scrollProgress");
     function updateScrollProgress() {
       if (!scrollProgress) return;
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = maxScroll > 0 ? scrollTop / maxScroll : 0;
-      scrollProgress.style.transform = `scaleX(${progress})`;
+      const h = document.documentElement;
+      const st = window.pageYOffset || h.scrollTop;
+      const sh = h.scrollHeight || document.body.scrollHeight;
+      const progress = st / (sh - h.clientHeight);
+      scrollProgress.style.transform = `scaleX(${Math.max(0, Math.min(1, progress))})`;
     }
 
-    let navTicking = false;
     window.addEventListener("scroll", () => {
-      if (!navTicking) {
-        requestAnimationFrame(() => {
-          updateActiveNav();
-          updateScrollProgress();
-          navTicking = false;
-        });
-        navTicking = true;
-      }
+      requestAnimationFrame(() => { updateActiveNav(); updateScrollProgress(); });
     }, { passive: true });
 
-    window.addEventListener("resize", () => {
-      updateActiveNav();
-      updateScrollProgress();
-    });
-
-    // Fade Reveal Initialization
-    const observer = new IntersectionObserver((entries, obs) => {
+    // Reliable reveal animation: runs on every .reveal element and starts before images finish loading
+    const revealElements = Array.from(document.querySelectorAll(".reveal"));
+    const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
-          obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: "0px 0px -5% 0px" });
+    }, { threshold: 0.08, rootMargin: "0px 0px -10% 0px" });
 
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    function activateVisibleReveals() {
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      revealElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < viewportHeight * 0.92 && rect.bottom > 0) {
+          el.classList.add("active");
+        }
+      });
+    }
 
-    // Wait slightly on page load for immediate hero items
-    setTimeout(() => {
-      document.querySelectorAll("#home .reveal").forEach(el => el.classList.add("active"));
-    }, 100);
+    function initRevealAnimations() {
+      revealElements.forEach((el, index) => {
+        if (!el.style.transitionDelay && el.classList.contains("work-card")) {
+          el.style.transitionDelay = `${Math.min((index % 6) * 70, 350)}ms`;
+        }
+        revealObserver.observe(el);
+      });
+
+      requestAnimationFrame(() => {
+        document.querySelectorAll("#home .reveal").forEach((el) => el.classList.add("active"));
+        activateVisibleReveals();
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", initRevealAnimations);
+    window.addEventListener("load", activateVisibleReveals, { once: true });
+    window.addEventListener("resize", activateVisibleReveals, { passive: true });
+
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // FAQ Accordion
-    document.querySelectorAll(".faq-trigger").forEach((trigger) => {
-      trigger.addEventListener("click", () => {
-        const item = trigger.closest(".faq-item");
+    document.querySelectorAll(".faq-trigger").forEach(t => {
+      t.addEventListener("click", () => {
+        const item = t.closest(".faq-item");
         const isActive = item.classList.contains("active");
-
-        document.querySelectorAll(".faq-item").forEach((faq) => faq.classList.remove("active"));
+        document.querySelectorAll(".faq-item").forEach(f => f.classList.remove("active"));
         if (!isActive) item.classList.add("active");
       });
     });
 
-    // Image Slider logic - smoother before/after movement
+
+    // Work thumbnails: no popup / no fullscreen preview on click
+    document.querySelectorAll(".work-card").forEach((card) => {
+      card.addEventListener("click", (event) => {
+        if (!event.target.classList.contains("slider-range")) {
+          event.preventDefault();
+        }
+      });
+    });
+
+    // Image Slider logic
     function updateSlider(container, val) {
       if (!container) return;
       const target = Math.max(0, Math.min(100, Number(val)));
@@ -1971,11 +2169,11 @@
     function animateSlider(container) {
       const current = Number(container.dataset.sliderCurrent || 50);
       const target = Number(container.dataset.sliderTarget || 50);
-      const next = current + (target - current) * 0.115;
+      const next = current + (target - current) * 0.16;
       container.dataset.sliderCurrent = String(next);
       renderSlider(container, next);
 
-      if (Math.abs(target - next) > 0.08) {
+      if (Math.abs(target - next) > 0.05) {
         requestAnimationFrame(() => animateSlider(container));
       } else {
         container.dataset.sliderCurrent = String(target);
@@ -1984,59 +2182,37 @@
       }
     }
 
-    document.querySelectorAll('.image-slider').forEach(container => {
-      container.dataset.sliderCurrent = '50';
-      container.dataset.sliderTarget = '50';
-      renderSlider(container, 50);
-    });
-
     document.querySelectorAll('.image-slider .slider-range').forEach(slider => {
-      slider.addEventListener('input', (e) => updateSlider(e.target.parentElement, e.target.value));
-      slider.addEventListener('change', (e) => updateSlider(e.target.parentElement, e.target.value));
+      const card = slider.parentElement;
+
+      const startDrag = () => {
+        card.classList.add('touched', 'dragging');
+      };
+
+      const endDrag = () => {
+        card.classList.remove('dragging');
+      };
+
+      slider.addEventListener('input', (e) => {
+        startDrag();
+        updateSlider(card, e.target.value);
+      });
+
+      slider.addEventListener('pointerdown', startDrag, { passive: true });
+      window.addEventListener('pointerup', endDrag, { passive: true });
+      slider.addEventListener('touchstart', startDrag, { passive: true });
+      window.addEventListener('touchend', endDrag, { passive: true });
     });
 
-    // Auto-peek Animation on Scroll for Sliders
-    const sliderEase = (t) => 0.5 - Math.cos(t * Math.PI) / 2;
-    const sliderObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const container = entry.target;
-          let start = null;
-          const duration = 3400;
 
-          function peek(timestamp) {
-            if (!start) start = timestamp;
-            const progress = Math.min((timestamp - start) / duration, 1);
-            let val = 50;
+    document.querySelectorAll('.image-slider').forEach((card) => {
+      renderSlider(card, Number(card.querySelector('.slider-range')?.value || 50));
+    });
 
-            if (progress < 0.34) {
-              val = 50 + (70 - 50) * sliderEase(progress / 0.34);
-            } else if (progress < 0.68) {
-              val = 70 + (32 - 70) * sliderEase((progress - 0.34) / 0.34);
-            } else {
-              val = 32 + (50 - 32) * sliderEase((progress - 0.68) / 0.32);
-            }
+    // Auto slider / floating peek animation removed. Sliders now move only when the user drags them.
 
-            updateSlider(container, val);
-            if (progress < 1) {
-              requestAnimationFrame(peek);
-            } else {
-              updateSlider(container, 50);
-            }
-          }
-
-          requestAnimationFrame(peek);
-          sliderObserver.unobserve(container);
-        }
-      });
-    }, { threshold: 0.45 });
-
-    document.querySelectorAll('.image-slider').forEach(s => sliderObserver.observe(s));
-
-    // Animate Counters
+    // Number counters
     const countElements = document.querySelectorAll(".count");
-    let countersStarted = false;
-
     function animateCounter(counter) {
       const target = Number(counter.dataset.target);
       const duration = 2000; 
@@ -2057,24 +2233,14 @@
       }
       requestAnimationFrame(update);
     }
-
     const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !countersStarted) {
-          countersStarted = true;
-          countElements.forEach(animateCounter);
-          counterObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.45 });
-
+      if (entries[0].isIntersecting) {
+        countElements.forEach(animateCounter);
+        counterObserver.disconnect();
+      }
+    }, { threshold: 0.2 });
     const proofRow = document.querySelector(".proof-row");
     if (proofRow) counterObserver.observe(proofRow);
-
-    // Initial setup calls
-    document.getElementById("year").textContent = new Date().getFullYear();
-    updateActiveNav();
-    updateScrollProgress();
   </script>
 </body>
 </html>
