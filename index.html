@@ -2599,6 +2599,48 @@
           -webkit-backdrop-filter: blur(20px) saturate(116%) !important;
         }
       }
+
+      /* FINAL FIX: mobile menu opens with pure dark blur only — no white flash */
+      @media (max-width: 680px) {
+        .mobile-menu-overlay {
+          background: rgba(0, 0, 0, 0.92) !important;
+          backdrop-filter: blur(22px) saturate(108%) !important;
+          -webkit-backdrop-filter: blur(22px) saturate(108%) !important;
+          transition:
+            opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+            visibility 0s linear 0.28s !important;
+          transform: translateZ(0);
+          will-change: opacity;
+        }
+
+        .mobile-menu-overlay.active {
+          background: rgba(0, 0, 0, 0.92) !important;
+          transition:
+            opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+            visibility 0s linear 0s !important;
+        }
+
+        .mobile-menu-overlay::before {
+          display: none !important;
+          content: none !important;
+          background: transparent !important;
+          opacity: 0 !important;
+        }
+
+        .mobile-menu-sheet {
+          background: rgba(10, 10, 13, 0.9) !important;
+          border-color: rgba(255, 255, 255, 0.075) !important;
+          box-shadow: 0 28px 80px rgba(0, 0, 0, 0.58) !important;
+          transform: translate3d(0, -10px, 0) scale(0.96) !important;
+          transition:
+            transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+            opacity 0.26s ease !important;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu-sheet {
+          transform: translate3d(0, 0, 0) scale(1) !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -3191,7 +3233,7 @@
           <form
             class="contact-form"
             id="contactForm"
-            action="https://formsubmit.co/shahalamd293@gmail.com"
+            action="https://formsubmit.co/ajax/shahalamd293@gmail.com"
             method="POST"
           >
             <input type="hidden" name="_subject" value="New Thumbnail Project Message - Abdullah Designs" />
@@ -3934,11 +3976,38 @@
 
       const contactForm = document.getElementById("contactForm");
       if (contactForm) {
-        contactForm.addEventListener("submit", () => {
+        contactForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
           const submitButton = contactForm.querySelector(".contact-submit");
+          const originalButtonText = submitButton ? submitButton.textContent : "Submit";
+
           if (submitButton) {
             submitButton.textContent = "Sending...";
             submitButton.disabled = true;
+          }
+
+          try {
+            const response = await fetch(contactForm.action, {
+              method: "POST",
+              body: new FormData(contactForm),
+              headers: { Accept: "application/json" },
+            });
+
+            if (!response.ok) throw new Error("Form submit failed");
+
+            contactForm.reset();
+            if (submitButton) {
+              submitButton.textContent = "Thank you!";
+            }
+          } catch (error) {
+            if (submitButton) {
+              submitButton.textContent = "Try again";
+              submitButton.disabled = false;
+              setTimeout(() => {
+                submitButton.textContent = originalButtonText;
+              }, 1800);
+            }
           }
         });
       }
