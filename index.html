@@ -1739,6 +1739,19 @@
         }
       }
 
+      /* FINAL PERFORMANCE POLISH: smoother feel without changing the existing animations */
+      @media (min-width: 681px) {
+        .work-card,
+        .review-card,
+        .process-card,
+        .proof-card,
+        .contact-form-card,
+        .social-card {
+          transform: translateZ(0);
+          backface-visibility: hidden;
+        }
+      }
+
       .scroll-progress {
         position: fixed;
         top: 0;
@@ -3175,12 +3188,21 @@
             Message me with your channel link and video idea. I’ll help you turn it into a thumbnail that looks premium
             and gets attention fast.
           </p>
-          <form class="contact-form" id="contactForm">
+          <form
+            class="contact-form"
+            id="contactForm"
+            action="https://formsubmit.co/shahalamd293@gmail.com"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="New Thumbnail Project Message - Abdullah Designs" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="text" name="_honey" style="display: none" tabindex="-1" autocomplete="off" />
             <div class="contact-field contact-field-half">
               <label for="channelName">Channel Name</label>
               <input
                 id="channelName"
-                name="channelName"
+                name="Channel Name"
                 type="text"
                 placeholder="Your Channel"
                 autocomplete="organization"
@@ -3191,7 +3213,7 @@
               <label for="clientEmail">Your Email</label>
               <input
                 id="clientEmail"
-                name="clientEmail"
+                name="Email"
                 type="email"
                 placeholder="example@gmail.com"
                 autocomplete="email"
@@ -3200,13 +3222,7 @@
             </div>
             <div class="contact-field contact-field-full">
               <label for="clientMessage" class="sr-only">Your Message</label>
-              <textarea
-                id="clientMessage"
-                name="clientMessage"
-                placeholder="Your Message"
-                rows="5"
-                required=""
-              ></textarea>
+              <textarea id="clientMessage" name="Message" placeholder="Your Message" rows="5" required=""></textarea>
             </div>
             <button class="contact-submit" type="submit">Submit</button>
           </form>
@@ -3262,21 +3278,38 @@
       let glowCurrentX = -999;
       let glowCurrentY = -999;
       let cursorLoopStarted = false;
+      let cursorRAF = null;
 
       if (canUseCustomCursor && cursorGlow && customCursor) {
         function moveCursorLoop() {
-          // Premium smooth follow: cursor feels soft, glow follows even slower.
-          cursorCurrentX += (cursorX - cursorCurrentX) * 0.145;
-          cursorCurrentY += (cursorY - cursorCurrentY) * 0.145;
-          glowCurrentX += (cursorX - glowCurrentX) * 0.055;
-          glowCurrentY += (cursorY - glowCurrentY) * 0.055;
+          // Premium smooth follow with auto-idle, so the cursor stays smooth without wasting frames.
+          cursorCurrentX += (cursorX - cursorCurrentX) * 0.18;
+          cursorCurrentY += (cursorY - cursorCurrentY) * 0.18;
+          glowCurrentX += (cursorX - glowCurrentX) * 0.075;
+          glowCurrentY += (cursorY - glowCurrentY) * 0.075;
 
-          cursorGlow.style.opacity = "0.82";
+          cursorGlow.style.opacity = "0.72";
           cursorGlow.style.transform = `translate3d(${glowCurrentX - 224}px, ${glowCurrentY - 224}px, 0)`;
           customCursor.style.opacity = "1";
           customCursor.style.transform = `translate3d(${cursorCurrentX - 10}px, ${cursorCurrentY - 10}px, 0)`;
 
-          requestAnimationFrame(moveCursorLoop);
+          const cursorDone = Math.abs(cursorX - cursorCurrentX) < 0.12 && Math.abs(cursorY - cursorCurrentY) < 0.12;
+          const glowDone = Math.abs(cursorX - glowCurrentX) < 0.35 && Math.abs(cursorY - glowCurrentY) < 0.35;
+
+          if (cursorDone && glowDone) {
+            cursorCurrentX = cursorX;
+            cursorCurrentY = cursorY;
+            glowCurrentX = cursorX;
+            glowCurrentY = cursorY;
+            cursorRAF = null;
+            return;
+          }
+
+          cursorRAF = requestAnimationFrame(moveCursorLoop);
+        }
+
+        function startCursorLoop() {
+          if (!cursorRAF) cursorRAF = requestAnimationFrame(moveCursorLoop);
         }
 
         window.addEventListener(
@@ -3291,8 +3324,9 @@
               cursorCurrentY = cursorY;
               glowCurrentX = cursorX;
               glowCurrentY = cursorY;
-              requestAnimationFrame(moveCursorLoop);
             }
+
+            startCursorLoop();
           },
           { passive: true },
         );
@@ -3502,9 +3536,8 @@
 
         let smoothCurrentY = window.scrollY || document.documentElement.scrollTop;
         let smoothTargetY = smoothCurrentY;
-        let smoothVelocity = 0;
         let smoothScrollRAF = null;
-        let smoothIsAnimating = false;
+        let isProgramScroll = false;
 
         const getMaxScrollY = () => Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
         const clampScrollY = (value) => Math.max(0, Math.min(getMaxScrollY(), value));
@@ -3512,27 +3545,28 @@
           let delta = event.deltaY;
           if (event.deltaMode === 1) delta *= 16;
           if (event.deltaMode === 2) delta *= window.innerHeight;
-          return Math.max(-190, Math.min(190, delta)) * 0.92;
+          return Math.max(-220, Math.min(220, delta)) * 0.9;
         };
 
         function runPremiumSmoothScroll() {
           smoothTargetY = clampScrollY(smoothTargetY);
-
           const distance = smoothTargetY - smoothCurrentY;
-          smoothVelocity += distance * 0.055;
-          smoothVelocity *= 0.74;
-          smoothCurrentY += smoothVelocity;
 
-          if (Math.abs(distance) < 0.45 && Math.abs(smoothVelocity) < 0.08) {
+          // Fast enough to avoid lag, soft enough to feel buttery.
+          smoothCurrentY += distance * 0.22;
+
+          if (Math.abs(distance) < 0.35) {
             smoothCurrentY = smoothTargetY;
-            smoothVelocity = 0;
             smoothScrollRAF = null;
-            smoothIsAnimating = false;
+            isProgramScroll = true;
             window.scrollTo(0, smoothCurrentY);
+            requestAnimationFrame(() => {
+              isProgramScroll = false;
+            });
             return;
           }
 
-          smoothIsAnimating = true;
+          isProgramScroll = true;
           window.scrollTo(0, smoothCurrentY);
           smoothScrollRAF = requestAnimationFrame(runPremiumSmoothScroll);
         }
@@ -3545,8 +3579,11 @@
           "wheel",
           (event) => {
             if (event.ctrlKey || event.metaKey) return;
-            event.preventDefault();
 
+            const activeTag = document.activeElement?.tagName?.toLowerCase();
+            if (activeTag === "textarea" || activeTag === "input" || activeTag === "select") return;
+
+            event.preventDefault();
             smoothTargetY = clampScrollY(smoothTargetY + normalizeWheelDelta(event));
             startPremiumSmoothScroll();
           },
@@ -3556,10 +3593,9 @@
         window.addEventListener(
           "scroll",
           () => {
-            if (smoothIsAnimating) return;
+            if (isProgramScroll) return;
             smoothCurrentY = window.scrollY || document.documentElement.scrollTop;
             smoothTargetY = smoothCurrentY;
-            smoothVelocity = 0;
           },
           { passive: true },
         );
@@ -3569,7 +3605,6 @@
           () => {
             smoothTargetY = clampScrollY(smoothTargetY);
             smoothCurrentY = clampScrollY(window.scrollY || document.documentElement.scrollTop);
-            smoothVelocity = 0;
           },
           { passive: true },
         );
@@ -3585,7 +3620,7 @@
             event.preventDefault();
             const navOffset = window.innerWidth > 680 ? 118 : 84;
             smoothTargetY = clampScrollY(targetEl.getBoundingClientRect().top + window.scrollY - navOffset);
-            smoothVelocity = 0;
+            smoothCurrentY = window.scrollY || document.documentElement.scrollTop;
             startPremiumSmoothScroll();
           });
         });
@@ -3899,14 +3934,12 @@
 
       const contactForm = document.getElementById("contactForm");
       if (contactForm) {
-        contactForm.addEventListener("submit", (event) => {
-          event.preventDefault();
-          const formData = new FormData(contactForm);
-          const channelName = String(formData.get("channelName") || "").trim();
-          const clientEmail = String(formData.get("clientEmail") || "").trim();
-          const clientMessage = String(formData.get("clientMessage") || "").trim();
-          const message = `Hi Abdullah, I want to discuss a thumbnail project.%0A%0AChannel: ${encodeURIComponent(channelName)}%0AEmail: ${encodeURIComponent(clientEmail)}%0AMessage: ${encodeURIComponent(clientMessage)}`;
-          window.open(`https://wa.me/8801600106114?text=${message}`, "_blank", "noopener,noreferrer");
+        contactForm.addEventListener("submit", () => {
+          const submitButton = contactForm.querySelector(".contact-submit");
+          if (submitButton) {
+            submitButton.textContent = "Sending...";
+            submitButton.disabled = true;
+          }
         });
       }
 
