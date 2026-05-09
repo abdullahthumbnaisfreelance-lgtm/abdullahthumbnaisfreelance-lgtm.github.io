@@ -261,6 +261,7 @@
         transform: translate3d(-999px, -999px, 0);
         transition: opacity 0.45s var(--ease);
         will-change: transform, opacity;
+        backface-visibility: hidden;
       }
 
       .custom-cursor {
@@ -285,6 +286,7 @@
           0 0 0 1px rgba(0, 0, 0, 0.16),
           0 0 28px rgba(255, 255, 255, 0.18);
         will-change: transform, opacity;
+        backface-visibility: hidden;
       }
 
       .custom-cursor.cursor-hover {
@@ -1084,6 +1086,8 @@
 
       .work-card.image-slider {
         cursor: default;
+        user-select: none;
+        -webkit-user-select: none;
       }
 
       .work-card.image-slider .image-before {
@@ -2417,6 +2421,43 @@
           border-radius: 14px;
         }
       }
+
+      /* FINAL SMARTPHONE MENU OVERLAY FIX: dark background + smoother blur only */
+      @media (max-width: 680px) {
+        .mobile-menu-overlay {
+          background: rgba(2, 3, 6, 0.72) !important;
+          backdrop-filter: blur(0px) saturate(105%) !important;
+          -webkit-backdrop-filter: blur(0px) saturate(105%) !important;
+          transition:
+            opacity 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+            visibility 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+            background 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+            backdrop-filter 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+            -webkit-backdrop-filter 0.48s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        .mobile-menu-overlay.active {
+          background: rgba(2, 3, 6, 0.88) !important;
+          backdrop-filter: blur(22px) saturate(112%) !important;
+          -webkit-backdrop-filter: blur(22px) saturate(112%) !important;
+        }
+
+        .mobile-menu-overlay::before {
+          background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.38)) !important;
+          opacity: 0 !important;
+          transition: opacity 0.48s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        .mobile-menu-overlay.active::before {
+          opacity: 1 !important;
+        }
+
+        .mobile-menu-sheet {
+          background: rgba(12, 13, 18, 0.82) !important;
+          backdrop-filter: blur(20px) saturate(116%) !important;
+          -webkit-backdrop-filter: blur(20px) saturate(116%) !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -2624,7 +2665,9 @@
             <div class="review-content">
               <div class="review-stars">★★★★★</div>
               <p class="review-text">
-                "Working with Abdullah was a seamless experience that truly elevated the visual identity of my channel. His ability to capture my style and turn it into professional, high-quality designs exceeded my expectations!"
+                "Working with Abdullah was a seamless experience that truly elevated the visual identity of my channel.
+                His ability to capture my style and turn it into professional, high-quality designs exceeded my
+                expectations!"
               </p>
               <div class="review-user">
                 <img
@@ -2655,7 +2698,9 @@
             <div class="review-content">
               <div class="review-stars">★★★★★</div>
               <p class="review-text">
-                "Abdullah is a creative powerhouse who consistently delivers premium work on tight deadlines. He took my rough vision and made it better than I ever imagined. If you need high-quality designs fast, I highly recommend him!"
+                "Abdullah is a creative powerhouse who consistently delivers premium work on tight deadlines. He took my
+                rough vision and made it better than I ever imagined. If you need high-quality designs fast, I highly
+                recommend him!"
               </p>
               <div class="review-user">
                 <img
@@ -2684,7 +2729,9 @@
             <div class="review-content">
               <div class="review-stars">★★★★★</div>
               <p class="review-text">
-                "Abdullah is a creative powerhouse who consistently delivers premium work on tight deadlines. He took my rough vision and made it better than I ever imagined. If you need high-quality designs fast, I highly recommend him!"
+                "Abdullah is a creative powerhouse who consistently delivers premium work on tight deadlines. He took my
+                rough vision and made it better than I ever imagined. If you need high-quality designs fast, I highly
+                recommend him!"
               </p>
               <div class="review-user">
                 <img
@@ -2713,7 +2760,9 @@
             <div class="review-content">
               <div class="review-stars">★★★★★</div>
               <p class="review-text">
-                "Working with Abdullah was one of the smoothest creative experiences I’ve had. He consistently delivers high-impact thumbnails that have significantly boosted the overall quality and visual appeal of my channel. A true professional!"
+                "Working with Abdullah was one of the smoothest creative experiences I’ve had. He consistently delivers
+                high-impact thumbnails that have significantly boosted the overall quality and visual appeal of my
+                channel. A true professional!"
               </p>
               <div class="review-user">
                 <img
@@ -2775,7 +2824,9 @@
             <div class="review-content">
               <div class="review-stars">★★★★★</div>
               <p class="review-text">
-                "Working with Abdullah is a breeze. He took my rough ideas and turned them into a cohesive, professional visual identity that perfectly matches my brand. He consistently delivers high-quality work on the first try!"
+                "Working with Abdullah is a breeze. He took my rough ideas and turned them into a cohesive, professional
+                visual identity that perfectly matches my brand. He consistently delivers high-quality work on the first
+                try!"
               </p>
               <div class="review-user">
                 <img
@@ -2835,7 +2886,6 @@
       <section class="section-pad container process-section" id="process">
         <div class="section-header reveal">
           <h2>A Strategic Design Process</h2>
-          <p>From initial concept to final delivery, every step is optimized for quality and speed.</p>
         </div>
         <div class="process-grid">
           <article class="process-card reveal">
@@ -2941,45 +2991,49 @@
         <div class="faq-list reveal">
           <div class="faq-item">
             <button class="faq-trigger">
-              How long does one thumbnail take?
+              How fast can I get a thumbnail?
               <span>+</span>
             </button>
             <div class="faq-content">
               <div>
-                Most thumbnail projects are delivered within 24–48 hours depending on detail, queue, and revision needs.
+                Most thumbnails are delivered within 24–48 hours. If the design is very detailed or needs extra
+                research, I’ll let you know before starting.
               </div>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-trigger">
-              Can you match my channel style?
+              What do you need from me to start?
               <span>+</span>
             </button>
             <div class="faq-content">
               <div>
-                Yes. I can match your current branding or help create a cleaner, more premium thumbnail direction.
+                Send your video title, a short idea or script, your channel link, and any photos or references you want
+                me to use. Even a rough concept is enough.
               </div>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-trigger">
-              Do you offer revisions?
+              Can you match my current thumbnail style?
               <span>+</span>
             </button>
             <div class="faq-content">
               <div>
-                Yes. Revisions are available so the final thumbnail feels sharp, readable, and ready for upload.
+                Yes. I can follow your current brand style, improve it slightly, or create a fresh direction that still
+                feels natural for your channel.
               </div>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-trigger">
-              What do you need from me?
+              Do you provide revisions if I need changes?
               <span>+</span>
             </button>
             <div class="faq-content">
               <div>
-                Send the video title, short idea, channel link, reference style, and any images you want included.
+                Yes. Small changes like text, color, layout, or image adjustments are included so the final thumbnail
+                feels ready before you upload.
               </div>
             </div>
           </div>
@@ -3049,15 +3103,20 @@
       let cursorY = -999;
       let cursorCurrentX = -999;
       let cursorCurrentY = -999;
+      let glowCurrentX = -999;
+      let glowCurrentY = -999;
       let cursorLoopStarted = false;
 
       if (canUseCustomCursor && cursorGlow && customCursor) {
         function moveCursorLoop() {
-          cursorCurrentX += (cursorX - cursorCurrentX) * 0.22;
-          cursorCurrentY += (cursorY - cursorCurrentY) * 0.22;
+          // Premium smooth follow: cursor feels soft, glow follows even slower.
+          cursorCurrentX += (cursorX - cursorCurrentX) * 0.18;
+          cursorCurrentY += (cursorY - cursorCurrentY) * 0.18;
+          glowCurrentX += (cursorX - glowCurrentX) * 0.085;
+          glowCurrentY += (cursorY - glowCurrentY) * 0.085;
 
           cursorGlow.style.opacity = "1";
-          cursorGlow.style.transform = `translate3d(${cursorCurrentX - 272}px, ${cursorCurrentY - 272}px, 0)`;
+          cursorGlow.style.transform = `translate3d(${glowCurrentX - 272}px, ${glowCurrentY - 272}px, 0)`;
           customCursor.style.opacity = "1";
           customCursor.style.transform = `translate3d(${cursorCurrentX - 11}px, ${cursorCurrentY - 11}px, 0)`;
 
@@ -3074,8 +3133,28 @@
               cursorLoopStarted = true;
               cursorCurrentX = cursorX;
               cursorCurrentY = cursorY;
+              glowCurrentX = cursorX;
+              glowCurrentY = cursorY;
               requestAnimationFrame(moveCursorLoop);
             }
+          },
+          { passive: true },
+        );
+
+        window.addEventListener(
+          "pointerleave",
+          () => {
+            cursorGlow.style.opacity = "0";
+            customCursor.style.opacity = "0";
+          },
+          { passive: true },
+        );
+
+        window.addEventListener(
+          "pointerenter",
+          () => {
+            cursorGlow.style.opacity = "1";
+            customCursor.style.opacity = "1";
           },
           { passive: true },
         );
@@ -3341,13 +3420,30 @@
         });
       });
 
-      // Image Slider logic
-      function updateSlider(container, val) {
+      // Image Slider logic — balanced for smooth scrolling + responsive manual drag
+      function clampSliderValue(val) {
+        return Math.max(0, Math.min(100, Number(val)));
+      }
+
+      function updateSlider(container, val, options = {}) {
         if (!container) return;
-        const target = Math.max(0, Math.min(100, Number(val)));
-        container.dataset.sliderTarget = String(target);
+        const target = clampSliderValue(val);
         const input = container.querySelector(".slider-range");
         if (input) input.value = target;
+
+        // During real dragging, render instantly so it follows the finger/mouse.
+        // For intro/keyboard/range changes, use a soft RAF glide.
+        if (options.instant) {
+          container.dataset.sliderCurrent = String(target);
+          container.dataset.sliderTarget = String(target);
+          renderSlider(container, target);
+          return;
+        }
+
+        container.dataset.sliderTarget = String(target);
+        container.dataset.sliderSpeed = String(
+          options.speed || (container.classList.contains("dragging") ? 0.38 : 0.18),
+        );
         if (!container.dataset.sliderCurrent) container.dataset.sliderCurrent = String(target);
         if (!container.dataset.sliderRunning) {
           container.dataset.sliderRunning = "true";
@@ -3356,20 +3452,22 @@
       }
 
       function renderSlider(container, val) {
+        const safeValue = clampSliderValue(val);
         const beforeImg = container.querySelector(".image-before");
         const handle = container.querySelector(".slider-handle");
-        if (beforeImg) beforeImg.style.clipPath = `polygon(0 0, ${val}% 0, ${val}% 100%, 0 100%)`;
-        if (handle) handle.style.left = `${val}%`;
+        if (beforeImg) beforeImg.style.clipPath = `polygon(0 0, ${safeValue}% 0, ${safeValue}% 100%, 0 100%)`;
+        if (handle) handle.style.left = `${safeValue}%`;
       }
 
       function animateSlider(container) {
         const current = Number(container.dataset.sliderCurrent || 50);
         const target = Number(container.dataset.sliderTarget || 50);
-        const next = current + (target - current) * 0.16;
+        const speed = Number(container.dataset.sliderSpeed || 0.18);
+        const next = current + (target - current) * speed;
         container.dataset.sliderCurrent = String(next);
         renderSlider(container, next);
 
-        if (Math.abs(target - next) > 0.05) {
+        if (Math.abs(target - next) > 0.04) {
           requestAnimationFrame(() => animateSlider(container));
         } else {
           container.dataset.sliderCurrent = String(target);
@@ -3391,7 +3489,7 @@
 
         slider.addEventListener("input", (e) => {
           startDrag();
-          updateSlider(card, e.target.value);
+          updateSlider(card, e.target.value, { speed: 0.32 });
         });
 
         slider.addEventListener("pointerdown", startDrag, { passive: true });
@@ -3445,8 +3543,8 @@
             const diffY = event.clientY - startY;
 
             if (!draggingSlider) {
-              const horizontalIntent = Math.abs(diffX) > 14 && Math.abs(diffX) > Math.abs(diffY) * 1.25;
-              const verticalIntent = Math.abs(diffY) > 10 && Math.abs(diffY) >= Math.abs(diffX);
+              const horizontalIntent = Math.abs(diffX) > 18 && Math.abs(diffX) > Math.abs(diffY) * 1.55;
+              const verticalIntent = Math.abs(diffY) > 8 && Math.abs(diffY) >= Math.abs(diffX) * 0.72;
 
               if (verticalIntent) {
                 stopMobileSlider();
@@ -3460,7 +3558,7 @@
             }
 
             event.preventDefault();
-            updateSlider(card, getSliderValue(event.clientX));
+            updateSlider(card, getSliderValue(event.clientX), { instant: true });
           },
           { passive: false },
         );
@@ -3470,7 +3568,78 @@
         card.addEventListener("lostpointercapture", stopMobileSlider, { passive: true });
       });
 
-      // Auto slider / floating peek animation removed. Sliders now move only when the user drags them.
+      // Before/After intro animation: auto slides left/right once, then returns to center.
+      // Nothing else changes. Manual drag still works after the intro.
+      const sliderIntroEase = (t) => 0.5 - Math.cos(Math.PI * t) / 2;
+
+      function setSliderInstant(card, value) {
+        const safeValue = Math.max(0, Math.min(100, Number(value)));
+        const input = card.querySelector(".slider-range");
+        if (input) input.value = safeValue;
+        card.dataset.sliderCurrent = String(safeValue);
+        card.dataset.sliderTarget = String(safeValue);
+        renderSlider(card, safeValue);
+      }
+
+      function runBeforeAfterIntro(card) {
+        if (!card || card.classList.contains("touched") || card.dataset.introPlayed === "true") return;
+
+        card.dataset.introPlayed = "true";
+        delete card.dataset.sliderRunning;
+
+        const duration = 2800;
+        const points = [50, 76, 24, 50];
+        let startTime = null;
+
+        function animateIntro(now) {
+          if (card.classList.contains("touched")) return;
+          if (!startTime) startTime = now;
+
+          const progress = Math.min((now - startTime) / duration, 1);
+          const segmentCount = points.length - 1;
+          const rawSegment = Math.min(Math.floor(progress * segmentCount), segmentCount - 1);
+          const segmentStart = rawSegment / segmentCount;
+          const segmentProgress = (progress - segmentStart) * segmentCount;
+          const eased = sliderIntroEase(Math.max(0, Math.min(1, segmentProgress)));
+          const from = points[rawSegment];
+          const to = points[rawSegment + 1];
+          const value = from + (to - from) * eased;
+
+          setSliderInstant(card, value);
+
+          if (progress < 1) {
+            requestAnimationFrame(animateIntro);
+          } else {
+            setSliderInstant(card, 50);
+          }
+        }
+
+        setTimeout(() => {
+          if (!card.classList.contains("touched")) requestAnimationFrame(animateIntro);
+        }, 450);
+      }
+
+      const sliderIntroObserver =
+        "IntersectionObserver" in window
+          ? new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (!entry.isIntersecting) return;
+                  runBeforeAfterIntro(entry.target);
+                  sliderIntroObserver.unobserve(entry.target);
+                });
+              },
+              { threshold: 0.5 },
+            )
+          : null;
+
+      document.querySelectorAll(".image-slider").forEach((card) => {
+        if (sliderIntroObserver) {
+          sliderIntroObserver.observe(card);
+        } else {
+          runBeforeAfterIntro(card);
+        }
+      });
 
       // Number counters
       const countElements = document.querySelectorAll(".count");
