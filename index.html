@@ -2641,7 +2641,396 @@
           transform: translate3d(0, 0, 0) scale(1) !important;
         }
       }
-    </style>
+
+      /* FINAL USER REQUEST: remove stats area, keep normal cursor, reduce background weight, faster smoother native scroll */
+      body {
+        background: #070709 !important;
+        cursor: auto !important;
+      }
+
+      a,
+      button,
+      input,
+      textarea,
+      select,
+      .btn-main,
+      .btn-secondary,
+      .slider-range {
+        cursor: auto !important;
+      }
+
+      a,
+      button,
+      .btn-main,
+      .btn-secondary,
+      .slider-range {
+        cursor: pointer !important;
+      }
+
+      .cursor-glow,
+      .custom-cursor,
+      .site-ambient,
+      .hero-ambient {
+        display: none !important;
+      }
+
+      .noise {
+        opacity: 0.018 !important;
+      }
+
+      .work-section {
+        padding-bottom: 5rem !important;
+      }
+
+    
+
+      /* ORIGINAL HERO BACKGROUND: visible vertical thumbnail motion */
+      .hero {
+        isolation: isolate;
+      }
+
+      .hero-vertical-stage {
+        position: absolute;
+        inset: 0;
+        left: 50%;
+        width: 100vw;
+        transform: translateX(-50%);
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 1;
+        background:
+          radial-gradient(circle at 50% 44%, rgba(99, 102, 241, 0.18), transparent 28rem),
+          linear-gradient(180deg, rgba(7, 7, 9, 0.01), rgba(7, 7, 9, 0.2) 62%, #070709 100%);
+      }
+
+      .hero-vertical-stage::before,
+      .hero-vertical-stage::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 8;
+      }
+
+      .hero-vertical-stage::before {
+        background:
+          radial-gradient(ellipse at center, rgba(7, 7, 9, 0.66) 0%, rgba(7, 7, 9, 0.52) 30%, rgba(7, 7, 9, 0.14) 60%, rgba(7, 7, 9, 0.48) 100%),
+          linear-gradient(90deg, rgba(7, 7, 9, 0.54) 0%, rgba(7, 7, 9, 0.04) 18%, rgba(7, 7, 9, 0.06) 82%, rgba(7, 7, 9, 0.54) 100%);
+      }
+
+      .hero-vertical-stage::after {
+        background: linear-gradient(180deg, #070709 0%, rgba(7, 7, 9, 0.025) 18%, rgba(7, 7, 9, 0.04) 78%, #070709 100%);
+      }
+
+      .hero-ribbon {
+        position: absolute;
+        top: -62%;
+        bottom: -62%;
+        width: clamp(12.5rem, 18.5vw, 23rem);
+        z-index: 2;
+        opacity: var(--ribbon-opacity, 0.86);
+        transform: rotate(var(--tilt, 0deg));
+        will-change: transform;
+      }
+
+      .hero-ribbon-a {
+        --tilt: -3deg;
+        --ribbon-opacity: 0.92;
+        left: clamp(-2rem, 3vw, 4rem);
+      }
+
+      .hero-ribbon-b {
+        --tilt: 2deg;
+        --ribbon-opacity: 0.62;
+        left: 28%;
+        z-index: 1;
+      }
+
+      .hero-ribbon-c {
+        --tilt: -2deg;
+        --ribbon-opacity: 0.62;
+        right: 28%;
+        z-index: 1;
+      }
+
+      .hero-ribbon-d {
+        --tilt: 3deg;
+        --ribbon-opacity: 0.92;
+        right: clamp(-2rem, 3vw, 4rem);
+      }
+
+      .hero-ribbon-track {
+        display: flex;
+        flex-direction: column;
+        gap: 1.05rem;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+      }
+
+      .hero-ribbon-down .hero-ribbon-track {
+        animation: heroRibbonDown 30s linear infinite;
+      }
+
+      .hero-ribbon-up .hero-ribbon-track {
+        animation: heroRibbonUp 30s linear infinite;
+      }
+
+      .hero-ribbon-b .hero-ribbon-track {
+        animation-duration: 40s;
+      }
+
+      .hero-ribbon-c .hero-ribbon-track {
+        animation-duration: 38s;
+      }
+
+      .hero-flow-thumb {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow:
+          0 22px 66px rgba(0, 0, 0, 0.48),
+          inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        filter: saturate(1.1) brightness(0.86) contrast(1.04);
+        transform: translateZ(0);
+      }
+
+      .hero-flow-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .hero-ribbon-a .hero-flow-thumb:nth-child(2n),
+      .hero-ribbon-c .hero-flow-thumb:nth-child(2n) {
+        transform: translateX(1.8rem);
+      }
+
+      .hero-ribbon-b .hero-flow-thumb:nth-child(2n),
+      .hero-ribbon-d .hero-flow-thumb:nth-child(2n) {
+        transform: translateX(-1.8rem);
+      }
+
+      .hero-center-shield {
+        position: absolute;
+        inset: 0;
+        z-index: 7;
+        pointer-events: none;
+        background:
+          radial-gradient(ellipse at center, rgba(7, 7, 9, 0.86) 0%, rgba(7, 7, 9, 0.72) 32%, rgba(7, 7, 9, 0.22) 61%, transparent 78%),
+          linear-gradient(180deg, rgba(7, 7, 9, 0.06), rgba(7, 7, 9, 0.36));
+      }
+
+      @keyframes heroRibbonUp {
+        from { transform: translate3d(0, 0, 0); }
+        to { transform: translate3d(0, -50%, 0); }
+      }
+
+      @keyframes heroRibbonDown {
+        from { transform: translate3d(0, -50%, 0); }
+        to { transform: translate3d(0, 0, 0); }
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 10;
+      }
+
+      @media (max-width: 980px) {
+        .hero-ribbon {
+          width: clamp(10.5rem, 26vw, 15rem);
+          opacity: calc(var(--ribbon-opacity, 0.82) * 0.78);
+        }
+        .hero-ribbon-b,
+        .hero-ribbon-c {
+          display: none;
+        }
+        .hero-flow-thumb {
+          border-radius: 18px;
+          filter: saturate(0.96) brightness(0.7);
+        }
+        .hero-ribbon-track {
+          gap: 0.82rem;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .hero-vertical-stage {
+          opacity: 0.72;
+        }
+        .hero-ribbon {
+          width: 10rem;
+          top: -42%;
+          bottom: -42%;
+        }
+        .hero-ribbon-a {
+          left: -5.4rem;
+        }
+        .hero-ribbon-d {
+          right: -5.4rem;
+        }
+        .hero-ribbon-track {
+          gap: 0.65rem;
+          animation-duration: 46s !important;
+        }
+        .hero-flow-thumb {
+          border-radius: 14px;
+          filter: saturate(0.82) brightness(0.58);
+        }
+        .hero-center-shield {
+          background: radial-gradient(ellipse at center, rgba(7, 7, 9, 0.93) 0%, rgba(7, 7, 9, 0.82) 48%, rgba(7, 7, 9, 0.5) 76%, rgba(7, 7, 9, 0.24) 100%);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero-ribbon-track {
+          animation: none !important;
+        }
+      }
+
+      /* Replays section reveal every time a nav item is clicked */
+      .reveal.replay-reset,
+      .work-card.reveal.replay-reset,
+      .section-header.reveal.replay-reset,
+      .work-top.reveal.replay-reset,
+      .proof-row.reveal.replay-reset,
+      .faq-list.reveal.replay-reset,
+      .process-card.reveal.replay-reset {
+        transition: none !important;
+        opacity: 0 !important;
+      }
+
+
+
+      /* FINAL HERO SLIDER FIX: keep the uploaded working vertical motion, but force it to run smoothly on every device */
+      .hero-vertical-stage {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        contain: paint;
+      }
+
+      .hero-ribbon {
+        display: block !important;
+        overflow: visible !important;
+        will-change: transform;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+      }
+
+      .hero-ribbon-track {
+        display: flex !important;
+        flex-direction: column !important;
+        will-change: transform !important;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        animation-play-state: running !important;
+      }
+
+      .hero-ribbon-down .hero-ribbon-track {
+        animation: heroRibbonDown 26s linear infinite !important;
+      }
+
+      .hero-ribbon-up .hero-ribbon-track {
+        animation: heroRibbonUp 26s linear infinite !important;
+      }
+
+      .hero-ribbon-b .hero-ribbon-track {
+        animation-duration: 34s !important;
+      }
+
+      .hero-ribbon-c .hero-ribbon-track {
+        animation-duration: 32s !important;
+      }
+
+      .hero-flow-thumb {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      @keyframes heroRibbonUp {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(0, -50%, 0); }
+      }
+
+      @keyframes heroRibbonDown {
+        0% { transform: translate3d(0, -50%, 0); }
+        100% { transform: translate3d(0, 0, 0); }
+      }
+
+      @media (max-width: 680px) {
+        .hero-ribbon-down .hero-ribbon-track,
+        .hero-ribbon-up .hero-ribbon-track {
+          animation-duration: 34s !important;
+        }
+        .hero-vertical-stage {
+          opacity: 0.82 !important;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero-ribbon-down .hero-ribbon-track {
+          animation: heroRibbonDown 34s linear infinite !important;
+        }
+        .hero-ribbon-up .hero-ribbon-track {
+          animation: heroRibbonUp 34s linear infinite !important;
+        }
+      }
+
+
+      /* FINAL REVISION: small bug/UI safety polish, no design/content changes */
+      .hero-vertical-stage {
+        transform: translate3d(-50%, 0, 0) !important;
+      }
+
+      .hero-ribbon-track {
+        min-height: max-content;
+      }
+
+      .hero-flow-thumb,
+      .hero-flow-thumb img {
+        pointer-events: none;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+
+      .work-card img,
+      .process-media img,
+      .about-image-wrapper img,
+      .review-avatar {
+        -webkit-user-drag: none;
+      }
+
+      .mobile-menu-btn,
+      .mobile-menu-close,
+      .mobile-menu-links a,
+      .btn-main,
+      .btn-secondary,
+      .contact-submit,
+      .faq-trigger {
+        touch-action: manipulation;
+      }
+
+      @supports (height: 100svh) {
+        .hero {
+          min-height: 100svh;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .hero {
+          min-height: 100svh;
+        }
+        .hero-ribbon-track {
+          animation-timing-function: linear !important;
+        }
+      }
+
+</style>
   </head>
   <body>
     <div class="site-ambient" aria-hidden="true">
@@ -2654,8 +3043,6 @@
     </div>
     <div class="noise"></div>
     <div class="scroll-progress" id="scrollProgress"></div>
-    <div class="cursor-glow" id="cursorGlow"></div>
-    <div class="custom-cursor" id="customCursor"></div>
 
     <nav aria-label="Main navigation" id="mainNav">
       <div class="nav-highlight"></div>
@@ -2669,7 +3056,7 @@
     </nav>
 
     <!-- Mobile Topbar + Slide Panel -->
-    <div class="mobile-topbar" aria-hidden="true">
+    <div class="mobile-topbar">
       <div class="mobile-topbar-brand">
         <strong>Abdullah Al Mamun</strong>
         <span>Thumbnail Designer</span>
@@ -2714,6 +3101,85 @@
 
     <main>
       <section class="hero container" id="home">
+        <div class="hero-vertical-stage" aria-hidden="true">
+          <div class="hero-ribbon hero-ribbon-a hero-ribbon-down">
+            <div class="hero-ribbon-track">
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+            </div>
+          </div>
+          <div class="hero-ribbon hero-ribbon-b hero-ribbon-up">
+            <div class="hero-ribbon-track">
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+            </div>
+          </div>
+          <div class="hero-ribbon hero-ribbon-c hero-ribbon-down">
+            <div class="hero-ribbon-track">
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+            </div>
+          </div>
+          <div class="hero-ribbon hero-ribbon-d hero-ribbon-up">
+            <div class="hero-ribbon-track">
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+            </div>
+          </div>
+          <div class="hero-center-shield"></div>
+        </div>
         <div class="hero-inner">
           <div class="hero-kicker reveal">Premium Thumbnail Design</div>
           <h1 class="reveal">
@@ -2744,91 +3210,69 @@
           </div>
 
           <div class="work-wall">
+            <article class="work-card reveal">
+              <img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="Business YouTube Thumbnail" />
+            </article>
+            <article class="work-card reveal">
+              <img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="Tech YouTube Thumbnail" />
+            </article>
+            <article class="work-card reveal">
+              <img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="Financial Business Thumbnail" />
+            </article>
+            <article class="work-card reveal">
+              <img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="Expert Podcast Thumbnail" />
+            </article>
+            <article class="work-card reveal">
+              <img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="Gaming Thumbnail Illustration" />
+            </article>
+            <article class="work-card reveal">
+              <img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="Podcast Thumbnail Design" />
+            </article>
+            <article class="work-card reveal">
+              <img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="Podcast Thumbnail Design" />
+            </article>
+            <article class="work-card reveal">
+              <img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="Podcast Thumbnail Design" />
+            </article>
+            <article class="work-card reveal">
+              <img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="Podcast Thumbnail Design" />
+            </article>
             <article class="work-card reveal image-slider">
-              <img src="after/1.webp" alt="Gaming YouTube Thumbnail - Redesign After" />
-              <img src="before/1.webp" alt="Before Redesign" class="image-before" />
+              <img loading="lazy" decoding="async" src="after/1.webp" alt="Gaming YouTube Thumbnail - Before and After After" />
+              <img loading="lazy" decoding="async" src="before/1.webp" alt="Gaming YouTube Thumbnail - Before and After Before" class="image-before" />
               <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
               <div class="slider-handle"></div>
             </article>
-            <article class="work-card reveal">
-              <img src="thumbnails/1.avif" alt="Business YouTube Thumbnail" />
-            </article>
             <article class="work-card reveal image-slider">
-              <img src="after/2.webp" alt="Podcast Thumbnail - Redesign After" />
-              <img src="before/2.webp" alt="Before Redesign" class="image-before" />
+              <img loading="lazy" decoding="async" src="after/2.webp" alt="Podcast Thumbnail - Before and After After" />
+              <img loading="lazy" decoding="async" src="before/2.webp" alt="Podcast Thumbnail - Before and After Before" class="image-before" />
               <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
               <div class="slider-handle"></div>
             </article>
-            <article class="work-card reveal">
-              <img src="thumbnails/2.avif" alt="Tech YouTube Thumbnail" />
-            </article>
             <article class="work-card reveal image-slider">
-              <img src="after/3.webp" alt="Gaming Thumbnail Portfolio - Redesign After" />
-              <img src="before/3.webp" alt="Before Redesign" class="image-before" />
+              <img loading="lazy" decoding="async" src="after/3.webp" alt="Gaming Thumbnail Portfolio - Before and After After" />
+              <img loading="lazy" decoding="async" src="before/3.webp" alt="Gaming Thumbnail Portfolio - Before and After Before" class="image-before" />
               <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
               <div class="slider-handle"></div>
             </article>
-            <article class="work-card reveal">
-              <img src="thumbnails/3.avif" alt="Financial Business Thumbnail" />
-            </article>
             <article class="work-card reveal image-slider">
-              <img src="after/4.webp" alt="Tech Review Thumbnail - Redesign After" />
-              <img src="before/4.webp" alt="Before Redesign" class="image-before" />
+              <img loading="lazy" decoding="async" src="after/4.webp" alt="Tech Review Thumbnail - Before and After After" />
+              <img loading="lazy" decoding="async" src="before/4.webp" alt="Tech Review Thumbnail - Before and After Before" class="image-before" />
               <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
               <div class="slider-handle"></div>
             </article>
-            <article class="work-card reveal">
-              <img src="thumbnails/4.avif" alt="Expert Podcast Thumbnail" />
-            </article>
             <article class="work-card reveal image-slider">
-              <img src="after/5.webp" alt="Business Thumbnail - Redesign After" />
-              <img src="before/5.webp" alt="Before Redesign" class="image-before" />
+              <img loading="lazy" decoding="async" src="after/5.webp" alt="Business Thumbnail - Before and After After" />
+              <img loading="lazy" decoding="async" src="before/5.webp" alt="Business Thumbnail - Before and After Before" class="image-before" />
               <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
               <div class="slider-handle"></div>
             </article>
-            <article class="work-card reveal">
-              <img src="thumbnails/5.avif" alt="Gaming Thumbnail Illustration" />
-            </article>
             <article class="work-card reveal image-slider">
-              <img src="after/6.webp" alt="Tech Thumbnail Design - Redesign After" />
-              <img src="before/6.webp" alt="Before Redesign" class="image-before" />
+              <img loading="lazy" decoding="async" src="after/6.webp" alt="Tech Thumbnail Design - Before and After After" />
+              <img loading="lazy" decoding="async" src="before/6.webp" alt="Tech Thumbnail Design - Before and After Before" class="image-before" />
               <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
               <div class="slider-handle"></div>
             </article>
-            <article class="work-card reveal">
-              <img src="thumbnails/6.avif" alt="Podcast Thumbnail Design" />
-            </article>
-          </div>
-
-          <div class="proof-row reveal">
-            <div class="proof-card">
-              <strong>
-                <span class="count" data-target="150">0</span>
-                +
-              </strong>
-              <span>Thumbnails</span>
-            </div>
-            <div class="proof-card">
-              <strong>
-                <span class="count" data-target="50">0</span>
-                +
-              </strong>
-              <span>Creators</span>
-            </div>
-            <div class="proof-card">
-              <strong>
-                <span class="count" data-target="24">0</span>
-                h
-              </strong>
-              <span>Fast Delivery</span>
-            </div>
-            <div class="proof-card">
-              <strong>
-                <span class="count" data-target="100">0</span>
-                %
-              </strong>
-              <span>Custom Design</span>
-            </div>
           </div>
         </div>
       </section>
@@ -2853,7 +3297,7 @@
                 expectations!"
               </p>
               <div class="review-user">
-                <img
+                <img loading="lazy" decoding="async"
                   class="review-avatar"
                   src="reviews/jack.webp"
                   alt="Jack Pembrook"
@@ -2864,7 +3308,7 @@
                 <div class="review-info">
                   <h4>
                     Jack Pembrook
-                    <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" />
+                    <img loading="lazy" decoding="async" src="reviews/verified-badge.png" class="verified-badge" alt="Verified" />
                   </h4>
                   <span>YouTuber · 1.69M Subscribers</span>
                 </div>
@@ -2886,7 +3330,7 @@
                 recommend him!"
               </p>
               <div class="review-user">
-                <img
+                <img loading="lazy" decoding="async"
                   class="review-avatar"
                   src="reviews/sabri.webp"
                   alt="Sabri Suby"
@@ -2895,7 +3339,7 @@
                 <div class="review-info">
                   <h4>
                     Sabri Suby
-                    <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" />
+                    <img loading="lazy" decoding="async" src="reviews/verified-badge.png" class="verified-badge" alt="Verified" />
                   </h4>
                   <span>YouTuber · 450K Subscribers</span>
                 </div>
@@ -2917,7 +3361,7 @@
                 recommend him!"
               </p>
               <div class="review-user">
-                <img
+                <img loading="lazy" decoding="async"
                   class="review-avatar"
                   src="reviews/techsource.webp"
                   alt="TechSource"
@@ -2926,7 +3370,7 @@
                 <div class="review-info">
                   <h4>
                     TechSource
-                    <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" />
+                    <img loading="lazy" decoding="async" src="reviews/verified-badge.png" class="verified-badge" alt="Verified" />
                   </h4>
                   <span>YouTuber · 4.1M Subscribers</span>
                 </div>
@@ -2948,7 +3392,7 @@
                 channel. A true professional!"
               </p>
               <div class="review-user">
-                <img
+                <img loading="lazy" decoding="async"
                   class="review-avatar"
                   src="reviews/Liam%20Ottley.jpg"
                   alt="Liam Ottley"
@@ -2959,7 +3403,7 @@
                 <div class="review-info">
                   <h4>
                     Liam Ottley
-                    <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" />
+                    <img loading="lazy" decoding="async" src="reviews/verified-badge.png" class="verified-badge" alt="Verified" />
                   </h4>
                   <span>YouTuber · 780K Subscribers</span>
                 </div>
@@ -2979,7 +3423,7 @@
                 "Abdullah is a true professional. He knows how to make every design look realistic, clean, and high quality. The final work always feels polished, and he is very easy to communicate and work with."
               </p>
               <div class="review-user">
-                <img
+                <img loading="lazy" decoding="async"
                   class="review-avatar"
                   src="reviews/Tdawgsmitty.jpg"
                   alt="Tdawgsmitty"
@@ -2990,7 +3434,7 @@
                 <div class="review-info">
                   <h4>
                     Tdawgsmitty
-                    <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" />
+                    <img loading="lazy" decoding="async" src="reviews/verified-badge.png" class="verified-badge" alt="Verified" />
                   </h4>
                   <span>YouTuber · 597K Subscribers</span>
                 </div>
@@ -3012,7 +3456,7 @@
                 try!"
               </p>
               <div class="review-user">
-                <img
+                <img loading="lazy" decoding="async"
                   class="review-avatar"
                   src="reviews/solazzo.webp"
                   alt="Solazzo"
@@ -3053,7 +3497,7 @@
           </div>
           <div class="about-visual">
             <div class="about-image-wrapper">
-              <img
+              <img loading="lazy" decoding="async"
                 src="profile/1.avif"
                 alt="Abdullah Al Mamun - Professional Thumbnail Designer"
                 onerror="
@@ -3073,7 +3517,7 @@
         <div class="process-grid">
           <article class="process-card reveal">
             <div class="process-media">
-              <img
+              <img loading="lazy" decoding="async"
                 src="Process/1.avif"
                 alt="Strategy Consultation"
                 onerror="
@@ -3104,7 +3548,7 @@
 
           <article class="process-card reveal reveal-delay-1">
             <div class="process-media">
-              <img
+              <img loading="lazy" decoding="async"
                 src="Process/2.avif"
                 alt="Conceptualization"
                 onerror="
@@ -3135,7 +3579,7 @@
 
           <article class="process-card reveal reveal-delay-2">
             <div class="process-media">
-              <img
+              <img loading="lazy" decoding="async"
                 src="Process/3.avif"
                 alt="Final Design Production"
                 onerror="
@@ -3518,9 +3962,7 @@
 
       mobileMenuSheet.addEventListener("click", (e) => e.stopPropagation());
 
-      mobileMenuLinks.forEach((link) => {
-        link.addEventListener("click", () => toggleMobileMenu(false));
-      });
+      // Mobile nav links are closed inside the main anchor-click handler so the saved scroll position stays correct.
 
       window.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && mobileMenuOverlay.classList.contains("active")) {
@@ -3569,8 +4011,7 @@
 
       // Butter-smooth scroll — desktop only. Mobile stays native for best touch performance.
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const canUsePremiumSmoothScroll =
-        window.matchMedia("(min-width: 681px) and (hover: hover) and (pointer: fine)").matches && !prefersReducedMotion;
+      const canUsePremiumSmoothScroll = false;
 
       if (canUsePremiumSmoothScroll) {
         document.documentElement.classList.add("premium-smooth-scroll");
@@ -3668,6 +4109,144 @@
         });
       }
 
+      // Premium navigation scroll: smooth section jump with fixed-nav offset, no wheel hijack.
+      let navScrollLock = false;
+      let navScrollRAF = null;
+
+      function getNavOffset() {
+        const desktopNav = document.getElementById("mainNav");
+        const mobileTopbar = document.querySelector(".mobile-topbar");
+        if (window.innerWidth <= 680 && mobileTopbar) return Math.ceil(mobileTopbar.offsetHeight + 26);
+        if (desktopNav) return Math.ceil(desktopNav.offsetHeight + 42);
+        return window.innerWidth > 680 ? 118 : 84;
+      }
+
+      function getTargetScrollTop(targetEl) {
+        const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        const rawTop = targetEl.getBoundingClientRect().top + window.pageYOffset - getNavOffset();
+        return Math.max(0, Math.min(maxScroll, Math.round(rawTop)));
+      }
+
+      function setActiveNavById(sectionId) {
+        document.querySelectorAll('#mainNav a, .mobile-menu-links a, .mobile-menu-cta').forEach((link) => {
+          const isActive = link.getAttribute("href") === `#${sectionId}`;
+          link.classList.toggle("active", isActive);
+          if (isActive && window.innerWidth > 680 && link.closest("#mainNav")) updateNavHighlight(link);
+        });
+      }
+
+      function prepareSectionReveal(targetEl) {
+        if (!targetEl) return;
+        const revealItems = Array.from(targetEl.querySelectorAll(".reveal"));
+        revealItems.forEach((el) => {
+          if (typeof revealObserver !== "undefined" && revealObserver) revealObserver.unobserve(el);
+          el.classList.add("replay-reset");
+          el.classList.remove("active");
+          el.style.transitionDelay = "0ms";
+        });
+        // Force browser to register the reset so the same section can animate every nav click.
+        if (revealItems.length) void targetEl.offsetHeight;
+      }
+
+      function revealSectionAgain(targetEl) {
+        if (!targetEl) return;
+        const revealItems = Array.from(targetEl.querySelectorAll(".reveal"));
+        revealItems.forEach((el, index) => {
+          if (typeof revealObserver !== "undefined" && revealObserver) revealObserver.unobserve(el);
+          const workCards = Array.from(targetEl.querySelectorAll(".work-card.reveal"));
+          if (targetEl.id === "work" && el.classList.contains("work-card")) {
+            const cardIndex = Math.max(0, workCards.indexOf(el));
+            el.style.transitionDelay = `${Math.min(cardIndex * 70, 490)}ms`;
+          } else {
+            el.style.transitionDelay = `${Math.min(index * 45, 260)}ms`;
+          }
+          requestAnimationFrame(() => {
+            el.classList.remove("replay-reset");
+            requestAnimationFrame(() => el.classList.add("active"));
+          });
+        });
+      }
+
+      function animateScrollTo(targetY, done) {
+        if (navScrollRAF) cancelAnimationFrame(navScrollRAF);
+
+        if (prefersReducedMotion) {
+          window.scrollTo(0, targetY);
+          if (typeof done === "function") done();
+          return;
+        }
+
+        const startY = window.pageYOffset || document.documentElement.scrollTop;
+        const distance = targetY - startY;
+        if (Math.abs(distance) < 4) {
+          window.scrollTo(0, targetY);
+          requestAnimationFrame(() => { if (typeof done === "function") done(); });
+          return;
+        }
+        const duration = Math.min(760, Math.max(360, Math.abs(distance) * 0.3));
+        const startTime = performance.now();
+        navScrollLock = true;
+
+        // Smooth glide with a clean stop, without the slow crawl feeling near the end.
+        const glideEase = (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+
+        const step = (now) => {
+          const progress = Math.min(1, (now - startTime) / duration);
+          const eased = glideEase(progress);
+          window.scrollTo(0, Math.round(startY + distance * eased));
+
+          if (progress < 1) {
+            navScrollRAF = requestAnimationFrame(step);
+          } else {
+            window.scrollTo(0, targetY);
+            navScrollRAF = null;
+            navScrollLock = false;
+            if (typeof done === "function") done();
+          }
+        };
+
+        navScrollRAF = requestAnimationFrame(step);
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", (event) => {
+          const href = anchor.getAttribute("href");
+          if (!href || href === "#") return;
+
+          const targetEl = document.querySelector(href);
+          if (!targetEl) return;
+
+          event.preventDefault();
+          const sectionId = href.slice(1);
+          setActiveNavById(sectionId);
+
+          if (mobileMenuOverlay && mobileMenuOverlay.classList.contains("active")) {
+            toggleMobileMenu(false);
+          }
+
+          window.history.pushState(null, "", href);
+          prepareSectionReveal(targetEl);
+
+          requestAnimationFrame(() => {
+            const targetY = getTargetScrollTop(targetEl);
+            animateScrollTo(targetY, () => {
+              revealSectionAgain(targetEl);
+              updateActiveNav();
+              updateScrollProgress();
+            });
+          });
+        });
+      });
+
+      window.addEventListener("load", () => {
+        if (window.location.hash) {
+          const targetEl = document.querySelector(window.location.hash);
+          if (targetEl) {
+            requestAnimationFrame(() => window.scrollTo(0, getTargetScrollTop(targetEl)));
+          }
+        }
+      });
+
       // Scroll progress
       const scrollProgress = document.getElementById("scrollProgress");
       function updateScrollProgress() {
@@ -3675,7 +4254,8 @@
         const h = document.documentElement;
         const st = window.pageYOffset || h.scrollTop;
         const sh = h.scrollHeight || document.body.scrollHeight;
-        const progress = st / (sh - h.clientHeight);
+        const maxScrollable = Math.max(1, sh - h.clientHeight);
+        const progress = st / maxScrollable;
         scrollProgress.style.transform = `scaleX(${Math.max(0, Math.min(1, progress))})`;
       }
 
@@ -3683,7 +4263,7 @@
         "scroll",
         () => {
           requestAnimationFrame(() => {
-            updateActiveNav();
+            if (!navScrollLock) updateActiveNav();
             updateScrollProgress();
           });
         },
@@ -3697,6 +4277,7 @@
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("active");
+              revealObserver.unobserve(entry.target);
             }
           });
         },
