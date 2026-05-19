@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Abdullah Designs</title>
     <meta
-      content="Premium YouTube thumbnail design portfolio by Abdullah Designs. Scroll-stopping thumbnail visuals built for creators, brands, and channels."
+      content="Premium YouTube thumbnail design focused on attention, CTR, and visual storytelling. Scroll-stopping thumbnail visuals built for creators, brands, and channels."
       name="description"
     />
     <meta
@@ -14,24 +14,25 @@
     />
     <meta content="Abdullah Designs" name="author" />
     <meta content="index, follow" name="robots" />
+    <meta name="theme-color" content="#070709" />
 
     <meta content="website" property="og:type" />
     <meta content="https://abdullahdesigns.com/" property="og:url" />
     <meta content="Abdullah Designs" property="og:title" />
     <meta
-      content="Premium YouTube thumbnail design portfolio by Abdullah Designs. Scroll-stopping thumbnail visuals built for creators, brands, and channels."
+      content="Premium YouTube thumbnail design focused on attention, CTR, and visual storytelling. Scroll-stopping thumbnail visuals built for creators, brands, and channels."
       property="og:description"
     />
-    <meta content="favicon/Logo.png" property="og:image" />
+    <meta property="og:image" content="https://abdullahdesigns.com/preview.jpg" />
 
-    <meta content="1.avif" name="twitter:card" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta content="https://abdullahdesigns.com/" name="twitter:url" />
     <meta content="Abdullah Designs | Premium YouTube Thumbnail Portfolio" property="og:title" />
     <meta
-      content="Premium YouTube thumbnail design portfolio by Abdullah Designs. Scroll-stopping thumbnail visuals built for creators, brands, and channels."
+      content="Premium YouTube thumbnail design focused on attention, CTR, and visual storytelling. Scroll-stopping thumbnail visuals built for creators, brands, and channels."
       name="twitter:description"
     />
-    <meta content="favicon/Logo.png" name="twitter:image" />
+    <meta name="twitter:image" content="https://abdullahdesigns.com/preview.jpg" />
     <meta content="@Abdullahgfx99" name="twitter:site" />
 
     <link href="favicon/Logo.png" rel="icon" type="image/png" />
@@ -49,6 +50,8 @@
       }
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap"
       rel="stylesheet"
@@ -63,7 +66,7 @@
         --primary: #6366f1;
         --primary-2: #8b5cf6;
         --text: #fafafa;
-        --text-dim: #a1a1aa;
+        --text-dim: #b8b8c2;
         --text-soft: #71717a;
         --glass: rgba(255, 255, 255, 0.035);
         --radius-xl: 34px;
@@ -85,6 +88,7 @@
       }
 
       body {
+        image-rendering: auto;
         background:
           radial-gradient(circle at 20% 10%, rgba(99, 102, 241, 0.12), transparent 36rem),
           radial-gradient(circle at 90% 5%, rgba(139, 92, 246, 0.08), transparent 32rem),
@@ -137,7 +141,7 @@
 
       .site-orb {
         border-radius: 50%;
-        filter: blur(22px);
+        filter: blur(16px);
         opacity: 0.32;
         mix-blend-mode: screen;
         animation: siteFloat 18s var(--ease) infinite;
@@ -181,7 +185,7 @@
       .site-beam {
         width: 34rem;
         height: 7rem;
-        filter: blur(38px);
+        filter: blur(26px);
         opacity: 0.11;
         background: linear-gradient(
           90deg,
@@ -243,7 +247,7 @@
         inset: 0;
         z-index: 9999;
         pointer-events: none;
-        opacity: 0.03;
+        opacity: 0.015;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
       }
 
@@ -307,6 +311,7 @@
 
       @media (min-width: 681px) and (hover: hover) and (pointer: fine) {
         body {
+        image-rendering: auto;
           cursor: none;
         }
         a,
@@ -350,7 +355,7 @@
         z-index: 1000;
         display: flex;
         gap: 0.35rem;
-        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+        box-shadow: 0 14px 42px rgba(0, 0, 0, 0.24);
       }
 
       .nav-highlight {
@@ -520,7 +525,7 @@
       .mobile-menu-sheet {
         position: relative;
         z-index: 1;
-        width: min(220px, calc(100vw - 4rem));
+        width: min(260px, calc(100vw - 2rem));
         padding: 0.9rem;
         border-radius: 42px;
         border: 1px solid rgba(255, 255, 255, 0.09);
@@ -709,7 +714,7 @@
         color: var(--text-dim);
         max-width: 680px;
         margin: 0 auto 2.6rem;
-        line-height: 1.75;
+        line-height: 1.82;
       }
 
       .hero-actions {
@@ -968,7 +973,7 @@
         transition:
           background 0.35s var(--ease),
           border-color 0.35s var(--ease),
-          transform 0.35s var(--ease);
+          transform 0.28s var(--ease);
       }
 
       .btn-main {
@@ -1220,13 +1225,13 @@
         transition:
           background 0.35s var(--ease),
           border-color 0.35s var(--ease),
-          transform 0.35s var(--ease);
+          transform 0.28s var(--ease);
       }
 
       .review-card:hover {
         background: rgba(255, 255, 255, 0.035);
         border-color: rgba(255, 255, 255, 0.24);
-        transform: translateY(-5px);
+        transform: translateY(-3px);
       }
 
       .review-content {
@@ -1314,7 +1319,7 @@
       .about-text {
         color: var(--text-dim);
         font-size: clamp(1rem, 1.15vw, 1.12rem);
-        line-height: 1.75;
+        line-height: 1.82;
         margin-bottom: 2rem;
       }
 
@@ -1425,7 +1430,7 @@
       .process-card:hover {
         border-color: var(--border-strong);
         background: rgba(255, 255, 255, 0.04);
-        transform: translateY(-5px);
+        transform: translateY(-3px);
       }
 
       .process-media {
@@ -1612,7 +1617,7 @@
         background: rgba(255, 255, 255, 0.06);
         border-color: var(--border-strong);
         color: #fff;
-        transform: translateY(-5px);
+        transform: translateY(-3px);
       }
 
       .cta-card .social-grid {
@@ -2264,6 +2269,7 @@
       /* MOBILE EXPERIENCE FIXES */
       @media (max-width: 680px) {
         body {
+        image-rendering: auto;
           padding-bottom: 0;
         }
 
@@ -2644,6 +2650,7 @@
 
       /* FINAL USER REQUEST: remove stats area, keep normal cursor, reduce background weight, faster smoother native scroll */
       body {
+        image-rendering: auto;
         background: #070709 !important;
         cursor: auto !important;
       }
@@ -3192,7 +3199,7 @@
             built for serious creators.
           </p>
           <div class="hero-actions reveal">
-            <a class="btn-main" href="#work">View Work</a>
+            <a class="btn-main" href="#work">See My Best Thumbnails</a>
             <a class="btn-secondary" href="#contact">Book a Project</a>
           </div>
         </div>
@@ -4616,5 +4623,90 @@
       const proofRow = document.querySelector(".proof-row");
       if (proofRow) counterObserver.observe(proofRow);
     </script>
-  </body>
+  
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const isMobile = window.innerWidth <= 768;
+
+  // Better performance rendering
+  document.querySelectorAll(
+    '.work-card, .review-card, .process-card, .proof-card, .social-card'
+  ).forEach(el => {
+    el.style.transform = 'translateZ(0)';
+    el.style.backfaceVisibility = 'hidden';
+  });
+
+  // Lighter animations on mobile
+  if (isMobile) {
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.style.transitionDuration = '0.7s';
+    });
+    return;
+  }
+
+  // Desktop premium smooth scroll
+  let current = window.scrollY;
+  let target = window.scrollY;
+  let isAnimating = false;
+
+  function smoothScroll() {
+    current += (target - current) * 0.08;
+
+    if (Math.abs(target - current) < 0.1) {
+      current = target;
+      isAnimating = false;
+      return;
+    }
+
+    window.scrollTo(0, current);
+    requestAnimationFrame(smoothScroll);
+  }
+
+  window.addEventListener('wheel', (e) => {
+    // Ignore if hovering navbar/menu
+    if (e.target.closest('nav') || e.target.closest('.mobile-menu-overlay')) {
+      return;
+    }
+
+    e.preventDefault();
+
+    target += e.deltaY;
+    target = Math.max(
+      0,
+      Math.min(target, document.body.scrollHeight - window.innerHeight)
+    );
+
+    if (!isAnimating) {
+      isAnimating = true;
+      requestAnimationFrame(smoothScroll);
+    }
+  }, { passive: false });
+
+  // Fix navbar anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      const targetEl = document.querySelector(targetId);
+
+      if (!targetEl) return;
+
+      e.preventDefault();
+
+      target = targetEl.offsetTop - 100;
+
+      if (!isAnimating) {
+        isAnimating = true;
+        requestAnimationFrame(smoothScroll);
+      }
+    });
+  });
+});
+</script>
+
+
+</body>
 </html>
