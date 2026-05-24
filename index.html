@@ -807,7 +807,7 @@
         <div class="cta-card reveal">
           <h2>Let's Build Something That Gets Clicked</h2>
           <p>Drop your channel link and tell me about your next video. I'll get back to you within a few hours with ideas and availability.</p>
-          <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST">
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="New Thumbnail Project - Abdullah Designs"/>
             <input type="hidden" name="_captcha" value="false"/>
             <input type="hidden" name="_template" value="table"/>
@@ -815,7 +815,7 @@
             <div class="contact-field"><label for="channelName">Channel Name</label><input id="channelName" name="Channel Name" type="text" placeholder="Your Channel" autocomplete="organization" required/></div>
             <div class="contact-field"><label for="clientEmail">Your Email</label><input id="clientEmail" name="Email" type="email" placeholder="you@email.com" autocomplete="email" required/></div>
             <div class="contact-field contact-field-full"><label for="clientMessage">Project Details</label><textarea id="clientMessage" name="Message" placeholder="Tell me about your video, audience, and what you're looking for..." rows="5" required></textarea></div>
-            <button class="contact-submit" type="submit">Send Message</button>
+            <button type="submit" class="contact-submit" type="submit">Send Message</button>
           </form>
           <div class="social-grid">
             <a href="https://x.com/Abdullahgfx99" target="_blank" rel="noopener noreferrer" class="social-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg><span>Twitter / X</span></a>
@@ -1012,15 +1012,15 @@ if(el.classList.contains('work-card'))el.style.transitionDelay=`${Math.min((i%6)
       // ═══ CONTACT FORM ═══
       const contactForm=document.getElementById('contactForm');
       if(contactForm){
-        contactForm.addEventListener('submit',async e=>{
+        contactForm.addEventListener('submit', async (e) => {
           e.preventDefault();
 
           const btn = contactForm.querySelector('.contact-submit');
-          const original = btn ? btn.textContent : 'Send Message';
+          const originalText = btn ? btn.textContent : 'Send Message';
 
           if(btn){
-            btn.textContent = 'Sending...';
             btn.disabled = true;
+            btn.textContent = 'Sending...';
           }
 
           try{
@@ -1028,30 +1028,27 @@ if(el.classList.contains('work-card'))el.style.transitionDelay=`${Math.min((i%6)
               method:'POST',
               body:new FormData(contactForm),
               headers:{
-                Accept:'application/json'
+                'Accept':'application/json'
               }
             });
 
-            const data = await response.json().catch(()=>null);
-
-            if(!response.ok || (data && data.success === false)){
-              throw new Error('submit_failed');
+            if(!response.ok){
+              throw new Error('Failed');
             }
 
             contactForm.reset();
 
             if(btn){
               btn.textContent = 'Message Sent ✓';
-            }
-
-          }catch(error){
+      }catch(error){
 
             if(btn){
-              btn.textContent = 'Try Again';
               btn.disabled = false;
+              btn.textContent = 'Try Again';
             }
 
-            console.error('Contact form error:', error);
+            alert('Message failed to send. Please try again.');
+            console.error(error);
           }
         });
       }
@@ -1088,9 +1085,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fix mobile repaint lag
   if (window.innerWidth <= 680) {
     document.body.style.webkitTransform = 'translateZ(0)';
-  }
-
-});
+      });
 </script>
 
 </body>
