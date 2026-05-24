@@ -292,10 +292,6 @@
       footer .footer-left{display:flex;align-items:center;gap:0.6rem}
       footer .footer-dot{width:4px;height:4px;border-radius:50%;background:var(--text-muted)}
 
-      
-      }
-
-      
       /* ═══════════════════════════════════════════════════════════
          FINAL OPTIMIZED REVEAL SYSTEM
          ═══════════════════════════════════════════════════════════ */
@@ -1015,7 +1011,50 @@ if(el.classList.contains('work-card'))el.style.transitionDelay=`${Math.min((i%6)
 
       // ═══ CONTACT FORM ═══
       const contactForm=document.getElementById('contactForm');
-      if(contactForm){contactForm.addEventListener('submit',async e=>{e.preventDefault();const btn=contactForm.querySelector('.contact-submit');const original=btn?btn.textContent:'Send Message';if(btn){btn.textContent='Sending...';btn.disabled=true}try{const res=await fetch(contactForm.action,{method:'POST',body:new FormData(contactForm),headers:{Accept:'application/json'}});if(!res.ok)throw new Error('fail');contactForm.reset();if(btn)btn.textContent='Message Sent ✓'}catch{if(btn){btn.textContent='Try again';btn.disabled=false;setTimeout(()=>{btn.textContent=original},2000)}}})}
+      if(contactForm){
+        contactForm.addEventListener('submit',async e=>{
+          e.preventDefault();
+
+          const btn = contactForm.querySelector('.contact-submit');
+          const original = btn ? btn.textContent : 'Send Message';
+
+          if(btn){
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+          }
+
+          try{
+            const response = await fetch(contactForm.action,{
+              method:'POST',
+              body:new FormData(contactForm),
+              headers:{
+                Accept:'application/json'
+              }
+            });
+
+            const data = await response.json().catch(()=>null);
+
+            if(!response.ok || (data && data.success === false)){
+              throw new Error('submit_failed');
+            }
+
+            contactForm.reset();
+
+            if(btn){
+              btn.textContent = 'Message Sent ✓';
+            }
+
+          }catch(error){
+
+            if(btn){
+              btn.textContent = 'Try Again';
+              btn.disabled = false;
+            }
+
+            console.error('Contact form error:', error);
+          }
+        });
+      }
 
       // ═══ PERFORMANCE: GPU layers for interactive cards (desktop) ═══
       if(!isMobile()){
