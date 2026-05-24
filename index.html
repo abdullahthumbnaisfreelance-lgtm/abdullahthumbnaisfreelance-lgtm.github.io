@@ -292,53 +292,122 @@
       footer .footer-left{display:flex;align-items:center;gap:0.6rem}
       footer .footer-dot{width:4px;height:4px;border-radius:50%;background:var(--text-muted)}
 
+      
+      }
+
+      
       /* ═══════════════════════════════════════════════════════════
-         REVEAL ANIMATIONS
+         FINAL OPTIMIZED REVEAL SYSTEM
          ═══════════════════════════════════════════════════════════ */
-      .reveal{opacity:0;filter:blur(18px);transform:translate3d(0,78px,0) scale(0.975);transition:opacity 1.25s var(--ease),filter 1.25s var(--ease),transform 1.25s var(--ease);will-change:transform,opacity,filter;backface-visibility:hidden}
-      .reveal.active{opacity:1;filter:blur(0);transform:translate3d(0,0,0) scale(1)}
-      .section-header.reveal{transform:translate3d(0,64px,0) scale(0.985)}
-      .section-header.reveal.active{transform:translate3d(0,0,0) scale(1)}
-      .work-top.reveal{transform:translate3d(0,88px,0) scale(0.97)}
-      .work-top.reveal.active{transform:translate3d(0,0,0) scale(1)}
-      .work-card.reveal{opacity:0;filter:blur(16px);transform:translate3d(0,90px,0) scale(0.94) rotateX(7deg);transform-origin:center bottom;transition:opacity 1.15s var(--ease),filter 1.15s var(--ease),transform 1.15s var(--ease),border-color 0.5s var(--ease)}
-      .work-card.reveal.active{opacity:1;filter:blur(0);transform:translate3d(0,0,0) scale(1) rotateX(0deg)}
-      .work-card.reveal.active:hover{transform:translate3d(0,0,0) scale(1) rotateX(0deg)}
-      .process-card.reveal{transform:translate3d(0,72px,0) scale(0.96)}
-      .process-card.reveal.active{transform:translate3d(0,0,0) scale(1)}
-      .faq-list.reveal{transform:translate3d(0,70px,0) scale(0.975)}
-      .faq-list.reveal.active{transform:translate3d(0,0,0) scale(1)}
-      /* Hero reveals fire immediately via pure CSS — zero JS/load dependency */
-      .hero .reveal{opacity:0;filter:blur(16px);transform:translate3d(0,44px,0) scale(0.978);animation:heroSoftIn 0.95s var(--ease) forwards}
-      .hero-inner>.reveal:nth-child(1){animation-delay:0.04s}
-      .hero-inner>.reveal:nth-child(2){animation-delay:0.16s}
-      .hero-inner>.reveal:nth-child(3){animation-delay:0.28s}
-      .hero-inner>.reveal:nth-child(4){animation-delay:0.40s}
-      .hero .reveal.active{animation:heroSoftIn 0.95s var(--ease) both}
-      .hero-inner>.reveal.active:nth-child(1){animation-delay:0.04s}
-      .hero-inner>.reveal.active:nth-child(2){animation-delay:0.16s}
-      .hero-inner>.reveal.active:nth-child(3){animation-delay:0.28s}
-      .hero-inner>.reveal.active:nth-child(4){animation-delay:0.40s}
-      @keyframes heroSoftIn{from{opacity:0;filter:blur(16px);transform:translate3d(0,44px,0) scale(0.978)}to{opacity:1;filter:blur(0);transform:translate3d(0,0,0) scale(1)}}
-      .reveal-delay-1{transition-delay:0.08s}
-      .reveal-delay-2{transition-delay:0.16s}
-      .reveal-delay-3{transition-delay:0.24s}
-      .reveal.replay-reset{transition:none!important;opacity:0!important}
+
+      .reveal{
+        opacity:0;
+        transform:translate3d(0,18px,0);
+        transition:
+          transform 0.45s cubic-bezier(0.22,1,0.36,1),
+          opacity 0.45s cubic-bezier(0.22,1,0.36,1);
+        will-change:transform,opacity;
+        backface-visibility:hidden;
+      }
+
+      .reveal.active{
+        opacity:1;
+        transform:translate3d(0,0,0);
+      }
+
+      .hero .reveal{
+        opacity:0;
+        transform:translate3d(0,16px,0);
+        animation:heroRevealFinal 0.65s cubic-bezier(0.22,1,0.36,1) forwards;
+      }
+
+      .hero-inner>.reveal:nth-child(1){animation-delay:0.05s}
+      .hero-inner>.reveal:nth-child(2){animation-delay:0.1s}
+      .hero-inner>.reveal:nth-child(3){animation-delay:0.15s}
+      .hero-inner>.reveal:nth-child(4){animation-delay:0.2s}
+
+      @keyframes heroRevealFinal{
+        from{
+          opacity:0;
+          transform:translate3d(0,16px,0);
+        }
+        to{
+          opacity:1;
+          transform:translate3d(0,0,0);
+        }
+      }
+
+      .work-card.reveal{
+        opacity:0;
+        transform:translate3d(0,22px,0) scale(0.988);
+        transition:
+          transform 0.5s cubic-bezier(0.22,1,0.36,1),
+          opacity 0.5s cubic-bezier(0.22,1,0.36,1),
+          border-color 0.3s ease;
+      }
+
+      .work-card.reveal.active{
+        opacity:1;
+        transform:translate3d(0,0,0) scale(1);
+      }
+
+      .work-card:hover{
+        transform:translate3d(0,-2px,0) scale(1.01)!important;
+      }
+
+      .reveal-delay-1{transition-delay:0.03s}
+      .reveal-delay-2{transition-delay:0.06s}
+      .reveal-delay-3{transition-delay:0.09s}
+
       .work-wall .work-card.reveal:nth-child(1){transition-delay:0s}
-      .work-wall .work-card.reveal:nth-child(2){transition-delay:0.06s}
-      .work-wall .work-card.reveal:nth-child(3){transition-delay:0.12s}
-      .work-wall .work-card.reveal:nth-child(4){transition-delay:0.18s}
-      .work-wall .work-card.reveal:nth-child(5){transition-delay:0.24s}
-      .work-wall .work-card.reveal:nth-child(6){transition-delay:0.3s}
-      .work-wall .work-card.reveal:nth-child(7){transition-delay:0.06s}
-      .work-wall .work-card.reveal:nth-child(8){transition-delay:0.12s}
-      .work-wall .work-card.reveal:nth-child(9){transition-delay:0.18s}
-      .work-wall .work-card.reveal:nth-child(10){transition-delay:0.24s}
-      .work-wall .work-card.reveal:nth-child(11){transition-delay:0.3s}
-      .work-wall .work-card.reveal:nth-child(12){transition-delay:0.36s}
-      .work-wall .work-card.reveal:nth-child(13){transition-delay:0.12s}
-      .work-wall .work-card.reveal:nth-child(14){transition-delay:0.18s}
-      .work-wall .work-card.reveal:nth-child(15){transition-delay:0.24s}
+      .work-wall .work-card.reveal:nth-child(2){transition-delay:0.03s}
+      .work-wall .work-card.reveal:nth-child(3){transition-delay:0.06s}
+      .work-wall .work-card.reveal:nth-child(4){transition-delay:0.09s}
+      .work-wall .work-card.reveal:nth-child(5){transition-delay:0.12s}
+      .work-wall .work-card.reveal:nth-child(6){transition-delay:0.15s}
+
+      img{
+        image-rendering:auto;
+      }
+
+      .work-card,
+      .review-card,
+      .process-card,
+      .faq-item,
+      .hero-flow-thumb{
+        transform:translateZ(0);
+        backface-visibility:hidden;
+      }
+
+      @media(max-width:680px){
+        .reveal,
+        .work-card.reveal{
+          transition-duration:0.38s;
+          transform:translate3d(0,12px,0);
+        }
+
+        .work-card,
+        .review-card,
+        .process-card,
+        .faq-item{
+          content-visibility:auto;
+          contain-intrinsic-size:280px;
+        }
+
+        body{
+          overflow-x:hidden;
+        }
+      }
+
+      @media(prefers-reduced-motion:reduce){
+        .reveal,
+        .work-card.reveal{
+          opacity:1!important;
+          transform:none!important;
+          transition:none!important;
+          animation:none!important;
+        }
+      }
 
       /* ═══ PERFORMANCE LAYER ═══ */
       @media(min-width:681px){
@@ -420,6 +489,52 @@
         .section-divider::after{animation:none;display:none}
       }
       @supports(height:100svh){.hero{min-height:100svh}}
+    
+      /* MOBILE REVEAL PERFORMANCE FIX */
+      @media(max-width:680px){
+        .reveal,
+        .work-card.reveal,
+        .process-card.reveal,
+        .faq-list.reveal,
+        .section-header.reveal,
+        .work-top.reveal{
+          opacity:1;
+          filter:none;
+          transform:translate3d(0,0,0);
+          transition:opacity 0.45s ease, transform 0.45s ease;
+          will-change:auto;
+          backface-visibility:hidden;
+        }
+
+        .reveal:not(.active),
+        .work-card.reveal:not(.active),
+        .process-card.reveal:not(.active),
+        .faq-list.reveal:not(.active),
+        .section-header.reveal:not(.active),
+        .work-top.reveal:not(.active){
+          opacity:0;
+          transform:translate3d(0,18px,0);
+        }
+
+        .reveal.active,
+        .work-card.reveal.active,
+        .process-card.reveal.active,
+        .faq-list.reveal.active,
+        .section-header.reveal.active,
+        .work-top.reveal.active{
+          opacity:1;
+          transform:translate3d(0,0,0);
+        }
+
+        .work-card,
+        .review-card,
+        .process-card,
+        .faq-item{
+          content-visibility:auto;
+          contain-intrinsic-size:300px;
+        }
+      }
+
     </style>
   </head>
   <body>
@@ -908,5 +1023,36 @@ if(el.classList.contains('work-card'))el.style.transitionDelay=`${Math.min((i%6)
       }
     })();
     </script>
-  </body>
+  
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        requestAnimationFrame(() => {
+          entry.target.classList.add('active');
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // Fix mobile repaint lag
+  if (window.innerWidth <= 680) {
+    document.body.style.webkitTransform = 'translateZ(0)';
+  }
+
+});
+</script>
+
+</body>
 </html>
