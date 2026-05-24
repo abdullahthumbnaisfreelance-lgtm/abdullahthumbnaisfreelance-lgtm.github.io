@@ -807,7 +807,13 @@
         <div class="cta-card reveal">
           <h2>Let's Build Something That Gets Clicked</h2>
           <p>Drop your channel link and tell me about your next video. I'll get back to you within a few hours with ideas and availability.</p>
-          <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST">
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST" action="https://formsubmit.co/shahalamd293@gmail.com" method="POST">
+
+<input type="hidden" name="_subject" value="New Portfolio Contact Message">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://formsubmit.co/thanks">
+
             <input type="hidden" name="_subject" value="New Thumbnail Project - Abdullah Designs"/>
             <input type="hidden" name="_captcha" value="false"/>
             <input type="hidden" name="_template" value="table"/>
@@ -1039,8 +1045,17 @@ if(el.classList.contains('work-card'))el.style.transitionDelay=`${Math.min((i%6)
             contactForm.reset();
 
             if(btn){
+              btn.disabled = false;
               btn.textContent = 'Message Sent ✓';
-      }catch(error){
+            }
+
+            setTimeout(() => {
+              if(btn){
+                btn.textContent = originalText;
+              }
+            }, 2500);
+
+          }catch(error){
 
             if(btn){
               btn.disabled = false;
@@ -1082,10 +1097,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // Fix mobile repaint lag
+  // Mobile performance layer fix
   if (window.innerWidth <= 680) {
     document.body.style.webkitTransform = 'translateZ(0)';
-      });
+    document.body.style.transform = 'translateZ(0)';
+  }
+
+});
 </script>
 
 </body>
