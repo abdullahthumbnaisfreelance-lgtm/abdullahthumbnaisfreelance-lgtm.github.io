@@ -475,7 +475,7 @@
         .mobile-topbar-brand strong{max-width:170px;font-size:0.85rem}
         .mobile-topbar-brand .brand-icon{width:30px;height:30px;font-size:0.75rem}
       }
-      @media(pointer:coarse){.work-card.image-slider{touch-action:pan-y}.work-card.image-slider .slider-range{pointer-events:none}}
+      
       @media(prefers-reduced-motion:reduce){
         .reveal,.work-card.reveal{opacity:1;filter:none;transform:none;transition:none;will-change:auto}
         .hero .reveal{animation:none;opacity:1;filter:none;transform:none}
@@ -532,7 +532,39 @@
       }
 
     </style>
-  </head>
+  
+<style id="final-slider-fix">
+.work-card.image-slider .slider-range{
+  pointer-events:auto !important;
+  touch-action:none !important;
+}
+.work-card.image-slider{
+  overflow:hidden;
+}
+</style>
+
+
+<style id="ultimate-slider-fix">
+.work-card.image-slider{
+  position:relative;
+  touch-action:none !important;
+}
+.work-card.image-slider .slider-range{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  opacity:0 !important;
+  z-index:30 !important;
+  cursor:ew-resize !important;
+  pointer-events:auto !important;
+}
+.work-card.image-slider .image-before{
+  will-change:clip-path;
+}
+</style>
+
+</head>
   <body>
     <div class="site-ambient" aria-hidden="true">
       <div class="site-grid"></div>
@@ -807,7 +839,7 @@
         <div class="cta-card reveal">
           <h2>Let's Build Something That Gets Clicked</h2>
           <p>Drop your channel link and tell me about your next video. I'll get back to you within a few hours with ideas and availability.</p>
-          <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST" action="https://formsubmit.co/shahalamd293@gmail.com" method="POST">
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST">
 
 <input type="hidden" name="_subject" value="New Portfolio Contact Message">
 <input type="hidden" name="_captcha" value="false">
@@ -1026,46 +1058,11 @@ if(el.classList.contains('work-card'))el.style.transitionDelay=`${Math.min((i%6)
 
           if(btn){
             btn.disabled = true;
-            btn.textContent = 'Sending...';
+            btn.textContent = 'Send Message';
           }
 
           try{
-            const response = await fetch(contactForm.action,{
-              method:'POST',
-              body:new FormData(contactForm),
-              headers:{
-                'Accept':'application/json'
-              }
-            });
-
-            if(!response.ok){
-              throw new Error('Failed');
-            }
-
-            contactForm.reset();
-
-            if(btn){
-              btn.disabled = false;
-              btn.textContent = 'Message Sent ✓';
-            }
-
-            setTimeout(() => {
-              if(btn){
-                btn.textContent = originalText;
-              }
-            }, 2500);
-
-          }catch(error){
-
-            if(btn){
-              btn.disabled = false;
-              btn.textContent = 'Try Again';
-            }
-
-            alert('Message failed to send. Please try again.');
-            console.error(error);
-          }
-        });
+            const response = await 
       }
 
       // ═══ PERFORMANCE: GPU layers for interactive cards (desktop) ═══
@@ -1076,32 +1073,169 @@ if(el.classList.contains('work-card'))el.style.transitionDelay=`${Math.min((i%6)
     </script>
   
 
+
+
+
+<script id="final-mobile-menu-fix">
+document.addEventListener('DOMContentLoaded', function(){
+
+  const menuBtn = document.getElementById('mobileMenuBtn');
+  const menuOverlay = document.getElementById('mobileMenuOverlay');
+  const menuClose = document.getElementById('mobileMenuClose');
+
+  if(menuBtn && menuOverlay){
+    menuBtn.addEventListener('click', function(){
+      menuOverlay.classList.add('active');
+      document.body.classList.add('mobile-menu-open');
+      menuBtn.setAttribute('aria-expanded','true');
+    });
+  }
+
+  if(menuClose && menuOverlay){
+    menuClose.addEventListener('click', function(){
+      menuOverlay.classList.remove('active');
+      document.body.classList.remove('mobile-menu-open');
+      menuBtn.setAttribute('aria-expanded','false');
+    });
+  }
+
+  document.querySelectorAll('.mobile-menu-links a').forEach(link=>{
+    link.addEventListener('click', ()=>{
+      menuOverlay.classList.remove('active');
+      document.body.classList.remove('mobile-menu-open');
+      menuBtn.setAttribute('aria-expanded','false');
+    });
+  });
+
+});
+</script>
+
+
+
+
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-  const revealElements = document.querySelectorAll('.reveal');
+  // CONTACT FORM FIX
+  const form = document.querySelector('form[action*="formsubmit.co"]');
 
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        requestAnimationFrame(() => {
-          entry.target.classList.add('active');
+  if(form){
+
+    let msg = document.createElement('div');
+    msg.className = 'form-success-message';
+    msg.style.display = 'none';
+    msg.style.marginTop = '16px';
+    msg.style.padding = '14px';
+    msg.style.borderRadius = '14px';
+    msg.style.background = 'rgba(255,255,255,0.08)';
+    msg.style.border = '1px solid rgba(255,255,255,0.12)';
+    msg.style.color = '#fff';
+    msg.style.fontWeight = '700';
+    msg.innerHTML = 'Thank You! Your message has been sent.';
+    form.appendChild(msg);
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const btn = form.querySelector('.contact-submit, button[type="submit"]');
+
+      if(btn){
+        btn.disabled = true;
+        btn.innerText = 'Sending...';
+      }
+
+      try{
+        const response = await fetch(form.action, {
+          method:'POST',
+          body:new FormData(form),
+          headers:{
+            'Accept':'application/json'
+          }
         });
-        observer.unobserve(entry.target);
+
+        if(response.ok){
+          form.reset();
+          msg.style.display = 'block';
+
+          if(btn){
+            btn.innerText = 'Thank You';
+          }
+
+          setTimeout(() => {
+            if(btn){
+              btn.disabled = false;
+              btn.innerText = 'Send Message';
+            }
+          }, 2500);
+
+        }else{
+          alert('Message failed.');
+          if(btn){
+            btn.disabled = false;
+            btn.innerText = 'Send Message';
+          }
+        }
+
+      }catch(err){
+        alert('Network error.');
+        if(btn){
+          btn.disabled = false;
+          btn.innerText = 'Send Message';
+        }
       }
     });
-  }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'
-  });
-
-  revealElements.forEach(el => revealObserver.observe(el));
-
-  // Mobile performance layer fix
-  if (window.innerWidth <= 680) {
-    document.body.style.webkitTransform = 'translateZ(0)';
-    document.body.style.transform = 'translateZ(0)';
   }
+
+  // BEFORE AFTER SLIDER FIX
+  document.querySelectorAll('.work-card.image-slider').forEach((slider) => {
+
+    const range = slider.querySelector('.slider-range');
+    const before = slider.querySelector('.image-before');
+    const handle = slider.querySelector('.slider-handle');
+
+    if(!range || !before || !handle) return;
+
+    const updateSlider = (value) => {
+      before.style.clipPath = `polygon(0 0, ${value}% 0, ${value}% 100%, 0 100%)`;
+      handle.style.left = value + '%';
+      range.value = value;
+    };
+
+    updateSlider(range.value || 50);
+
+    let dragging = false;
+
+    const moveSlider = (clientX) => {
+      const rect = slider.getBoundingClientRect();
+      let percent = ((clientX - rect.left) / rect.width) * 100;
+      percent = Math.max(0, Math.min(100, percent));
+      updateSlider(percent);
+    };
+
+    slider.addEventListener('mousedown', () => dragging = true);
+    window.addEventListener('mouseup', () => dragging = false);
+
+    slider.addEventListener('mousemove', (e) => {
+      if(dragging){
+        moveSlider(e.clientX);
+      }
+    });
+
+    slider.addEventListener('touchstart', () => dragging = true, {passive:true});
+    window.addEventListener('touchend', () => dragging = false);
+
+    slider.addEventListener('touchmove', (e) => {
+      if(dragging && e.touches[0]){
+        moveSlider(e.touches[0].clientX);
+      }
+    }, {passive:true});
+
+    range.addEventListener('input', (e) => {
+      updateSlider(e.target.value);
+    });
+
+  });
 
 });
 </script>
