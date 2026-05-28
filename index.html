@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="theme-color" content="#f4f1ec" />
+    <meta content="#f4f1ec" name="theme-color" />
     <title>Abdullah Designs | Premium YouTube Thumbnail Portfolio</title>
     <meta
       content="Premium YouTube thumbnail design portfolio by Abdullah Designs. Scroll-stopping thumbnail visuals built for creators, brands, and channels."
@@ -15,7 +15,6 @@
     />
     <meta content="Abdullah Designs" name="author" />
     <meta content="index, follow" name="robots" />
-
     <meta content="website" property="og:type" />
     <meta content="https://abdullahdesigns.com/" property="og:url" />
     <meta content="Abdullah Designs | Premium YouTube Thumbnail Portfolio" property="og:title" />
@@ -24,20 +23,17 @@
       property="og:description"
     />
     <meta content="favicon/Logo.png" property="og:image" />
-
     <meta content="summary_large_image" name="twitter:card" />
     <meta content="https://abdullahdesigns.com/" name="twitter:url" />
-    <meta content="Abdullah Designs | Premium YouTube Thumbnail Portfolio" property="og:title" />
+    <meta content="Abdullah Designs | Premium YouTube Thumbnail Portfolio" name="twitter:title" />
     <meta
       content="Premium YouTube thumbnail design portfolio by Abdullah Designs. Scroll-stopping thumbnail visuals built for creators, brands, and channels."
       name="twitter:description"
     />
     <meta content="favicon/Logo.png" name="twitter:image" />
     <meta content="@Abdullahgfx99" name="twitter:site" />
-
     <link href="favicon/Logo.png" rel="icon" type="image/png" />
     <link href="favicon/Logo.png" rel="apple-touch-icon" />
-
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -53,7 +49,6 @@
         ]
       }
     </script>
-
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap"
       rel="stylesheet"
@@ -76,7 +71,6 @@
         --radius-md: 18px;
         --ease: cubic-bezier(0.25, 1, 0.5, 1);
         --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
-        /* Liquid Quint ease out */
       }
 
       * {
@@ -353,8 +347,8 @@
         transform: translateX(-50%);
         padding: 0.45rem;
         background: rgba(16, 16, 20, 0.75);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
         border: 1px solid var(--border);
         border-radius: 999px;
         z-index: 1000;
@@ -399,7 +393,6 @@
         color: #fff;
       }
 
-      /* Mobile Menu Components - cleaner dropdown smartphone UI */
       .mobile-topbar {
         display: none;
         position: fixed;
@@ -821,7 +814,7 @@
 
       .hero-orb {
         border-radius: 50%;
-        filter: blur(16px);
+        filter: none;
         opacity: 0.6;
         mix-blend-mode: screen;
         animation: heroFloat 16s var(--ease) infinite;
@@ -1067,7 +1060,6 @@
         grid-template-columns: repeat(3, 1fr);
         gap: clamp(0.85rem, 1.7vw, 1.4rem);
         align-items: stretch;
-        /* Ensure all cards have same height */
       }
 
       @media (max-width: 980px) {
@@ -1097,7 +1089,6 @@
         will-change: transform, border-color, box-shadow;
       }
 
-      /* Work thumbnail hover stays clean: no popup lift. */
       .work-card.reveal.active:hover {
         border-color: var(--border-strong);
         box-shadow: 0 18px 50px rgba(0, 0, 0, 0.36);
@@ -1755,7 +1746,6 @@
         border-top: 1px solid var(--border);
       }
 
-      /* PREMIUM SMOOTH SCROLL — desktop only, keeps mobile natural */
       @media (min-width: 681px) and (hover: hover) and (pointer: fine) {
         html.premium-smooth-scroll {
           scroll-behavior: auto;
@@ -1766,7 +1756,6 @@
         }
       }
 
-      /* FINAL PERFORMANCE POLISH: smoother feel without changing the existing animations */
       @media (min-width: 681px) {
         .work-card,
         .review-card,
@@ -1792,7 +1781,6 @@
         will-change: transform;
       }
 
-      /* PREMIUM REVEAL ANIMATION — taken from index2 only */
       .reveal-delay-1 {
         transition-delay: 0.08s;
       }
@@ -1811,89 +1799,6 @@
 
       .reveal-delay-5 {
         transition-delay: 0.4s;
-      }
-
-      .reveal {
-        opacity: 0;
-        filter: blur(18px);
-        transform: translate3d(0, 78px, 0) scale(0.975);
-        transition:
-          opacity 1.25s var(--ease),
-          filter 1.25s var(--ease),
-          transform 1.25s var(--ease);
-        will-change: transform, opacity, filter;
-        backface-visibility: hidden;
-      }
-
-      .reveal.active {
-        opacity: 1;
-        filter: blur(0);
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-
-      .section-header.reveal {
-        transform: translate3d(0, 64px, 0) scale(0.985);
-      }
-
-      .work-top.reveal {
-        transform: translate3d(0, 88px, 0) scale(0.97);
-      }
-
-      .work-card.reveal {
-        opacity: 0;
-        filter: blur(16px);
-        transform: translate3d(0, 90px, 0) scale(0.94) rotateX(7deg);
-        transform-origin: center bottom;
-        transition:
-          opacity 1.15s var(--ease),
-          filter 1.15s var(--ease),
-          transform 1.15s var(--ease),
-          border-color 0.55s var(--ease),
-          box-shadow 0.55s var(--ease);
-      }
-
-      .work-card.reveal.active {
-        opacity: 1;
-        filter: blur(0);
-        transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
-      }
-
-      /* Keep your no-popup thumbnail behavior after reveal */
-      .work-card.reveal.active:hover {
-        border-color: var(--border-strong);
-        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.36);
-        transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
-      }
-
-      .proof-row.reveal,
-      .faq-list.reveal {
-        transform: translate3d(0, 70px, 0) scale(0.975);
-      }
-
-      .process-card.reveal {
-        transform: translate3d(0, 72px, 0) scale(0.96);
-      }
-
-      .process-card.reveal.active {
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-
-      .hero .reveal.active {
-        animation: heroSoftIn 1.35s var(--ease) both;
-      }
-
-      @keyframes heroSoftIn {
-        from {
-          opacity: 0;
-          filter: blur(24px);
-          transform: translate3d(0, 50px, 0) scale(0.975);
-        }
-
-        to {
-          opacity: 1;
-          filter: blur(0);
-          transform: translate3d(0, 0, 0) scale(1);
-        }
       }
 
       @media (max-width: 980px) {
@@ -2154,7 +2059,6 @@
         }
       }
 
-      /* FINAL FIX: more breathing room below the fixed nav + reliable reveal everywhere */
       section[id] {
         scroll-margin-top: 12rem;
       }
@@ -2184,10 +2088,9 @@
         margin-bottom: 5.2rem !important;
       }
 
-      /* index2-style reveal, applied safely without changing layout or text */
       .reveal {
         opacity: 0;
-        filter: blur(18px);
+        filter: none;
         transform: translate3d(0, 78px, 0) scale(0.975);
         transition:
           opacity 1.25s var(--ease),
@@ -2199,7 +2102,7 @@
 
       .reveal.active {
         opacity: 1;
-        filter: blur(0);
+        filter: none;
         transform: translate3d(0, 0, 0) scale(1);
       }
 
@@ -2221,7 +2124,7 @@
 
       .work-card.reveal {
         opacity: 0;
-        filter: blur(16px);
+        filter: none;
         transform: translate3d(0, 90px, 0) scale(0.94) rotateX(7deg);
         transform-origin: center bottom;
         transition:
@@ -2234,7 +2137,7 @@
 
       .work-card.reveal.active {
         opacity: 1;
-        filter: blur(0);
+        filter: none;
         transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
       }
 
@@ -2269,13 +2172,13 @@
       @keyframes heroSoftIn {
         from {
           opacity: 0;
-          filter: blur(24px);
+          filter: none;
           transform: translate3d(0, 50px, 0) scale(0.975);
         }
 
         to {
           opacity: 1;
-          filter: blur(0);
+          filter: none;
           transform: translate3d(0, 0, 0) scale(1);
         }
       }
@@ -2323,14 +2226,12 @@
         }
       }
 
-      /* Added review cards polish */
       @media (min-width: 681px) and (max-width: 1100px) {
         .reviews-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
 
-      /* MOBILE EXPERIENCE FIXES */
       @media (max-width: 680px) {
         body {
           padding-bottom: 0;
@@ -2363,7 +2264,6 @@
         }
       }
 
-      /* HERO EXPERIENCE OPTIMIZATION: static, cleaner, faster on desktop + mobile */
       .hero {
         min-height: 88vh !important;
         padding: 9.5rem 0 5.5rem !important;
@@ -2492,7 +2392,6 @@
         }
       }
 
-      /* FINAL MOBILE MENU FIX: remove empty top pill/space and move menu closer to topbar */
       @media (max-width: 680px) {
         .mobile-menu-overlay {
           align-items: flex-start;
@@ -2524,8 +2423,8 @@
           height: 38px;
           z-index: 3;
           background: rgba(28, 29, 34, 0.86);
-          backdrop-filter: blur(18px);
-          -webkit-backdrop-filter: blur(18px);
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
           box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
         }
 
@@ -2541,7 +2440,6 @@
         }
       }
 
-      /* Menu open background: dark + blur only */
       .mobile-menu-overlay {
         background: rgba(3, 4, 7, 0.78) !important;
         backdrop-filter: blur(24px) saturate(110%) !important;
@@ -2554,7 +2452,6 @@
         -webkit-backdrop-filter: blur(30px) saturate(108%) !important;
       }
 
-      /* SMARTPHONE NAVBAR POLISH: compact, premium, cleaner spacing */
       @media (max-width: 680px) {
         .mobile-topbar {
           top: max(0.65rem, env(safe-area-inset-top));
@@ -2640,7 +2537,6 @@
         }
       }
 
-      /* FINAL SMARTPHONE MENU OVERLAY FIX: dark background + smoother blur only */
       @media (max-width: 680px) {
         .mobile-menu-overlay {
           background: rgba(2, 3, 6, 0.72) !important;
@@ -2677,7 +2573,6 @@
         }
       }
 
-      /* FINAL FIX: mobile menu opens with pure dark blur only — no white flash */
       @media (max-width: 680px) {
         .mobile-menu-overlay {
           background: rgba(0, 0, 0, 0.92) !important;
@@ -2719,7 +2614,6 @@
         }
       }
 
-      /* FINAL USER REQUEST: remove stats area, keep normal cursor, reduce background weight, faster smoother native scroll */
       body {
         background: #070709 !important;
         cursor: auto !important;
@@ -2759,7 +2653,6 @@
         padding-bottom: 5rem !important;
       }
 
-      /* ORIGINAL HERO BACKGROUND: visible vertical thumbnail motion */
       .hero {
         isolation: isolate;
       }
@@ -3016,7 +2909,6 @@
         }
       }
 
-      /* Replays section reveal every time a nav item is clicked */
       .reveal.replay-reset,
       .work-card.reveal.replay-reset,
       .section-header.reveal.replay-reset,
@@ -3028,7 +2920,6 @@
         opacity: 0 !important;
       }
 
-      /* FINAL HERO SLIDER FIX: keep the uploaded working vertical motion, but force it to run smoothly on every device */
       .hero-vertical-stage {
         display: block !important;
         visibility: visible !important;
@@ -3115,7 +3006,6 @@
         }
       }
 
-      /* FINAL REVISION: small bug/UI safety polish, no design/content changes */
       .hero-vertical-stage {
         transform: translate3d(-50%, 0, 0) !important;
       }
@@ -3164,7 +3054,6 @@
         }
       }
 
-      /* ABDULLAH PERFECT PORTFOLIO UPGRADE — viral neon dark theme */
       :root {
         --bg: #05020d;
         --surface: rgba(12, 9, 28, 0.74);
@@ -3180,6 +3069,7 @@
         --text-dim: #c7c9ff;
         --text-soft: #8585a3;
       }
+
       body {
         background:
           radial-gradient(circle at 15% 10%, rgba(0, 245, 255, 0.22), transparent 24rem),
@@ -3187,6 +3077,7 @@
           radial-gradient(circle at 45% 88%, rgba(249, 212, 35, 0.1), transparent 28rem),
           linear-gradient(180deg, #05020d 0%, #07051a 45%, #020106 100%) !important;
       }
+
       body::before {
         opacity: 0.11 !important;
         background-size: 42px 42px !important;
@@ -3194,11 +3085,13 @@
           linear-gradient(rgba(0, 245, 255, 0.07) 1px, transparent 1px),
           linear-gradient(90deg, rgba(255, 46, 166, 0.055) 1px, transparent 1px) !important;
       }
+
       .scroll-progress {
         height: 4px;
         background: linear-gradient(90deg, var(--primary), var(--hot), var(--gold)) !important;
         box-shadow: 0 0 24px rgba(0, 245, 255, 0.75);
       }
+
       nav#mainNav,
       .mobile-topbar,
       .mobile-menu-sheet {
@@ -3208,19 +3101,23 @@
           0 22px 80px rgba(0, 0, 0, 0.46),
           0 0 50px rgba(0, 245, 255, 0.08) !important;
       }
+
       nav a.active,
       nav a:hover {
         color: #fff !important;
         text-shadow: 0 0 22px rgba(0, 245, 255, 0.55);
       }
+
       .nav-highlight {
         background: linear-gradient(135deg, rgba(0, 245, 255, 0.24), rgba(255, 46, 166, 0.18)) !important;
         border: 1px solid rgba(255, 255, 255, 0.12);
         box-shadow: inset 0 0 24px rgba(255, 255, 255, 0.06);
       }
+
       .hero {
         min-height: 100vh !important;
       }
+
       .hero::before {
         content: "";
         position: absolute;
@@ -3236,13 +3133,15 @@
           rgba(255, 46, 166, 0.09) 58%,
           transparent 72%
         );
-        filter: blur(18px);
+        filter: none;
         pointer-events: none;
         z-index: 1;
       }
+
       .hero-inner {
         width: min(1030px, 100%) !important;
       }
+
       .hero-kicker {
         border-color: rgba(0, 245, 255, 0.32) !important;
         background: linear-gradient(135deg, rgba(0, 245, 255, 0.13), rgba(255, 46, 166, 0.1)) !important;
@@ -3251,12 +3150,14 @@
           0 0 40px rgba(0, 245, 255, 0.12),
           inset 0 0 24px rgba(255, 255, 255, 0.04) !important;
       }
+
       .hero-kicker::before {
         background: var(--lime) !important;
         box-shadow:
           0 0 18px var(--lime),
           0 0 34px rgba(44, 255, 136, 0.35) !important;
       }
+
       .hero h1 {
         font-size: clamp(3.6rem, 8.9vw, 8.9rem) !important;
         letter-spacing: -0.08em !important;
@@ -3264,6 +3165,7 @@
         text-wrap: balance;
         filter: drop-shadow(0 24px 70px rgba(0, 0, 0, 0.55));
       }
+
       .hero h1 span {
         color: transparent !important;
         background: linear-gradient(100deg, #fff 0%, var(--primary) 26%, var(--hot) 64%, var(--gold) 100%);
@@ -3271,11 +3173,13 @@
         background-clip: text;
         text-shadow: none !important;
       }
+
       .hero p {
         max-width: 760px !important;
         color: #d8dbff !important;
         font-size: clamp(1rem, 1.45vw, 1.24rem) !important;
       }
+
       .btn-main,
       .contact-submit,
       .guide-btn {
@@ -3286,17 +3190,20 @@
           0 18px 55px rgba(255, 46, 166, 0.28),
           0 0 36px rgba(0, 245, 255, 0.16) !important;
       }
+
       .btn-main:hover,
       .contact-submit:hover,
       .guide-btn:hover {
         transform: translateY(-4px) scale(1.02) !important;
         filter: saturate(1.2);
       }
+
       .btn-secondary {
         border-color: rgba(0, 245, 255, 0.28) !important;
         background: rgba(255, 255, 255, 0.055) !important;
         box-shadow: inset 0 0 26px rgba(0, 245, 255, 0.045) !important;
       }
+
       .hero-proof-strip {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3304,6 +3211,7 @@
         margin: 2.1rem auto 0;
         max-width: 760px;
       }
+
       .hero-proof-strip div,
       .offer-card,
       .proof-card,
@@ -3316,13 +3224,15 @@
         box-shadow:
           0 24px 70px rgba(0, 0, 0, 0.28),
           inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
       }
+
       .hero-proof-strip div {
         border-radius: 22px;
         padding: 1.1rem 0.9rem;
       }
+
       .hero-proof-strip strong {
         display: block;
         font-size: clamp(1.5rem, 3vw, 2.35rem);
@@ -3330,6 +3240,7 @@
         letter-spacing: -0.06em;
         color: #fff;
       }
+
       .hero-proof-strip span {
         display: block;
         margin-top: 0.28rem;
@@ -3339,12 +3250,14 @@
         text-transform: uppercase;
         letter-spacing: 0.08em;
       }
+
       .work-title h2,
       .section-header h2,
       .about-content h2,
       .cta-card h2 {
         text-wrap: balance;
       }
+
       .work-title h2 span,
       .section-header h2 span {
         color: transparent !important;
@@ -3352,12 +3265,14 @@
         -webkit-background-clip: text;
         background-clip: text;
       }
+
       .work-card {
         border-radius: 30px !important;
         border-color: rgba(255, 255, 255, 0.14) !important;
         box-shadow: 0 22px 65px rgba(0, 0, 0, 0.34) !important;
         background: #0c0920 !important;
       }
+
       .work-card::after {
         content: "Portfolio Piece";
         position: absolute;
@@ -3378,23 +3293,28 @@
         transition: 0.35s var(--ease);
         backdrop-filter: blur(12px);
       }
+
       .work-card:hover::after {
         opacity: 1;
         transform: translateY(0);
       }
+
       .work-card.image-slider::after {
         content: "Before / After";
       }
+
       .work-card:hover {
         border-color: rgba(0, 245, 255, 0.45) !important;
         box-shadow:
           0 28px 90px rgba(0, 0, 0, 0.42),
           0 0 42px rgba(0, 245, 255, 0.13) !important;
       }
+
       .review-stars {
         color: var(--gold) !important;
         text-shadow: 0 0 18px rgba(249, 212, 35, 0.42);
       }
+
       .review-card:hover,
       .process-card:hover,
       .social-card:hover,
@@ -3405,24 +3325,29 @@
           0 28px 80px rgba(0, 0, 0, 0.34),
           0 0 36px rgba(0, 245, 255, 0.1) !important;
       }
+
       .proof-card strong {
         color: transparent !important;
         background: linear-gradient(90deg, var(--primary), var(--gold));
         -webkit-background-clip: text;
         background-clip: text;
       }
+
       .about-points li::before {
         color: var(--lime) !important;
         text-shadow: 0 0 18px var(--lime);
       }
+
       .offer-section {
         padding-top: 8.5rem !important;
       }
+
       .offer-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1.2rem;
       }
+
       .offer-card {
         border-radius: var(--radius-lg);
         padding: 2rem;
@@ -3432,9 +3357,11 @@
           border-color 0.4s var(--ease),
           box-shadow 0.4s var(--ease);
       }
+
       .offer-card:hover {
         transform: translateY(-6px);
       }
+
       .offer-card span {
         display: inline-grid;
         place-items: center;
@@ -3446,32 +3373,39 @@
         color: #070412;
         font-weight: 950;
       }
+
       .offer-card h3 {
         font-size: 1.28rem;
         margin-bottom: 0.8rem;
       }
+
       .offer-card p {
         color: var(--text-dim);
         line-height: 1.7;
       }
+
       .contact-field input,
       .contact-field textarea {
         border-color: rgba(0, 245, 255, 0.16) !important;
         background: rgba(255, 255, 255, 0.065) !important;
       }
+
       .contact-field input:focus,
       .contact-field textarea:focus {
         border-color: rgba(0, 245, 255, 0.55) !important;
         box-shadow: 0 0 0 4px rgba(0, 245, 255, 0.08) !important;
       }
+
       footer {
         border-color: rgba(255, 255, 255, 0.12) !important;
       }
+
       @media (max-width: 980px) {
         .offer-grid {
           grid-template-columns: 1fr;
         }
       }
+
       @media (max-width: 680px) {
         .hero h1 {
           font-size: clamp(3.25rem, 15vw, 4.85rem) !important;
@@ -3490,13 +3424,7 @@
           padding-top: 5rem !important;
         }
       }
-    </style>
 
-    <style id="glassmorphism-ref-theme">
-      /* =========================================================
-       Glassmorphism portfolio redesign — soft, premium, no neon
-       Inspired by the clean frosted-card reference file.
-       ========================================================= */
       :root {
         --bg: #f4f1ec !important;
         --surface: rgba(255, 255, 255, 0.54) !important;
@@ -3540,6 +3468,7 @@
         opacity: 0.018 !important;
         mix-blend-mode: multiply;
       }
+
       .custom-cursor,
       .cursor-glow,
       .site-beam {
@@ -3559,6 +3488,7 @@
         opacity: 0.72 !important;
         mix-blend-mode: normal !important;
       }
+
       .site-orb.orb-a {
         background: radial-gradient(
           circle,
@@ -3567,6 +3497,7 @@
           transparent 72%
         ) !important;
       }
+
       .site-orb.orb-b {
         background: radial-gradient(
           circle,
@@ -3575,6 +3506,7 @@
           transparent 74%
         ) !important;
       }
+
       .site-orb.orb-c {
         background: radial-gradient(
           circle,
@@ -3597,11 +3529,13 @@
       .mobile-topbar-brand span {
         color: rgba(23, 21, 19, 0.62) !important;
       }
+
       nav a:hover,
       nav a.active,
       .mobile-topbar-brand strong {
         color: #171513 !important;
       }
+
       .nav-highlight {
         background: rgba(255, 255, 255, 0.74) !important;
         border: 1px solid rgba(37, 33, 29, 0.08) !important;
@@ -3616,14 +3550,17 @@
         background: rgba(255, 255, 255, 0.42) !important;
         border-color: rgba(37, 33, 29, 0.12) !important;
       }
+
       .mobile-menu-overlay {
         background: rgba(244, 241, 236, 0.72) !important;
       }
+
       .mobile-menu-sheet {
         background: rgba(255, 255, 255, 0.58) !important;
         border: 1px solid rgba(37, 33, 29, 0.12) !important;
         box-shadow: var(--shadow-soft) !important;
       }
+
       .mobile-menu-links a {
         color: #171513 !important;
         background: rgba(255, 255, 255, 0.42) !important;
@@ -3634,10 +3571,12 @@
         min-height: 100vh !important;
         padding-top: 11rem !important;
       }
+
       .hero::after {
         background: radial-gradient(circle at center, rgba(255, 255, 255, 0.7), transparent 70%) !important;
         filter: blur(32px) !important;
       }
+
       .hero-inner {
         width: min(960px, 100%) !important;
         padding: clamp(1.6rem, 4vw, 3rem) !important;
@@ -3654,11 +3593,13 @@
         text-shadow: none !important;
         letter-spacing: -0.065em !important;
       }
+
       .hero h1 span {
         color: #81796d !important;
         background: none !important;
         -webkit-text-fill-color: currentColor !important;
       }
+
       .hero p {
         color: #5f5a52 !important;
       }
@@ -3671,6 +3612,7 @@
           inset 0 1px 0 rgba(255, 255, 255, 0.75),
           0 14px 34px rgba(58, 50, 41, 0.08) !important;
       }
+
       .hero-kicker::before {
         background: #2b2926 !important;
         box-shadow: 0 0 0 5px rgba(43, 41, 38, 0.08) !important;
@@ -3690,6 +3632,7 @@
           background 0.35s var(--ease),
           border-color 0.35s var(--ease) !important;
       }
+
       .btn-main,
       .guide-btn,
       .contact-submit {
@@ -3697,11 +3640,13 @@
         color: #fff !important;
         border: 1px solid rgba(23, 21, 19, 0.12) !important;
       }
+
       .btn-secondary {
         color: #171513 !important;
         background: rgba(255, 255, 255, 0.38) !important;
         border: 1px solid rgba(37, 33, 29, 0.12) !important;
       }
+
       .btn-main:hover,
       .btn-secondary:hover,
       .guide-btn:hover,
@@ -3716,6 +3661,7 @@
         opacity: 0.42 !important;
         filter: saturate(0.82) contrast(0.95) !important;
       }
+
       .hero-center-shield {
         background: radial-gradient(
           circle at center,
@@ -3725,6 +3671,7 @@
         ) !important;
         backdrop-filter: blur(3px) !important;
       }
+
       .hero-flow-thumb {
         border-radius: 20px !important;
         border: 1px solid rgba(255, 255, 255, 0.62) !important;
@@ -3739,10 +3686,12 @@
         backdrop-filter: blur(18px) saturate(145%) !important;
         -webkit-backdrop-filter: blur(18px) saturate(145%) !important;
       }
+
       .hero-proof-strip strong,
       .proof-card strong {
         color: #171513 !important;
       }
+
       .hero-proof-strip span,
       .proof-card > span {
         color: #766f65 !important;
@@ -3757,6 +3706,7 @@
       .cta-section {
         position: relative;
       }
+
       .section-header h2,
       .work-title h2,
       .about-content h2,
@@ -3764,6 +3714,7 @@
         color: #171513 !important;
         text-shadow: none !important;
       }
+
       .work-title span,
       .section-header p,
       .about-text,
@@ -3795,9 +3746,11 @@
         padding: 8px !important;
         background: rgba(255, 255, 255, 0.44) !important;
       }
+
       .work-card img {
         border-radius: clamp(14px, 2vw, 24px) !important;
       }
+
       .work-card.reveal.active:hover,
       .review-card:hover,
       .process-card:hover,
@@ -3810,10 +3763,12 @@
           0 28px 70px rgba(58, 50, 41, 0.16),
           inset 0 1px 0 rgba(255, 255, 255, 0.86) !important;
       }
+
       .work-card.image-slider .slider-handle {
         background: #171513 !important;
         box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6) !important;
       }
+
       .work-card.image-slider .slider-handle::after {
         background-color: rgba(255, 255, 255, 0.88) !important;
       }
@@ -3821,12 +3776,15 @@
       .proof-row {
         gap: 1.15rem !important;
       }
+
       .proof-card {
         min-height: 154px !important;
       }
+
       .review-stars {
         color: #171513 !important;
       }
+
       .review-info h4,
       .process-card h3,
       .about-points,
@@ -3834,15 +3792,19 @@
       .social-card:hover {
         color: #171513 !important;
       }
+
       .review-info span {
         color: #81796d !important;
       }
+
       .review-avatar {
         border-color: rgba(37, 33, 29, 0.12) !important;
       }
+
       .about-points li::before {
         color: #81796d !important;
       }
+
       .process-icon {
         color: #171513 !important;
         background: rgba(255, 255, 255, 0.48) !important;
@@ -3860,6 +3822,7 @@
         overflow: hidden;
         position: relative;
       }
+
       .cta-card::before {
         content: "";
         position: absolute;
@@ -3870,6 +3833,7 @@
         background: radial-gradient(circle, rgba(255, 255, 255, 0.66), transparent 68%);
         pointer-events: none;
       }
+
       .cta-card > * {
         position: relative;
         z-index: 1;
@@ -3878,6 +3842,7 @@
       .social-card {
         color: #625d55 !important;
       }
+
       .social-card svg {
         color: #171513 !important;
       }
@@ -3885,6 +3850,7 @@
       .contact-field label {
         color: #6b655c !important;
       }
+
       .contact-field input,
       .contact-field textarea {
         color: #171513 !important;
@@ -3892,10 +3858,12 @@
         border: 1px solid rgba(37, 33, 29, 0.1) !important;
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
       }
+
       .contact-field input::placeholder,
       .contact-field textarea::placeholder {
         color: #9a9287 !important;
       }
+
       .contact-field input:focus,
       .contact-field textarea:focus {
         background: rgba(255, 255, 255, 0.68) !important;
@@ -3909,6 +3877,7 @@
         color: #81796d !important;
         border-top: 1px solid rgba(37, 33, 29, 0.1) !important;
       }
+
       footer a {
         color: #171513 !important;
       }
@@ -3940,7 +3909,6 @@
         }
       }
 
-      /* FINAL UPLOAD-READY PATCH — hero ribbon centered + moving, clean hero, red Clear Results, invisible slider handle */
       .hero.container#home {
         width: 100% !important;
         max-width: none !important;
@@ -3949,6 +3917,7 @@
         position: relative !important;
         overflow: hidden !important;
       }
+
       .hero-vertical-stage {
         display: block !important;
         position: absolute !important;
@@ -3962,6 +3931,7 @@
         pointer-events: none !important;
         z-index: 0 !important;
       }
+
       .hero-ribbon {
         display: block !important;
         top: -72% !important;
@@ -3973,30 +3943,35 @@
         will-change: transform !important;
         backface-visibility: hidden !important;
       }
+
       .hero-ribbon-a {
         left: clamp(1.1rem, 4.6vw, 4.8rem) !important;
         right: auto !important;
         --tilt: -4deg;
         --ribbon-opacity: 0.86;
       }
+
       .hero-ribbon-b {
         left: 27.5% !important;
         right: auto !important;
         --tilt: 2deg;
         --ribbon-opacity: 0.48;
       }
+
       .hero-ribbon-c {
         right: 27.5% !important;
         left: auto !important;
         --tilt: -2deg;
         --ribbon-opacity: 0.48;
       }
+
       .hero-ribbon-d {
         right: clamp(1.1rem, 4.6vw, 4.8rem) !important;
         left: auto !important;
         --tilt: 4deg;
         --ribbon-opacity: 0.86;
       }
+
       .hero-ribbon-track {
         display: flex !important;
         flex-direction: column !important;
@@ -4008,20 +3983,25 @@
         will-change: transform !important;
         transform: translate3d(0, 0, 0);
       }
+
       .hero-ribbon-down .hero-ribbon-track {
         animation-name: heroRibbonDownFinal !important;
         animation-duration: 36s !important;
       }
+
       .hero-ribbon-up .hero-ribbon-track {
         animation-name: heroRibbonUpFinal !important;
         animation-duration: 36s !important;
       }
+
       .hero-ribbon-b .hero-ribbon-track {
         animation-duration: 43s !important;
       }
+
       .hero-ribbon-c .hero-ribbon-track {
         animation-duration: 40s !important;
       }
+
       @keyframes heroRibbonUpFinal {
         from {
           transform: translate3d(0, 0, 0);
@@ -4030,6 +4010,7 @@
           transform: translate3d(0, -50%, 0);
         }
       }
+
       @keyframes heroRibbonDownFinal {
         from {
           transform: translate3d(0, -50%, 0);
@@ -4038,6 +4019,7 @@
           transform: translate3d(0, 0, 0);
         }
       }
+
       .hero-center-shield {
         display: block !important;
         background:
@@ -4051,26 +4033,32 @@
           ),
           linear-gradient(180deg, rgba(244, 241, 236, 0.12), rgba(244, 241, 236, 0.46)) !important;
       }
+
       .hero-inner {
         position: relative !important;
         z-index: 10 !important;
         margin-inline: auto !important;
         text-align: center !important;
       }
+
       .hero h1 span {
         color: #e63232 !important;
       }
+
       .hero-proof-strip {
         display: none !important;
       }
+
       .work-card::after {
         content: none !important;
         display: none !important;
       }
+
       .work-card:hover,
       .work-card.reveal.active:hover {
         transform: translate3d(0, 0, 0) scale(1) rotateX(0deg) !important;
       }
+
       .work-card.image-slider .slider-handle,
       .work-card.image-slider .slider-handle::before,
       .work-card.image-slider .slider-handle::after {
@@ -4082,6 +4070,7 @@
         border: 0 !important;
         content: none !important;
       }
+
       @media (max-width: 980px) {
         .hero-ribbon-b,
         .hero-ribbon-c {
@@ -4092,6 +4081,7 @@
           width: clamp(10rem, 24vw, 15rem) !important;
         }
       }
+
       @media (max-width: 680px) {
         .hero-vertical-stage {
           width: 118vw !important;
@@ -4111,10 +4101,7 @@
           animation-duration: 42s !important;
         }
       }
-    </style>
 
-    <style id="abdullah-final-upload-ready-fix">
-      /* FINAL UPLOAD READY FIX: no hero UI card, centered seamless ribbons, white glow, right-to-left slider */
       .hero.container#home {
         min-height: 100vh !important;
         padding-top: clamp(8.8rem, 12vh, 10.8rem) !important;
@@ -4240,18 +4227,21 @@
         --tilt: -4deg;
         --ribbon-opacity: 0.86;
       }
+
       .hero-ribbon-b {
         left: calc(50% - 285px) !important;
         right: auto !important;
         --tilt: 2deg;
         --ribbon-opacity: 0.38;
       }
+
       .hero-ribbon-c {
         right: calc(50% - 285px) !important;
         left: auto !important;
         --tilt: -2deg;
         --ribbon-opacity: 0.38;
       }
+
       .hero-ribbon-d {
         right: max(1rem, calc(50% - 710px)) !important;
         left: auto !important;
@@ -4280,6 +4270,7 @@
       .hero-vertical-stage.ribbon-ready .hero-ribbon-b .hero-ribbon-track {
         animation-duration: 44s !important;
       }
+
       .hero-vertical-stage.ribbon-ready .hero-ribbon-c .hero-ribbon-track {
         animation-duration: 42s !important;
       }
@@ -4365,10 +4356,7 @@
           animation-duration: 44s !important;
         }
       }
-    </style>
 
-    <style id="abdullah-final-requested-polish">
-      /* Final requested polish: normal hero ribbons, matching result text color, cleaner contact UI */
       .hero.container#home {
         overflow: hidden !important;
       }
@@ -4544,10 +4532,7 @@
           grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         }
       }
-    </style>
 
-    <style id="abdullah-final-hero-contact-fix">
-      /* FINAL REAL EDIT — requested hero ribbon normal background + contact UI blend */
       .hero.container#home {
         overflow: hidden !important;
         background:
@@ -4575,7 +4560,6 @@
         -webkit-mask-image: none !important;
       }
 
-      /* Fix ribbon cutout: no center shield, only soft edge fades. */
       .hero-center-shield {
         display: none !important;
         opacity: 0 !important;
@@ -4620,14 +4604,17 @@
       .hero-ribbon-a {
         left: max(-1.5rem, calc(50% - 690px)) !important;
       }
+
       .hero-ribbon-b {
         left: calc(50% - 360px) !important;
         opacity: 0.58 !important;
       }
+
       .hero-ribbon-c {
         right: calc(50% - 360px) !important;
         opacity: 0.58 !important;
       }
+
       .hero-ribbon-d {
         right: max(-1.5rem, calc(50% - 690px)) !important;
       }
@@ -4678,17 +4665,15 @@
       .work-title h2 {
         color: #171513 !important;
       }
+
       .work-title h2 span {
         color: #8a8277 !important;
       }
+
       #reviews .section-header h2 {
         color: #171513 !important;
       }
-      #reviews .section-header p {
-        display: none !important;
-      }
 
-      /* Contact form blended with the glass UI */
       #contact .cta-card {
         position: relative !important;
         overflow: hidden !important;
@@ -4811,10 +4796,7 @@
           grid-template-columns: 1fr !important;
         }
       }
-    </style>
 
-    <!-- FINAL REVIEW COMPOSITION + BLACK STAR PATCH -->
-    <style id="abdullah-final-review-composition-star-patch">
       .about-rating strong,
       .about-rating strong * {
         color: #171513 !important;
@@ -4904,11 +4886,1724 @@
           padding: 1.1rem 1.16rem !important;
         }
       }
+
+      .hero.container#home,
+      section.hero#home {
+        overflow: hidden !important;
+        background: transparent !important;
+      }
+
+      .hero-kicker,
+      .hero-proof-strip,
+      .hero-proof-card,
+      .hero-stats,
+      .hero-ui,
+      .hero-stage-ui {
+        display: none !important;
+      }
+
+      .hero-vertical-stage {
+        display: block !important;
+        position: absolute !important;
+        inset: 0 !important;
+        left: 50% !important;
+        width: 100vw !important;
+        max-width: none !important;
+        height: 100% !important;
+        transform: translateX(-50%) !important;
+        overflow: hidden !important;
+        opacity: 0.72 !important;
+        filter: saturate(0.92) contrast(0.98) !important;
+        pointer-events: none !important;
+        z-index: 0 !important;
+        background: transparent !important;
+      }
+
+      .hero-vertical-stage::before,
+      .hero-vertical-stage::after {
+        content: "" !important;
+        position: absolute !important;
+        inset: 0 !important;
+        pointer-events: none !important;
+        z-index: 8 !important;
+      }
+
+      .hero-vertical-stage::before {
+        background: linear-gradient(
+          90deg,
+          rgba(244, 241, 236, 0.82) 0%,
+          rgba(244, 241, 236, 0.18) 17%,
+          rgba(244, 241, 236, 0) 36%,
+          rgba(244, 241, 236, 0) 64%,
+          rgba(244, 241, 236, 0.18) 83%,
+          rgba(244, 241, 236, 0.82) 100%
+        ) !important;
+      }
+
+      .hero-vertical-stage::after {
+        background: linear-gradient(
+          180deg,
+          #f4f1ec 0%,
+          rgba(244, 241, 236, 0) 16%,
+          rgba(244, 241, 236, 0) 82%,
+          #f4f1ec 100%
+        ) !important;
+      }
+
+      .hero-center-shield {
+        display: block !important;
+        position: absolute !important;
+        inset: 0 !important;
+        z-index: 7 !important;
+        pointer-events: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 255, 255, 0.8) 0%,
+          rgba(255, 255, 255, 0.44) 30%,
+          rgba(255, 255, 255, 0.16) 52%,
+          rgba(255, 255, 255, 0.02) 72%,
+          transparent 88%
+        ) !important;
+      }
+
+      .hero-inner {
+        position: relative !important;
+        z-index: 20 !important;
+        width: min(880px, 100%) !important;
+        margin-inline: auto !important;
+        text-align: center !important;
+        padding-top: 1rem !important;
+      }
+
+      .hero h1 {
+        text-align: center !important;
+        margin-inline: auto !important;
+        color: #171513 !important;
+        text-shadow: 0 18px 70px rgba(255, 255, 255, 0.72) !important;
+      }
+
+      .hero h1 .hero-result-text,
+      .hero h1 span.hero-result-text {
+        color: #8a8277 !important;
+        -webkit-text-fill-color: #8a8277 !important;
+        background: none !important;
+        text-shadow: 0 14px 58px rgba(255, 255, 255, 0.76) !important;
+      }
+
+      .hero p {
+        max-width: 680px !important;
+        margin-inline: auto !important;
+        color: #625b52 !important;
+        text-shadow: 0 10px 36px rgba(255, 255, 255, 0.65) !important;
+      }
+
+      .hero-ribbon-track {
+        animation-play-state: running !important;
+        will-change: transform !important;
+      }
+
+      .hero-vertical-stage.ribbon-ready .hero-ribbon-up .hero-ribbon-track {
+        animation: heroRibbonSeamlessUpReal 36s linear infinite !important;
+      }
+
+      .hero-vertical-stage.ribbon-ready .hero-ribbon-down .hero-ribbon-track {
+        animation: heroRibbonSeamlessDownReal 36s linear infinite !important;
+      }
+
+      @keyframes heroRibbonSeamlessUpReal {
+        from {
+          transform: translate3d(0, 0, 0);
+        }
+        to {
+          transform: translate3d(0, -50%, 0);
+        }
+      }
+
+      @keyframes heroRibbonSeamlessDownReal {
+        from {
+          transform: translate3d(0, -50%, 0);
+        }
+        to {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      #work .work-title h2,
+      #work .work-title h2 span {
+        color: inherit;
+      }
+
+      #reviews .section-header h2::after,
+      #reviews .section-header p {
+        display: none !important;
+        content: none !important;
+      }
+
+      #contact .cta-card {
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.38)),
+          radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.86), transparent 34rem) !important;
+        border: 1px solid rgba(37, 33, 29, 0.14) !important;
+        box-shadow:
+          0 28px 90px rgba(58, 50, 41, 0.13),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(22px) saturate(130%) !important;
+        -webkit-backdrop-filter: blur(22px) saturate(130%) !important;
+      }
+
+      #contact .contact-form {
+        width: min(860px, 100%) !important;
+        padding: clamp(1rem, 2.2vw, 1.6rem) !important;
+        border-radius: 28px !important;
+        background: rgba(255, 255, 255, 0.32) !important;
+        border: 1px solid rgba(37, 33, 29, 0.1) !important;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.66) !important;
+        gap: 1rem !important;
+      }
+
+      #contact .contact-field label {
+        color: #5f574d !important;
+        font-weight: 900 !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+      }
+
+      #contact .contact-field input,
+      #contact .contact-field textarea,
+      #contact .contact-field select {
+        border: 1px solid rgba(37, 33, 29, 0.12) !important;
+        background: rgba(255, 255, 255, 0.58) !important;
+        color: #171513 !important;
+        border-radius: 16px !important;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.88),
+          0 12px 28px rgba(58, 50, 41, 0.045) !important;
+      }
+
+      #contact .contact-field input::placeholder,
+      #contact .contact-field textarea::placeholder {
+        color: rgba(78, 70, 62, 0.56) !important;
+      }
+
+      #contact .contact-field input:focus,
+      #contact .contact-field textarea:focus,
+      #contact .contact-field select:focus {
+        background: rgba(255, 255, 255, 0.76) !important;
+        border-color: rgba(23, 21, 19, 0.26) !important;
+        box-shadow:
+          0 0 0 5px rgba(23, 21, 19, 0.055),
+          inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
+      }
+
+      #contact .contact-submit {
+        min-height: 58px !important;
+        border-radius: 18px !important;
+        background: linear-gradient(135deg, #171513, #3a332c) !important;
+        color: #fffaf2 !important;
+        box-shadow:
+          0 18px 44px rgba(58, 50, 41, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+      }
+
+      #contact .contact-submit:hover {
+        transform: translateY(-2px) !important;
+        box-shadow:
+          0 24px 58px rgba(58, 50, 41, 0.25),
+          inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+      }
+
+      @media (max-width: 680px) {
+        .hero-vertical-stage {
+          opacity: 0.52 !important;
+        }
+        .hero-ribbon {
+          width: clamp(9.6rem, 36vw, 13rem) !important;
+        }
+        .hero h1 {
+          font-size: clamp(2.65rem, 12.8vw, 3.45rem) !important;
+        }
+        #contact .contact-form {
+          grid-template-columns: 1fr !important;
+          padding: 1rem !important;
+        }
+      }
+
+      :root {
+        --convert-grad-a: #6b2743;
+        --convert-grad-b: #9c246e;
+        --convert-grad-c: #dc2294;
+      }
+
+      .hero h1 .hero-result-text,
+      .hero h1 span.hero-result-text,
+      #work .work-title h2 span {
+        color: transparent !important;
+        background: linear-gradient(
+          90deg,
+          var(--convert-grad-a) 0%,
+          var(--convert-grad-b) 48%,
+          var(--convert-grad-c) 100%
+        ) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        text-shadow: none !important;
+      }
+
+      #work .work-title h2 {
+        color: #171513 !important;
+      }
+
+      .work-card.image-slider .slider-range {
+        opacity: 0 !important;
+        cursor: ew-resize !important;
+      }
+
+      .work-card.image-slider .slider-handle,
+      .work-card.image-slider .slider-handle::before,
+      .work-card.image-slider .slider-handle::after {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: 0 !important;
+      }
+
+      #contact .legacy-email-card {
+        display: none !important;
+      }
+
+      #contact .direct-email-pill {
+        width: min(100%, 420px);
+        min-height: 54px;
+        margin: 1.6rem auto 1.25rem;
+        padding: 0.72rem 0.82rem 0.72rem 1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.72rem;
+        border: 1px solid rgba(37, 33, 29, 0.1);
+        border-radius: 999px;
+        background: linear-gradient(135deg, rgba(23, 21, 19, 0.96), rgba(44, 40, 37, 0.92));
+        color: #fffaf2;
+        font: inherit;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        cursor: pointer;
+        box-shadow:
+          0 18px 44px rgba(58, 50, 41, 0.22),
+          inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        transition:
+          transform 0.28s var(--ease),
+          box-shadow 0.28s var(--ease),
+          background 0.28s var(--ease);
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      #contact .direct-email-pill:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, rgba(18, 17, 16, 0.98), rgba(58, 50, 44, 0.94));
+        box-shadow:
+          0 24px 60px rgba(58, 50, 41, 0.28),
+          inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      }
+
+      #contact .direct-email-icon {
+        width: 22px;
+        height: 22px;
+        display: inline-grid;
+        place-items: center;
+        flex: 0 0 auto;
+        color: currentColor;
+        opacity: 0.92;
+      }
+
+      #contact .direct-email-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      #contact .direct-email-pill strong {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: clamp(0.88rem, 2.2vw, 1rem);
+      }
+
+      #contact .direct-email-arrow {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        display: inline-grid;
+        place-items: center;
+        flex: 0 0 auto;
+        background: rgba(255, 255, 255, 0.08);
+        font-size: 1.35rem;
+        line-height: 1;
+        transform: translateY(-1px);
+      }
+
+      @media (max-width: 480px) {
+        #contact .direct-email-pill {
+          width: 100%;
+          padding-inline: 0.82rem;
+        }
+      }
+
+      #contact.cta-section {
+        padding-top: clamp(7rem, 10vw, 10rem) !important;
+        padding-bottom: clamp(5rem, 8vw, 7rem) !important;
+      }
+
+      #contact .cta-card {
+        width: min(1120px, 100%) !important;
+        margin-inline: auto !important;
+        padding: clamp(2.2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 2.4rem) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        overflow: hidden !important;
+      }
+
+      #contact .cta-card h2,
+      #contact .cta-card p {
+        text-align: center !important;
+      }
+
+      #contact .contact-form {
+        width: min(850px, 100%) !important;
+        margin: 0 auto !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        align-items: start !important;
+        justify-content: center !important;
+        gap: 1rem !important;
+      }
+
+      #contact .contact-field,
+      #contact .contact-field input,
+      #contact .contact-field textarea,
+      #contact .contact-submit {
+        min-width: 0 !important;
+      }
+
+      #contact .contact-field-full,
+      #contact .contact-submit {
+        grid-column: 1 / -1 !important;
+      }
+
+      #contact .contact-field textarea {
+        display: block !important;
+        width: 100% !important;
+        min-height: 128px !important;
+      }
+
+      #contact .direct-email-pill {
+        display: flex !important;
+        width: min(420px, 100%) !important;
+        margin: 1.7rem auto 1.8rem !important;
+        align-self: center !important;
+      }
+
+      #contact .social-grid {
+        width: min(670px, 100%) !important;
+        max-width: 670px !important;
+        margin: 0 auto !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 1rem !important;
+        justify-content: center !important;
+        align-items: stretch !important;
+      }
+
+      #contact .social-card {
+        width: 100% !important;
+        min-height: 132px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+      }
+
+      .hero h1 .hero-result-text,
+      .hero h1 span.hero-result-text,
+      #work .work-title h2 span {
+        background: linear-gradient(90deg, #6b2743 0%, #9c246e 48%, #dc2294 100%) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        color: transparent !important;
+        -webkit-text-fill-color: transparent !important;
+      }
+
+      .work-card.image-slider .slider-handle,
+      .work-card.image-slider .slider-handle::before,
+      .work-card.image-slider .slider-handle::after {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+      }
+
+      @media (max-width: 760px) {
+        #contact .contact-form {
+          grid-template-columns: 1fr !important;
+        }
+        #contact .social-grid {
+          grid-template-columns: 1fr !important;
+          max-width: 420px !important;
+        }
+        #contact .social-card {
+          min-height: 112px !important;
+        }
+      }
+
+      .hero-ribbon-track {
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+        backface-visibility: hidden;
+      }
+
+      .hero-vertical-stage.ribbon-ready .hero-ribbon-down .hero-ribbon-track,
+      .hero-vertical-stage.ribbon-ready .hero-ribbon-up .hero-ribbon-track,
+      .hero-ribbon-down .hero-ribbon-track,
+      .hero-ribbon-up .hero-ribbon-track {
+        animation-duration: 42s !important;
+        animation-timing-function: linear !important;
+      }
+
+      .hero-vertical-stage.ribbon-ready .hero-ribbon-b .hero-ribbon-track,
+      .hero-ribbon-b .hero-ribbon-track {
+        animation-duration: 50s !important;
+      }
+
+      .hero-vertical-stage.ribbon-ready .hero-ribbon-c .hero-ribbon-track,
+      .hero-ribbon-c .hero-ribbon-track {
+        animation-duration: 48s !important;
+      }
+
+      .work-card.image-slider .image-before {
+        transition: none !important;
+        will-change: clip-path;
+      }
+
+      .work-card.image-slider.before-after-running {
+        border-color: rgba(255, 255, 255, 0.18);
+        box-shadow: 0 20px 58px rgba(0, 0, 0, 0.38);
+      }
+
+      @media (max-width: 680px) {
+        .hero-vertical-stage.ribbon-ready .hero-ribbon-down .hero-ribbon-track,
+        .hero-vertical-stage.ribbon-ready .hero-ribbon-up .hero-ribbon-track,
+        .hero-ribbon-down .hero-ribbon-track,
+        .hero-ribbon-up .hero-ribbon-track {
+          animation-duration: 52s !important;
+        }
+      }
+
+      /* Final production polish: no layout rebuild, no theme switch UI. */
+      html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+
+      img,
+      svg,
+      video,
+      canvas {
+        max-width: 100%;
+      }
+
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible,
+      .slider-range:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.88);
+        outline-offset: 4px;
+      }
+
+      .mobile-menu-overlay {
+        overscroll-behavior: contain;
+      }
+
+      .mobile-menu-sheet {
+        max-height: calc(100dvh - 7rem);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .work-card.image-slider .slider-range {
+        touch-action: none;
+      }
+
+      .contact-submit:disabled {
+        opacity: 0.72;
+        cursor: wait;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .contact-field input:invalid:not(:placeholder-shown),
+      .contact-field textarea:invalid:not(:placeholder-shown) {
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .faq-trigger {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      @media (max-width: 900px) {
+        .container {
+          width: min(100% - 1.1rem, 1420px);
+        }
+
+        section[id] {
+          scroll-margin-top: 7.5rem;
+        }
+
+        .work-section,
+        .reviews-section,
+        .about-section,
+        .process-section,
+        .faq-section,
+        .cta-section {
+          padding-top: 5.5rem !important;
+          padding-bottom: 5.5rem !important;
+        }
+
+        .section-header,
+        .work-top {
+          margin-bottom: 3rem !important;
+        }
+
+        .hero-actions,
+        .about-actions {
+          width: 100%;
+          gap: 0.9rem;
+        }
+
+        .hero-actions .btn-main,
+        .hero-actions .btn-secondary,
+        .about-actions .guide-btn,
+        .about-actions .btn-secondary,
+        .contact-submit {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .noise {
+          display: none;
+        }
+
+        .mobile-topbar {
+          width: min(calc(100% - 0.9rem), 560px);
+          padding: 0.78rem 0.85rem;
+          gap: 0.75rem;
+        }
+
+        .mobile-menu-sheet {
+          width: min(92vw, 340px);
+          border-radius: 28px;
+          padding: 0.8rem;
+        }
+
+        .mobile-menu-links a {
+          min-height: 50px;
+          padding: 0.86rem 0.95rem;
+        }
+
+        .hero {
+          padding-top: 8rem !important;
+          padding-bottom: 3.8rem !important;
+        }
+
+        .hero p,
+        .section-header p,
+        .about-text,
+        .process-card p,
+        .review-text,
+        .cta-card p {
+          text-wrap: pretty;
+        }
+
+        .work-card,
+        .review-card,
+        .proof-card,
+        .process-card,
+        .faq-item,
+        .social-card,
+        .cta-card {
+          transform: translateZ(0);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          width: calc(100% - 0.85rem);
+        }
+
+        .mobile-topbar {
+          top: max(0.55rem, env(safe-area-inset-top));
+          width: calc(100% - 0.85rem);
+          border-radius: 18px;
+        }
+
+        .mobile-menu-btn {
+          width: 42px;
+          height: 42px;
+          flex: 0 0 42px;
+        }
+
+        .hero h1 {
+          font-size: clamp(2.45rem, 12vw, 3.05rem) !important;
+        }
+
+        .hero p {
+          font-size: 0.92rem;
+          line-height: 1.65;
+        }
+
+        .proof-row,
+        .social-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Final requested patch: remove content blur without changing layout/design */
+      .reveal,
+      .reveal.active,
+      .work-card.reveal,
+      .work-card.reveal.active,
+      .section-header.reveal,
+      .section-header.reveal.active,
+      .work-top.reveal,
+      .work-top.reveal.active,
+      .proof-row.reveal,
+      .proof-row.reveal.active,
+      .faq-list.reveal,
+      .faq-list.reveal.active,
+      .process-card.reveal,
+      .process-card.reveal.active {
+        filter: none !important;
+      }
+
+      /* Final requested revision: mobile nav logo, unclipped menu, softer hero/form glow, polished motion. */
+      .mobile-topbar-brand {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.68rem !important;
+        min-width: 0 !important;
+        flex: 1 1 auto !important;
+      }
+
+      .mobile-brand-copy {
+        display: grid;
+        gap: 0.16rem;
+        min-width: 0;
+      }
+
+      .mobile-bar-logo {
+        width: 38px;
+        height: 38px;
+        flex: 0 0 38px;
+        display: block;
+        object-fit: cover;
+        border-radius: 11px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(37, 33, 29, 0.1);
+        box-shadow: 0 8px 22px rgba(37, 33, 29, 0.12);
+      }
+
+      .mobile-topbar-brand strong,
+      .mobile-topbar-brand span {
+        display: block;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .mobile-menu-overlay {
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .mobile-menu-sheet {
+        width: min(calc(100vw - 1.25rem), 360px) !important;
+        max-height: calc(100dvh - 6.4rem) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        scrollbar-width: none;
+      }
+
+      .mobile-menu-sheet::-webkit-scrollbar {
+        display: none;
+      }
+
+      .mobile-menu-overlay.active .mobile-menu-links a {
+        opacity: 1 !important;
+        transform: translate3d(0, 0, 0) !important;
+      }
+
+      .hero.container#home {
+        background:
+          radial-gradient(
+            ellipse at 50% 45%,
+            rgba(255, 255, 255, 0.34) 0%,
+            rgba(255, 255, 255, 0.16) 26%,
+            rgba(255, 255, 255, 0.055) 43%,
+            transparent 64%
+          ),
+          linear-gradient(180deg, #f4f1ec 0%, #f7f4ef 44%, #f1ece5 100%) !important;
+      }
+
+      .hero::before,
+      .hero::after {
+        opacity: 0.32 !important;
+        filter: blur(18px) !important;
+      }
+
+      .hero-inner::before {
+        width: min(790px, 88vw) !important;
+        height: min(350px, 42vw) !important;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 255, 255, 0.46) 0%,
+          rgba(255, 255, 255, 0.24) 38%,
+          rgba(255, 255, 255, 0.075) 62%,
+          transparent 84%
+        ) !important;
+        filter: blur(22px) !important;
+        opacity: 0.72 !important;
+      }
+
+      .hero-vertical-stage {
+        opacity: 0.62 !important;
+      }
+
+      #contact .cta-card {
+        background:
+          radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.42), transparent 38%),
+          radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.28), transparent 32%),
+          linear-gradient(135deg, rgba(255, 255, 255, 0.46), rgba(255, 255, 255, 0.22)) !important;
+        backdrop-filter: blur(16px) saturate(118%) !important;
+        -webkit-backdrop-filter: blur(16px) saturate(118%) !important;
+        box-shadow:
+          0 24px 70px rgba(38, 31, 24, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.58) !important;
+      }
+
+      #contact .contact-form {
+        background: rgba(255, 255, 255, 0.3) !important;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.5),
+          0 14px 40px rgba(38, 31, 24, 0.055) !important;
+        backdrop-filter: blur(10px) saturate(112%) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(112%) !important;
+      }
+
+      #contact .contact-field input,
+      #contact .contact-field textarea {
+        background: rgba(255, 255, 255, 0.46) !important;
+        border-color: rgba(37, 33, 29, 0.095) !important;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.52) !important;
+      }
+
+      #contact .contact-field input:focus,
+      #contact .contact-field textarea:focus {
+        background: rgba(255, 255, 255, 0.62) !important;
+        border-color: rgba(37, 33, 29, 0.22) !important;
+        box-shadow:
+          0 0 0 4px rgba(37, 33, 29, 0.038),
+          inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
+      }
+
+      #contact .direct-email-pill,
+      #contact .legacy-email-card {
+        display: none !important;
+      }
+
+      .btn-main,
+      .btn-secondary,
+      .guide-btn,
+      .contact-submit,
+      .social-card,
+      .review-card,
+      .process-card,
+      .proof-card,
+      .faq-trigger,
+      .mobile-menu-links a,
+      .mobile-menu-btn,
+      .mobile-menu-close,
+      nav a {
+        transition:
+          transform 0.34s var(--ease-premium),
+          box-shadow 0.34s var(--ease-premium),
+          background 0.34s var(--ease-premium),
+          border-color 0.34s var(--ease-premium),
+          color 0.28s var(--ease-premium),
+          opacity 0.34s var(--ease-premium) !important;
+      }
+
+      .btn-main:hover,
+      .btn-secondary:hover,
+      .guide-btn:hover,
+      .contact-submit:hover,
+      .social-card:hover,
+      .review-card:hover,
+      .process-card:hover,
+      .proof-card:hover {
+        transform: translate3d(0, -4px, 0) scale(1.01) !important;
+      }
+
+      .btn-main:active,
+      .btn-secondary:active,
+      .guide-btn:active,
+      .contact-submit:active,
+      .mobile-menu-links a:active,
+      .mobile-menu-btn:active,
+      .mobile-menu-close:active {
+        transform: translate3d(0, 0, 0) scale(0.975) !important;
+      }
+
+      .reveal {
+        transition:
+          opacity 0.92s var(--ease-premium),
+          transform 0.92s var(--ease-premium),
+          border-color 0.34s var(--ease-premium),
+          box-shadow 0.34s var(--ease-premium),
+          background 0.34s var(--ease-premium) !important;
+      }
+
+      @media (max-width: 680px) {
+        .mobile-topbar {
+          top: max(0.55rem, env(safe-area-inset-top)) !important;
+          left: 50% !important;
+          width: min(calc(100% - 0.75rem), 560px) !important;
+          min-height: 60px !important;
+          padding: 0.62rem 0.66rem !important;
+          gap: 0.55rem !important;
+          border-radius: 18px !important;
+          overflow: visible !important;
+          background: rgba(255, 255, 255, 0.68) !important;
+          border-color: rgba(37, 33, 29, 0.12) !important;
+          box-shadow: 0 14px 34px rgba(38, 31, 24, 0.12) !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+
+        .mobile-bar-logo {
+          width: 36px;
+          height: 36px;
+          flex-basis: 36px;
+          border-radius: 10px;
+        }
+
+        .mobile-topbar-brand {
+          gap: 0.58rem !important;
+        }
+
+        .mobile-topbar-brand strong {
+          max-width: 62vw;
+          font-size: 0.94rem !important;
+        }
+
+        .mobile-topbar-brand span {
+          max-width: 62vw;
+          font-size: 0.62rem !important;
+          letter-spacing: 0.11em !important;
+        }
+
+        .mobile-menu-btn {
+          width: 42px !important;
+          height: 42px !important;
+          flex: 0 0 42px !important;
+          border-radius: 13px !important;
+          background: rgba(255, 255, 255, 0.56) !important;
+          color: #171513 !important;
+          border-color: rgba(37, 33, 29, 0.11) !important;
+        }
+
+        .mobile-menu-overlay {
+          padding: max(5.2rem, calc(env(safe-area-inset-top) + 4.85rem)) 0.62rem 0.85rem !important;
+          align-items: flex-start !important;
+          background: rgba(12, 12, 14, 0.78) !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+
+        .mobile-menu-sheet {
+          width: min(calc(100vw - 1.25rem), 360px) !important;
+          max-height: calc(100dvh - 6.3rem) !important;
+          padding: 0.82rem !important;
+          border-radius: 26px !important;
+          background: rgba(246, 242, 235, 0.94) !important;
+          border-color: rgba(37, 33, 29, 0.13) !important;
+          box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28) !important;
+          transform: translate3d(0, -10px, 0) scale(0.965) !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu-sheet {
+          transform: translate3d(0, 0, 0) scale(1) !important;
+        }
+
+        .mobile-menu-header {
+          height: 42px !important;
+          min-height: 42px !important;
+          margin: 0 0 0.58rem !important;
+          justify-content: flex-end !important;
+        }
+
+        .mobile-menu-close {
+          position: relative !important;
+          top: auto !important;
+          right: auto !important;
+          width: 40px !important;
+          height: 40px !important;
+          background: rgba(255, 255, 255, 0.72) !important;
+          color: #171513 !important;
+          border-color: rgba(37, 33, 29, 0.13) !important;
+          box-shadow: 0 10px 24px rgba(37, 33, 29, 0.1) !important;
+        }
+
+        .mobile-menu-links {
+          gap: 0.55rem !important;
+        }
+
+        .mobile-menu-links a {
+          min-height: 48px !important;
+          padding: 0.82rem 0.95rem !important;
+          color: #28231f !important;
+          background: rgba(255, 255, 255, 0.62) !important;
+          border-color: rgba(37, 33, 29, 0.09) !important;
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58) !important;
+        }
+
+        .mobile-menu-links a.active,
+        .mobile-menu-links a:active {
+          color: #171513 !important;
+          background: #fff !important;
+          border-color: rgba(37, 33, 29, 0.15) !important;
+        }
+
+        .hero.container#home {
+          background:
+            radial-gradient(
+              ellipse at 50% 43%,
+              rgba(255, 255, 255, 0.26) 0%,
+              rgba(255, 255, 255, 0.11) 32%,
+              transparent 62%
+            ),
+            linear-gradient(180deg, #f4f1ec 0%, #f7f4ef 46%, #f1ece5 100%) !important;
+        }
+
+        .hero-inner::before {
+          height: 285px !important;
+          filter: blur(16px) !important;
+          opacity: 0.48 !important;
+        }
+
+        .hero-vertical-stage {
+          opacity: 0.5 !important;
+        }
+
+        #contact .cta-card,
+        #contact .contact-form {
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+
+        #contact .contact-field input,
+        #contact .contact-field textarea {
+          background: rgba(255, 255, 255, 0.52) !important;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .mobile-topbar-brand strong {
+          max-width: 55vw;
+          font-size: 0.86rem !important;
+        }
+
+        .mobile-topbar-brand span {
+          max-width: 55vw;
+          font-size: 0.56rem !important;
+        }
+
+        .mobile-bar-logo {
+          width: 34px;
+          height: 34px;
+          flex-basis: 34px;
+        }
+      }
+
+      @media (hover: none), (pointer: coarse) {
+        .btn-main:hover,
+        .btn-secondary:hover,
+        .guide-btn:hover,
+        .contact-submit:hover,
+        .social-card:hover,
+        .review-card:hover,
+        .process-card:hover,
+        .proof-card:hover {
+          transform: none !important;
+        }
+      }
+
+      /* Final mobile menu clipping fix: keep links inside the sheet, not fixed over it. */
+      .mobile-menu-links {
+        position: static !important;
+        inset: auto !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        width: 100% !important;
+        max-width: none !important;
+        height: auto !important;
+        transform: none !important;
+        z-index: auto !important;
+      }
+
+      .mobile-menu-links a {
+        width: 100% !important;
+      }
+
+      @media (max-width: 680px) {
+        .mobile-menu-links {
+          position: static !important;
+          width: 100% !important;
+          height: auto !important;
+          transform: none !important;
+        }
+
+        .mobile-menu-sheet {
+          display: block !important;
+          height: auto !important;
+          min-height: 0 !important;
+        }
+      }
+
+      /* Clean mobile menu background after clipping fix. */
+      .mobile-menu-links {
+        background: transparent !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+      }
+
+      @media (max-width: 680px) {
+        .mobile-menu-links {
+          background: transparent !important;
+          border: 0 !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+        }
+      }
+
+      /* === FINAL CONTACT SECTION MATCH: screenshot-aligned polish === */
+      .hero.container#home {
+        background:
+          radial-gradient(
+            ellipse at 50% 42%,
+            rgba(255, 255, 255, 0.18) 0%,
+            rgba(255, 255, 255, 0.075) 30%,
+            transparent 58%
+          ),
+          linear-gradient(180deg, #f4f1ec 0%, #f7f4ef 46%, #f1ece5 100%) !important;
+      }
+
+      .hero-inner::before {
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 255, 255, 0.3) 0%,
+          rgba(255, 255, 255, 0.13) 42%,
+          transparent 76%
+        ) !important;
+        filter: blur(14px) !important;
+        opacity: 0.42 !important;
+      }
+
+      #contact.cta-section {
+        padding-top: clamp(5rem, 8vw, 8rem) !important;
+        padding-bottom: clamp(4rem, 7vw, 6rem) !important;
+      }
+
+      #contact .cta-card {
+        position: relative;
+        overflow: hidden;
+        max-width: 1120px;
+        margin-inline: auto;
+        padding: clamp(3.1rem, 7vw, 5rem) clamp(1rem, 4.5vw, 3.6rem) clamp(2.2rem, 4.8vw, 3.4rem) !important;
+        border-radius: clamp(24px, 3.5vw, 34px) !important;
+        border: 1px solid rgba(37, 33, 29, 0.13) !important;
+        background:
+          radial-gradient(circle at 16% 8%, rgba(255, 255, 255, 0.72), transparent 34%),
+          radial-gradient(circle at 88% 22%, rgba(255, 255, 255, 0.48), transparent 31%),
+          linear-gradient(135deg, rgba(252, 249, 242, 0.9), rgba(244, 239, 229, 0.88)) !important;
+        color: #12100e !important;
+        box-shadow:
+          0 28px 80px rgba(40, 34, 27, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.82) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      #contact .cta-card::before {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        border-radius: inherit;
+        pointer-events: none;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.45), transparent 42%, rgba(255, 255, 255, 0.2));
+        opacity: 0.65;
+      }
+
+      #contact .cta-card > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      #contact .cta-card h2 {
+        max-width: 850px;
+        margin: 0 auto 1rem !important;
+        color: #0d0d0d !important;
+        font-size: clamp(2.15rem, 5.8vw, 4.4rem) !important;
+        line-height: 0.92 !important;
+        letter-spacing: -0.075em !important;
+      }
+
+      #contact .cta-card p {
+        max-width: 460px;
+        margin: 0 auto 2.1rem !important;
+        color: rgba(23, 21, 19, 0.58) !important;
+        font-size: 0.82rem !important;
+        line-height: 1.62 !important;
+      }
+
+      #contact .contact-form {
+        width: min(830px, 100%) !important;
+        margin: 0 auto !important;
+        padding: clamp(1rem, 2.2vw, 1.28rem) !important;
+        gap: 0.82rem 1rem !important;
+        border-radius: 20px !important;
+        border: 1px solid rgba(37, 33, 29, 0.13) !important;
+        background: rgba(255, 255, 255, 0.44) !important;
+        box-shadow:
+          0 18px 44px rgba(40, 34, 27, 0.055),
+          inset 0 1px 0 rgba(255, 255, 255, 0.68) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      #contact .contact-field {
+        gap: 0.42rem !important;
+      }
+
+      #contact .contact-field label {
+        color: rgba(21, 19, 17, 0.76) !important;
+        font-size: 0.66rem !important;
+        font-weight: 950 !important;
+        letter-spacing: 0.025em !important;
+        text-transform: uppercase !important;
+      }
+
+      #contact .contact-field input,
+      #contact .contact-field textarea {
+        border-radius: 12px !important;
+        border: 1px solid rgba(37, 33, 29, 0.14) !important;
+        background: rgba(255, 255, 255, 0.58) !important;
+        color: #171513 !important;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
+        font-size: 0.82rem !important;
+      }
+
+      #contact .contact-field input {
+        min-height: 46px !important;
+        padding: 0.82rem 0.95rem !important;
+      }
+
+      #contact .contact-field textarea {
+        min-height: 126px !important;
+        padding: 0.9rem 0.95rem !important;
+      }
+
+      #contact .contact-field input::placeholder,
+      #contact .contact-field textarea::placeholder {
+        color: rgba(23, 21, 19, 0.34) !important;
+      }
+
+      #contact .contact-field input:focus,
+      #contact .contact-field textarea:focus {
+        border-color: rgba(23, 21, 19, 0.24) !important;
+        background: rgba(255, 255, 255, 0.74) !important;
+        box-shadow:
+          0 0 0 4px rgba(23, 21, 19, 0.035),
+          inset 0 1px 0 rgba(255, 255, 255, 0.82) !important;
+      }
+
+      #contact .contact-submit {
+        min-height: 48px !important;
+        border-radius: 12px !important;
+        background: linear-gradient(135deg, #171513, #2b2723) !important;
+        color: #fffaf2 !important;
+        font-size: 0.84rem !important;
+        box-shadow: 0 14px 28px rgba(23, 21, 19, 0.16) !important;
+      }
+
+      #contact .contact-submit:hover {
+        background: linear-gradient(135deg, #0d0c0b, #25211e) !important;
+        transform: translate3d(0, -2px, 0) scale(1.005) !important;
+        box-shadow: 0 20px 42px rgba(23, 21, 19, 0.2) !important;
+      }
+
+      #contact .direct-email-pill {
+        width: fit-content;
+        max-width: min(100%, 430px);
+        min-height: 48px;
+        margin: 1.35rem auto 1.55rem !important;
+        padding: 0.62rem 0.74rem 0.62rem 0.95rem !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 0.72rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        background: linear-gradient(135deg, #171513, #2d2925) !important;
+        color: #fffaf2 !important;
+        text-decoration: none;
+        box-shadow:
+          0 18px 38px rgba(23, 21, 19, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+      }
+
+      #contact .direct-email-icon,
+      #contact .direct-email-arrow {
+        display: inline-grid;
+        place-items: center;
+        flex: 0 0 auto;
+      }
+
+      #contact .direct-email-icon svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      #contact .direct-email-pill strong {
+        color: inherit !important;
+        font-size: 0.84rem !important;
+        font-weight: 950 !important;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #contact .direct-email-arrow {
+        width: 24px;
+        height: 24px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.13);
+        color: #fff;
+        font-size: 1.25rem;
+        line-height: 1;
+        transition:
+          transform 0.28s var(--ease-premium),
+          background 0.28s var(--ease-premium);
+      }
+
+      #contact .direct-email-pill:hover {
+        transform: translate3d(0, -2px, 0) scale(1.01) !important;
+        box-shadow:
+          0 24px 54px rgba(23, 21, 19, 0.24),
+          inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+      }
+
+      #contact .direct-email-pill:hover .direct-email-arrow {
+        transform: translateX(2px);
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      #contact .social-grid {
+        width: min(690px, 100%) !important;
+        max-width: 690px !important;
+        margin: 0 auto !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 1rem !important;
+      }
+
+      #contact .social-card {
+        min-height: 132px !important;
+        padding: 1.55rem 1rem !important;
+        border-radius: 18px !important;
+        border-color: rgba(37, 33, 29, 0.13) !important;
+        background: rgba(255, 255, 255, 0.46) !important;
+        color: #171513 !important;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.64) !important;
+      }
+
+      #contact .social-card svg {
+        width: 31px !important;
+        height: 31px !important;
+      }
+
+      #contact .social-card span {
+        color: inherit !important;
+        font-size: 0.78rem !important;
+        font-weight: 950 !important;
+      }
+
+      #contact .social-card:hover {
+        background: rgba(255, 255, 255, 0.72) !important;
+        border-color: rgba(37, 33, 29, 0.2) !important;
+        color: #0d0d0d !important;
+        transform: translate3d(0, -4px, 0) scale(1.01) !important;
+        box-shadow:
+          0 18px 40px rgba(38, 31, 24, 0.095),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+      }
+
+      @keyframes contactRefinedEnter {
+        from {
+          opacity: 0;
+          transform: translate3d(0, 38px, 0) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+      }
+
+      #contact .cta-card.reveal.active {
+        animation: contactRefinedEnter 0.9s var(--ease-premium) both;
+      }
+
+      @media (max-width: 760px) {
+        #contact .cta-card {
+          padding: 2.65rem 0.9rem 2rem !important;
+        }
+
+        #contact .cta-card h2 {
+          font-size: clamp(2.15rem, 10vw, 3.25rem) !important;
+          letter-spacing: -0.07em !important;
+        }
+
+        #contact .cta-card p {
+          max-width: 330px;
+          margin-bottom: 1.6rem !important;
+          font-size: 0.78rem !important;
+        }
+
+        #contact .contact-form {
+          grid-template-columns: 1fr !important;
+          padding: 0.86rem !important;
+          border-radius: 18px !important;
+          gap: 0.76rem !important;
+        }
+
+        #contact .contact-field input {
+          min-height: 44px !important;
+        }
+
+        #contact .contact-field textarea {
+          min-height: 116px !important;
+        }
+
+        #contact .direct-email-pill {
+          max-width: min(100%, 360px);
+          width: auto;
+          min-height: 46px;
+          margin: 1.15rem auto 1.35rem !important;
+        }
+
+        #contact .direct-email-pill strong {
+          max-width: 250px;
+          font-size: 0.78rem !important;
+        }
+
+        #contact .social-grid {
+          grid-template-columns: 1fr !important;
+          width: min(100%, 360px) !important;
+          gap: 0.78rem !important;
+        }
+
+        #contact .social-card {
+          min-height: 82px !important;
+          flex-direction: row !important;
+          justify-content: center !important;
+          padding: 1rem !important;
+        }
+      }
+
+      @media (max-width: 420px) {
+        #contact .cta-card {
+          border-radius: 22px !important;
+        }
+
+        #contact .direct-email-pill {
+          gap: 0.55rem;
+          padding-left: 0.76rem !important;
+          padding-right: 0.58rem !important;
+        }
+
+        #contact .direct-email-pill strong {
+          max-width: 210px;
+          font-size: 0.72rem !important;
+        }
+      }
+
+      /* Final revision: remove click-triggered panel highlight effects without changing layout */
+      #contact .direct-email-pill:hover {
+        transform: none !important;
+        background: linear-gradient(135deg, #171513, #2d2925) !important;
+        box-shadow:
+          0 18px 38px rgba(23, 21, 19, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+      }
+
+      #contact .direct-email-pill:hover .direct-email-arrow {
+        transform: none !important;
+        background: rgba(255, 255, 255, 0.13) !important;
+      }
+
+      .work-card.reveal.active:hover,
+      .review-card:hover,
+      .process-card:hover,
+      .proof-card:hover,
+      .faq-item:hover,
+      .social-card:hover,
+      #contact .social-card:hover {
+        transform: none !important;
+      }
+
+      .work-card.reveal.active:hover,
+      .review-card:hover,
+      .process-card:hover,
+      .proof-card:hover,
+      .faq-item:hover,
+      .social-card:hover {
+        box-shadow: none !important;
+      }
+
+      #contact .social-card:hover {
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.64) !important;
+      }
+
+      @media (hover: none), (pointer: coarse) {
+        .work-card,
+        .review-card,
+        .process-card,
+        .proof-card,
+        .faq-item,
+        .social-card,
+        #contact .direct-email-pill {
+          transform: none !important;
+        }
+      }
+
+      /* Mobile performance: keep section/menu animations, remove costly mobile-only rendering effects */
+      @media (max-width: 680px) {
+        .cursor-glow,
+        .custom-cursor,
+        .noise {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+        }
+
+        .mobile-topbar,
+        .mobile-menu-overlay,
+        .mobile-menu-sheet,
+        #contact .cta-card,
+        #contact .contact-field input,
+        #contact .contact-field textarea {
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+
+        .site-orb,
+        .site-beam {
+          filter: none !important;
+          mix-blend-mode: normal !important;
+          opacity: 0.08 !important;
+        }
+
+        .work-card,
+        .review-card,
+        .process-card,
+        .proof-card,
+        .faq-item,
+        .social-card,
+        #contact .cta-card,
+        #contact .direct-email-pill {
+          will-change: auto !important;
+        }
+      }
+
+      /* Final polish: email copies only, no mail app jump, no panel pop/glow */
+      #contact .direct-email-pill {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      #contact .direct-email-pill strong {
+        transition: opacity 0.16s var(--ease);
+      }
+
+      #contact .direct-email-pill:hover,
+      #contact .direct-email-pill:active,
+      #contact .direct-email-pill:focus-visible {
+        transform: none !important;
+      }
+
+      #contact .direct-email-pill:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.36);
+        outline-offset: 3px;
+      }
+
+      .work-card:hover,
+      .work-card:active,
+      .work-card.reveal.active:hover,
+      .review-card:hover,
+      .review-card:active,
+      .process-card:hover,
+      .process-card:active,
+      .proof-card:hover,
+      .proof-card:active,
+      .faq-item:hover,
+      .faq-item:active,
+      .social-card:hover,
+      .social-card:active,
+      #contact .social-card:hover,
+      #contact .social-card:active {
+        transform: none !important;
+        filter: none !important;
+      }
+
+      .work-card.reveal.active:hover,
+      .review-card:hover,
+      .process-card:hover,
+      .proof-card:hover,
+      .faq-item:hover,
+      .social-card:hover,
+      #contact .social-card:hover {
+        box-shadow: none !important;
+      }
+
+      @media (hover: none), (pointer: coarse) {
+        .work-card,
+        .review-card,
+        .process-card,
+        .proof-card,
+        .faq-item,
+        .social-card,
+        #contact .social-card,
+        #contact .direct-email-pill {
+          transform: none !important;
+          filter: none !important;
+          will-change: auto !important;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .cursor-glow,
+        .custom-cursor,
+        .noise {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+        }
+
+        .mobile-topbar,
+        .mobile-menu-overlay,
+        .mobile-menu-sheet,
+        #contact .cta-card,
+        #contact .contact-field input,
+        #contact .contact-field textarea {
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+
+        .site-orb,
+        .site-beam {
+          filter: none !important;
+          mix-blend-mode: normal !important;
+          opacity: 0.08 !important;
+        }
+      }
+
+      /* Final stability patch: copy-email is isolated from nav, and hover panels no longer flicker/pop. */
+      @media (hover: hover) and (pointer: fine) {
+        .work-card:hover,
+        .work-card:active,
+        .work-card.reveal.active:hover {
+          transform: translate3d(0, 0, 0) scale(1) rotateX(0deg) !important;
+          filter: none !important;
+          background: rgba(255, 255, 255, 0.44) !important;
+          border-color: rgba(37, 33, 29, 0.11) !important;
+          box-shadow: var(--shadow-card) !important;
+        }
+
+        .review-card:hover,
+        .review-card:active,
+        .process-card:hover,
+        .process-card:active,
+        .proof-card:hover,
+        .proof-card:active,
+        .faq-item:hover,
+        .faq-item:active,
+        .social-card:hover,
+        .social-card:active {
+          transform: none !important;
+          filter: none !important;
+          background: linear-gradient(145deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.28)) !important;
+          border-color: rgba(37, 33, 29, 0.11) !important;
+          box-shadow: var(--shadow-card) !important;
+        }
+
+        #contact .social-card:hover,
+        #contact .social-card:active {
+          transform: none !important;
+          filter: none !important;
+          background: rgba(255, 255, 255, 0.46) !important;
+          border-color: rgba(37, 33, 29, 0.13) !important;
+          color: #171513 !important;
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.64) !important;
+        }
+
+        #contact .direct-email-pill:hover,
+        #contact .direct-email-pill:active,
+        #contact .direct-email-pill:focus-visible {
+          transform: none !important;
+          background: linear-gradient(135deg, #171513, #2d2925) !important;
+          box-shadow:
+            0 18px 38px rgba(23, 21, 19, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+        }
+
+        #contact .direct-email-pill:hover .direct-email-arrow,
+        #contact .direct-email-pill:active .direct-email-arrow {
+          transform: none !important;
+          background: rgba(255, 255, 255, 0.13) !important;
+        }
+      }
     </style>
   </head>
-
   <body>
-    <div class="site-ambient" aria-hidden="true">
+    <div aria-hidden="true" class="site-ambient">
       <div class="site-grid"></div>
       <div class="site-orb orb-a"></div>
       <div class="site-orb orb-b"></div>
@@ -4918,7 +6613,6 @@
     </div>
     <div class="noise"></div>
     <div class="scroll-progress" id="scrollProgress"></div>
-
     <nav aria-label="Main navigation" id="mainNav">
       <div class="nav-highlight"></div>
       <a class="active" href="#home">Home</a>
@@ -4930,39 +6624,40 @@
       <a href="#contact">Contact</a>
     </nav>
 
-    <!-- Mobile Topbar + Slide Panel -->
     <div class="mobile-topbar">
       <div class="mobile-topbar-brand">
-        <strong>Abdullah Al Mamun</strong>
-        <span>Thumbnail Designer</span>
+        <img alt="Abdullah Designs logo" class="mobile-bar-logo" decoding="async" src="favicon/Logo.png" />
+        <div class="mobile-brand-copy">
+          <strong>Abdullah Al Mamun</strong>
+          <span>Thumbnail Designer</span>
+        </div>
       </div>
       <button
-        class="mobile-menu-btn"
-        id="mobileMenuBtn"
-        aria-label="Open menu"
         aria-controls="mobileMenuOverlay"
         aria-expanded="false"
+        aria-label="Open menu"
+        class="mobile-menu-btn"
+        id="mobileMenuBtn"
         type="button"
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-          <line x1="4" y1="7" x2="20" y2="7"></line>
-          <line x1="4" y1="12" x2="20" y2="12"></line>
-          <line x1="4" y1="17" x2="20" y2="17"></line>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" viewBox="0 0 24 24">
+          <line x1="4" x2="20" y1="7" y2="7"></line>
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="17" y2="17"></line>
         </svg>
       </button>
     </div>
-
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
-      <div class="mobile-menu-sheet" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div aria-hidden="true" class="mobile-menu-overlay" id="mobileMenuOverlay">
+      <div aria-label="Mobile navigation" aria-modal="true" class="mobile-menu-sheet" role="dialog">
         <div class="mobile-menu-header">
-          <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu" type="button">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
+          <button aria-label="Close menu" class="mobile-menu-close" id="mobileMenuClose" type="button">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.4" viewBox="0 0 24 24">
+              <line x1="18" x2="6" y1="6" y2="18"></line>
+              <line x1="6" x2="18" y1="6" y2="18"></line>
             </svg>
           </button>
         </div>
-        <nav class="mobile-menu-links" aria-label="Mobile navigation links">
+        <nav aria-label="Mobile navigation links" class="mobile-menu-links">
           <a href="#home">Home</a>
           <a href="#work">Work</a>
           <a href="#reviews">Reviews</a>
@@ -4973,84 +6668,83 @@
         </nav>
       </div>
     </div>
-
     <main>
       <section class="hero container" id="home">
-        <div class="hero-vertical-stage" aria-hidden="true">
+        <div aria-hidden="true" class="hero-vertical-stage">
           <div class="hero-ribbon hero-ribbon-a hero-ribbon-down">
             <div class="hero-ribbon-track">
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/9.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/8.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/7.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/1.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/3.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/5.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/2.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/4.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/6.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/1.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/3.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/5.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/2.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/4.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/6.avif" /></div>
             </div>
           </div>
           <div class="hero-ribbon hero-ribbon-b hero-ribbon-up">
             <div class="hero-ribbon-track">
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/9.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/8.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/7.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/2.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/6.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/4.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/1.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/5.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/3.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/2.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/6.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/4.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/1.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/5.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/3.avif" /></div>
             </div>
           </div>
           <div class="hero-ribbon hero-ribbon-c hero-ribbon-down">
             <div class="hero-ribbon-track">
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/9.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/8.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/7.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/5.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/1.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/3.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/6.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/2.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/4.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/5.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/1.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/3.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/6.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/2.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/4.avif" /></div>
             </div>
           </div>
           <div class="hero-ribbon hero-ribbon-d hero-ribbon-up">
             <div class="hero-ribbon-track">
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/9.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/8.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/7.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/6.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/4.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/2.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/5.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/3.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/1.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/6.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/4.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/2.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/5.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/3.avif" /></div>
+              <div class="hero-flow-thumb"><img alt="" decoding="async" loading="lazy" src="thumbnails/1.avif" /></div>
             </div>
           </div>
           <div class="hero-center-shield"></div>
@@ -5072,7 +6766,6 @@
           </div>
         </div>
       </section>
-
       <section class="work-section" id="work">
         <div class="container">
           <div class="work-top reveal">
@@ -5083,152 +6776,191 @@
               </h2>
             </div>
           </div>
-
           <div class="work-wall">
             <article class="work-card reveal">
-              <img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="Business YouTube Thumbnail" />
+              <img alt="Business YouTube Thumbnail" decoding="async" loading="lazy" src="thumbnails/1.avif" />
             </article>
             <article class="work-card reveal">
-              <img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="Tech YouTube Thumbnail" />
+              <img alt="Tech YouTube Thumbnail" decoding="async" loading="lazy" src="thumbnails/2.avif" />
             </article>
             <article class="work-card reveal">
-              <img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="Financial Business Thumbnail" />
+              <img alt="Financial Business Thumbnail" decoding="async" loading="lazy" src="thumbnails/3.avif" />
             </article>
             <article class="work-card reveal">
-              <img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="Expert Podcast Thumbnail" />
+              <img alt="Expert Podcast Thumbnail" decoding="async" loading="lazy" src="thumbnails/4.avif" />
             </article>
             <article class="work-card reveal">
-              <img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="Gaming Thumbnail Illustration" />
+              <img alt="Gaming Thumbnail Illustration" decoding="async" loading="lazy" src="thumbnails/5.avif" />
             </article>
             <article class="work-card reveal">
-              <img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="Podcast Thumbnail Design" />
+              <img alt="Podcast Thumbnail Design" decoding="async" loading="lazy" src="thumbnails/6.avif" />
             </article>
             <article class="work-card reveal">
-              <img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="Podcast Thumbnail Design" />
+              <img alt="Podcast Thumbnail Design" decoding="async" loading="lazy" src="thumbnails/7.avif" />
             </article>
             <article class="work-card reveal">
-              <img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="Podcast Thumbnail Design" />
+              <img alt="Podcast Thumbnail Design" decoding="async" loading="lazy" src="thumbnails/8.avif" />
             </article>
             <article class="work-card reveal">
-              <img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="Podcast Thumbnail Design" />
+              <img alt="Podcast Thumbnail Design" decoding="async" loading="lazy" src="thumbnails/9.avif" />
             </article>
             <article class="work-card reveal image-slider">
               <img
-                loading="lazy"
-                decoding="async"
-                src="after/1.avif"
                 alt="Gaming YouTube Thumbnail - Before and After After"
+                decoding="async"
+                loading="lazy"
+                src="after/1.avif"
               />
               <img
-                loading="lazy"
-                decoding="async"
-                src="before/1.avif"
                 alt="Gaming YouTube Thumbnail - Before and After Before"
                 class="image-before"
+                decoding="async"
+                loading="lazy"
+                src="before/1.avif"
               />
-              <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
+              <input
+                aria-label="Before and after thumbnail comparison"
+                class="slider-range"
+                max="100"
+                min="0"
+                type="range"
+                value="50"
+              />
               <div class="slider-handle"></div>
             </article>
             <article class="work-card reveal image-slider">
               <img
-                loading="lazy"
-                decoding="async"
-                src="after/2.avif"
                 alt="Podcast Thumbnail - Before and After After"
+                decoding="async"
+                loading="lazy"
+                src="after/2.avif"
               />
               <img
-                loading="lazy"
-                decoding="async"
-                src="before/2.avif"
                 alt="Podcast Thumbnail - Before and After Before"
                 class="image-before"
+                decoding="async"
+                loading="lazy"
+                src="before/2.avif"
               />
-              <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
+              <input
+                aria-label="Before and after thumbnail comparison"
+                class="slider-range"
+                max="100"
+                min="0"
+                type="range"
+                value="50"
+              />
               <div class="slider-handle"></div>
             </article>
             <article class="work-card reveal image-slider">
               <img
-                loading="lazy"
-                decoding="async"
-                src="after/3.avif"
                 alt="Gaming Thumbnail Portfolio - Before and After After"
+                decoding="async"
+                loading="lazy"
+                src="after/3.avif"
               />
               <img
-                loading="lazy"
-                decoding="async"
-                src="before/3.avif"
                 alt="Gaming Thumbnail Portfolio - Before and After Before"
                 class="image-before"
+                decoding="async"
+                loading="lazy"
+                src="before/3.avif"
               />
-              <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
+              <input
+                aria-label="Before and after thumbnail comparison"
+                class="slider-range"
+                max="100"
+                min="0"
+                type="range"
+                value="50"
+              />
               <div class="slider-handle"></div>
             </article>
             <article class="work-card reveal image-slider">
               <img
-                loading="lazy"
-                decoding="async"
-                src="after/4.avif"
                 alt="Tech Review Thumbnail - Before and After After"
+                decoding="async"
+                loading="lazy"
+                src="after/4.avif"
               />
               <img
-                loading="lazy"
-                decoding="async"
-                src="before/4.avif"
                 alt="Tech Review Thumbnail - Before and After Before"
                 class="image-before"
+                decoding="async"
+                loading="lazy"
+                src="before/4.avif"
               />
-              <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
+              <input
+                aria-label="Before and after thumbnail comparison"
+                class="slider-range"
+                max="100"
+                min="0"
+                type="range"
+                value="50"
+              />
               <div class="slider-handle"></div>
             </article>
             <article class="work-card reveal image-slider">
               <img
-                loading="lazy"
-                decoding="async"
-                src="after/5.avif"
                 alt="Business Thumbnail - Before and After After"
+                decoding="async"
+                loading="lazy"
+                src="after/5.avif"
               />
               <img
-                loading="lazy"
-                decoding="async"
-                src="before/5.avif"
                 alt="Business Thumbnail - Before and After Before"
                 class="image-before"
+                decoding="async"
+                loading="lazy"
+                src="before/5.avif"
               />
-              <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
+              <input
+                aria-label="Before and after thumbnail comparison"
+                class="slider-range"
+                max="100"
+                min="0"
+                type="range"
+                value="50"
+              />
               <div class="slider-handle"></div>
             </article>
             <article class="work-card reveal image-slider">
               <img
-                loading="lazy"
-                decoding="async"
-                src="after/6.avif"
                 alt="Tech Thumbnail Design - Before and After After"
+                decoding="async"
+                loading="lazy"
+                src="after/6.avif"
               />
               <img
-                loading="lazy"
-                decoding="async"
-                src="before/6.avif"
                 alt="Tech Thumbnail Design - Before and After Before"
                 class="image-before"
+                decoding="async"
+                loading="lazy"
+                src="before/6.avif"
               />
-              <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
+              <input
+                aria-label="Before and after thumbnail comparison"
+                class="slider-range"
+                max="100"
+                min="0"
+                type="range"
+                value="50"
+              />
               <div class="slider-handle"></div>
             </article>
           </div>
         </div>
       </section>
-
       <section class="section-pad container reviews-section" id="reviews">
         <div class="section-header reveal">
           <h2>Trusted by Creators</h2>
         </div>
-
         <div class="reviews-grid">
           <a
             class="review-card reveal"
             href="https://www.youtube.com/@JackPembrook"
-            target="_blank"
             rel="noopener noreferrer"
+            target="_blank"
           >
             <div class="review-content">
               <div class="review-stars">★★★★★</div>
@@ -5238,24 +6970,24 @@
               </p>
               <div class="review-user">
                 <img
-                  loading="lazy"
-                  decoding="async"
-                  class="review-avatar"
-                  src="reviews/jack.webp"
                   alt="Jack Pembrook"
+                  class="review-avatar"
+                  decoding="async"
+                  loading="lazy"
                   onerror="
                     this.src = 'https://ui-avatars.com/api/?name=Jack+Pembrook&amp;background=141417&amp;color=fff'
                   "
+                  src="reviews/jack.webp"
                 />
                 <div class="review-info">
                   <h4>
                     Jack Pembrook
                     <img
-                      loading="lazy"
-                      decoding="async"
-                      src="reviews/verified-badge.png"
-                      class="verified-badge"
                       alt="Verified"
+                      class="verified-badge"
+                      decoding="async"
+                      loading="lazy"
+                      src="reviews/verified-badge.png"
                     />
                   </h4>
                   <span>YouTuber · 1.69M Subscribers</span>
@@ -5263,12 +6995,11 @@
               </div>
             </div>
           </a>
-
           <a
             class="review-card reveal reveal-delay-1"
             href="https://www.youtube.com/@SabriSubyOfficial"
-            target="_blank"
             rel="noopener noreferrer"
+            target="_blank"
           >
             <div class="review-content">
               <div class="review-stars">★★★★★</div>
@@ -5278,22 +7009,22 @@
               </p>
               <div class="review-user">
                 <img
-                  loading="lazy"
-                  decoding="async"
-                  class="review-avatar"
-                  src="reviews/sabri.webp"
                   alt="Sabri Suby"
+                  class="review-avatar"
+                  decoding="async"
+                  loading="lazy"
                   onerror="this.src = 'https://ui-avatars.com/api/?name=Sabri+Suby&amp;background=141417&amp;color=fff'"
+                  src="reviews/sabri.webp"
                 />
                 <div class="review-info">
                   <h4>
                     Sabri Suby
                     <img
-                      loading="lazy"
-                      decoding="async"
-                      src="reviews/verified-badge.png"
-                      class="verified-badge"
                       alt="Verified"
+                      class="verified-badge"
+                      decoding="async"
+                      loading="lazy"
+                      src="reviews/verified-badge.png"
                     />
                   </h4>
                   <span>YouTuber · 450K Subscribers</span>
@@ -5301,12 +7032,11 @@
               </div>
             </div>
           </a>
-
           <a
             class="review-card reveal reveal-delay-2"
             href="https://www.youtube.com/@techsource"
-            target="_blank"
             rel="noopener noreferrer"
+            target="_blank"
           >
             <div class="review-content">
               <div class="review-stars">★★★★★</div>
@@ -5316,22 +7046,22 @@
               </p>
               <div class="review-user">
                 <img
-                  loading="lazy"
-                  decoding="async"
-                  class="review-avatar"
-                  src="reviews/techsource.webp"
                   alt="TechSource"
+                  class="review-avatar"
+                  decoding="async"
+                  loading="lazy"
                   onerror="this.src = 'https://ui-avatars.com/api/?name=TechSource&amp;background=141417&amp;color=fff'"
+                  src="reviews/techsource.webp"
                 />
                 <div class="review-info">
                   <h4>
                     TechSource
                     <img
-                      loading="lazy"
-                      decoding="async"
-                      src="reviews/verified-badge.png"
-                      class="verified-badge"
                       alt="Verified"
+                      class="verified-badge"
+                      decoding="async"
+                      loading="lazy"
+                      src="reviews/verified-badge.png"
                     />
                   </h4>
                   <span>YouTuber · 4.1M Subscribers</span>
@@ -5339,12 +7069,11 @@
               </div>
             </div>
           </a>
-
           <a
             class="review-card reveal"
             href="https://www.youtube.com/@LiamOttley/videos"
-            target="_blank"
             rel="noopener noreferrer"
+            target="_blank"
           >
             <div class="review-content">
               <div class="review-stars">★★★★★</div>
@@ -5354,24 +7083,24 @@
               </p>
               <div class="review-user">
                 <img
-                  loading="lazy"
-                  decoding="async"
-                  class="review-avatar"
-                  src="reviews/Liam%20Ottley.jpg"
                   alt="Liam Ottley"
+                  class="review-avatar"
+                  decoding="async"
+                  loading="lazy"
                   onerror="
                     this.src = 'https://ui-avatars.com/api/?name=Liam+Ottley&amp;background=141417&amp;color=fff'
                   "
+                  src="reviews/Liam%20Ottley.jpg"
                 />
                 <div class="review-info">
                   <h4>
                     Liam Ottley
                     <img
-                      loading="lazy"
-                      decoding="async"
-                      src="reviews/verified-badge.png"
-                      class="verified-badge"
                       alt="Verified"
+                      class="verified-badge"
+                      decoding="async"
+                      loading="lazy"
+                      src="reviews/verified-badge.png"
                     />
                   </h4>
                   <span>YouTuber · 780K Subscribers</span>
@@ -5379,12 +7108,11 @@
               </div>
             </div>
           </a>
-
           <a
             class="review-card reveal reveal-delay-1"
             href="https://www.youtube.com/@Tdawgsmitty/videos"
-            target="_blank"
             rel="noopener noreferrer"
+            target="_blank"
           >
             <div class="review-content">
               <div class="review-stars">★★★★★</div>
@@ -5394,24 +7122,24 @@
               </p>
               <div class="review-user">
                 <img
-                  loading="lazy"
-                  decoding="async"
-                  class="review-avatar"
-                  src="reviews/Tdawgsmitty.jpg"
                   alt="Tdawgsmitty"
+                  class="review-avatar"
+                  decoding="async"
+                  loading="lazy"
                   onerror="
                     this.src = 'https://ui-avatars.com/api/?name=Tdawgsmitty&amp;background=141417&amp;color=fff'
                   "
+                  src="reviews/Tdawgsmitty.jpg"
                 />
                 <div class="review-info">
                   <h4>
                     Tdawgsmitty
                     <img
-                      loading="lazy"
-                      decoding="async"
-                      src="reviews/verified-badge.png"
-                      class="verified-badge"
                       alt="Verified"
+                      class="verified-badge"
+                      decoding="async"
+                      loading="lazy"
+                      src="reviews/verified-badge.png"
                     />
                   </h4>
                   <span>YouTuber · 597K Subscribers</span>
@@ -5419,12 +7147,11 @@
               </div>
             </div>
           </a>
-
           <a
             class="review-card reveal"
             href="https://www.youtube.com/@vfxsolazzo"
-            target="_blank"
             rel="noopener noreferrer"
+            target="_blank"
           >
             <div class="review-content">
               <div class="review-stars">★★★★★</div>
@@ -5434,12 +7161,12 @@
               </p>
               <div class="review-user">
                 <img
-                  loading="lazy"
-                  decoding="async"
-                  class="review-avatar"
-                  src="reviews/solazzo.webp"
                   alt="Solazzo"
+                  class="review-avatar"
+                  decoding="async"
+                  loading="lazy"
                   onerror="this.src = 'https://ui-avatars.com/api/?name=Solazzo&amp;background=141417&amp;color=fff'"
+                  src="reviews/solazzo.webp"
                 />
                 <div class="review-info">
                   <h4>Solazzo</h4>
@@ -5450,7 +7177,6 @@
           </a>
         </div>
       </section>
-
       <section class="about-section container" id="about">
         <div class="about-grid reveal">
           <div class="about-content">
@@ -5477,20 +7203,19 @@
           <div class="about-visual">
             <div class="about-image-wrapper">
               <img
-                loading="lazy"
-                decoding="async"
-                src="profile/1.avif"
                 alt="Abdullah Al Mamun - Professional Thumbnail Designer"
+                decoding="async"
+                loading="lazy"
                 onerror="
                   this.onerror = null;
                   this.src = 'profile/1.jpg';
                 "
+                src="profile/1.avif"
               />
             </div>
           </div>
         </div>
       </section>
-
       <section class="section-pad container process-section" id="process">
         <div class="section-header reveal">
           <h2>Simple Process. Premium Result.</h2>
@@ -5499,27 +7224,27 @@
           <article class="process-card reveal">
             <div class="process-media">
               <img
-                loading="lazy"
-                decoding="async"
-                src="Process/1.avif"
                 alt="Strategy Consultation"
+                decoding="async"
+                loading="lazy"
                 onerror="
                   this.onerror = null;
                   this.src = 'Process/1.jpg';
                 "
+                src="Process/1.avif"
               />
             </div>
             <div class="process-icon">
               <svg
-                viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
               >
                 <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                <rect height="14" rx="2" ry="2" width="15" x="1" y="5"></rect>
               </svg>
             </div>
             <h3>Consulting</h3>
@@ -5528,63 +7253,61 @@
               content.
             </p>
           </article>
-
           <article class="process-card reveal reveal-delay-1">
             <div class="process-media">
               <img
-                loading="lazy"
-                decoding="async"
-                src="Process/2.avif"
                 alt="Conceptualization"
+                decoding="async"
+                loading="lazy"
                 onerror="
                   this.onerror = null;
                   this.src = 'Process/2.jpg';
                 "
+                src="Process/2.avif"
               />
             </div>
             <div class="process-icon">
               <svg
-                viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
               >
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <line x1="16" x2="8" y1="13" y2="13"></line>
+                <line x1="16" x2="8" y1="17" y2="17"></line>
                 <polyline points="10 9 9 9 8 9"></polyline>
               </svg>
             </div>
             <h3>Strategic Ideation</h3>
             <p>I develop conceptual briefings and sketches, focusing on the visual hook that will stop the scroll.</p>
           </article>
-
           <article class="process-card reveal reveal-delay-2">
             <div class="process-media">
               <img
-                loading="lazy"
-                decoding="async"
-                src="Process/3.avif"
                 alt="Final Design Production"
+                decoding="async"
+                loading="lazy"
                 onerror="
                   this.onerror = null;
                   this.src = 'Process/3.jpg';
                 "
+                src="Process/3.avif"
               />
             </div>
             <div class="process-icon">
               <svg
-                viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
               >
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <rect height="18" rx="2" ry="2" width="18" x="3" y="3"></rect>
                 <circle cx="8.5" cy="8.5" r="1.5"></circle>
                 <polyline points="21 15 16 10 5 21"></polyline>
               </svg>
@@ -5596,7 +7319,6 @@
           </article>
         </div>
       </section>
-
       <section class="section-pad container faq-section" id="faq">
         <div class="section-header reveal">
           <h2>Questions Before We Start?</h2>
@@ -5604,11 +7326,17 @@
         </div>
         <div class="faq-list reveal">
           <div class="faq-item">
-            <button class="faq-trigger">
+            <button
+              aria-controls="faq-panel-1"
+              aria-expanded="false"
+              class="faq-trigger"
+              id="faq-trigger-1"
+              type="button"
+            >
               How fast can I get a thumbnail?
               <span>+</span>
             </button>
-            <div class="faq-content">
+            <div aria-labelledby="faq-trigger-1" class="faq-content" id="faq-panel-1" role="region">
               <div>
                 Most thumbnails are delivered within 24–48 hours. If the design is very detailed or needs extra
                 research, I’ll let you know before starting.
@@ -5616,11 +7344,17 @@
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-trigger">
+            <button
+              aria-controls="faq-panel-2"
+              aria-expanded="false"
+              class="faq-trigger"
+              id="faq-trigger-2"
+              type="button"
+            >
               What do you need from me to start?
               <span>+</span>
             </button>
-            <div class="faq-content">
+            <div aria-labelledby="faq-trigger-2" class="faq-content" id="faq-panel-2" role="region">
               <div>
                 Send your video title, a short idea or script, your channel link, and any photos or references you want
                 me to use. Even a rough concept is enough.
@@ -5628,11 +7362,17 @@
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-trigger">
+            <button
+              aria-controls="faq-panel-3"
+              aria-expanded="false"
+              class="faq-trigger"
+              id="faq-trigger-3"
+              type="button"
+            >
               Can you match my current thumbnail style?
               <span>+</span>
             </button>
-            <div class="faq-content">
+            <div aria-labelledby="faq-trigger-3" class="faq-content" id="faq-panel-3" role="region">
               <div>
                 Yes. I can follow your current brand style, improve it slightly, or create a fresh direction that still
                 feels natural for your channel.
@@ -5640,11 +7380,17 @@
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-trigger">
+            <button
+              aria-controls="faq-panel-4"
+              aria-expanded="false"
+              class="faq-trigger"
+              id="faq-trigger-4"
+              type="button"
+            >
               Do you provide revisions if I need changes?
               <span>+</span>
             </button>
-            <div class="faq-content">
+            <div aria-labelledby="faq-trigger-4" class="faq-content" id="faq-panel-4" role="region">
               <div>
                 Yes. Small changes like text, color, layout, or image adjustments are included so the final thumbnail
                 feels ready before you upload.
@@ -5653,7 +7399,6 @@
           </div>
         </div>
       </section>
-
       <section class="cta-section container" id="contact">
         <div class="cta-card reveal">
           <h2>Ready to Build Your Next Click-Worthy Thumbnail?</h2>
@@ -5662,117 +7407,102 @@
             start.
           </p>
           <form
+            action="https://formsubmit.co/ajax/shahalamd293@gmail.com"
             class="contact-form"
             id="contactForm"
-            action="https://formsubmit.co/ajax/shahalamd293@gmail.com"
             method="POST"
           >
-            <input type="hidden" name="_subject" value="New Thumbnail Project Message - Abdullah Designs" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="text" name="_honey" style="display: none" tabindex="-1" autocomplete="off" />
+            <input name="_subject" type="hidden" value="New Thumbnail Project Message - Abdullah Designs" />
+            <input name="_captcha" type="hidden" value="false" />
+            <input name="_template" type="hidden" value="table" />
+            <input autocomplete="off" name="_honey" style="display: none" tabindex="-1" type="text" />
             <div class="contact-field contact-field-half">
               <label for="channelName">Channel Name</label>
               <input
+                autocomplete="organization"
                 id="channelName"
                 name="Channel Name"
-                type="text"
                 placeholder="Your channel name"
-                autocomplete="organization"
                 required=""
+                type="text"
               />
             </div>
             <div class="contact-field contact-field-half">
               <label for="clientEmail">Your Email</label>
               <input
+                autocomplete="email"
                 id="clientEmail"
                 name="Email"
-                type="email"
                 placeholder="your@email.com"
-                autocomplete="email"
                 required=""
+                type="email"
               />
             </div>
             <div class="contact-field contact-field-full">
-              <label for="clientMessage" class="sr-only">Your Message</label>
+              <label class="sr-only" for="clientMessage">Your Message</label>
               <textarea
                 id="clientMessage"
                 name="Message"
                 placeholder="Video topic, deadline, thumbnail style, and any references..."
-                rows="5"
                 required=""
+                rows="5"
               ></textarea>
             </div>
             <button class="contact-submit" type="submit">Send Project Details</button>
           </form>
-
-          <button
-            type="button"
-            class="direct-email-copy"
-            id="copyDirectEmail"
+          <a
+            class="direct-email-pill"
+            href="#contact"
+            role="button"
+            data-copy-email-only="true"
             data-email="contact@abdullahdesigns.xyz"
-            aria-label="Copy contact email"
+            aria-label="Copy contact email address"
           >
             <span class="direct-email-icon" aria-hidden="true">
               <svg
-                viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2.2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
               >
-                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                <rect height="14" rx="2" width="18" x="3" y="5"></rect>
                 <path d="M3 7l9 6 9-6"></path>
               </svg>
             </span>
             <strong>contact@abdullahdesigns.xyz</strong>
             <span class="direct-email-arrow" aria-hidden="true">›</span>
-          </button>
+          </a>
           <div class="social-grid">
-            <a href="https://x.com/Abdullahgfx99" target="_blank" rel="noopener noreferrer" class="social-card">
-              <svg viewBox="0 0 24 24" fill="currentColor">
+            <a class="social-card" href="https://x.com/Abdullahgfx99" rel="noopener noreferrer" target="_blank">
+              <svg fill="currentColor" viewBox="0 0 24 24">
                 <path
                   d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
                 ></path>
               </svg>
               <span>Twitter / X</span>
             </a>
-            <a href="https://wa.me/8801600106114" target="_blank" rel="noopener noreferrer" class="social-card">
-              <svg viewBox="0 0 24 24" fill="currentColor">
+            <a class="social-card" href="https://wa.me/8801600106114" rel="noopener noreferrer" target="_blank">
+              <svg fill="currentColor" viewBox="0 0 24 24">
                 <path
                   d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.672 1.433 5.661 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
                 ></path>
               </svg>
               <span>WhatsApp</span>
             </a>
-            <a href="https://discord.gg/uneREXGHSx" target="_blank" rel="noopener noreferrer" class="social-card">
-              <svg viewBox="0 0 24 24" fill="currentColor">
+            <a class="social-card" href="https://discord.gg/uneREXGHSx" rel="noopener noreferrer" target="_blank">
+              <svg fill="currentColor" viewBox="0 0 24 24">
                 <path
                   d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 004.1 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.419-2.157 2.419z"
                 ></path>
               </svg>
               <span>Discord</span>
             </a>
-            <a href="mailto:contact@abdullahdesigns.xyz" class="social-card legacy-email-card">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                <path d="M3 7l9 6 9-6"></path>
-              </svg>
-              <span>Email</span>
-            </a>
           </div>
         </div>
       </section>
     </main>
-
     <footer class="container">
       <span>
         ©
@@ -5781,9 +7511,8 @@
       </span>
       <span>Premium YouTube Thumbnail Design</span>
     </footer>
-
     <script>
-      // Desktop cursor animation copied from index2.html
+      // Desktop cursor animation from index2.html
       const cursorGlow = document.getElementById("cursorGlow");
       const customCursor = document.getElementById("customCursor");
       const canUseCustomCursor = window.matchMedia("(min-width: 681px) and (hover: hover) and (pointer: fine)").matches;
@@ -5950,7 +7679,7 @@
       // Mobile Menu Logic
       const mobileMenuBtn = document.getElementById("mobileMenuBtn");
       const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
-      const mobileMenuSheet = mobileMenuOverlay.querySelector(".mobile-menu-sheet");
+      const mobileMenuSheet = mobileMenuOverlay ? mobileMenuOverlay.querySelector(".mobile-menu-sheet") : null;
       const mobileMenuClose = document.getElementById("mobileMenuClose");
       const mobileMenuLinks = document.querySelectorAll(".mobile-menu-links a, .mobile-menu-cta");
       let mobileMenuScrollY = 0;
@@ -5987,22 +7716,24 @@
       if (mobileMenuBtn) mobileMenuBtn.addEventListener("click", () => toggleMobileMenu(true));
       if (mobileMenuClose) mobileMenuClose.addEventListener("click", () => toggleMobileMenu(false));
 
-      mobileMenuOverlay.addEventListener("click", (e) => {
-        if (e.target === mobileMenuOverlay) toggleMobileMenu(false);
-      });
+      if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener("click", (e) => {
+          if (e.target === mobileMenuOverlay) toggleMobileMenu(false);
+        });
+      }
 
-      mobileMenuSheet.addEventListener("click", (e) => e.stopPropagation());
+      if (mobileMenuSheet) mobileMenuSheet.addEventListener("click", (e) => e.stopPropagation());
 
       // Mobile nav links are closed inside the main anchor-click handler so the saved scroll position stays correct.
 
       window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && mobileMenuOverlay.classList.contains("active")) {
+        if (e.key === "Escape" && mobileMenuOverlay && mobileMenuOverlay.classList.contains("active")) {
           toggleMobileMenu(false);
         }
       });
 
       window.addEventListener("resize", () => {
-        if (window.innerWidth > 680 && mobileMenuOverlay.classList.contains("active")) {
+        if (window.innerWidth > 680 && mobileMenuOverlay && mobileMenuOverlay.classList.contains("active")) {
           toggleMobileMenu(false);
         }
       });
@@ -6123,8 +7854,9 @@
           { passive: true },
         );
 
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        document.querySelectorAll('a[href^="#"]:not([data-copy-email-only="true"])').forEach((anchor) => {
           anchor.addEventListener("click", (event) => {
+            if (anchor.matches('[data-copy-email-only="true"], #contact .direct-email-pill')) return;
             const href = anchor.getAttribute("href");
             if (!href || href === "#") return;
 
@@ -6241,8 +7973,9 @@
         navScrollRAF = requestAnimationFrame(step);
       }
 
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      document.querySelectorAll('a[href^="#"]:not([data-copy-email-only="true"])').forEach((anchor) => {
         anchor.addEventListener("click", (event) => {
+          if (anchor.matches('[data-copy-email-only="true"], #contact .direct-email-pill')) return;
           const href = anchor.getAttribute("href");
           if (!href || href === "#") return;
 
@@ -6305,17 +8038,20 @@
 
       // Reliable reveal animation: runs on every .reveal element and starts before images finish loading
       const revealElements = Array.from(document.querySelectorAll(".reveal"));
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("active");
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.08, rootMargin: "0px 0px -10% 0px" },
-      );
+      const revealObserver =
+        "IntersectionObserver" in window
+          ? new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                    revealObserver.unobserve(entry.target);
+                  }
+                });
+              },
+              { threshold: 0.08, rootMargin: "0px 0px -10% 0px" },
+            )
+          : null;
 
       function activateVisibleReveals() {
         const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -6332,7 +8068,7 @@
           if (!el.style.transitionDelay && el.classList.contains("work-card")) {
             el.style.transitionDelay = `${Math.min((index % 6) * 70, 350)}ms`;
           }
-          revealObserver.observe(el);
+          if (revealObserver) revealObserver.observe(el);
         });
 
         requestAnimationFrame(() => {
@@ -6349,14 +8085,37 @@
       if (yearEl) yearEl.textContent = new Date().getFullYear();
 
       // FAQ Accordion
-      document.querySelectorAll(".faq-trigger").forEach((t) => {
-        t.addEventListener("click", () => {
-          const item = t.closest(".faq-item");
+      const faqItems = Array.from(document.querySelectorAll(".faq-item"));
+      const syncFaqState = () => {
+        faqItems.forEach((item) => {
+          const trigger = item.querySelector(".faq-trigger");
+          const panel = item.querySelector(".faq-content");
           const isActive = item.classList.contains("active");
-          document.querySelectorAll(".faq-item").forEach((f) => f.classList.remove("active"));
+          if (trigger) trigger.setAttribute("aria-expanded", isActive ? "true" : "false");
+          if (panel) panel.setAttribute("aria-hidden", isActive ? "false" : "true");
+        });
+      };
+
+      faqItems.forEach((item, index) => {
+        const trigger = item.querySelector(".faq-trigger");
+        const panel = item.querySelector(".faq-content");
+        if (!trigger) return;
+        trigger.type = "button";
+        if (!trigger.id) trigger.id = `faq-trigger-${index + 1}`;
+        if (panel) {
+          if (!panel.id) panel.id = `faq-panel-${index + 1}`;
+          panel.setAttribute("role", "region");
+          panel.setAttribute("aria-labelledby", trigger.id);
+          trigger.setAttribute("aria-controls", panel.id);
+        }
+        trigger.addEventListener("click", () => {
+          const isActive = item.classList.contains("active");
+          faqItems.forEach((faqItem) => faqItem.classList.remove("active"));
           if (!isActive) item.classList.add("active");
+          syncFaqState();
         });
       });
+      syncFaqState();
 
       // Work thumbnails: no popup / no fullscreen preview on click
       document.querySelectorAll(".work-card").forEach((card) => {
@@ -6367,227 +8126,7 @@
         });
       });
 
-      // Image Slider logic — balanced for smooth scrolling + responsive manual drag
-      function clampSliderValue(val) {
-        return Math.max(0, Math.min(100, Number(val)));
-      }
-
-      function updateSlider(container, val, options = {}) {
-        if (!container) return;
-        const target = clampSliderValue(val);
-        const input = container.querySelector(".slider-range");
-        if (input) input.value = target;
-
-        // During real dragging, render instantly so it follows the finger/mouse.
-        // For intro/keyboard/range changes, use a soft RAF glide.
-        if (options.instant) {
-          container.dataset.sliderCurrent = String(target);
-          container.dataset.sliderTarget = String(target);
-          renderSlider(container, target);
-          return;
-        }
-
-        container.dataset.sliderTarget = String(target);
-        container.dataset.sliderSpeed = String(
-          options.speed || (container.classList.contains("dragging") ? 0.38 : 0.18),
-        );
-        if (!container.dataset.sliderCurrent) container.dataset.sliderCurrent = String(target);
-        if (!container.dataset.sliderRunning) {
-          container.dataset.sliderRunning = "true";
-          requestAnimationFrame(() => animateSlider(container));
-        }
-      }
-
-      function renderSlider(container, val) {
-        const safeValue = clampSliderValue(val);
-        const beforeImg = container.querySelector(".image-before");
-        const handle = container.querySelector(".slider-handle");
-        if (beforeImg) beforeImg.style.clipPath = `polygon(0 0, ${safeValue}% 0, ${safeValue}% 100%, 0 100%)`;
-        if (handle) handle.style.left = `${safeValue}%`;
-      }
-
-      function animateSlider(container) {
-        const current = Number(container.dataset.sliderCurrent || 50);
-        const target = Number(container.dataset.sliderTarget || 50);
-        const speed = Number(container.dataset.sliderSpeed || 0.18);
-        const next = current + (target - current) * speed;
-        container.dataset.sliderCurrent = String(next);
-        renderSlider(container, next);
-
-        if (Math.abs(target - next) > 0.04) {
-          requestAnimationFrame(() => animateSlider(container));
-        } else {
-          container.dataset.sliderCurrent = String(target);
-          renderSlider(container, target);
-          delete container.dataset.sliderRunning;
-        }
-      }
-
-      document.querySelectorAll(".image-slider .slider-range").forEach((slider) => {
-        const card = slider.parentElement;
-
-        const startDrag = () => {
-          card.classList.add("touched", "dragging");
-        };
-
-        const endDrag = () => {
-          card.classList.remove("dragging");
-        };
-
-        slider.addEventListener("input", (e) => {
-          startDrag();
-          updateSlider(card, e.target.value, { speed: 0.32 });
-        });
-
-        slider.addEventListener("pointerdown", startDrag, { passive: true });
-        window.addEventListener("pointerup", endDrag, { passive: true });
-        slider.addEventListener("touchstart", startDrag, { passive: true });
-        window.addEventListener("touchend", endDrag, { passive: true });
-      });
-
-      document.querySelectorAll(".image-slider").forEach((card) => {
-        renderSlider(card, Number(card.querySelector(".slider-range")?.value || 50));
-      });
-
-      // Mobile before/after slider fix:
-      // Vertical movement scrolls the page. Horizontal movement controls the slider.
-      const coarsePointer = window.matchMedia("(pointer: coarse)");
-      document.querySelectorAll(".image-slider").forEach((card) => {
-        let startX = 0;
-        let startY = 0;
-        let tracking = false;
-        let draggingSlider = false;
-
-        const getSliderValue = (clientX) => {
-          const rect = card.getBoundingClientRect();
-          return ((clientX - rect.left) / rect.width) * 100;
-        };
-
-        const stopMobileSlider = () => {
-          tracking = false;
-          draggingSlider = false;
-          card.classList.remove("dragging");
-        };
-
-        card.addEventListener(
-          "pointerdown",
-          (event) => {
-            if (!coarsePointer.matches) return;
-            tracking = true;
-            draggingSlider = false;
-            startX = event.clientX;
-            startY = event.clientY;
-          },
-          { passive: true },
-        );
-
-        card.addEventListener(
-          "pointermove",
-          (event) => {
-            if (!coarsePointer.matches || !tracking) return;
-
-            const diffX = event.clientX - startX;
-            const diffY = event.clientY - startY;
-
-            if (!draggingSlider) {
-              const horizontalIntent = Math.abs(diffX) > 18 && Math.abs(diffX) > Math.abs(diffY) * 1.55;
-              const verticalIntent = Math.abs(diffY) > 8 && Math.abs(diffY) >= Math.abs(diffX) * 0.72;
-
-              if (verticalIntent) {
-                stopMobileSlider();
-                return;
-              }
-
-              if (!horizontalIntent) return;
-
-              draggingSlider = true;
-              card.classList.add("touched", "dragging");
-            }
-
-            event.preventDefault();
-            updateSlider(card, getSliderValue(event.clientX), { instant: true });
-          },
-          { passive: false },
-        );
-
-        card.addEventListener("pointerup", stopMobileSlider, { passive: true });
-        card.addEventListener("pointercancel", stopMobileSlider, { passive: true });
-        card.addEventListener("lostpointercapture", stopMobileSlider, { passive: true });
-      });
-
-      // Before/After intro animation: sequential right → left → middle.
-      // Runs one card at a time. Manual drag still works after the intro.
-      const sliderIntroEase = (t) => 0.5 - Math.cos(Math.PI * t) / 2;
-
-      function setSliderInstant(card, value) {
-        const safeValue = Math.max(0, Math.min(100, Number(value)));
-        const input = card.querySelector(".slider-range");
-        if (input) input.value = safeValue;
-        card.dataset.sliderCurrent = String(safeValue);
-        card.dataset.sliderTarget = String(safeValue);
-        renderSlider(card, safeValue);
-      }
-
-      function animateSliderTo(card, from, to, duration = 1150) {
-        return new Promise((resolve) => {
-          if (!card || card.classList.contains("touched")) return resolve();
-          let startTime = null;
-          setSliderInstant(card, from);
-          function frame(now) {
-            if (card.classList.contains("touched")) return resolve();
-            if (!startTime) startTime = now;
-            const progress = Math.min((now - startTime) / duration, 1);
-            const value = from + (to - from) * sliderIntroEase(progress);
-            setSliderInstant(card, value);
-            if (progress < 1) requestAnimationFrame(frame);
-            else resolve();
-          }
-          requestAnimationFrame(frame);
-        });
-      }
-
-      async function runBeforeAfterIntro(card) {
-        if (!card || card.classList.contains("touched") || card.dataset.introPlayed === "true") return;
-        card.dataset.introPlayed = "true";
-        delete card.dataset.sliderRunning;
-        setSliderInstant(card, 100);
-        await new Promise((resolve) => setTimeout(resolve, 180));
-        await animateSliderTo(card, 100, 0, 1300);
-        await new Promise((resolve) => setTimeout(resolve, 160));
-        await animateSliderTo(card, 0, 50, 900);
-        setSliderInstant(card, 50);
-      }
-
-      let sequentialSliderStarted = false;
-      async function runSequentialBeforeAfterSliders() {
-        if (sequentialSliderStarted) return;
-        sequentialSliderStarted = true;
-        const cards = Array.from(document.querySelectorAll(".image-slider"));
-        for (const card of cards) {
-          await runBeforeAfterIntro(card);
-          await new Promise((resolve) => setTimeout(resolve, 260));
-        }
-      }
-
-      const sliderIntroObserver =
-        "IntersectionObserver" in window
-          ? new IntersectionObserver(
-              (entries) => {
-                if (entries.some((entry) => entry.isIntersecting)) {
-                  runSequentialBeforeAfterSliders();
-                  sliderIntroObserver.disconnect();
-                }
-              },
-              { threshold: 0.32 },
-            )
-          : null;
-
-      const beforeAfterCards = Array.from(document.querySelectorAll(".image-slider"));
-      if (sliderIntroObserver && beforeAfterCards.length) {
-        beforeAfterCards.forEach((card) => sliderIntroObserver.observe(card));
-      } else {
-        runSequentialBeforeAfterSliders();
-      }
+      // Before/after slider logic is handled once in the unified final controller below.
 
       const contactForm = document.getElementById("contactForm");
       if (contactForm) {
@@ -6649,17 +8188,21 @@
         }
         requestAnimationFrame(update);
       }
-      const counterObserver = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) {
-            countElements.forEach(animateCounter);
-            counterObserver.disconnect();
-          }
-        },
-        { threshold: 0.2 },
-      );
       const proofRow = document.querySelector(".proof-row");
-      if (proofRow) counterObserver.observe(proofRow);
+      if (proofRow && "IntersectionObserver" in window) {
+        const counterObserver = new IntersectionObserver(
+          (entries) => {
+            if (entries[0].isIntersecting) {
+              countElements.forEach(animateCounter);
+              counterObserver.disconnect();
+            }
+          },
+          { threshold: 0.2 },
+        );
+        counterObserver.observe(proofRow);
+      } else {
+        countElements.forEach(animateCounter);
+      }
 
       // FINAL PATCH: make hero ribbons seamless and force movement after load.
       (function initFinalHeroRibbonMotion() {
@@ -6672,570 +8215,8 @@
           track.style.animationPlayState = "running";
         });
       })();
-    </script>
-    <!-- ABDULLAH FINAL REAL EDIT PATCH: hero ribbon normal, final labels, contact UI blend -->
-    <style id="abdullah-final-real-edit">
-      /* Hero: no UI chips, normal background ribbon, no center cutout */
-      .hero.container#home,
-      section.hero#home {
-        overflow: hidden !important;
-        background: transparent !important;
-      }
 
-      .hero-kicker,
-      .hero-proof-strip,
-      .hero-proof-card,
-      .hero-stats,
-      .hero-ui,
-      .hero-stage-ui {
-        display: none !important;
-      }
-
-      .hero-vertical-stage {
-        display: block !important;
-        position: absolute !important;
-        inset: 0 !important;
-        left: 50% !important;
-        width: 100vw !important;
-        max-width: none !important;
-        height: 100% !important;
-        transform: translateX(-50%) !important;
-        overflow: hidden !important;
-        opacity: 0.72 !important;
-        filter: saturate(0.92) contrast(0.98) !important;
-        pointer-events: none !important;
-        z-index: 0 !important;
-        background: transparent !important;
-      }
-
-      .hero-vertical-stage::before,
-      .hero-vertical-stage::after {
-        content: "" !important;
-        position: absolute !important;
-        inset: 0 !important;
-        pointer-events: none !important;
-        z-index: 8 !important;
-      }
-
-      .hero-vertical-stage::before {
-        background: linear-gradient(
-          90deg,
-          rgba(244, 241, 236, 0.82) 0%,
-          rgba(244, 241, 236, 0.18) 17%,
-          rgba(244, 241, 236, 0) 36%,
-          rgba(244, 241, 236, 0) 64%,
-          rgba(244, 241, 236, 0.18) 83%,
-          rgba(244, 241, 236, 0.82) 100%
-        ) !important;
-      }
-
-      .hero-vertical-stage::after {
-        background: linear-gradient(
-          180deg,
-          #f4f1ec 0%,
-          rgba(244, 241, 236, 0) 16%,
-          rgba(244, 241, 236, 0) 82%,
-          #f4f1ec 100%
-        ) !important;
-      }
-
-      .hero-center-shield {
-        display: block !important;
-        position: absolute !important;
-        inset: 0 !important;
-        z-index: 7 !important;
-        pointer-events: none !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: radial-gradient(
-          ellipse at center,
-          rgba(255, 255, 255, 0.8) 0%,
-          rgba(255, 255, 255, 0.44) 30%,
-          rgba(255, 255, 255, 0.16) 52%,
-          rgba(255, 255, 255, 0.02) 72%,
-          transparent 88%
-        ) !important;
-      }
-
-      .hero-inner {
-        position: relative !important;
-        z-index: 20 !important;
-        width: min(880px, 100%) !important;
-        margin-inline: auto !important;
-        text-align: center !important;
-        padding-top: 1rem !important;
-      }
-
-      .hero h1 {
-        text-align: center !important;
-        margin-inline: auto !important;
-        color: #171513 !important;
-        text-shadow: 0 18px 70px rgba(255, 255, 255, 0.72) !important;
-      }
-
-      .hero h1 .hero-result-text,
-      .hero h1 span.hero-result-text {
-        color: #8a8277 !important;
-        -webkit-text-fill-color: #8a8277 !important;
-        background: none !important;
-        text-shadow: 0 14px 58px rgba(255, 255, 255, 0.76) !important;
-      }
-
-      .hero p {
-        max-width: 680px !important;
-        margin-inline: auto !important;
-        color: #625b52 !important;
-        text-shadow: 0 10px 36px rgba(255, 255, 255, 0.65) !important;
-      }
-
-      .hero-ribbon-track {
-        animation-play-state: running !important;
-        will-change: transform !important;
-      }
-
-      .hero-vertical-stage.ribbon-ready .hero-ribbon-up .hero-ribbon-track {
-        animation: heroRibbonSeamlessUpReal 36s linear infinite !important;
-      }
-
-      .hero-vertical-stage.ribbon-ready .hero-ribbon-down .hero-ribbon-track {
-        animation: heroRibbonSeamlessDownReal 36s linear infinite !important;
-      }
-
-      @keyframes heroRibbonSeamlessUpReal {
-        from {
-          transform: translate3d(0, 0, 0);
-        }
-        to {
-          transform: translate3d(0, -50%, 0);
-        }
-      }
-
-      @keyframes heroRibbonSeamlessDownReal {
-        from {
-          transform: translate3d(0, -50%, 0);
-        }
-        to {
-          transform: translate3d(0, 0, 0);
-        }
-      }
-
-      /* Work section wording and proof title stay exact */
-      #work .work-title h2,
-      #work .work-title h2 span {
-        color: inherit;
-      }
-
-      #reviews .section-header h2::after,
-      #reviews .section-header p {
-        display: none !important;
-        content: none !important;
-      }
-
-      /* Contact form blended into the glass UI */
-      #contact .cta-card {
-        background:
-          linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.38)),
-          radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.86), transparent 34rem) !important;
-        border: 1px solid rgba(37, 33, 29, 0.14) !important;
-        box-shadow:
-          0 28px 90px rgba(58, 50, 41, 0.13),
-          inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
-        backdrop-filter: blur(22px) saturate(130%) !important;
-        -webkit-backdrop-filter: blur(22px) saturate(130%) !important;
-      }
-
-      #contact .contact-form {
-        width: min(860px, 100%) !important;
-        padding: clamp(1rem, 2.2vw, 1.6rem) !important;
-        border-radius: 28px !important;
-        background: rgba(255, 255, 255, 0.32) !important;
-        border: 1px solid rgba(37, 33, 29, 0.1) !important;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.66) !important;
-        gap: 1rem !important;
-      }
-
-      #contact .contact-field label {
-        color: #5f574d !important;
-        font-weight: 900 !important;
-        letter-spacing: 0.04em !important;
-        text-transform: uppercase !important;
-      }
-
-      #contact .contact-field input,
-      #contact .contact-field textarea,
-      #contact .contact-field select {
-        border: 1px solid rgba(37, 33, 29, 0.12) !important;
-        background: rgba(255, 255, 255, 0.58) !important;
-        color: #171513 !important;
-        border-radius: 16px !important;
-        box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.88),
-          0 12px 28px rgba(58, 50, 41, 0.045) !important;
-      }
-
-      #contact .contact-field input::placeholder,
-      #contact .contact-field textarea::placeholder {
-        color: rgba(78, 70, 62, 0.56) !important;
-      }
-
-      #contact .contact-field input:focus,
-      #contact .contact-field textarea:focus,
-      #contact .contact-field select:focus {
-        background: rgba(255, 255, 255, 0.76) !important;
-        border-color: rgba(23, 21, 19, 0.26) !important;
-        box-shadow:
-          0 0 0 5px rgba(23, 21, 19, 0.055),
-          inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
-      }
-
-      #contact .contact-submit {
-        min-height: 58px !important;
-        border-radius: 18px !important;
-        background: linear-gradient(135deg, #171513, #3a332c) !important;
-        color: #fffaf2 !important;
-        box-shadow:
-          0 18px 44px rgba(58, 50, 41, 0.2),
-          inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
-      }
-
-      #contact .contact-submit:hover {
-        transform: translateY(-2px) !important;
-        box-shadow:
-          0 24px 58px rgba(58, 50, 41, 0.25),
-          inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
-      }
-
-      @media (max-width: 680px) {
-        .hero-vertical-stage {
-          opacity: 0.52 !important;
-        }
-        .hero-ribbon {
-          width: clamp(9.6rem, 36vw, 13rem) !important;
-        }
-        .hero h1 {
-          font-size: clamp(2.65rem, 12.8vw, 3.45rem) !important;
-        }
-        #contact .contact-form {
-          grid-template-columns: 1fr !important;
-          padding: 1rem !important;
-        }
-      }
-    </style>
-    <!-- ABDULLAH FINAL REQUEST PATCH: gradient text, smooth before/after, copy email pill -->
-    <style id="abdullah-final-request-patch-css">
-      :root {
-        --convert-grad-a: #6b2743;
-        --convert-grad-b: #9c246e;
-        --convert-grad-c: #dc2294;
-      }
-
-      .hero h1 .hero-result-text,
-      .hero h1 span.hero-result-text,
-      #work .work-title h2 span {
-        color: transparent !important;
-        background: linear-gradient(
-          90deg,
-          var(--convert-grad-a) 0%,
-          var(--convert-grad-b) 48%,
-          var(--convert-grad-c) 100%
-        ) !important;
-        -webkit-background-clip: text !important;
-        background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-        text-shadow: none !important;
-      }
-
-      #work .work-title h2 {
-        color: #171513 !important;
-      }
-
-      .work-card.image-slider .image-before {
-        transition: none !important;
-        will-change: clip-path !important;
-      }
-
-      .work-card.image-slider .slider-range {
-        opacity: 0 !important;
-        cursor: ew-resize !important;
-      }
-
-      .work-card.image-slider .slider-handle,
-      .work-card.image-slider .slider-handle::before,
-      .work-card.image-slider .slider-handle::after {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        border: 0 !important;
-      }
-
-      #contact .legacy-email-card {
-        display: none !important;
-      }
-
-      #contact .direct-email-copy {
-        width: min(100%, 420px);
-        min-height: 54px;
-        margin: 1.6rem auto 1.25rem;
-        padding: 0.72rem 0.82rem 0.72rem 1rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.72rem;
-        border: 1px solid rgba(37, 33, 29, 0.1);
-        border-radius: 999px;
-        background: linear-gradient(135deg, rgba(23, 21, 19, 0.96), rgba(44, 40, 37, 0.92));
-        color: #fffaf2;
-        font: inherit;
-        font-weight: 900;
-        letter-spacing: -0.02em;
-        cursor: pointer;
-        box-shadow:
-          0 18px 44px rgba(58, 50, 41, 0.22),
-          inset 0 1px 0 rgba(255, 255, 255, 0.12);
-        transition:
-          transform 0.28s var(--ease),
-          box-shadow 0.28s var(--ease),
-          background 0.28s var(--ease);
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      #contact .direct-email-copy:hover {
-        transform: translateY(-2px);
-        background: linear-gradient(135deg, rgba(18, 17, 16, 0.98), rgba(58, 50, 44, 0.94));
-        box-shadow:
-          0 24px 60px rgba(58, 50, 41, 0.28),
-          inset 0 1px 0 rgba(255, 255, 255, 0.16);
-      }
-
-      #contact .direct-email-copy.copied {
-        background: linear-gradient(135deg, #f8f4ee, #ffffff);
-        color: #171513;
-        border-color: rgba(37, 33, 29, 0.14);
-      }
-
-      #contact .direct-email-icon {
-        width: 22px;
-        height: 22px;
-        display: inline-grid;
-        place-items: center;
-        flex: 0 0 auto;
-        color: currentColor;
-        opacity: 0.92;
-      }
-
-      #contact .direct-email-icon svg {
-        width: 100%;
-        height: 100%;
-      }
-
-      #contact .direct-email-copy strong {
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        font-size: clamp(0.88rem, 2.2vw, 1rem);
-      }
-
-      #contact .direct-email-arrow {
-        width: 28px;
-        height: 28px;
-        border-radius: 999px;
-        display: inline-grid;
-        place-items: center;
-        flex: 0 0 auto;
-        background: rgba(255, 255, 255, 0.08);
-        font-size: 1.35rem;
-        line-height: 1;
-        transform: translateY(-1px);
-      }
-
-      @media (max-width: 480px) {
-        #contact .direct-email-copy {
-          width: 100%;
-          padding-inline: 0.82rem;
-        }
-      }
-    </style>
-    <!-- FINAL UPLOAD ALIGNMENT + SMOOTH SLIDER PATCH -->
-    <style id="abdullah-upload-ready-alignment-patch">
-      /* Contact section alignment polish only */
-      #contact.cta-section {
-        padding-top: clamp(7rem, 10vw, 10rem) !important;
-        padding-bottom: clamp(5rem, 8vw, 7rem) !important;
-      }
-
-      #contact .cta-card {
-        width: min(1120px, 100%) !important;
-        margin-inline: auto !important;
-        padding: clamp(2.2rem, 5vw, 4.2rem) clamp(1rem, 4vw, 2.4rem) !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        overflow: hidden !important;
-      }
-
-      #contact .cta-card h2,
-      #contact .cta-card p {
-        text-align: center !important;
-      }
-
-      #contact .contact-form {
-        width: min(850px, 100%) !important;
-        margin: 0 auto !important;
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        align-items: start !important;
-        justify-content: center !important;
-        gap: 1rem !important;
-      }
-
-      #contact .contact-field,
-      #contact .contact-field input,
-      #contact .contact-field textarea,
-      #contact .contact-submit {
-        min-width: 0 !important;
-      }
-
-      #contact .contact-field-full,
-      #contact .contact-submit {
-        grid-column: 1 / -1 !important;
-      }
-
-      #contact .contact-field textarea {
-        display: block !important;
-        width: 100% !important;
-        min-height: 128px !important;
-      }
-
-      #contact .direct-email-copy {
-        display: flex !important;
-        width: min(420px, 100%) !important;
-        margin: 1.7rem auto 1.8rem !important;
-        align-self: center !important;
-      }
-
-      #contact .social-grid {
-        width: min(670px, 100%) !important;
-        max-width: 670px !important;
-        margin: 0 auto !important;
-        display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        gap: 1rem !important;
-        justify-content: center !important;
-        align-items: stretch !important;
-      }
-
-      #contact .social-card {
-        width: 100% !important;
-        min-height: 132px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-      }
-
-      #contact .legacy-email-card {
-        display: none !important;
-      }
-
-      /* Keep gradient exactly on requested words */
-      .hero h1 .hero-result-text,
-      .hero h1 span.hero-result-text,
-      #work .work-title h2 span {
-        background: linear-gradient(90deg, #6b2743 0%, #9c246e 48%, #dc2294 100%) !important;
-        -webkit-background-clip: text !important;
-        background-clip: text !important;
-        color: transparent !important;
-        -webkit-text-fill-color: transparent !important;
-      }
-
-      /* Before/after: hidden handle, smooth programmatic motion */
-      .work-card.image-slider .image-before {
-        transition: none !important;
-        will-change: clip-path !important;
-      }
-
-      .work-card.image-slider .slider-handle,
-      .work-card.image-slider .slider-handle::before,
-      .work-card.image-slider .slider-handle::after {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-      }
-
-      @media (max-width: 760px) {
-        #contact .contact-form {
-          grid-template-columns: 1fr !important;
-        }
-        #contact .social-grid {
-          grid-template-columns: 1fr !important;
-          max-width: 420px !important;
-        }
-        #contact .social-card {
-          min-height: 112px !important;
-        }
-      }
-    </style>
-
-    <!-- FINAL CLEAN WORKING PATCH: single slider sequence + premium hero ribbon timing -->
-    <style id="abdullah-12345-working-final-css">
-      /* Premium hero background ribbon speed: slower, smoother, and less busy */
-      .hero-ribbon-track {
-        transform: translate3d(0, 0, 0);
-        will-change: transform;
-        backface-visibility: hidden;
-      }
-
-      .hero-vertical-stage.ribbon-ready .hero-ribbon-down .hero-ribbon-track,
-      .hero-vertical-stage.ribbon-ready .hero-ribbon-up .hero-ribbon-track,
-      .hero-ribbon-down .hero-ribbon-track,
-      .hero-ribbon-up .hero-ribbon-track {
-        animation-duration: 42s !important;
-        animation-timing-function: linear !important;
-      }
-
-      .hero-vertical-stage.ribbon-ready .hero-ribbon-b .hero-ribbon-track,
-      .hero-ribbon-b .hero-ribbon-track {
-        animation-duration: 50s !important;
-      }
-
-      .hero-vertical-stage.ribbon-ready .hero-ribbon-c .hero-ribbon-track,
-      .hero-ribbon-c .hero-ribbon-track {
-        animation-duration: 48s !important;
-      }
-
-      .work-card.image-slider .image-before {
-        transition: none !important;
-        will-change: clip-path;
-      }
-
-      .work-card.image-slider .slider-handle,
-      .work-card.image-slider .slider-handle::before,
-      .work-card.image-slider .slider-handle::after {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-      }
-
-      .work-card.image-slider.before-after-running {
-        border-color: rgba(255, 255, 255, 0.18);
-        box-shadow: 0 20px 58px rgba(0, 0, 0, 0.38);
-      }
-
-      @media (max-width: 680px) {
-        .hero-vertical-stage.ribbon-ready .hero-ribbon-down .hero-ribbon-track,
-        .hero-vertical-stage.ribbon-ready .hero-ribbon-up .hero-ribbon-track,
-        .hero-ribbon-down .hero-ribbon-track,
-        .hero-ribbon-up .hero-ribbon-track {
-          animation-duration: 52s !important;
-        }
-      }
-    </style>
-
-    <script id="abdullah-12345-working-final-js">
+      // Unified final controller: headings, hero ribbons, before/after sliders, and email copy.
       (function () {
         "use strict";
 
@@ -7386,48 +8367,10 @@
             runSlidersOnce();
           }
         }
-
-        function setupCopyEmail() {
-          const button = document.getElementById("copyDirectEmail");
-          if (!button || button.dataset.cleanCopyReady === "true") return;
-          button.dataset.cleanCopyReady = "true";
-
-          const email = button.dataset.email || "contact@abdullahdesigns.xyz";
-          const label = button.querySelector("strong");
-          if (label) label.textContent = email;
-
-          button.addEventListener("click", async () => {
-            try {
-              if (navigator.clipboard && window.isSecureContext) {
-                await navigator.clipboard.writeText(email);
-              } else {
-                const temp = document.createElement("textarea");
-                temp.value = email;
-                temp.setAttribute("readonly", "");
-                temp.style.position = "fixed";
-                temp.style.left = "-9999px";
-                document.body.appendChild(temp);
-                temp.select();
-                document.execCommand("copy");
-                temp.remove();
-              }
-              button.classList.add("copied");
-              if (label) label.textContent = "Copied email";
-              window.setTimeout(() => {
-                button.classList.remove("copied");
-                if (label) label.textContent = email;
-              }, 1500);
-            } catch (error) {
-              window.location.href = `mailto:${email}`;
-            }
-          });
-        }
-
         function init() {
           setFinalHeadings();
           prepareHeroRibbon();
           prepareBeforeAfterSliders();
-          setupCopyEmail();
         }
 
         if (document.readyState === "loading") {
@@ -7435,6 +8378,75 @@
         } else {
           init();
         }
+      })();
+    </script>
+
+    <script>
+      (() => {
+        const emailPill = document.querySelector("#contact .direct-email-pill");
+        if (!emailPill) return;
+
+        const email = emailPill.dataset.email || "contact@abdullahdesigns.xyz";
+        const label = emailPill.querySelector("strong");
+        let resetTimer = 0;
+        let fadeTimer = 0;
+
+        const setLabel = (text) => {
+          if (!label) return;
+          window.clearTimeout(fadeTimer);
+          label.style.opacity = "0";
+          fadeTimer = window.setTimeout(() => {
+            label.textContent = text;
+            label.style.opacity = "1";
+          }, 90);
+        };
+
+        const fallbackCopy = () => {
+          const input = document.createElement("textarea");
+          input.value = email;
+          input.setAttribute("readonly", "");
+          input.style.position = "fixed";
+          input.style.left = "-9999px";
+          input.style.top = "0";
+          document.body.appendChild(input);
+          input.focus();
+          input.select();
+
+          let copied = false;
+          try {
+            copied = document.execCommand("copy");
+          } catch (error) {
+            copied = false;
+          }
+
+          input.remove();
+          return copied;
+        };
+
+        const copyEmail = async () => {
+          if (navigator.clipboard && window.isSecureContext) {
+            try {
+              await navigator.clipboard.writeText(email);
+              return true;
+            } catch (error) {
+              return fallbackCopy();
+            }
+          }
+
+          return fallbackCopy();
+        };
+
+        emailPill.addEventListener("click", async (event) => {
+          event.preventDefault();
+
+          const copied = await copyEmail();
+          setLabel(copied ? "Copied" : email);
+
+          window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(() => {
+            setLabel(email);
+          }, 1500);
+        });
       })();
     </script>
   </body>
