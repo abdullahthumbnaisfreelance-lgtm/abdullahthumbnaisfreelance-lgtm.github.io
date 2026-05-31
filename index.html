@@ -501,8 +501,8 @@
         border-radius: var(--radius-lg); padding: 2rem; text-align: center;
         display: flex; flex-direction: column; align-items: center;
       }
-      .process-media { width: 100%; aspect-ratio: 16/9; overflow: hidden; border-radius: 14px; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.04); background: var(--surface); transform: translateZ(0); }
-      .process-media img { width: 100%; height: 100%; object-fit: cover; display: block; image-rendering: auto; -webkit-image-rendering: auto; filter: none; will-change: auto; }
+      .process-media { width: 100%; aspect-ratio: 16/9; overflow: hidden; border-radius: 14px; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.04); background: var(--surface); }
+      .process-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
       .process-icon { width: 42px; height: 42px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.12); color: var(--gold); margin-bottom: 1.2rem; }
       .process-icon svg { width: 20px; height: 20px; }
       .process-card h3 { margin-bottom: 0.8rem; font-size: 1.15rem; font-weight: 800; color: var(--text); }
@@ -952,17 +952,19 @@
         <div class="cta-card">
           <h2>Ready to Build Your Next Click-Worthy Thumbnail?</h2>
           <p>Send the idea, channel link, and deadline. I'll reply with the best direction and make the project easy to start.</p>
-          <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/shahalamd293@gmail.com" method="POST">
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/shahalamd293@gmail.com" method="POST" target="formSubmitFrame">
             <input type="hidden" name="_subject" value="New Thumbnail Project Message - Abdullah Designs" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" id="formNext" value="" />
             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
             <input type="hidden" name="_replyto" id="formReplyTo" value="" />
-            <div class="contact-field"><label for="channelName">Your Name</label><input id="channelName" name="Your Name" type="text" placeholder="Your Name" required /></div>
-            <div class="contact-field"><label for="clientEmail">Your Email</label><input id="clientEmail" name="Email" type="email" placeholder="your@email.com" required /></div>
-            <div class="contact-field contact-field-full"><label for="clientMessage" class="sr-only">Your Message</label><textarea id="clientMessage" name="Message" placeholder="Video topic, deadline, thumbnail style, and any references..." rows="5" required></textarea></div>
+            <div class="contact-field"><label for="channelName">Your Name</label><input id="channelName" name="name" type="text" placeholder="Your Name" required /></div>
+            <div class="contact-field"><label for="clientEmail">Your Email</label><input id="clientEmail" name="email" type="email" placeholder="your@email.com" required /></div>
+            <div class="contact-field contact-field-full"><label for="clientMessage" class="sr-only">Your Message</label><textarea id="clientMessage" name="message" placeholder="Video topic, deadline, thumbnail style, and any references..." rows="5" required></textarea></div>
             <button class="contact-submit" type="submit" aria-live="polite">Send Project Details</button>
           </form>
+          <iframe id="formSubmitFrame" name="formSubmitFrame" title="Hidden form submit" style="display:none" aria-hidden="true"></iframe>
           <button type="button" class="direct-email-copy" id="copyDirectEmail" data-email="contact@abdullahdesigns.xyz">
             <span class="direct-email-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>
             <strong>contact@abdullahdesigns.xyz</strong>
@@ -1343,13 +1345,16 @@
         var heroRevealElements = document.querySelectorAll("#home .reveal");
         heroRevealElements.forEach(function(el) { el.classList.add("active"); });
 
-        // Contact form — FormSubmit AJAX, no redirect
+        // Contact form — FormSubmit direct submit through hidden iframe, no redirect
         var contactForm = document.getElementById("contactForm");
         if (contactForm) {
-          var formSubmitAjax = "https://formsubmit.co/ajax/shahalamd293@gmail.com";
-          var formSubmitFallback = "https://formsubmit.co/shahalamd293@gmail.com";
+          var formSubmitEndpoint = "https://formsubmit.co/shahalamd293@gmail.com";
           var formReplyTo = document.getElementById("formReplyTo");
-          contactForm.action = formSubmitAjax;
+          var formNext = document.getElementById("formNext");
+          var formFrame = document.getElementById("formSubmitFrame");
+          contactForm.setAttribute("action", formSubmitEndpoint);
+          contactForm.setAttribute("method", "POST");
+          contactForm.setAttribute("target", "formSubmitFrame");
 
           function setButtonState(btn, text, disabled) {
             if (!btn) return;
@@ -1358,81 +1363,43 @@
             btn.setAttribute("aria-busy", disabled ? "true" : "false");
           }
 
-          function prepareFormData() {
-            var formData = new FormData(contactForm);
+          function prepareDirectFormSubmit() {
             var emailInput = document.getElementById("clientEmail");
             var emailValue = emailInput ? emailInput.value.trim() : "";
             if (formReplyTo) formReplyTo.value = emailValue;
-            if (emailValue) {
-              formData.set("email", emailValue);
-              formData.set("_replyto", emailValue);
-            }
-            return formData;
-          }
-
-          function submitAjax(formData) {
-            if (!window.fetch) return Promise.reject(new Error("Fetch unavailable"));
-            var controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-            var timeoutId = controller ? window.setTimeout(function() { controller.abort(); }, 12000) : null;
-
-            return fetch(formSubmitAjax, {
-              method: "POST",
-              body: formData,
-              headers: { Accept: "application/json" },
-              signal: controller ? controller.signal : undefined
-            }).then(function(res) {
-              if (!res.ok) throw new Error("FormSubmit request failed");
-              return res;
-            }).finally(function() {
-              if (timeoutId) window.clearTimeout(timeoutId);
-            });
-          }
-
-          function submitWithoutRedirect() {
-            return new Promise(function(resolve) {
-              var iframe = document.createElement("iframe");
-              var frameName = "formsubmit_hidden_" + Date.now();
-              var oldAction = contactForm.getAttribute("action");
-              var oldTarget = contactForm.getAttribute("target");
-              var emailInput = document.getElementById("clientEmail");
-
-              if (formReplyTo && emailInput) formReplyTo.value = emailInput.value.trim();
-              iframe.name = frameName;
-              iframe.style.display = "none";
-              iframe.setAttribute("aria-hidden", "true");
-              document.body.appendChild(iframe);
-
-              contactForm.setAttribute("action", formSubmitFallback);
-              contactForm.setAttribute("target", frameName);
-              HTMLFormElement.prototype.submit.call(contactForm);
-
-              contactForm.setAttribute("action", oldAction || formSubmitAjax);
-              if (oldTarget === null) contactForm.removeAttribute("target");
-              else contactForm.setAttribute("target", oldTarget);
-
-              window.setTimeout(function() {
-                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
-                resolve();
-              }, 1200);
-            });
+            if (formNext) formNext.value = window.location.href.split("#")[0] + "#contact";
           }
 
           contactForm.addEventListener("submit", function(e) {
             e.preventDefault();
             var btn = contactForm.querySelector(".contact-submit");
-            var formData = prepareFormData();
+            if (!contactForm.checkValidity()) {
+              contactForm.reportValidity();
+              return;
+            }
 
+            prepareDirectFormSubmit();
             setButtonState(btn, "Sending...", true);
 
-            submitAjax(formData)
-              .catch(submitWithoutRedirect)
-              .then(function() {
+            try {
+              if (!formFrame) {
+                formFrame = document.createElement("iframe");
+                formFrame.id = "formSubmitFrame";
+                formFrame.name = "formSubmitFrame";
+                formFrame.title = "Hidden form submit";
+                formFrame.style.display = "none";
+                formFrame.setAttribute("aria-hidden", "true");
+                document.body.appendChild(formFrame);
+              }
+
+              HTMLFormElement.prototype.submit.call(contactForm);
+              window.setTimeout(function() {
                 contactForm.reset();
                 setButtonState(btn, "Thank you!", false);
-              })
-              .catch(function() {
-                setButtonState(btn, "Try again", false);
-              });
+              }, 900);
+            } catch (err) {
+              setButtonState(btn, "Try again", false);
+            }
           });
         }
 
