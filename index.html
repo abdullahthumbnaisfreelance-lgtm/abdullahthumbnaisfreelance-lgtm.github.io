@@ -984,7 +984,7 @@
         <div class="cta-card reveal">
           <h2>Ready to Build Your Next Click-Worthy Thumbnail?</h2>
           <p>Send the idea, channel link, and deadline. I'll reply with the best direction and make the project easy to start.</p>
-          <form class="contact-form" id="contactForm" action="https://formsubmit.co/contact@abdullahdesigns.xyz" method="POST">
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/shahalamd293@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="New Portfolio Project Request" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
@@ -1421,8 +1421,22 @@
               },
               body: JSON.stringify(formPayload)
             }).then(function(response) {
-              if (!response.ok) throw new Error("Contact form request failed");
-              return response.json();
+              return response.text().then(function(text) {
+                var data = {};
+                if (text) {
+                  try {
+                    data = JSON.parse(text);
+                  } catch (err) {
+                    data = { message: text };
+                  }
+                }
+
+                if (!response.ok || data.success === false) {
+                  throw new Error(data.message || "Contact form request failed");
+                }
+
+                return data;
+              });
             }).then(function() {
               contactForm.reset();
               setContactButton("Thank you!", false, "1");
