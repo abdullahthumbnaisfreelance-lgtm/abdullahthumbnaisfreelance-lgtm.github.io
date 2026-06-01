@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="theme-color" content="#050505" />
-    <title>Abdullah Designs</title>
+    <title>Abdullah Designs | Premium YouTube Thumbnail Portfolio</title>
     <meta
       content="Premium YouTube thumbnail design portfolio by Abdullah Designs. Scroll-stopping thumbnail visuals built for creators, brands, and channels."
       name="description"
@@ -15,7 +15,6 @@
     />
     <meta content="Abdullah Designs" name="author" />
     <meta content="index, follow" name="robots" />
-    <link href="https://abdullahdesigns.com/" rel="canonical" />
 
     <meta content="website" property="og:type" />
     <meta content="https://abdullahdesigns.com/" property="og:url" />
@@ -24,9 +23,7 @@
       content="Premium YouTube thumbnail design portfolio by Abdullah Designs. Scroll-stopping thumbnail visuals built for creators, brands, and channels."
       property="og:description"
     />
-    <meta content="https://abdullahdesigns.com/favicon/social-preview.png" property="og:image" />
-    <meta content="1200" property="og:image:width" />
-    <meta content="630" property="og:image:height" />
+    <meta content="favicon/Logo.png" property="og:image" />
 
     <meta content="summary_large_image" name="twitter:card" />
     <meta content="https://abdullahdesigns.com/" name="twitter:url" />
@@ -35,13 +32,11 @@
       content="Premium YouTube thumbnail design portfolio by Abdullah Designs. Scroll-stopping thumbnail visuals built for creators, brands, and channels."
       name="twitter:description"
     />
-    <meta content="https://abdullahdesigns.com/favicon/social-preview.png" name="twitter:image" />
+    <meta content="favicon/Logo.png" name="twitter:image" />
     <meta content="@Abdullahgfx99" name="twitter:site" />
 
-    <link href="favicon/favicon-32.png" rel="icon" sizes="32x32" type="image/png" />
-    <link href="favicon/apple-touch-icon.png" rel="apple-touch-icon" />
-    <link rel="preload" as="image" href="thumbnails/2.avif" type="image/avif" fetchpriority="high" />
-    <link rel="preload" as="image" href="thumbnails/6.avif" type="image/avif" fetchpriority="high" />
+    <link href="favicon/Logo.png" rel="icon" type="image/png" />
+    <link href="favicon/Logo.png" rel="apple-touch-icon" />
 
     <script type="application/ld+json">
       {
@@ -59,8 +54,6 @@
       }
     </script>
 
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -170,7 +163,7 @@
         border-radius: 15px; overflow: hidden;
         background: rgba(255, 255, 255, 0.055); border: 1px solid rgba(255, 255, 255, 0.1);
       }
-      .mobile-topbar-logo img { width: 40px; height: 40px; object-fit: contain; }
+      .mobile-topbar-logo img { width: 30px; height: 30px; object-fit: contain; }
 
       .mobile-topbar-brand { display: grid; gap: 0.25rem; flex: 1 1 auto; }
       .mobile-topbar-brand strong { font-size: 0.95rem; font-weight: 900; letter-spacing: -0.02em; color: #fff; }
@@ -204,8 +197,10 @@
         padding: 0.72rem; border-radius: 30px;
         border: 1px solid rgba(255, 255, 255, 0.09); background: rgba(10, 10, 13, 0.9);
         box-shadow: 0 28px 80px rgba(0, 0, 0, 0.58);
-        transform: translate3d(0, 0, 0); opacity: 1;
+        transform: translate3d(0, -10px, 0) scale(0.96); opacity: 0;
+        transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.26s ease;
       }
+      .mobile-menu-overlay.active .mobile-menu-sheet { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
 
       .mobile-menu-header { display: flex; justify-content: flex-end; min-height: 0; margin: 0; }
       .mobile-menu-close {
@@ -224,10 +219,18 @@
         gap: 0.85rem; padding: 0.86rem 0.95rem; border-radius: 17px;
         background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06);
         color: rgba(250, 250, 250, 0.84); font-size: 0.98rem; font-weight: 850;
-        opacity: 1; transform: translate3d(0, 0, 0);
-        transition: background 0.2s, color 0.2s;
+        opacity: 0; transform: translate3d(0, 12px, 0);
+        transition: opacity 0.4s ease, transform 0.4s ease, background 0.2s;
       }
       .mobile-menu-links a::after { content: "\2192"; color: rgba(255, 255, 255, 0.26); }
+      .mobile-menu-overlay.active .mobile-menu-links a { opacity: 1; transform: translate3d(0, 0, 0); }
+      .mobile-menu-overlay.active .mobile-menu-links a:nth-child(1) { transition-delay: 0.06s; }
+      .mobile-menu-overlay.active .mobile-menu-links a:nth-child(2) { transition-delay: 0.11s; }
+      .mobile-menu-overlay.active .mobile-menu-links a:nth-child(3) { transition-delay: 0.16s; }
+      .mobile-menu-overlay.active .mobile-menu-links a:nth-child(4) { transition-delay: 0.21s; }
+      .mobile-menu-overlay.active .mobile-menu-links a:nth-child(5) { transition-delay: 0.26s; }
+      .mobile-menu-overlay.active .mobile-menu-links a:nth-child(6) { transition-delay: 0.31s; }
+      .mobile-menu-overlay.active .mobile-menu-links a:nth-child(7) { transition-delay: 0.36s; }
       .mobile-menu-links a.active { color: #fff; background: rgba(255, 255, 255, 0.075); }
       .mobile-menu-links a:active { transform: scale(0.985); background: rgba(255, 255, 255, 0.085); }
 
@@ -342,12 +345,29 @@
       @keyframes heroRibbonUp { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(0, -50%, 0); } }
       @keyframes heroRibbonDown { 0% { transform: translate3d(0, -50%, 0); } 100% { transform: translate3d(0, 0, 0); } }
 
-      /* === HERO TEXT INTRO === */
-      .hero .reveal {
+      /* === REVEAL ANIMATIONS === */
+      .reveal {
         opacity: 0; filter: blur(18px);
         transform: translate3d(0, 78px, 0) scale(0.975);
-        will-change: transform, opacity; backface-visibility: hidden;
+        transition: opacity 1.25s var(--ease), filter 1.25s var(--ease), transform 1.25s var(--ease);
+        will-change: transform, opacity, filter; backface-visibility: hidden;
       }
+      .reveal.active { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scale(1); }
+
+      .section-header.reveal { transform: translate3d(0, 64px, 0) scale(0.985); }
+      .work-top.reveal { transform: translate3d(0, 88px, 0) scale(0.97); }
+
+      .work-card.reveal {
+        opacity: 0; filter: blur(16px);
+        transform: translate3d(0, 90px, 0) scale(0.94) rotateX(7deg);
+        transform-origin: center bottom;
+        transition: opacity 1.15s var(--ease), filter 1.15s var(--ease), transform 1.15s var(--ease), border-color 0.55s var(--ease), box-shadow 0.55s var(--ease);
+      }
+      .work-card.reveal.active { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scale(1) rotateX(0deg); }
+      .work-card.reveal.active:hover { border-color: rgba(212, 175, 55, 0.12); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.36); }
+      .process-card.reveal { opacity: 1 !important; filter: none !important; transform: none !important; transition: none !important; }
+      .process-card.reveal.active { opacity: 1 !important; filter: none !important; transform: none !important; }
+
       .hero .reveal.active { animation: heroSoftIn 1.35s var(--ease) both; }
       @keyframes heroSoftIn {
         from { opacity: 0; filter: blur(24px); transform: translate3d(0, 50px, 0) scale(0.975); }
@@ -368,7 +388,7 @@
       .btn-secondary { color: var(--champagne); background: transparent; border: 1px solid rgba(212, 175, 55, 0.15); }
       .btn-secondary:hover { border-color: rgba(212, 175, 55, 0.35); background: rgba(212, 175, 55, 0.04); }
 
-      /* === SECTIONS === */
+      /* === SECTIONS — Fixed spacing & scroll === */
       section[id] {
         scroll-margin-top: var(--nav-height);
         position: relative;
@@ -406,8 +426,8 @@
       .work-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; -webkit-user-drag: none; opacity: 1; }
 
       /* Image slider with handle */
-      .work-card.image-slider { --slider-value: 50%; cursor: default; user-select: none; touch-action: pan-y; }
-      .work-card.image-slider .image-before { clip-path: polygon(0 0, var(--slider-value) 0, var(--slider-value) 100%, 0 100%); z-index: 2; transition: none; }
+      .work-card.image-slider { cursor: default; user-select: none; touch-action: pan-y; }
+      .work-card.image-slider .image-before { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); z-index: 2; will-change: clip-path; transition: none; }
       .work-card.image-slider .slider-range {
         position: absolute; inset: 0; width: 100%; height: 100%;
         opacity: 0; cursor: ew-resize; z-index: 10; margin: 0;
@@ -415,13 +435,13 @@
         pointer-events: none;
       }
       .work-card.image-slider.dragging { touch-action: none; }
-      .work-card.image-slider.dragging .image-before { will-change: clip-path; }
 
+      /* Simple before/after slider handle — no glow or extra effects */
       .work-card.image-slider .slider-handle {
-        position: absolute; top: 0; bottom: 0; left: var(--slider-value); width: 56px;
+        position: absolute; top: 0; bottom: 0; left: 50%; width: 56px;
         background: linear-gradient(to right, transparent calc(50% - 1px), rgba(255, 255, 255, 0.56) calc(50% - 1px), rgba(255, 255, 255, 0.56) calc(50% + 1px), transparent calc(50% + 1px));
         pointer-events: auto; z-index: 5; touch-action: pan-y;
-        transform: translateX(-50%);
+        transform: translateX(-50%); will-change: left;
       }
       .work-card.image-slider .slider-handle::after {
         content: ""; position: absolute; top: 50%; left: 50%;
@@ -440,7 +460,8 @@
           url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M7 4L3 10L7 16' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 4L17 10L13 16' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
         background-size: contain; background-repeat: no-repeat; background-position: center;
       }
-      .work-card.image-slider:hover {
+      .work-card.image-slider:hover,
+      .work-card.image-slider.reveal.active:hover {
         border-color: rgba(255, 255, 255, 0.04);
         box-shadow: none;
       }
@@ -449,7 +470,6 @@
         background: rgba(10, 10, 10, 0.38);
         box-shadow: none;
       }
-      .work-card.image-slider.dragging .slider-handle { will-change: left; }
 
       /* === REVIEWS === */
       .reviews-section { padding: 6.5rem 0; }
@@ -500,9 +520,13 @@
         background: var(--surface); border: 1px solid rgba(255, 255, 255, 0.04);
         border-radius: var(--radius-lg); padding: 2rem; text-align: center;
         display: flex; flex-direction: column; align-items: center;
+        transition: border-color 0.5s var(--ease), box-shadow 0.5s var(--ease), transform 0.4s var(--ease);
       }
-      .process-media { width: 100%; aspect-ratio: 16/9; overflow: hidden; border-radius: 14px; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.04); background: var(--surface); }
-      .process-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+      .process-card:hover { border-color: rgba(255, 255, 255, 0.04); box-shadow: none; transform: none; }
+      .process-media { width: 100%; aspect-ratio: 16/9; overflow: hidden; border-radius: 14px; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.04); background: var(--surface); box-shadow: none !important; filter: none !important; transform: none !important; }
+      .process-media img { width: 100%; height: 100%; object-fit: cover; display: block; filter: none !important; -webkit-filter: none !important; image-rendering: auto !important; -webkit-image-rendering: auto !important; transform: none !important; box-shadow: none !important; opacity: 1 !important; will-change: auto !important; }
+      .process-media:hover, .process-card:hover .process-media { filter: none !important; transform: none !important; box-shadow: none !important; }
+      .process-media:hover img, .process-card:hover .process-media img { filter: none !important; transform: none !important; box-shadow: none !important; }
       .process-icon { width: 42px; height: 42px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.12); color: var(--gold); margin-bottom: 1.2rem; }
       .process-icon svg { width: 20px; height: 20px; }
       .process-card h3 { margin-bottom: 0.8rem; font-size: 1.15rem; font-weight: 800; color: var(--text); }
@@ -571,10 +595,10 @@
         transition: border-color 0.4s var(--ease), background 0.4s var(--ease), color 0.4s var(--ease);
       }
       .direct-email-copy:hover { border-color: rgba(212, 175, 55, 0.25); background: rgba(212, 175, 55, 0.04); color: var(--champagne); }
-      .direct-email-copy.copied, button.direct-email-copy.copied { background: rgba(212, 175, 55, 0.06); color: var(--gold); border-color: rgba(212, 175, 55, 0.25); }
+      .direct-email-copy.copied { background: rgba(212, 175, 55, 0.06); color: var(--gold); border-color: rgba(212, 175, 55, 0.25); }
+      .direct-email-copy.copied strong { color: var(--gold); }
       .direct-email-icon { width: 22px; height: 22px; display: inline-grid; place-items: center; color: var(--gold); }
       .direct-email-icon svg { width: 100%; height: 100%; }
-      .direct-email-copy.copied strong { color: var(--gold); }
       .direct-email-copy strong { font-size: clamp(0.85rem, 2vw, 0.95rem); }
       .direct-email-arrow { width: 28px; height: 28px; border-radius: 999px; display: inline-grid; place-items: center; background: rgba(212, 175, 55, 0.08); font-size: 1.2rem; color: var(--gold); }
 
@@ -628,28 +652,36 @@
         .hero-ribbon { width: 10rem; top: -42%; bottom: -42%; }
         .hero-ribbon-a { left: -5.4rem; }
         .hero-ribbon-d { right: -5.4rem; }
-        .hero-ribbon-track { gap: 0.65rem; }
+        .hero-ribbon-track { gap: 0.65rem; animation-duration: 34s !important; }
         .hero-flow-thumb { border-radius: 14px; filter: saturate(0.82) brightness(0.58); }
         .hero-center-shield { background: radial-gradient(ellipse at center, rgba(5,5,5,0.93) 0%, rgba(5,5,5,0.82) 48%, rgba(5,5,5,0.5) 76%, rgba(5,5,5,0.24) 100%); }
         .hero-ribbon-down .hero-ribbon-track,
         .hero-ribbon-up .hero-ribbon-track { animation-duration: 34s !important; }
-        .hero .reveal {
-          filter: none;
-          transform: translate3d(0, 34px, 0) scale(0.985);
-        }
-        .hero .reveal.active { filter: none; transform: translate3d(0, 0, 0) scale(1); }
+        .hero-ribbon-track { animation-timing-function: linear !important; }
+        .reveal, .work-card.reveal { transform: translate3d(0, 34px, 0) scale(0.985); }
+        .reveal.active, .work-card.reveal.active { transform: translate3d(0, 0, 0) scale(1); }
         .work-section { padding: 4rem 0; }
         .reviews-section, .about-section, .process-section { padding: 4rem 0; }
         .faq-section, .cta-section { padding: 4rem 0; }
         .section-pad { padding: 4rem 0; }
         .section-header { margin-bottom: 2.5rem; }
         .work-top { margin-bottom: 2.5rem; }
-        .process-grid { gap: 1.25rem; }
-        .process-card { padding: 1.5rem; border-radius: 18px; }
-        .process-media { border-radius: 12px; margin-bottom: 1.25rem; }
-        .process-card h3 { font-size: 1.05rem; }
-        .process-card p { font-size: 0.88rem; }
       }
+
+
+
+      /* === FINAL FIX: desktop section overlap + reveal transform reset ===
+         The previous .work-top.reveal and .section-header.reveal rules were
+         overriding .reveal.active because they had the same specificity and
+         appeared later in the stylesheet. This kept headings shifted downward
+         and made desktop cards overlap titles. */
+      .section-header.reveal.active,
+      .work-top.reveal.active {
+        opacity: 1 !important;
+        filter: blur(0) !important;
+        transform: translate3d(0, 0, 0) scale(1) !important;
+      }
+
       @media (min-width: 981px) {
         section[id] { scroll-margin-top: 112px; }
         .work-section { padding-top: clamp(6.75rem, 7vw, 8rem); }
@@ -664,7 +696,7 @@
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
         .hero-ribbon-track { animation: none !important; }
-        .hero .reveal { opacity: 1; filter: none; transform: none; transition: none; }
+        .reveal, .work-card.reveal { opacity: 1; filter: none; transform: none; transition: none; }
       }
 
       @supports (height: 100svh) {
@@ -690,8 +722,8 @@
     </nav>
 
     <div class="mobile-topbar">
-      <a class="mobile-topbar-logo" href="#home" aria-label="Abdullah Designs">
-        <img src="favicon/apple-touch-icon.png" alt="Abdullah Designs" width="44" height="44" decoding="async" />
+      <a class="mobile-topbar-logo" href="#home" aria-label="Abdullah Designs home">
+        <img src="favicon/Logo.png" alt="Abdullah Designs logo" width="32" height="32" decoding="async" />
       </a>
       <div class="mobile-topbar-brand">
         <strong>Abdullah Al Mamun</strong>
@@ -734,78 +766,78 @@
         <div class="hero-vertical-stage" aria-hidden="true">
           <div class="hero-ribbon hero-ribbon-a hero-ribbon-down">
             <div class="hero-ribbon-track">
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" fetchpriority="high" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/3.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/9.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/8.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/7.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
             </div>
           </div>
           <div class="hero-ribbon hero-ribbon-b hero-ribbon-up">
             <div class="hero-ribbon-track">
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" fetchpriority="high" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/3.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/9.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/8.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/7.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
             </div>
           </div>
           <div class="hero-ribbon hero-ribbon-c hero-ribbon-down">
             <div class="hero-ribbon-track">
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" fetchpriority="high" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/3.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/9.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/8.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/7.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
             </div>
           </div>
           <div class="hero-ribbon hero-ribbon-d hero-ribbon-up">
             <div class="hero-ribbon-track">
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" fetchpriority="high" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/3.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/9.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/8.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/7.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/2.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/6.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/4.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/1.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/5.avif" alt="" /></div>
-              <div class="hero-flow-thumb"><img loading="eager" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="" /></div>
+              <div class="hero-flow-thumb"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="" /></div>
             </div>
           </div>
           <div class="hero-center-shield"></div>
@@ -824,50 +856,50 @@
       <!-- WORK SECTION -->
       <section class="work-section" id="work">
         <div class="container">
-          <div class="work-top">
+          <div class="work-top reveal">
             <div class="work-title"><h2>Featured<br><span>Thumbnails</span></h2></div>
           </div>
           <div class="work-wall">
-            <article class="work-card"><img loading="lazy" decoding="async" src="thumbnails/1.avif" alt="Business YouTube Thumbnail" /></article>
-            <article class="work-card"><img loading="lazy" decoding="async" src="thumbnails/2.avif" alt="Tech YouTube Thumbnail" /></article>
-            <article class="work-card"><img loading="lazy" decoding="async" src="thumbnails/3.avif" alt="Financial Business Thumbnail" /></article>
-            <article class="work-card"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="Expert Podcast Thumbnail" /></article>
-            <article class="work-card"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="Gaming Thumbnail Illustration" /></article>
-            <article class="work-card"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="Podcast Thumbnail Design" /></article>
-            <article class="work-card"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="Podcast Thumbnail Design" /></article>
-            <article class="work-card"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="Podcast Thumbnail Design" /></article>
-            <article class="work-card"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="Podcast Thumbnail Design" /></article>
-            <article class="work-card image-slider">
+            <article class="work-card reveal"><img loading="eager" decoding="async" src="thumbnails/1.avif" alt="Business YouTube Thumbnail" /></article>
+            <article class="work-card reveal"><img loading="eager" decoding="async" src="thumbnails/2.avif" alt="Tech YouTube Thumbnail" /></article>
+            <article class="work-card reveal"><img loading="eager" decoding="async" src="thumbnails/3.avif" alt="Financial Business Thumbnail" /></article>
+            <article class="work-card reveal"><img loading="eager" decoding="async" src="thumbnails/4.avif" alt="Expert Podcast Thumbnail" /></article>
+            <article class="work-card reveal"><img loading="eager" decoding="async" src="thumbnails/5.avif" alt="Gaming Thumbnail Illustration" /></article>
+            <article class="work-card reveal"><img loading="eager" decoding="async" src="thumbnails/6.avif" alt="Podcast Thumbnail Design" /></article>
+            <article class="work-card reveal"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="Podcast Thumbnail Design" /></article>
+            <article class="work-card reveal"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="Podcast Thumbnail Design" /></article>
+            <article class="work-card reveal"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="Podcast Thumbnail Design" /></article>
+            <article class="work-card reveal image-slider">
               <img loading="lazy" decoding="async" src="after/1.avif" alt="Before and After" />
               <img loading="lazy" decoding="async" src="before/1.avif" alt="Before" class="image-before" />
               <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
               <div class="slider-handle"></div>
             </article>
-            <article class="work-card image-slider">
+            <article class="work-card reveal image-slider">
               <img loading="lazy" decoding="async" src="after/2.avif" alt="Before and After" />
               <img loading="lazy" decoding="async" src="before/2.avif" alt="Before" class="image-before" />
               <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
               <div class="slider-handle"></div>
             </article>
-            <article class="work-card image-slider">
+            <article class="work-card reveal image-slider">
               <img loading="lazy" decoding="async" src="after/3.avif" alt="Before and After" />
               <img loading="lazy" decoding="async" src="before/3.avif" alt="Before" class="image-before" />
               <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
               <div class="slider-handle"></div>
             </article>
-            <article class="work-card image-slider">
+            <article class="work-card reveal image-slider">
               <img loading="lazy" decoding="async" src="after/4.avif" alt="Before and After" />
               <img loading="lazy" decoding="async" src="before/4.avif" alt="Before" class="image-before" />
               <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
               <div class="slider-handle"></div>
             </article>
-            <article class="work-card image-slider">
+            <article class="work-card reveal image-slider">
               <img loading="lazy" decoding="async" src="after/5.avif" alt="Before and After" />
               <img loading="lazy" decoding="async" src="before/5.avif" alt="Before" class="image-before" />
               <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
               <div class="slider-handle"></div>
             </article>
-            <article class="work-card image-slider">
+            <article class="work-card reveal image-slider">
               <img loading="lazy" decoding="async" src="after/6.avif" alt="Before and After" />
               <img loading="lazy" decoding="async" src="before/6.avif" alt="Before" class="image-before" />
               <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Before/After Slider" />
@@ -879,27 +911,27 @@
 
       <!-- REVIEWS SECTION -->
       <section class="section-pad container reviews-section" id="reviews">
-        <div class="section-header"><h2>Trusted by Creators</h2></div>
+        <div class="section-header reveal"><h2>Trusted by Creators</h2></div>
         <div class="reviews-grid">
-          <a class="review-card" href="https://www.youtube.com/@JackPembrook" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Great work, Abdullah. I shared a simple idea, and you turned it into a clean thumbnail that looked ready for my channel. I will definitely use your service again."</p><div class="review-user"><img class="review-avatar" loading="lazy" decoding="async" src="reviews/jack.webp" alt="Jack Pembrook" width="42" height="42" /><div class="review-info"><h4>Jack Pembrook <img src="reviews/verified-badge.png" class="verified-badge" loading="lazy" decoding="async" width="14" height="14" alt="Verified" /></h4><span>YouTuber &middot; 1.69M Subscribers</span></div></div></div></a>
-          <a class="review-card" href="https://www.youtube.com/@SabriSubyOfficial" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Nice work. You understood my expectation quickly and made the thumbnail better than what I had in mind. The final result looked sharp, clean, and professional."</p><div class="review-user"><img class="review-avatar" loading="lazy" decoding="async" src="reviews/sabri.webp" alt="Sabri Suby" width="42" height="42" /><div class="review-info"><h4>Sabri Suby <img src="reviews/verified-badge.png" class="verified-badge" loading="lazy" decoding="async" width="14" height="14" alt="Verified" /></h4><span>YouTuber &middot; 450K Subscribers</span></div></div></div></a>
-          <a class="review-card" href="https://www.youtube.com/@techsource" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"I liked how simple and smooth the process was. Abdullah kept the design clean, made the text easy to read, and delivered exactly the thumbnail style I needed."</p><div class="review-user"><img class="review-avatar" loading="lazy" decoding="async" src="reviews/techsource.webp" alt="TechSource" width="42" height="42" /><div class="review-info"><h4>TechSource <img src="reviews/verified-badge.png" class="verified-badge" loading="lazy" decoding="async" width="14" height="14" alt="Verified" /></h4><span>YouTuber &middot; 4.1M Subscribers</span></div></div></div></a>
-          <a class="review-card" href="https://www.youtube.com/@LiamOttley/videos" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"The quality was excellent. Abdullah listened to the direction, improved the idea, and made a thumbnail that looked premium without adding unnecessary clutter."</p><div class="review-user"><img class="review-avatar" loading="lazy" decoding="async" src="reviews/Liam%20Ottley.jpg" alt="Liam Ottley" width="42" height="42" /><div class="review-info"><h4>Liam Ottley <img src="reviews/verified-badge.png" class="verified-badge" loading="lazy" decoding="async" width="14" height="14" alt="Verified" /></h4><span>YouTuber &middot; 780K Subscribers</span></div></div></div></a>
-          <a class="review-card" href="https://www.youtube.com/@Tdawgsmitty/videos" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Very professional service. I sent a few notes, and Abdullah handled the full design with good balance, strong colors, and a clear hook for viewers."</p><div class="review-user"><img class="review-avatar" loading="lazy" decoding="async" src="reviews/Tdawgsmitty.jpg" alt="Tdawgsmitty" width="42" height="42" /><div class="review-info"><h4>Tdawgsmitty <img src="reviews/verified-badge.png" class="verified-badge" loading="lazy" decoding="async" width="14" height="14" alt="Verified" /></h4><span>YouTuber &middot; 597K Subscribers</span></div></div></div></a>
-          <a class="review-card" href="https://www.youtube.com/@vfxsolazzo" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Amazing experience. The thumbnail matched my video style, was easy to understand, and felt more clickable than I expected. I would recommend Abdullah."</p><div class="review-user"><img class="review-avatar" loading="lazy" decoding="async" src="reviews/solazzo.webp" alt="Solazzo" width="42" height="42" /><div class="review-info"><h4>Solazzo</h4><span>YouTuber &middot; 12.2K Subscribers</span></div></div></div></a>
+          <a class="review-card reveal" href="https://www.youtube.com/@JackPembrook" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Great work, Abdullah. I shared a simple idea, and you turned it into a clean thumbnail that looked ready for my channel. I will definitely use your service again."</p><div class="review-user"><img class="review-avatar" src="reviews/jack.webp" alt="Jack Pembrook" /><div class="review-info"><h4>Jack Pembrook <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 1.69M Subscribers</span></div></div></div></a>
+          <a class="review-card reveal" href="https://www.youtube.com/@SabriSubyOfficial" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Nice work. You understood my expectation quickly and made the thumbnail better than what I had in mind. The final result looked sharp, clean, and professional."</p><div class="review-user"><img class="review-avatar" src="reviews/sabri.webp" alt="Sabri Suby" /><div class="review-info"><h4>Sabri Suby <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 450K Subscribers</span></div></div></div></a>
+          <a class="review-card reveal" href="https://www.youtube.com/@techsource" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"I liked how simple and smooth the process was. Abdullah kept the design clean, made the text easy to read, and delivered exactly the thumbnail style I needed."</p><div class="review-user"><img class="review-avatar" src="reviews/techsource.webp" alt="TechSource" /><div class="review-info"><h4>TechSource <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 4.1M Subscribers</span></div></div></div></a>
+          <a class="review-card reveal" href="https://www.youtube.com/@LiamOttley/videos" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"The quality was excellent. Abdullah listened to the direction, improved the idea, and made a thumbnail that looked premium without adding unnecessary clutter."</p><div class="review-user"><img class="review-avatar" src="reviews/Liam%20Ottley.jpg" alt="Liam Ottley" /><div class="review-info"><h4>Liam Ottley <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 780K Subscribers</span></div></div></div></a>
+          <a class="review-card reveal" href="https://www.youtube.com/@Tdawgsmitty/videos" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Very professional service. I sent a few notes, and Abdullah handled the full design with good balance, strong colors, and a clear hook for viewers."</p><div class="review-user"><img class="review-avatar" src="reviews/Tdawgsmitty.jpg" alt="Tdawgsmitty" /><div class="review-info"><h4>Tdawgsmitty <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 597K Subscribers</span></div></div></div></a>
+          <a class="review-card reveal" href="https://www.youtube.com/@vfxsolazzo" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Amazing experience. The thumbnail matched my video style, was easy to understand, and felt more clickable than I expected. I would recommend Abdullah."</p><div class="review-user"><img class="review-avatar" src="reviews/solazzo.webp" alt="Solazzo" /><div class="review-info"><h4>Solazzo</h4><span>YouTuber &middot; 12.2K Subscribers</span></div></div></div></a>
         </div>
       </section>
 
       <!-- ABOUT SECTION -->
       <section class="about-section container" id="about">
-        <div class="about-grid">
+        <div class="about-grid reveal">
           <div class="about-content">
             <h2>Designer for Serious Creators</h2>
             <div class="about-text"><p>I design thumbnails with a clear focus on emotion, clarity, and CTR. My goal is not just to make your videos look good, but to create the first visual hook that makes viewers stop, feel curious, and click.</p></div>
             <ul class="about-points">
-              <li>180M+ Impressions & 140M+ Views This Year for clients</li>
+              <li>Generated 150M+ impressions for clients</li>
               <li>Proven CTR increases across diverse niches</li>
-              <li>70+ satisfied creators worldwide</li>
+              <li>20+ satisfied creators worldwide</li>
             </ul>
             <div class="about-actions">
               <a class="guide-btn" href="#contact">Contact Me for Details</a>
@@ -914,33 +946,33 @@
 
       <!-- PROCESS SECTION -->
       <section class="section-pad container process-section" id="process">
-        <div class="section-header"><h2>Simple Process. Premium Result.</h2></div>
+        <div class="section-header reveal"><h2>Simple Process. Premium Result.</h2></div>
         <div class="process-grid">
-          <article class="process-card">
+          <article class="process-card reveal">
             <div class="process-media"><img loading="lazy" decoding="async" src="Process/1.avif" alt="Strategy Consultation" /></div>
             <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg></div>
             <h3>Consulting</h3>
-            <p>Strategizing your goals and packaging for thumbnails perfectly matched to your content.</p>
+            <p>We discuss your video goals, audience strategy, and packaging to ensure the thumbnail aligns with your content.</p>
           </article>
-          <article class="process-card">
+          <article class="process-card reveal">
             <div class="process-media"><img loading="lazy" decoding="async" src="Process/2.avif" alt="Conceptualization" /></div>
             <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></div>
             <h3>Strategic Ideation</h3>
-            <p>Turning conceptual briefings and sketches into high-converting, scroll-stopping visual hooks.</p>
+            <p>I develop conceptual briefings and sketches, focusing on the visual hook that will stop the scroll.</p>
           </article>
-          <article class="process-card">
+          <article class="process-card reveal">
             <div class="process-media"><img loading="lazy" decoding="async" src="Process/3.avif" alt="Final Design Production" /></div>
             <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></div>
             <h3>Creative Design</h3>
-            <p>Final thumbnails are crafted for high contrast, natural depth, and a premium look.</p>
+            <p>The final thumbnail is crafted with precision, ensuring high contrast, readability, and a premium look.</p>
           </article>
         </div>
       </section>
 
       <!-- FAQ SECTION -->
       <section class="section-pad container faq-section" id="faq">
-        <div class="section-header"><h2>Common Questions</h2><p>Everything you need to know before we start.</p></div>
-        <div class="faq-list">
+        <div class="section-header reveal"><h2>Common Questions</h2><p>Everything you need to know before we start.</p></div>
+        <div class="faq-list reveal">
           <div class="faq-item"><button class="faq-trigger" type="button">How fast can I get a thumbnail?<span>+</span></button><div class="faq-content"><div>Most thumbnails are delivered within 24–48 hours. If the design is very detailed or needs extra research, I'll let you know before starting.</div></div></div>
           <div class="faq-item"><button class="faq-trigger" type="button">What do you need from me to start?<span>+</span></button><div class="faq-content"><div>Send your video title, a short idea or script, your channel link, and any photos or references you want me to use. Even a rough concept is enough.</div></div></div>
           <div class="faq-item"><button class="faq-trigger" type="button">Do you provide revisions if I need changes?<span>+</span></button><div class="faq-content"><div>Yes. Small changes like text, color, layout, or image adjustments are included so the final thumbnail feels ready before you upload.</div></div></div>
@@ -949,22 +981,20 @@
 
       <!-- CONTACT SECTION -->
       <section class="cta-section container" id="contact">
-        <div class="cta-card">
+        <div class="cta-card reveal">
           <h2>Ready to Build Your Next Click-Worthy Thumbnail?</h2>
           <p>Send the idea, channel link, and deadline. I'll reply with the best direction and make the project easy to start.</p>
-          <form class="contact-form" id="contactForm" action="https://formsubmit.co/shahalamd293@gmail.com" method="POST" target="formSubmitFrame">
-            <input type="hidden" name="_subject" value="New Thumbnail Project Message - Abdullah Designs" />
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/contact@abdullahdesigns.xyz" method="POST">
+            <input type="hidden" name="_subject" value="New Portfolio Project Request" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_next" id="formNext" value="" />
+            <input type="hidden" name="_next" value="https://abdullahdesigns.xyz/#contact" />
             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-            <input type="hidden" name="_replyto" id="formReplyTo" value="" />
-            <div class="contact-field"><label for="channelName">Your Name</label><input id="channelName" name="name" type="text" placeholder="Your Name" required /></div>
+            <div class="contact-field"><label for="channelName">Channel Name</label><input id="channelName" name="name" type="text" placeholder="Your channel name" required /></div>
             <div class="contact-field"><label for="clientEmail">Your Email</label><input id="clientEmail" name="email" type="email" placeholder="your@email.com" required /></div>
             <div class="contact-field contact-field-full"><label for="clientMessage" class="sr-only">Your Message</label><textarea id="clientMessage" name="message" placeholder="Video topic, deadline, thumbnail style, and any references..." rows="5" required></textarea></div>
-            <button class="contact-submit" type="submit" aria-live="polite">Send Project Details</button>
+            <button class="contact-submit" type="submit">Send Project Details</button>
           </form>
-          <iframe id="formSubmitFrame" name="formSubmitFrame" title="Hidden form submit" style="display:none" aria-hidden="true"></iframe>
           <button type="button" class="direct-email-copy" id="copyDirectEmail" data-email="contact@abdullahdesigns.xyz">
             <span class="direct-email-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>
             <strong>contact@abdullahdesigns.xyz</strong>
@@ -979,7 +1009,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.672 1.433 5.661 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
               <span>WhatsApp</span>
             </a>
-            <a href="https://discord.com/users/1485473437676998729" target="_blank" rel="noopener noreferrer" class="social-card">
+            <a href="https://discord.gg/uneREXGHSx" target="_blank" rel="noopener noreferrer" class="social-card">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 004.1 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.419-2.157 2.419z"></path></svg>
               <span>Discord</span>
             </a>
@@ -998,32 +1028,31 @@
         "use strict";
 
         // Year
-        var yearEl = document.getElementById("year");
+        const yearEl = document.getElementById("year");
         if (yearEl) yearEl.textContent = new Date().getFullYear();
 
         // Scroll Progress
-        var scrollProgress = document.getElementById("scrollProgress");
+        const scrollProgress = document.getElementById("scrollProgress");
         function updateScrollProgress() {
           if (!scrollProgress) return;
-          var h = document.documentElement;
-          var st = window.pageYOffset || h.scrollTop;
-          var maxScrollable = Math.max(1, h.scrollHeight - h.clientHeight);
+          const h = document.documentElement;
+          const st = window.pageYOffset || h.scrollTop;
+          const maxScrollable = Math.max(1, h.scrollHeight - h.clientHeight);
           scrollProgress.style.transform = "scaleX(" + Math.min(1, st / maxScrollable) + ")";
         }
 
         // Nav highlight
-        var mainNav = document.getElementById("mainNav");
-        var navHighlight = mainNav ? mainNav.querySelector(".nav-highlight") : null;
-        var desktopLinks = mainNav ? mainNav.querySelectorAll("a") : [];
-        var mobileMenuLinks = document.querySelectorAll(".mobile-menu-links a");
+        const mainNav = document.getElementById("mainNav");
+        const navHighlight = mainNav ? mainNav.querySelector(".nav-highlight") : null;
+        const desktopLinks = mainNav ? mainNav.querySelectorAll("a") : [];
 
         function updateNavHighlight(link) {
           if (!link || !mainNav || !navHighlight || window.innerWidth <= 680) {
             if (navHighlight) navHighlight.style.opacity = "0";
             return;
           }
-          var rect = link.getBoundingClientRect();
-          var navRect = mainNav.getBoundingClientRect();
+          const rect = link.getBoundingClientRect();
+          const navRect = mainNav.getBoundingClientRect();
           navHighlight.style.width = rect.width + "px";
           navHighlight.style.left = (rect.left - navRect.left) + "px";
           navHighlight.style.opacity = "1";
@@ -1040,15 +1069,9 @@
           });
         }
 
-        // Nav active state on scroll
+        // Nav active state on scroll — improved scroll spy
         var sections = document.querySelectorAll("section[id]");
         var currentActiveId = "home";
-
-        function syncActiveLinks(links, activeId) {
-          links.forEach(function(link) {
-            link.classList.toggle("active", link.getAttribute("href") === "#" + activeId);
-          });
-        }
 
         function getNavHeight() {
           var isMobile = window.innerWidth <= 680;
@@ -1081,14 +1104,14 @@
 
           if (found !== currentActiveId) {
             currentActiveId = found;
-            var activeDesktopLink = null;
-            desktopLinks.forEach(function(link) {
-              var isActive = link.getAttribute("href") === "#" + currentActiveId;
-              link.classList.toggle("active", isActive);
-              if (isActive) activeDesktopLink = link;
+            desktopLinks.forEach(function(l) {
+              var isActive = l.getAttribute("href") === "#" + currentActiveId;
+              l.classList.toggle("active", isActive);
+              if (isActive && !mainNav.querySelector("a:hover")) updateNavHighlight(l);
             });
-            if (activeDesktopLink && mainNav && !mainNav.querySelector("a:hover")) updateNavHighlight(activeDesktopLink);
-            syncActiveLinks(mobileMenuLinks, currentActiveId);
+            document.querySelectorAll(".mobile-menu-links a").forEach(function(l) {
+              l.classList.toggle("active", l.getAttribute("href") === "#" + currentActiveId);
+            });
           }
         }
 
@@ -1104,20 +1127,12 @@
           }
         }, { passive: true });
 
-        window.addEventListener("resize", function() {
-          requestAnimationFrame(function() {
-            updateActiveNav();
-            updateScrollProgress();
-            var activeLink = mainNav ? mainNav.querySelector("a.active") : null;
-            if (activeLink) updateNavHighlight(activeLink);
-          });
-        }, { passive: true });
-
-        // Initialize on load
-        var a = mainNav ? mainNav.querySelector("a.active") : null;
-        if (a) updateNavHighlight(a);
-        updateScrollProgress();
-        updateActiveNav();
+        window.addEventListener("load", function() {
+          var a = mainNav ? mainNav.querySelector("a.active") : null;
+          if (a) updateNavHighlight(a);
+          updateScrollProgress();
+          updateActiveNav();
+        });
 
         // Mobile menu
         var mobileMenuBtn = document.getElementById("mobileMenuBtn");
@@ -1155,7 +1170,7 @@
         if (mobileMenuOverlay) mobileMenuOverlay.addEventListener("click", function(e) { if (e.target === mobileMenuOverlay) toggleMobileMenu(false); });
         window.addEventListener("keydown", function(e) { if (e.key === "Escape" && mobileMenuOverlay && mobileMenuOverlay.classList.contains("active")) toggleMobileMenu(false); });
 
-        // Smooth nav scroll
+        // Smooth nav scroll — fixed offset calculation
         document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
           anchor.addEventListener("click", function(e) {
             var href = anchor.getAttribute("href");
@@ -1181,225 +1196,245 @@
         });
 
         // FAQ
-        var faqItems = document.querySelectorAll(".faq-item");
-        faqItems.forEach(function(item) {
-          var trigger = item.querySelector(".faq-trigger");
-          if (!trigger) return;
-          trigger.addEventListener("click", function() {
+        document.querySelectorAll(".faq-trigger").forEach(function(t) {
+          t.addEventListener("click", function() {
+            var item = t.closest(".faq-item");
             var isActive = item.classList.contains("active");
-            faqItems.forEach(function(faqItem) { faqItem.classList.remove("active"); });
+            document.querySelectorAll(".faq-item").forEach(function(f) { f.classList.remove("active"); });
             if (!isActive) item.classList.add("active");
           });
         });
 
-        // Image slider (before/after)
-        function clampSliderValue(val) {
-          var number = Number(val);
-          if (!Number.isFinite(number)) return 50;
-          return Math.max(0, Math.min(100, number));
+        // Image slider (before/after) — mobile scroll-safe handle drag
+        function clampSliderValue(val) { return Math.max(0, Math.min(100, Number(val))); }
+
+        function renderSlider(card, val) {
+          var safeValue = clampSliderValue(val);
+          var beforeImg = card.querySelector(".image-before");
+          var handle = card.querySelector(".slider-handle");
+          if (beforeImg) beforeImg.style.clipPath = "polygon(0 0, " + safeValue + "% 0, " + safeValue + "% 100%, 0 100%)";
+          if (handle) handle.style.left = safeValue + "%";
         }
 
-        function initBeforeAfterSlider(card) {
+        var isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+
+        document.querySelectorAll(".image-slider").forEach(function(card) {
           var range = card.querySelector(".slider-range");
           var before = card.querySelector(".image-before");
-          var handle = card.querySelector(".slider-handle");
-          if (!before || !handle) return;
+          if (!before) return;
 
-          var drag = null;
-          var pendingValue = null;
-          var renderFrame = null;
-          var axisThreshold = 6;
-          var axisRatio = 1.08;
-          var handlePadding = 10;
+          renderSlider(card, 50);
 
-          function applySliderValue(val) {
-            var safeValue = clampSliderValue(val);
-            card.style.setProperty("--slider-value", safeValue + "%");
-            if (range) range.value = String(safeValue);
+          if (range) {
+            range.addEventListener("input", function(e) { renderSlider(card, e.target.value); });
           }
 
-          function queueSliderValue(val) {
-            pendingValue = val;
-            if (renderFrame !== null) return;
-            renderFrame = requestAnimationFrame(function() {
-              renderFrame = null;
-              applySliderValue(pendingValue);
-              pendingValue = null;
-            });
-          }
+          var startX = 0;
+          var startY = 0;
+          var tracking = false;
+          var draggingSlider = false;
+          var activePointerId = null;
+          var handleHitArea = 44; // wider mobile touch area around the circle/line
 
-          function flushSliderValue() {
-            if (renderFrame !== null) {
-              cancelAnimationFrame(renderFrame);
-              renderFrame = null;
-            }
-            if (pendingValue !== null) {
-              applySliderValue(pendingValue);
-              pendingValue = null;
-            }
-          }
-
-          function valueFromClientX(clientX) {
+          function getSliderValue(clientX) {
             var rect = card.getBoundingClientRect();
-            if (!rect.width) return 50;
             return ((clientX - rect.left) / rect.width) * 100;
           }
 
-          function isDirectPointer(e) {
-            if (e.pointerType) return e.pointerType === "touch" || e.pointerType === "pen";
-            return e.width > 1 || e.height > 1;
+          function getCurrentSliderValue() {
+            if (range && range.value !== "") return clampSliderValue(range.value);
+            var handle = card.querySelector(".slider-handle");
+            if (handle && handle.style.left) return clampSliderValue(parseFloat(handle.style.left));
+            return 50;
           }
 
-          function isHandleStart(e) {
-            var rect = handle.getBoundingClientRect();
-            return e.clientX >= rect.left - handlePadding &&
-              e.clientX <= rect.right + handlePadding &&
-              e.clientY >= rect.top &&
-              e.clientY <= rect.bottom;
+          function isOnSliderHandle(clientX, target) {
+            if (target && target.closest && target.closest(".slider-handle")) return true;
+            var rect = card.getBoundingClientRect();
+            var handleX = rect.left + rect.width * (getCurrentSliderValue() / 100);
+            return Math.abs(clientX - handleX) <= handleHitArea;
           }
 
-          function capturePointer(pointerId) {
-            if (card.setPointerCapture) {
-              try { card.setPointerCapture(pointerId); } catch (err) {}
+          function stopDrag(e) {
+            if (draggingSlider && e && activePointerId !== null && card.hasPointerCapture && card.hasPointerCapture(activePointerId)) {
+              try { card.releasePointerCapture(activePointerId); } catch (err) {}
             }
-          }
-
-          function releasePointer(pointerId) {
-            if (card.hasPointerCapture && card.hasPointerCapture(pointerId)) {
-              try { card.releasePointerCapture(pointerId); } catch (err) {}
-            }
-          }
-
-          function stopDrag() {
-            if (drag) releasePointer(drag.pointerId);
-            flushSliderValue();
-            drag = null;
+            tracking = false;
+            draggingSlider = false;
+            activePointerId = null;
             card.classList.remove("dragging");
           }
 
-          applySliderValue(range ? range.value : 50);
-
-          if (range) {
-            range.addEventListener("input", function(e) { applySliderValue(e.target.value); });
-            range.addEventListener("change", function(e) { applySliderValue(e.target.value); });
-          }
-
           card.addEventListener("pointerdown", function(e) {
-            if (e.button !== undefined && e.button !== 0) return;
-
-            var directPointer = isDirectPointer(e);
-            if (directPointer && !isHandleStart(e)) {
-              stopDrag();
+            if (!isTouchDevice) {
+              if (range) range.style.pointerEvents = "auto";
               return;
             }
 
-            drag = {
-              pointerId: e.pointerId,
-              startX: e.clientX,
-              startY: e.clientY,
-              directPointer: directPointer,
-              moving: !directPointer
-            };
-            capturePointer(e.pointerId);
-
-            if (!directPointer) {
-              e.preventDefault();
-              card.classList.add("dragging");
-              queueSliderValue(valueFromClientX(e.clientX));
+            // Phone behavior:
+            // - swipe anywhere on the before/after card = normal page scroll, slider does not move
+            // - start on/near the handle and drag horizontally = slider moves
+            if (!isOnSliderHandle(e.clientX, e.target)) {
+              stopDrag(e);
+              return;
             }
-          }, { passive: false });
+
+            tracking = true;
+            draggingSlider = false;
+            activePointerId = e.pointerId;
+            startX = e.clientX;
+            startY = e.clientY;
+          }, { passive: true });
 
           card.addEventListener("pointermove", function(e) {
-            if (!drag || e.pointerId !== drag.pointerId) return;
+            if (!isTouchDevice || !tracking || e.pointerId !== activePointerId) return;
 
-            var diffX = e.clientX - drag.startX;
-            var diffY = e.clientY - drag.startY;
+            var diffX = e.clientX - startX;
+            var diffY = e.clientY - startY;
             var absX = Math.abs(diffX);
             var absY = Math.abs(diffY);
 
-            if (!drag.moving) {
-              if (absY > axisThreshold && absY >= absX) {
-                stopDrag();
+            if (!draggingSlider) {
+              // Vertical gesture wins: let the page scroll and never update the slider.
+              if (absY > 6 && absY >= absX) {
+                stopDrag(e);
                 return;
               }
 
-              if (!(absX > axisThreshold && absX > absY * axisRatio)) return;
+              // Start slider only after a clear horizontal drag from the handle.
+              if (!(absX > 7 && absX > absY * 1.15)) return;
 
-              drag.moving = true;
+              draggingSlider = true;
               card.classList.add("dragging");
-              capturePointer(e.pointerId);
+              if (card.setPointerCapture) {
+                try { card.setPointerCapture(e.pointerId); } catch (err) {}
+              }
             }
 
             e.preventDefault();
-            queueSliderValue(valueFromClientX(e.clientX));
+            var val = getSliderValue(e.clientX);
+            renderSlider(card, val);
+            if (range) range.value = clampSliderValue(val);
           }, { passive: false });
 
           card.addEventListener("pointerup", stopDrag, { passive: true });
           card.addEventListener("pointercancel", stopDrag, { passive: true });
           card.addEventListener("lostpointercapture", stopDrag, { passive: true });
+        });
+
+        // Desktop: enable range on desktop
+        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+          document.querySelectorAll(".image-slider .slider-range").forEach(function(range) {
+            range.style.pointerEvents = "auto";
+          });
         }
 
-        document.querySelectorAll(".image-slider").forEach(initBeforeAfterSlider);
+        // Reveal animations
+        var revealElements = document.querySelectorAll(".reveal");
+        var revealObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              // Force lazy images inside revealed elements to load
+              var lazyImgs = entry.target.querySelectorAll('img[loading="lazy"]');
+              lazyImgs.forEach(function(img) {
+                if (img.dataset.src) {
+                  img.src = img.dataset.src;
+                } else if (!img.complete && img.src) {
+                  // Trigger reload by reassigning src
+                  var currentSrc = img.src;
+                  img.removeAttribute("loading");
+                  img.src = currentSrc;
+                }
+              });
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.05, rootMargin: "200px 0px 200px 0px" });
 
-        // Hero text intro — activate immediately
-        var heroRevealElements = document.querySelectorAll("#home .reveal");
-        heroRevealElements.forEach(function(el) { el.classList.add("active"); });
+        function initReveals() {
+          revealElements.forEach(function(el, index) {
+            if (el.classList.contains("work-card")) {
+              el.style.transitionDelay = Math.min((index % 6) * 70, 350) + "ms";
+            }
+            revealObserver.observe(el);
+          });
+          // Activate hero elements immediately
+          requestAnimationFrame(function() {
+            document.querySelectorAll("#home .reveal").forEach(function(el) { el.classList.add("active"); });
+            var vh = window.innerHeight;
+            revealElements.forEach(function(el) {
+              var rect = el.getBoundingClientRect();
+              if (rect.top < vh * 0.92 && rect.bottom > 0) el.classList.add("active");
+            });
+          });
+        }
 
-        // Contact form — FormSubmit direct submit through hidden iframe, no redirect
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initReveals);
+        } else {
+          initReveals();
+        }
+
+        window.addEventListener("load", function() {
+          var vh = window.innerHeight;
+          revealElements.forEach(function(el) {
+            var rect = el.getBoundingClientRect();
+            if (rect.top < vh * 0.92 && rect.bottom > 0) el.classList.add("active");
+          });
+        }, { once: true });
+        // Contact form - FormSubmit AJAX submit (no page redirect)
         var contactForm = document.getElementById("contactForm");
         if (contactForm) {
-          var formSubmitEndpoint = "https://formsubmit.co/shahalamd293@gmail.com";
-          var formReplyTo = document.getElementById("formReplyTo");
-          var formNext = document.getElementById("formNext");
-          var formFrame = document.getElementById("formSubmitFrame");
-          contactForm.setAttribute("action", formSubmitEndpoint);
-          contactForm.setAttribute("method", "POST");
-          contactForm.setAttribute("target", "formSubmitFrame");
+          var contactBtn = contactForm.querySelector(".contact-submit");
+          var contactOriginalText = contactBtn ? contactBtn.textContent : "Send Project Details";
+          var contactResetTimer = null;
 
-          function setButtonState(btn, text, disabled) {
-            if (!btn) return;
-            btn.textContent = text;
-            btn.disabled = disabled;
-            btn.setAttribute("aria-busy", disabled ? "true" : "false");
-          }
-
-          function prepareDirectFormSubmit() {
-            var emailInput = document.getElementById("clientEmail");
-            var emailValue = emailInput ? emailInput.value.trim() : "";
-            if (formReplyTo) formReplyTo.value = emailValue;
-            if (formNext) formNext.value = window.location.href.split("#")[0] + "#contact";
+          function setContactButton(text, disabled, opacity) {
+            if (!contactBtn) return;
+            contactBtn.textContent = text;
+            contactBtn.disabled = disabled;
+            contactBtn.style.opacity = opacity;
           }
 
           contactForm.addEventListener("submit", function(e) {
             e.preventDefault();
-            var btn = contactForm.querySelector(".contact-submit");
             if (!contactForm.checkValidity()) {
               contactForm.reportValidity();
               return;
             }
 
-            prepareDirectFormSubmit();
-            setButtonState(btn, "Sending...", true);
+            if (contactResetTimer) clearTimeout(contactResetTimer);
+            setContactButton("Sending...", true, "0.7");
 
-            try {
-              if (!formFrame) {
-                formFrame = document.createElement("iframe");
-                formFrame.id = "formSubmitFrame";
-                formFrame.name = "formSubmitFrame";
-                formFrame.title = "Hidden form submit";
-                formFrame.style.display = "none";
-                formFrame.setAttribute("aria-hidden", "true");
-                document.body.appendChild(formFrame);
-              }
+            var formPayload = {};
+            new FormData(contactForm).forEach(function(value, key) {
+              formPayload[key] = value;
+            });
 
-              HTMLFormElement.prototype.submit.call(contactForm);
-              window.setTimeout(function() {
-                contactForm.reset();
-                setButtonState(btn, "Thank you!", false);
-              }, 900);
-            } catch (err) {
-              setButtonState(btn, "Try again", false);
-            }
+            var ajaxAction = contactForm.action.replace("https://formsubmit.co/", "https://formsubmit.co/ajax/");
+            fetch(ajaxAction, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+              },
+              body: JSON.stringify(formPayload)
+            }).then(function(response) {
+              if (!response.ok) throw new Error("Contact form request failed");
+              return response.json();
+            }).then(function() {
+              contactForm.reset();
+              setContactButton("Thank you!", false, "1");
+              contactResetTimer = setTimeout(function() {
+                setContactButton(contactOriginalText, false, "1");
+              }, 3000);
+            }).catch(function() {
+              setContactButton("Try again", false, "1");
+              contactResetTimer = setTimeout(function() {
+                setContactButton(contactOriginalText, false, "1");
+              }, 2500);
+            });
           });
         }
 
@@ -1407,51 +1442,52 @@
         var copyBtn = document.getElementById("copyDirectEmail");
         if (copyBtn) {
           var email = copyBtn.dataset.email || "contact@abdullahdesigns.xyz";
-          function copyEmailToClipboard(text) {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-              return navigator.clipboard.writeText(text).catch(function() {
-                return fallbackCopyEmail(text);
-              });
-            }
-            return fallbackCopyEmail(text);
+          var copyResetTimer = null;
+
+          function showCopyState(text) {
+            if (copyResetTimer) clearTimeout(copyResetTimer);
+            copyBtn.classList.add("copied");
+            copyBtn.querySelector("strong").textContent = text;
+            copyResetTimer = setTimeout(function() {
+              copyBtn.classList.remove("copied");
+              copyBtn.querySelector("strong").textContent = email;
+            }, 1500);
           }
 
-          function fallbackCopyEmail(text) {
-            return new Promise(function(resolve, reject) {
-              var textarea = document.createElement("textarea");
-              textarea.value = text;
-              textarea.setAttribute("readonly", "");
-              textarea.style.position = "fixed";
-              textarea.style.top = "-999px";
-              textarea.style.left = "-999px";
-              document.body.appendChild(textarea);
-              textarea.focus();
-              textarea.select();
+          function copyEmailFallback(text) {
+            var textarea = document.createElement("textarea");
+            textarea.value = text;
+            textarea.setAttribute("readonly", "");
+            textarea.style.position = "fixed";
+            textarea.style.left = "-9999px";
+            textarea.style.top = "0";
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
 
-              try {
-                if (document.execCommand("copy")) resolve();
-                else reject();
-              } catch (err) {
-                reject(err);
-              } finally {
-                document.body.removeChild(textarea);
-              }
-            });
+            var copied = false;
+            try {
+              copied = document.execCommand("copy");
+            } catch (err) {}
+            document.body.removeChild(textarea);
+            return copied ? Promise.resolve() : Promise.reject(new Error("Email copy failed"));
+          }
+
+          function copyEmailText(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              return navigator.clipboard.writeText(text).catch(function() {
+                return copyEmailFallback(text);
+              });
+            }
+            return copyEmailFallback(text);
           }
 
           copyBtn.addEventListener("click", function() {
-            var label = copyBtn.querySelector("strong");
-            if (!label) return;
-            function showCopiedState() {
-              copyBtn.classList.add("copied");
-              label.textContent = "Copied!";
-            }
-
-            copyEmailToClipboard(email).then(showCopiedState).catch(showCopiedState);
-            setTimeout(function() {
-              copyBtn.classList.remove("copied");
-              label.textContent = email;
-            }, 1500);
+            copyEmailText(email).then(function() {
+              showCopyState("Copied!");
+            }).catch(function() {
+              showCopyState("Email ready");
+            });
           });
         }
 
