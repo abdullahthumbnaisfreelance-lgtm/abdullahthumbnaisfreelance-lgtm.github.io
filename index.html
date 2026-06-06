@@ -54,6 +54,8 @@
       }
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -345,33 +347,32 @@
       @keyframes heroRibbonUp { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(0, -50%, 0); } }
       @keyframes heroRibbonDown { 0% { transform: translate3d(0, -50%, 0); } 100% { transform: translate3d(0, 0, 0); } }
 
-      /* === REVEAL ANIMATIONS === */
+      /* === LIGHTWEIGHT REVEAL ANIMATIONS === */
       .reveal {
-        opacity: 0; filter: blur(18px);
-        transform: translate3d(0, 78px, 0) scale(0.975);
-        transition: opacity 1.25s var(--ease), filter 1.25s var(--ease), transform 1.25s var(--ease);
-        will-change: transform, opacity, filter; backface-visibility: hidden;
+        opacity: 0;
+        transform: translate3d(0, 28px, 0);
+        transition: opacity 0.72s var(--ease-premium), transform 0.72s var(--ease-premium);
+        will-change: transform, opacity;
+        backface-visibility: hidden;
       }
-      .reveal.active { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scale(1); }
-
-      .section-header.reveal { transform: translate3d(0, 64px, 0) scale(0.985); }
-      .work-top.reveal { transform: translate3d(0, 88px, 0) scale(0.97); }
+      .reveal.active { opacity: 1; transform: translate3d(0, 0, 0); }
+      .section-header.reveal, .work-top.reveal { transform: translate3d(0, 30px, 0); }
+      .section-header.reveal.active, .work-top.reveal.active { transform: translate3d(0, 0, 0); }
 
       .work-card.reveal {
-        opacity: 0; filter: blur(16px);
-        transform: translate3d(0, 90px, 0) scale(0.94) rotateX(7deg);
+        opacity: 0;
+        transform: translate3d(0, 30px, 0);
         transform-origin: center bottom;
-        transition: opacity 1.15s var(--ease), filter 1.15s var(--ease), transform 1.15s var(--ease), border-color 0.55s var(--ease), box-shadow 0.55s var(--ease);
+        transition: opacity 0.68s var(--ease-premium), transform 0.68s var(--ease-premium), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
       }
-      .work-card.reveal.active { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scale(1) rotateX(0deg); }
+      .work-card.reveal.active { opacity: 1; transform: translate3d(0, 0, 0); }
       .work-card.reveal.active:hover { border-color: rgba(212, 175, 55, 0.12); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.36); }
-      .process-card.reveal { opacity: 1 !important; filter: none !important; transform: none !important; transition: none !important; }
-      .process-card.reveal.active { opacity: 1 !important; filter: none !important; transform: none !important; }
+      .process-card.reveal, .process-card.reveal.active { opacity: 1 !important; transform: none !important; transition: none !important; }
 
-      .hero .reveal.active { animation: heroSoftIn 1.35s var(--ease) both; }
+      .hero .reveal.active { animation: heroSoftIn 0.9s var(--ease-premium) both; }
       @keyframes heroSoftIn {
-        from { opacity: 0; filter: blur(24px); transform: translate3d(0, 50px, 0) scale(0.975); }
-        to { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scale(1); }
+        from { opacity: 0; transform: translate3d(0, 24px, 0); }
+        to { opacity: 1; transform: translate3d(0, 0, 0); }
       }
 
       /* === BUTTONS === */
@@ -394,6 +395,16 @@
         position: relative;
         z-index: 1;
         background: var(--bg);
+      }
+
+      .work-section,
+      .reviews-section,
+      .about-section,
+      .process-section,
+      .faq-section,
+      .cta-section {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 860px;
       }
 
       .section-pad { padding: 6.5rem 0; }
@@ -424,23 +435,25 @@
       }
       .work-card:hover { border-color: rgba(255, 255, 255, 0.08); }
       .work-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; -webkit-user-drag: none; opacity: 1; }
+      img { max-width: 100%; height: auto; }
+      .work-card img, .hero-flow-thumb img, .process-media img, .about-image-wrapper img, .review-avatar { transform: translateZ(0); }
 
       /* Image slider with handle */
-      .work-card.image-slider { cursor: default; user-select: none; touch-action: pan-y; }
-      .work-card.image-slider .image-before { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); z-index: 2; will-change: clip-path; transition: none; }
+      .work-card.image-slider { cursor: ew-resize; user-select: none; -webkit-user-select: none; touch-action: pan-y; -ms-touch-action: pan-y; contain: paint; --slider-pos: 50%; }
+      .work-card.image-slider .image-before { clip-path: inset(0 calc(100% - var(--slider-pos)) 0 0); z-index: 2; will-change: clip-path; transition: none; }
       .work-card.image-slider .slider-range {
         position: absolute; inset: 0; width: 100%; height: 100%;
         opacity: 0; cursor: ew-resize; z-index: 10; margin: 0;
         -webkit-appearance: none; appearance: none; background: transparent;
         pointer-events: none;
       }
-      .work-card.image-slider.dragging { touch-action: none; }
+      .work-card.image-slider.dragging { cursor: grabbing; }
 
       /* Simple before/after slider handle — no glow or extra effects */
       .work-card.image-slider .slider-handle {
-        position: absolute; top: 0; bottom: 0; left: 50%; width: 56px;
+        position: absolute; top: 0; bottom: 0; left: var(--slider-pos); width: 64px;
         background: linear-gradient(to right, transparent calc(50% - 1px), rgba(255, 255, 255, 0.56) calc(50% - 1px), rgba(255, 255, 255, 0.56) calc(50% + 1px), transparent calc(50% + 1px));
-        pointer-events: auto; z-index: 5; touch-action: pan-y;
+        pointer-events: auto; z-index: 11; touch-action: pan-y; -ms-touch-action: pan-y;
         transform: translateX(-50%); will-change: left;
       }
       .work-card.image-slider .slider-handle::after {
@@ -658,8 +671,8 @@
         .hero-ribbon-down .hero-ribbon-track,
         .hero-ribbon-up .hero-ribbon-track { animation-duration: 34s !important; }
         .hero-ribbon-track { animation-timing-function: linear !important; }
-        .reveal, .work-card.reveal { transform: translate3d(0, 34px, 0) scale(0.985); }
-        .reveal.active, .work-card.reveal.active { transform: translate3d(0, 0, 0) scale(1); }
+        .reveal, .work-card.reveal { transform: translate3d(0, 22px, 0); }
+        .reveal.active, .work-card.reveal.active { transform: translate3d(0, 0, 0); }
         .work-section { padding: 4rem 0; }
         .reviews-section, .about-section, .process-section { padding: 4rem 0; }
         .faq-section, .cta-section { padding: 4rem 0; }
@@ -670,17 +683,6 @@
 
 
 
-      /* === FINAL FIX: desktop section overlap + reveal transform reset ===
-         The previous .work-top.reveal and .section-header.reveal rules were
-         overriding .reveal.active because they had the same specificity and
-         appeared later in the stylesheet. This kept headings shifted downward
-         and made desktop cards overlap titles. */
-      .section-header.reveal.active,
-      .work-top.reveal.active {
-        opacity: 1 !important;
-        filter: blur(0) !important;
-        transform: translate3d(0, 0, 0) scale(1) !important;
-      }
 
       @media (min-width: 981px) {
         section[id] { scroll-margin-top: 112px; }
@@ -696,7 +698,7 @@
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
         .hero-ribbon-track { animation: none !important; }
-        .reveal, .work-card.reveal { opacity: 1; filter: none; transform: none; transition: none; }
+        .reveal, .work-card.reveal { opacity: 1; transform: none; transition: none; }
       }
 
       @supports (height: 100svh) {
@@ -860,12 +862,12 @@
             <div class="work-title"><h2>Featured<br><span>Thumbnails</span></h2></div>
           </div>
           <div class="work-wall">
-            <article class="work-card reveal"><img loading="eager" decoding="async" src="thumbnails/1.avif" alt="Business YouTube Thumbnail" /></article>
-            <article class="work-card reveal"><img loading="eager" decoding="async" src="thumbnails/2.avif" alt="Tech YouTube Thumbnail" /></article>
-            <article class="work-card reveal"><img loading="eager" decoding="async" src="thumbnails/3.avif" alt="Financial Business Thumbnail" /></article>
-            <article class="work-card reveal"><img loading="eager" decoding="async" src="thumbnails/4.avif" alt="Expert Podcast Thumbnail" /></article>
-            <article class="work-card reveal"><img loading="eager" decoding="async" src="thumbnails/5.avif" alt="Gaming Thumbnail Illustration" /></article>
-            <article class="work-card reveal"><img loading="eager" decoding="async" src="thumbnails/6.avif" alt="Podcast Thumbnail Design" /></article>
+            <article class="work-card reveal"><img loading="eager" fetchpriority="high" decoding="async" src="thumbnails/1.avif" alt="Business YouTube Thumbnail" /></article>
+            <article class="work-card reveal"><img loading="eager" fetchpriority="high" decoding="async" src="thumbnails/2.avif" alt="Tech YouTube Thumbnail" /></article>
+            <article class="work-card reveal"><img loading="eager" fetchpriority="high" decoding="async" src="thumbnails/3.avif" alt="Financial Business Thumbnail" /></article>
+            <article class="work-card reveal"><img loading="lazy" decoding="async" src="thumbnails/4.avif" alt="Expert Podcast Thumbnail" /></article>
+            <article class="work-card reveal"><img loading="lazy" decoding="async" src="thumbnails/5.avif" alt="Gaming Thumbnail Illustration" /></article>
+            <article class="work-card reveal"><img loading="lazy" decoding="async" src="thumbnails/6.avif" alt="Podcast Thumbnail Design" /></article>
             <article class="work-card reveal"><img loading="lazy" decoding="async" src="thumbnails/7.avif" alt="Podcast Thumbnail Design" /></article>
             <article class="work-card reveal"><img loading="lazy" decoding="async" src="thumbnails/8.avif" alt="Podcast Thumbnail Design" /></article>
             <article class="work-card reveal"><img loading="lazy" decoding="async" src="thumbnails/9.avif" alt="Podcast Thumbnail Design" /></article>
@@ -913,12 +915,12 @@
       <section class="section-pad container reviews-section" id="reviews">
         <div class="section-header reveal"><h2>Trusted by Creators</h2></div>
         <div class="reviews-grid">
-          <a class="review-card reveal" href="https://www.youtube.com/@JackPembrook" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Great work, Abdullah. I shared a simple idea, and you turned it into a clean thumbnail that looked ready for my channel. I will definitely use your service again."</p><div class="review-user"><img class="review-avatar" src="reviews/jack.webp" alt="Jack Pembrook" /><div class="review-info"><h4>Jack Pembrook <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 1.69M Subscribers</span></div></div></div></a>
-          <a class="review-card reveal" href="https://www.youtube.com/@SabriSubyOfficial" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Nice work. You understood my expectation quickly and made the thumbnail better than what I had in mind. The final result looked sharp, clean, and professional."</p><div class="review-user"><img class="review-avatar" src="reviews/sabri.webp" alt="Sabri Suby" /><div class="review-info"><h4>Sabri Suby <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 450K Subscribers</span></div></div></div></a>
-          <a class="review-card reveal" href="https://www.youtube.com/@techsource" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"I liked how simple and smooth the process was. Abdullah kept the design clean, made the text easy to read, and delivered exactly the thumbnail style I needed."</p><div class="review-user"><img class="review-avatar" src="reviews/techsource.webp" alt="TechSource" /><div class="review-info"><h4>TechSource <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 4.1M Subscribers</span></div></div></div></a>
-          <a class="review-card reveal" href="https://www.youtube.com/@LiamOttley/videos" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"The quality was excellent. Abdullah listened to the direction, improved the idea, and made a thumbnail that looked premium without adding unnecessary clutter."</p><div class="review-user"><img class="review-avatar" src="reviews/Liam%20Ottley.jpg" alt="Liam Ottley" /><div class="review-info"><h4>Liam Ottley <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 780K Subscribers</span></div></div></div></a>
-          <a class="review-card reveal" href="https://www.youtube.com/@Tdawgsmitty/videos" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Very professional service. I sent a few notes, and Abdullah handled the full design with good balance, strong colors, and a clear hook for viewers."</p><div class="review-user"><img class="review-avatar" src="reviews/Tdawgsmitty.jpg" alt="Tdawgsmitty" /><div class="review-info"><h4>Tdawgsmitty <img src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 597K Subscribers</span></div></div></div></a>
-          <a class="review-card reveal" href="https://www.youtube.com/@vfxsolazzo" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Amazing experience. The thumbnail matched my video style, was easy to understand, and felt more clickable than I expected. I would recommend Abdullah."</p><div class="review-user"><img class="review-avatar" src="reviews/solazzo.webp" alt="Solazzo" /><div class="review-info"><h4>Solazzo</h4><span>YouTuber &middot; 12.2K Subscribers</span></div></div></div></a>
+          <a class="review-card reveal" href="https://www.youtube.com/@JackPembrook" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Great work, Abdullah. I shared a simple idea, and you turned it into a clean thumbnail that looked ready for my channel. I will definitely use your service again."</p><div class="review-user"><img class="review-avatar" loading="lazy" decoding="async" src="reviews/jack.webp" alt="Jack Pembrook" /><div class="review-info"><h4>Jack Pembrook <img loading="lazy" decoding="async" src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 1.69M Subscribers</span></div></div></div></a>
+          <a class="review-card reveal" href="https://www.youtube.com/@SabriSubyOfficial" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Nice work. You understood my expectation quickly and made the thumbnail better than what I had in mind. The final result looked sharp, clean, and professional."</p><div class="review-user"><img class="review-avatar" loading="lazy" decoding="async" src="reviews/sabri.webp" alt="Sabri Suby" /><div class="review-info"><h4>Sabri Suby <img loading="lazy" decoding="async" src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 450K Subscribers</span></div></div></div></a>
+          <a class="review-card reveal" href="https://www.youtube.com/@techsource" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"I liked how simple and smooth the process was. Abdullah kept the design clean, made the text easy to read, and delivered exactly the thumbnail style I needed."</p><div class="review-user"><img class="review-avatar" loading="lazy" decoding="async" src="reviews/techsource.webp" alt="TechSource" /><div class="review-info"><h4>TechSource <img loading="lazy" decoding="async" src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 4.1M Subscribers</span></div></div></div></a>
+          <a class="review-card reveal" href="https://www.youtube.com/@LiamOttley/videos" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"The quality was excellent. Abdullah listened to the direction, improved the idea, and made a thumbnail that looked premium without adding unnecessary clutter."</p><div class="review-user"><img class="review-avatar" loading="lazy" decoding="async" src="reviews/Liam%20Ottley.jpg" alt="Liam Ottley" /><div class="review-info"><h4>Liam Ottley <img loading="lazy" decoding="async" src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 780K Subscribers</span></div></div></div></a>
+          <a class="review-card reveal" href="https://www.youtube.com/@Tdawgsmitty/videos" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Very professional service. I sent a few notes, and Abdullah handled the full design with good balance, strong colors, and a clear hook for viewers."</p><div class="review-user"><img class="review-avatar" loading="lazy" decoding="async" src="reviews/Tdawgsmitty.jpg" alt="Tdawgsmitty" /><div class="review-info"><h4>Tdawgsmitty <img loading="lazy" decoding="async" src="reviews/verified-badge.png" class="verified-badge" alt="Verified" /></h4><span>YouTuber &middot; 597K Subscribers</span></div></div></div></a>
+          <a class="review-card reveal" href="https://www.youtube.com/@vfxsolazzo" target="_blank" rel="noopener noreferrer"><div class="review-content"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"Amazing experience. The thumbnail matched my video style, was easy to understand, and felt more clickable than I expected. I would recommend Abdullah."</p><div class="review-user"><img class="review-avatar" loading="lazy" decoding="async" src="reviews/solazzo.webp" alt="Solazzo" /><div class="review-info"><h4>Solazzo</h4><span>YouTuber &middot; 12.2K Subscribers</span></div></div></div></a>
         </div>
       </section>
 
@@ -1027,35 +1029,90 @@
       (function() {
         "use strict";
 
-        // Year
-        const yearEl = document.getElementById("year");
+        var doc = document;
+        var root = doc.documentElement;
+        var yearEl = doc.getElementById("year");
         if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-        // Scroll Progress
-        const scrollProgress = document.getElementById("scrollProgress");
-        function updateScrollProgress() {
-          if (!scrollProgress) return;
-          const h = document.documentElement;
-          const st = window.pageYOffset || h.scrollTop;
-          const maxScrollable = Math.max(1, h.scrollHeight - h.clientHeight);
-          scrollProgress.style.transform = "scaleX(" + Math.min(1, st / maxScrollable) + ")";
+        var scrollProgress = doc.getElementById("scrollProgress");
+        var mainNav = doc.getElementById("mainNav");
+        var navHighlight = mainNav ? mainNav.querySelector(".nav-highlight") : null;
+        var desktopLinks = mainNav ? Array.prototype.slice.call(mainNav.querySelectorAll("a")) : [];
+        var mobileLinks = Array.prototype.slice.call(doc.querySelectorAll(".mobile-menu-links a"));
+        var sections = Array.prototype.slice.call(doc.querySelectorAll("section[id]"));
+        var currentActiveId = "home";
+        var cachedNavHeight = 104;
+        var ticking = false;
+
+        function updateNavHeight() {
+          var isMobile = window.innerWidth <= 680;
+          var bar = doc.querySelector(isMobile ? ".mobile-topbar" : "#mainNav");
+          if (bar) {
+            var rect = bar.getBoundingClientRect();
+            cachedNavHeight = Math.ceil(rect.bottom + (isMobile ? 14 : 24));
+          } else {
+            cachedNavHeight = isMobile ? 84 : 104;
+          }
         }
 
-        // Nav highlight
-        const mainNav = document.getElementById("mainNav");
-        const navHighlight = mainNav ? mainNav.querySelector(".nav-highlight") : null;
-        const desktopLinks = mainNav ? mainNav.querySelectorAll("a") : [];
+        function updateScrollProgress() {
+          if (!scrollProgress) return;
+          var maxScrollable = Math.max(1, root.scrollHeight - root.clientHeight);
+          var st = window.pageYOffset || root.scrollTop || 0;
+          scrollProgress.style.transform = "scaleX(" + Math.min(1, st / maxScrollable) + ")";
+        }
 
         function updateNavHighlight(link) {
           if (!link || !mainNav || !navHighlight || window.innerWidth <= 680) {
             if (navHighlight) navHighlight.style.opacity = "0";
             return;
           }
-          const rect = link.getBoundingClientRect();
-          const navRect = mainNav.getBoundingClientRect();
+          var rect = link.getBoundingClientRect();
+          var navRect = mainNav.getBoundingClientRect();
           navHighlight.style.width = rect.width + "px";
           navHighlight.style.left = (rect.left - navRect.left) + "px";
           navHighlight.style.opacity = "1";
+        }
+
+        function setActiveNav(id) {
+          if (!id || id === currentActiveId) return;
+          currentActiveId = id;
+          desktopLinks.forEach(function(link) {
+            var active = link.getAttribute("href") === "#" + id;
+            link.classList.toggle("active", active);
+            if (active && mainNav && !mainNav.querySelector("a:hover")) updateNavHighlight(link);
+          });
+          mobileLinks.forEach(function(link) {
+            link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+          });
+        }
+
+        function updateActiveNav() {
+          var scrollTop = window.pageYOffset || root.scrollTop || 0;
+          var found = "home";
+          for (var i = 0; i < sections.length; i++) {
+            var section = sections[i];
+            var top = section.getBoundingClientRect().top + scrollTop - cachedNavHeight - 24;
+            if (scrollTop >= top) found = section.id;
+          }
+          setActiveNav(found);
+        }
+
+        function onScroll() {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function() {
+            updateScrollProgress();
+            updateActiveNav();
+            ticking = false;
+          });
+        }
+
+        function onResize() {
+          updateNavHeight();
+          updateActiveNav();
+          var active = mainNav ? mainNav.querySelector("a.active") : null;
+          if (active) updateNavHighlight(active);
         }
 
         desktopLinks.forEach(function(link) {
@@ -1063,104 +1120,42 @@
         });
         if (mainNav) {
           mainNav.addEventListener("mouseleave", function() {
-            var a = mainNav.querySelector("a.active");
-            if (a) updateNavHighlight(a);
-            else if (navHighlight) navHighlight.style.opacity = "0";
+            updateNavHighlight(mainNav.querySelector("a.active"));
           });
         }
 
-        // Nav active state on scroll — improved scroll spy
-        var sections = document.querySelectorAll("section[id]");
-        var currentActiveId = "home";
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", function() { requestAnimationFrame(onResize); }, { passive: true });
+        window.addEventListener("load", function() { updateNavHeight(); onScroll(); }, { once: true });
+        updateNavHeight();
+        updateScrollProgress();
 
-        function getNavHeight() {
-          var isMobile = window.innerWidth <= 680;
-          var bar = document.querySelector(isMobile ? ".mobile-topbar" : "#mainNav");
-          if (bar) {
-            var styles = window.getComputedStyle(bar);
-            if (styles.display !== "none" && styles.visibility !== "hidden") {
-              var rect = bar.getBoundingClientRect();
-              return Math.ceil(rect.bottom + (isMobile ? 14 : 24));
-            }
-          }
-          return isMobile ? 84 : 104;
-        }
-
-        function updateActiveNav() {
-          var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          var navH = getNavHeight();
-          var found = "home";
-
-          for (var i = 0; i < sections.length; i++) {
-            var section = sections[i];
-            var rect = section.getBoundingClientRect();
-            var sectionTop = rect.top + scrollTop - navH - 20;
-            var sectionBottom = sectionTop + section.offsetHeight;
-
-            if (scrollTop >= sectionTop && scrollTop < sectionBottom) {
-              found = section.id;
-            }
-          }
-
-          if (found !== currentActiveId) {
-            currentActiveId = found;
-            desktopLinks.forEach(function(l) {
-              var isActive = l.getAttribute("href") === "#" + currentActiveId;
-              l.classList.toggle("active", isActive);
-              if (isActive && !mainNav.querySelector("a:hover")) updateNavHighlight(l);
-            });
-            document.querySelectorAll(".mobile-menu-links a").forEach(function(l) {
-              l.classList.toggle("active", l.getAttribute("href") === "#" + currentActiveId);
-            });
-          }
-        }
-
-        var scrollTicking = false;
-        window.addEventListener("scroll", function() {
-          if (!scrollTicking) {
-            requestAnimationFrame(function() {
-              updateActiveNav();
-              updateScrollProgress();
-              scrollTicking = false;
-            });
-            scrollTicking = true;
-          }
-        }, { passive: true });
-
-        window.addEventListener("load", function() {
-          var a = mainNav ? mainNav.querySelector("a.active") : null;
-          if (a) updateNavHighlight(a);
-          updateScrollProgress();
-          updateActiveNav();
-        });
-
-        // Mobile menu
-        var mobileMenuBtn = document.getElementById("mobileMenuBtn");
-        var mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
-        var mobileMenuClose = document.getElementById("mobileMenuClose");
+        var mobileMenuBtn = doc.getElementById("mobileMenuBtn");
+        var mobileMenuOverlay = doc.getElementById("mobileMenuOverlay");
+        var mobileMenuClose = doc.getElementById("mobileMenuClose");
         var mobileMenuScrollY = 0;
 
         function toggleMobileMenu(show) {
           if (!mobileMenuBtn || !mobileMenuOverlay) return;
           if (show) {
-            mobileMenuScrollY = window.scrollY;
+            mobileMenuScrollY = window.scrollY || 0;
             mobileMenuOverlay.classList.add("active");
             mobileMenuOverlay.setAttribute("aria-hidden", "false");
             mobileMenuBtn.classList.add("hide-when-open");
-            document.body.classList.add("mobile-menu-open");
-            document.body.style.position = "fixed";
-            document.body.style.top = "-" + mobileMenuScrollY + "px";
-            document.body.style.left = "0";
-            document.body.style.right = "0";
+            doc.body.classList.add("mobile-menu-open");
+            doc.body.style.position = "fixed";
+            doc.body.style.top = "-" + mobileMenuScrollY + "px";
+            doc.body.style.left = "0";
+            doc.body.style.right = "0";
           } else {
             mobileMenuOverlay.classList.remove("active");
             mobileMenuOverlay.setAttribute("aria-hidden", "true");
             mobileMenuBtn.classList.remove("hide-when-open");
-            document.body.classList.remove("mobile-menu-open");
-            document.body.style.position = "";
-            document.body.style.top = "";
-            document.body.style.left = "";
-            document.body.style.right = "";
+            doc.body.classList.remove("mobile-menu-open");
+            doc.body.style.position = "";
+            doc.body.style.top = "";
+            doc.body.style.left = "";
+            doc.body.style.right = "";
             window.scrollTo(0, mobileMenuScrollY);
           }
         }
@@ -1168,343 +1163,252 @@
         if (mobileMenuBtn) mobileMenuBtn.addEventListener("click", function() { toggleMobileMenu(true); });
         if (mobileMenuClose) mobileMenuClose.addEventListener("click", function() { toggleMobileMenu(false); });
         if (mobileMenuOverlay) mobileMenuOverlay.addEventListener("click", function(e) { if (e.target === mobileMenuOverlay) toggleMobileMenu(false); });
-        window.addEventListener("keydown", function(e) { if (e.key === "Escape" && mobileMenuOverlay && mobileMenuOverlay.classList.contains("active")) toggleMobileMenu(false); });
+        window.addEventListener("keydown", function(e) {
+          if (e.key === "Escape" && mobileMenuOverlay && mobileMenuOverlay.classList.contains("active")) toggleMobileMenu(false);
+        });
 
-        // Smooth nav scroll — fixed offset calculation
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        doc.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
           anchor.addEventListener("click", function(e) {
             var href = anchor.getAttribute("href");
             if (!href || href === "#") return;
-            var target = document.querySelector(href);
+            var target = doc.querySelector(href);
             if (!target) return;
             e.preventDefault();
-
-            if (mobileMenuOverlay && mobileMenuOverlay.classList.contains("active")) {
-              toggleMobileMenu(false);
-            }
-
-            var navH = getNavHeight();
-            var targetTop = Math.max(0, target.getBoundingClientRect().top + window.pageYOffset - navH);
-
-            window.scrollTo({
-              top: targetTop,
-              behavior: "smooth"
-            });
-
-            window.history.pushState(null, "", href);
+            if (mobileMenuOverlay && mobileMenuOverlay.classList.contains("active")) toggleMobileMenu(false);
+            updateNavHeight();
+            window.scrollTo({ top: Math.max(0, target.getBoundingClientRect().top + window.pageYOffset - cachedNavHeight), behavior: "smooth" });
+            history.pushState(null, "", href);
           });
         });
 
-        // FAQ
-        document.querySelectorAll(".faq-trigger").forEach(function(t) {
-          t.addEventListener("click", function() {
-            var item = t.closest(".faq-item");
-            var isActive = item.classList.contains("active");
-            document.querySelectorAll(".faq-item").forEach(function(f) { f.classList.remove("active"); });
-            if (!isActive) item.classList.add("active");
+        doc.querySelectorAll(".faq-trigger").forEach(function(trigger) {
+          trigger.addEventListener("click", function() {
+            var item = trigger.closest(".faq-item");
+            var wasActive = item.classList.contains("active");
+            doc.querySelectorAll(".faq-item.active").forEach(function(openItem) { openItem.classList.remove("active"); });
+            if (!wasActive) item.classList.add("active");
           });
         });
 
-        // Image slider (before/after) — mobile scroll-safe handle drag
-        function clampSliderValue(val) { return Math.max(0, Math.min(100, Number(val))); }
-
-        function renderSlider(card, val) {
-          var safeValue = clampSliderValue(val);
-          var beforeImg = card.querySelector(".image-before");
-          var handle = card.querySelector(".slider-handle");
-          if (beforeImg) beforeImg.style.clipPath = "polygon(0 0, " + safeValue + "% 0, " + safeValue + "% 100%, 0 100%)";
-          if (handle) handle.style.left = safeValue + "%";
+        function clampSliderValue(val) {
+          var num = Number(val);
+          return Number.isFinite(num) ? Math.max(0, Math.min(100, num)) : 50;
         }
 
-        var isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
-
-        document.querySelectorAll(".image-slider").forEach(function(card) {
+        function initImageSlider(card) {
           var range = card.querySelector(".slider-range");
           var before = card.querySelector(".image-before");
           if (!before) return;
 
-          renderSlider(card, 50);
+          var value = clampSliderValue(range ? range.value : 50);
+          var pendingValue = value;
+          var rafId = 0;
+          var touchState = null;
+          var mouseDragging = false;
 
-          if (range) {
-            range.addEventListener("input", function(e) { renderSlider(card, e.target.value); });
+          function paint(nextValue) {
+            value = clampSliderValue(nextValue);
+            card.style.setProperty("--slider-pos", value + "%");
+            if (range) range.value = value;
           }
 
-          var startX = 0;
-          var startY = 0;
-          var tracking = false;
-          var draggingSlider = false;
-          var activePointerId = null;
-          var handleHitArea = 44; // wider mobile touch area around the circle/line
+          function schedulePaint(nextValue) {
+            pendingValue = clampSliderValue(nextValue);
+            if (rafId) return;
+            rafId = requestAnimationFrame(function() {
+              rafId = 0;
+              paint(pendingValue);
+            });
+          }
 
-          function getSliderValue(clientX) {
+          function valueFromClientX(clientX) {
             var rect = card.getBoundingClientRect();
-            return ((clientX - rect.left) / rect.width) * 100;
+            return rect.width ? ((clientX - rect.left) / rect.width) * 100 : value;
           }
 
-          function getCurrentSliderValue() {
-            if (range && range.value !== "") return clampSliderValue(range.value);
-            var handle = card.querySelector(".slider-handle");
-            if (handle && handle.style.left) return clampSliderValue(parseFloat(handle.style.left));
-            return 50;
+          function setDragging(isDragging) {
+            card.classList.toggle("dragging", !!isDragging);
           }
 
-          function isOnSliderHandle(clientX, target) {
-            if (target && target.closest && target.closest(".slider-handle")) return true;
-            var rect = card.getBoundingClientRect();
-            var handleX = rect.left + rect.width * (getCurrentSliderValue() / 100);
-            return Math.abs(clientX - handleX) <= handleHitArea;
-          }
-
-          function stopDrag(e) {
-            if (draggingSlider && e && activePointerId !== null && card.hasPointerCapture && card.hasPointerCapture(activePointerId)) {
-              try { card.releasePointerCapture(activePointerId); } catch (err) {}
+          function getTouch(e) {
+            if (!touchState) return null;
+            var list = e.changedTouches.length ? e.changedTouches : e.touches;
+            for (var i = 0; i < list.length; i++) {
+              if (list[i].identifier === touchState.id) return list[i];
             }
-            tracking = false;
-            draggingSlider = false;
-            activePointerId = null;
-            card.classList.remove("dragging");
+            return null;
           }
 
-          card.addEventListener("pointerdown", function(e) {
-            if (!isTouchDevice) {
-              if (range) range.style.pointerEvents = "auto";
-              return;
-            }
+          function onTouchStart(e) {
+            if (e.touches.length !== 1) return;
+            var t = e.touches[0];
+            touchState = { id: t.identifier, startX: t.clientX, startY: t.clientY, mode: "pending" };
+          }
 
-            // Phone behavior:
-            // - swipe anywhere on the before/after card = normal page scroll, slider does not move
-            // - start on/near the handle and drag horizontally = slider moves
-            if (!isOnSliderHandle(e.clientX, e.target)) {
-              stopDrag(e);
-              return;
-            }
+          function onTouchMove(e) {
+            var t = getTouch(e);
+            if (!t || !touchState) return;
+            var dx = t.clientX - touchState.startX;
+            var dy = t.clientY - touchState.startY;
+            var absX = Math.abs(dx);
+            var absY = Math.abs(dy);
 
-            tracking = true;
-            draggingSlider = false;
-            activePointerId = e.pointerId;
-            startX = e.clientX;
-            startY = e.clientY;
-          }, { passive: true });
-
-          card.addEventListener("pointermove", function(e) {
-            if (!isTouchDevice || !tracking || e.pointerId !== activePointerId) return;
-
-            var diffX = e.clientX - startX;
-            var diffY = e.clientY - startY;
-            var absX = Math.abs(diffX);
-            var absY = Math.abs(diffY);
-
-            if (!draggingSlider) {
-              // Vertical gesture wins: let the page scroll and never update the slider.
-              if (absY > 6 && absY >= absX) {
-                stopDrag(e);
+            if (touchState.mode === "pending") {
+              if (absY > 4 && absY >= absX) {
+                touchState.mode = "scroll";
+                setDragging(false);
                 return;
               }
-
-              // Start slider only after a clear horizontal drag from the handle.
-              if (!(absX > 7 && absX > absY * 1.15)) return;
-
-              draggingSlider = true;
-              card.classList.add("dragging");
-              if (card.setPointerCapture) {
-                try { card.setPointerCapture(e.pointerId); } catch (err) {}
-              }
+              if (absX < 5 || absX < absY * 1.05) return;
+              touchState.mode = "slide";
+              setDragging(true);
             }
 
+            if (touchState.mode === "slide") {
+              if (e.cancelable) e.preventDefault();
+              schedulePaint(valueFromClientX(t.clientX));
+            }
+          }
+
+          function onTouchEnd() {
+            touchState = null;
+            setDragging(false);
+          }
+
+          function onMouseDown(e) {
+            if (e.button !== 0) return;
+            mouseDragging = true;
+            setDragging(true);
             e.preventDefault();
-            var val = getSliderValue(e.clientX);
-            renderSlider(card, val);
-            if (range) range.value = clampSliderValue(val);
-          }, { passive: false });
+            schedulePaint(valueFromClientX(e.clientX));
+            window.addEventListener("mousemove", onMouseMove);
+            window.addEventListener("mouseup", onMouseUp, { once: true });
+          }
 
-          card.addEventListener("pointerup", stopDrag, { passive: true });
-          card.addEventListener("pointercancel", stopDrag, { passive: true });
-          card.addEventListener("lostpointercapture", stopDrag, { passive: true });
-        });
+          function onMouseMove(e) {
+            if (!mouseDragging) return;
+            e.preventDefault();
+            schedulePaint(valueFromClientX(e.clientX));
+          }
 
-        // Desktop: enable range on desktop
-        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-          document.querySelectorAll(".image-slider .slider-range").forEach(function(range) {
-            range.style.pointerEvents = "auto";
-          });
+          function onMouseUp() {
+            mouseDragging = false;
+            setDragging(false);
+            window.removeEventListener("mousemove", onMouseMove);
+          }
+
+          paint(value);
+          if (range) range.addEventListener("input", function(e) { paint(e.target.value); });
+          card.addEventListener("touchstart", onTouchStart, { passive: true });
+          card.addEventListener("touchmove", onTouchMove, { passive: false });
+          card.addEventListener("touchend", onTouchEnd, { passive: true });
+          card.addEventListener("touchcancel", onTouchEnd, { passive: true });
+          card.addEventListener("mousedown", onMouseDown);
         }
 
-        // Reveal animations
-        var revealElements = document.querySelectorAll(".reveal");
-        var revealObserver = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("active");
-              // Force lazy images inside revealed elements to load
-              var lazyImgs = entry.target.querySelectorAll('img[loading="lazy"]');
-              lazyImgs.forEach(function(img) {
-                if (img.dataset.src) {
-                  img.src = img.dataset.src;
-                } else if (!img.complete && img.src) {
-                  // Trigger reload by reassigning src
-                  var currentSrc = img.src;
-                  img.removeAttribute("loading");
-                  img.src = currentSrc;
-                }
-              });
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.05, rootMargin: "200px 0px 200px 0px" });
+        doc.querySelectorAll(".image-slider").forEach(initImageSlider);
 
-        function initReveals() {
-          revealElements.forEach(function(el, index) {
-            if (el.classList.contains("work-card")) {
-              el.style.transitionDelay = Math.min((index % 6) * 70, 350) + "ms";
-            }
-            revealObserver.observe(el);
-          });
-          // Activate hero elements immediately
-          requestAnimationFrame(function() {
-            document.querySelectorAll("#home .reveal").forEach(function(el) { el.classList.add("active"); });
-            var vh = window.innerHeight;
-            revealElements.forEach(function(el) {
-              var rect = el.getBoundingClientRect();
-              if (rect.top < vh * 0.92 && rect.bottom > 0) el.classList.add("active");
-            });
-          });
-        }
-
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", initReveals);
-        } else {
-          initReveals();
-        }
-
-        window.addEventListener("load", function() {
-          var vh = window.innerHeight;
+        var revealElements = Array.prototype.slice.call(doc.querySelectorAll(".reveal"));
+        function activateVisibleReveals() {
+          var vh = window.innerHeight || 800;
           revealElements.forEach(function(el) {
             var rect = el.getBoundingClientRect();
-            if (rect.top < vh * 0.92 && rect.bottom > 0) el.classList.add("active");
+            if (rect.top < vh * 0.94 && rect.bottom > 0) el.classList.add("active");
           });
-        }, { once: true });
-        // Contact form - FormSubmit AJAX submit (no page redirect)
-        var contactForm = document.getElementById("contactForm");
+        }
+
+        function initReveals() {
+          doc.querySelectorAll("#home .reveal").forEach(function(el) { el.classList.add("active"); });
+          if ("IntersectionObserver" in window) {
+            var observer = new IntersectionObserver(function(entries) {
+              entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("active");
+                  observer.unobserve(entry.target);
+                }
+              });
+            }, { threshold: 0.04, rootMargin: "160px 0px" });
+            revealElements.forEach(function(el, index) {
+              if (el.classList.contains("work-card")) el.style.transitionDelay = Math.min((index % 3) * 45, 120) + "ms";
+              observer.observe(el);
+            });
+          } else {
+            revealElements.forEach(function(el) { el.classList.add("active"); });
+          }
+          requestAnimationFrame(activateVisibleReveals);
+        }
+
+        if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", initReveals, { once: true });
+        else initReveals();
+        window.addEventListener("load", activateVisibleReveals, { once: true });
+
+        var contactForm = doc.getElementById("contactForm");
         if (contactForm) {
           var contactBtn = contactForm.querySelector(".contact-submit");
-          var contactOriginalText = contactBtn ? contactBtn.textContent : "Send Project Details";
+          var originalText = contactBtn ? contactBtn.textContent : "Send Project Details";
           var contactResetTimer = null;
-
           function setContactButton(text, disabled, opacity) {
             if (!contactBtn) return;
             contactBtn.textContent = text;
             contactBtn.disabled = disabled;
             contactBtn.style.opacity = opacity;
           }
-
           contactForm.addEventListener("submit", function(e) {
             e.preventDefault();
-            if (!contactForm.checkValidity()) {
-              contactForm.reportValidity();
-              return;
-            }
-
+            if (!contactForm.checkValidity()) return contactForm.reportValidity();
             if (contactResetTimer) clearTimeout(contactResetTimer);
             setContactButton("Sending...", true, "0.7");
-
-            var formPayload = {};
-            new FormData(contactForm).forEach(function(value, key) {
-              formPayload[key] = value;
-            });
-
-            var ajaxAction = contactForm.action.replace("https://formsubmit.co/", "https://formsubmit.co/ajax/");
-            fetch(ajaxAction, {
+            var payload = {};
+            new FormData(contactForm).forEach(function(value, key) { payload[key] = value; });
+            fetch(contactForm.action.replace("https://formsubmit.co/", "https://formsubmit.co/ajax/"), {
               method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-              },
-              body: JSON.stringify(formPayload)
+              headers: { "Content-Type": "application/json", "Accept": "application/json" },
+              body: JSON.stringify(payload)
             }).then(function(response) {
-              return response.text().then(function(text) {
-                var data = {};
-                if (text) {
-                  try {
-                    data = JSON.parse(text);
-                  } catch (err) {
-                    data = { message: text };
-                  }
-                }
-
-                if (!response.ok || data.success === false) {
-                  throw new Error(data.message || "Contact form request failed");
-                }
-
-                return data;
-              });
+              if (!response.ok) throw new Error("Contact form request failed");
+              return response.text();
             }).then(function() {
               contactForm.reset();
               setContactButton("Thank you!", false, "1");
-              contactResetTimer = setTimeout(function() {
-                setContactButton(contactOriginalText, false, "1");
-              }, 3000);
+              contactResetTimer = setTimeout(function() { setContactButton(originalText, false, "1"); }, 3000);
             }).catch(function() {
               setContactButton("Try again", false, "1");
-              contactResetTimer = setTimeout(function() {
-                setContactButton(contactOriginalText, false, "1");
-              }, 2500);
+              contactResetTimer = setTimeout(function() { setContactButton(originalText, false, "1"); }, 2500);
             });
           });
         }
 
-        // Copy email
-        var copyBtn = document.getElementById("copyDirectEmail");
+        var copyBtn = doc.getElementById("copyDirectEmail");
         if (copyBtn) {
           var email = copyBtn.dataset.email || "contact@abdullahdesigns.xyz";
           var copyResetTimer = null;
-
           function showCopyState(text) {
+            var label = copyBtn.querySelector("strong");
             if (copyResetTimer) clearTimeout(copyResetTimer);
             copyBtn.classList.add("copied");
-            copyBtn.querySelector("strong").textContent = text;
+            if (label) label.textContent = text;
             copyResetTimer = setTimeout(function() {
               copyBtn.classList.remove("copied");
-              copyBtn.querySelector("strong").textContent = email;
+              if (label) label.textContent = email;
             }, 1500);
           }
-
-          function copyEmailFallback(text) {
-            var textarea = document.createElement("textarea");
+          function fallbackCopy(text) {
+            var textarea = doc.createElement("textarea");
             textarea.value = text;
             textarea.setAttribute("readonly", "");
-            textarea.style.position = "fixed";
-            textarea.style.left = "-9999px";
-            textarea.style.top = "0";
-            document.body.appendChild(textarea);
-            textarea.focus();
+            textarea.style.cssText = "position:fixed;left:-9999px;top:0";
+            doc.body.appendChild(textarea);
             textarea.select();
-
             var copied = false;
-            try {
-              copied = document.execCommand("copy");
-            } catch (err) {}
-            document.body.removeChild(textarea);
-            return copied ? Promise.resolve() : Promise.reject(new Error("Email copy failed"));
+            try { copied = doc.execCommand("copy"); } catch (err) {}
+            doc.body.removeChild(textarea);
+            return copied ? Promise.resolve() : Promise.reject(new Error("Copy failed"));
           }
-
-          function copyEmailText(text) {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-              return navigator.clipboard.writeText(text).catch(function() {
-                return copyEmailFallback(text);
-              });
-            }
-            return copyEmailFallback(text);
-          }
-
           copyBtn.addEventListener("click", function() {
-            copyEmailText(email).then(function() {
-              showCopyState("Copied!");
-            }).catch(function() {
-              showCopyState("Email ready");
-            });
+            var task = navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(email).catch(function() { return fallbackCopy(email); }) : fallbackCopy(email);
+            task.then(function() { showCopyState("Copied!"); }).catch(function() { showCopyState("Email ready"); });
           });
         }
-
       })();
     </script>
   </body>
