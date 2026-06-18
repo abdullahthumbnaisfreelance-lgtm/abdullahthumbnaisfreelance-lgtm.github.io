@@ -137,7 +137,7 @@
       .nav-highlight {
         position: absolute; top: 0.45rem; left: 0.45rem; height: calc(100% - 0.9rem);
         background: rgba(212, 175, 55, 0.08); border-radius: 999px; z-index: -1;
-        transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1); pointer-events: none; opacity: 0;
+        transition: width 0.45s cubic-bezier(0.23, 1, 0.32, 1), left 0.45s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1); pointer-events: none; opacity: 0;
       }
 
       nav a {
@@ -352,8 +352,6 @@
         opacity: 0;
         transform: translate3d(0, 28px, 0);
         transition: opacity 0.72s var(--ease-premium), transform 0.72s var(--ease-premium);
-        will-change: transform, opacity;
-        backface-visibility: hidden;
       }
       .reveal.active { opacity: 1; transform: translate3d(0, 0, 0); }
       .section-header.reveal, .work-top.reveal { transform: translate3d(0, 30px, 0); }
@@ -369,17 +367,11 @@
       .work-card.reveal.active:hover { border-color: rgba(212, 175, 55, 0.12); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.36); }
       .process-card.reveal, .process-card.reveal.active { opacity: 1 !important; transform: none !important; transition: none !important; }
 
-      .hero .reveal.active { animation: heroSoftIn 0.9s var(--ease-premium) both; }
-      @keyframes heroSoftIn {
-        from { opacity: 0; transform: translate3d(0, 24px, 0); }
-        to { opacity: 1; transform: translate3d(0, 0, 0); }
-      }
-
       /* === BUTTONS === */
       .btn-main, .btn-secondary {
         display: inline-flex; align-items: center; justify-content: center;
         min-height: 56px; padding: 0 2.2rem; border-radius: 999px;
-        font-weight: 700; font-size: 0.9rem; letter-spacing: 0.01em; transition: all 0.4s var(--ease);
+        font-weight: 700; font-size: 0.9rem; letter-spacing: 0.01em; transition: box-shadow 0.4s var(--ease), border-color 0.4s var(--ease), background 0.4s var(--ease), transform 0.4s var(--ease);
       }
       .btn-main {
         background: linear-gradient(135deg, var(--gold), var(--primary-2)); color: #050505;
@@ -645,7 +637,7 @@
         .about-visual { max-width: 500px; margin: 0 auto; order: -1; }
         .process-grid { grid-template-columns: 1fr; }
         .hero-ribbon { width: clamp(10.5rem, 26vw, 15rem); opacity: calc(var(--ribbon-opacity, 0.82) * 0.78); }
-        .hero-ribbon-b, .hero-ribbon-c { display: none; }
+        .hero-ribbon-b, .hero-ribbon-c { display: none !important; }
         .hero-flow-thumb { border-radius: 18px; filter: saturate(0.96) brightness(0.7); }
         .hero-ribbon-track { gap: 0.82rem; }
       }
@@ -664,12 +656,12 @@
         .hero-ribbon { width: 10rem; top: -42%; bottom: -42%; }
         .hero-ribbon-a { left: -5.4rem; }
         .hero-ribbon-d { right: -5.4rem; }
-        .hero-ribbon-track { gap: 0.65rem; animation-duration: 34s !important; }
+        .hero-ribbon-track { gap: 0.65rem; }
+        /* Higher specificity needed to override the base shorthand animation */
+        .hero-ribbon-down .hero-ribbon-track,
+        .hero-ribbon-up .hero-ribbon-track { animation-duration: 34s !important; animation-timing-function: linear !important; }
         .hero-flow-thumb { border-radius: 14px; filter: saturate(0.82) brightness(0.58); }
         .hero-center-shield { background: radial-gradient(ellipse at center, rgba(5,5,5,0.93) 0%, rgba(5,5,5,0.82) 48%, rgba(5,5,5,0.5) 76%, rgba(5,5,5,0.24) 100%); }
-        .hero-ribbon-down .hero-ribbon-track,
-        .hero-ribbon-up .hero-ribbon-track { animation-duration: 34s !important; }
-        .hero-ribbon-track { animation-timing-function: linear !important; }
         .reveal, .work-card.reveal { transform: translate3d(0, 22px, 0); }
         .reveal.active, .work-card.reveal.active { transform: translate3d(0, 0, 0); }
         .work-section { padding: 4rem 0; }
@@ -703,6 +695,31 @@
       @supports (height: 100svh) {
         .hero { min-height: 100svh; }
         @media (max-width: 680px) { .hero { min-height: auto; } }
+      }
+
+      /* === MOBILE PERFORMANCE — reduce paint/compositing cost on phones === */
+      @media (max-width: 980px) {
+        /* Decorative hero thumbs: drop shadows & filters that force per-frame repaints
+           while the ribbons animate (major source of scroll/animation jank on mobile). */
+        .hero-flow-thumb { box-shadow: none !important; filter: none !important; }
+        /* Avoid promoting every single image to its own GPU layer — too many layers
+           exhaust mobile GPU memory and cause stutter. */
+        .hero-flow-thumb img,
+        .work-card img,
+        .process-media img,
+        .about-image-wrapper img,
+        .review-avatar { transform: none !important; }
+      }
+      @media (max-width: 680px) {
+        /* The fixed top bar's backdrop blur is recomputed on every scroll frame.
+           Use an opaque background instead for smooth scrolling. */
+        .mobile-topbar {
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          background: rgba(12, 13, 17, 0.97) !important;
+        }
+        /* Full-screen fixed film-grain layer isn't worth its cost on phones. */
+        .noise { display: none !important; }
       }
 
       /* === REVEAL ANIMATION REMOVED — content shows instantly === */
