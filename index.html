@@ -403,8 +403,7 @@
       .process-section,
       .faq-section,
       .cta-section {
-        content-visibility: auto;
-        contain-intrinsic-size: 1px 860px;
+        content-visibility: visible;
       }
 
       .section-pad { padding: 6.5rem 0; }
@@ -704,6 +703,24 @@
       @supports (height: 100svh) {
         .hero { min-height: 100svh; }
         @media (max-width: 680px) { .hero { min-height: auto; } }
+      }
+
+      /* === REVEAL ANIMATION REMOVED — content shows instantly === */
+      .reveal,
+      .reveal.active,
+      .work-card.reveal,
+      .work-card.reveal.active,
+      .section-header.reveal,
+      .section-header.reveal.active,
+      .work-top.reveal,
+      .work-top.reveal.active,
+      .hero .reveal,
+      .hero .reveal.active {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        transition-delay: 0s !important;
+        will-change: auto !important;
       }
     </style>
   </head>
@@ -1095,6 +1112,11 @@
             var top = section.getBoundingClientRect().top + scrollTop - cachedNavHeight - 24;
             if (scrollTop >= top) found = section.id;
           }
+          // When scrolled to the very bottom, the last section may be too short
+          // to reach the threshold — force it active so the nav stays correct.
+          if (sections.length && (window.innerHeight + scrollTop) >= (root.scrollHeight - 2)) {
+            found = sections[sections.length - 1].id;
+          }
           setActiveNav(found);
         }
 
@@ -1124,11 +1146,26 @@
           });
         }
 
+        function initNavHighlight() {
+          if (!mainNav || window.innerWidth <= 680) {
+            if (navHighlight) navHighlight.style.opacity = "0";
+            return;
+          }
+          var active = mainNav.querySelector("a.active") || desktopLinks[0];
+          if (active) updateNavHighlight(active);
+        }
+
         window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("resize", function() { requestAnimationFrame(onResize); }, { passive: true });
-        window.addEventListener("load", function() { updateNavHeight(); onScroll(); }, { once: true });
+        window.addEventListener("load", function() { updateNavHeight(); onScroll(); initNavHighlight(); }, { once: true });
         updateNavHeight();
         updateScrollProgress();
+        initNavHighlight();
+        // Web fonts load asynchronously (display=swap) and change link widths,
+        // so re-align the highlight pill once fonts are ready.
+        if (doc.fonts && doc.fonts.ready && typeof doc.fonts.ready.then === "function") {
+          doc.fonts.ready.then(initNavHighlight).catch(function() {});
+        }
 
         var mobileMenuBtn = doc.getElementById("mobileMenuBtn");
         var mobileMenuOverlay = doc.getElementById("mobileMenuOverlay");
@@ -1147,6 +1184,9 @@
             doc.body.style.top = "-" + mobileMenuScrollY + "px";
             doc.body.style.left = "0";
             doc.body.style.right = "0";
+            if (mobileMenuClose) {
+              try { mobileMenuClose.focus({ preventScroll: true }); } catch (err) { mobileMenuClose.focus(); }
+            }
           } else {
             mobileMenuOverlay.classList.remove("active");
             mobileMenuOverlay.setAttribute("aria-hidden", "true");
@@ -1157,6 +1197,7 @@
             doc.body.style.left = "";
             doc.body.style.right = "";
             window.scrollTo(0, mobileMenuScrollY);
+            try { mobileMenuBtn.focus({ preventScroll: true }); } catch (err) {}
           }
         }
 
